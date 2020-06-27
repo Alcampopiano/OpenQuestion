@@ -1,6 +1,8 @@
 allow_embedding: false
-package_name: Material_Design_4
-name: Material Design 4
+package_name: Open_Source_Forms
+db_schema: []
+name: Open Source Forms
 startup_form: Form1
+renamed: true
 runtime_options: {version: 2, client_version: '3', server_version: python3-sandbox}
 services: []
