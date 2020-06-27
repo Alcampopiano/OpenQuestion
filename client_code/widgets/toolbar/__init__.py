@@ -3,10 +3,15 @@ from anvil import *
 
 class toolbar(toolbarTemplate):
   
-  def __init__(self, **properties):
+  def __init__(self, spacer_bool, center_widgets, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-    print('asdf')
+    
+    if spacer_bool:
+      self.add_component(Spacer())
+      
+    if center_widgets:
+      self.flow_panel.align='center'
     
 
 #   def widget_control(self, **event_args):
