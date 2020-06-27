@@ -10,6 +10,10 @@ class section(sectionTemplate):
     self.border='solid red .5px'
     get_open_form().tag.active_section=self
     self.section_border_toggle()
+    from ..toolbar import toolbar
+
+    toolbar=toolbar()
+    self.column_panel.add_component(toolbar)
   
   def section_border_toggle(self, **event_args):
     
