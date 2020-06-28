@@ -2,6 +2,18 @@
  This CSS implements the Material Design look and feel for Anvil apps.
  **/
 
+/* Al roles */
+.anvil-role-section_shadow {
+  border: 2px solid black;
+  padding: 10px;
+  box-shadow: 5px 10px 18px lightgray;
+}
+
+.anvil-role-section_no_shadow {
+  border: .5px solid gray;
+  padding: 10px;
+}
+
 /* Stop panel-cols cutting off drop shadows */
 .anvil-panel-col {
   padding-bottom: 10px;

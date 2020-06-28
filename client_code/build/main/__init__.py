@@ -21,6 +21,21 @@ class main(mainTemplate):
   def text_box_widget_click(self, **event_args):
     comp=widgets.text_box()
     self.tag.active_section.column_panel.add_component(comp)
+    self.color_rows()
+    
+  def color_rows(self, **event_args):
+        
+    active_section=self.tag.active_section
+    
+    for i, comp in enumerate(active_section.column_panel.get_components()):
+      
+      if i%2:
+        comp.background='theme:Gray 100'
+        
+      else:
+        comp.background='white'
+          
+        
     
 
       
