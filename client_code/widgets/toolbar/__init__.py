@@ -21,7 +21,7 @@ class toolbar(toolbarTemplate):
     if not self.tag.is_section:
       get_open_form().color_rows()
       
-  def move_up(self, **event_args):
+  def move_widget(self, **event_args):
     
     if not self.tag.is_section:
         

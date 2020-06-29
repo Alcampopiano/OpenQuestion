@@ -29,7 +29,7 @@ components:
       italic: false, background: '', bold: false, underline: false, icon: 'fa:arrow-circle-up'}
     name: link_2
     layout_properties: {}
-    event_bindings: {click: move_up}
+    event_bindings: {click: move_widget}
   - type: Link
     properties: {role: null, url: '', align: left, tooltip: '', border: '', foreground: '',
       visible: true, text: '', font_size: null, wrap_on: mobile, font: '', col_spacing: medium,
@@ -37,6 +37,6 @@ components:
       italic: false, background: '', bold: false, underline: false, icon: 'fa:arrow-circle-down'}
     name: link_3
     layout_properties: {}
-    event_bindings: {}
+    event_bindings: {click: move_widget}
   event_bindings: {}
 is_package: true
