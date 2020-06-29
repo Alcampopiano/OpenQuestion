@@ -11,6 +11,8 @@ class toolbar(toolbarTemplate):
     self.tag.is_section=section == parent
     self.tag.section=section
     self.tag.parent=parent
+    self.link_down.tag.direction=1
+    self.link_up.tag.direction=-1
     
     if align=='center':
       self.flow_panel.align='center'
@@ -23,18 +25,19 @@ class toolbar(toolbarTemplate):
       
   def move_widget(self, **event_args):
     
+    direction=event_args['sender'].tag.direction
+    
     if not self.tag.is_section:
         
       comp=self.tag.parent
       section=self.tag.section
-      list_of_comps=section.column_panel.get_components()
-      ind=list_of_comps.index(comp)
+      items=section.column_panel.get_components()
+      ind=items.index(comp)
       
-      if ind>0:
-        list_of_comps.pop(ind) 
-        list_of_comps.insert(ind-1, comp)
+      if (ind>0 and direction==-1) or (ind<len(items)-1 and direction==1):
+        items[ind+direction], items[ind] = items[ind], items[ind+direction]
         section.column_panel.clear()
-        [section.column_panel.add_component(item) for item in list_of_comps]
+        [section.column_panel.add_component(item) for item in items]
       
       
       
