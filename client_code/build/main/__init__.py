@@ -19,7 +19,7 @@ class main(mainTemplate):
     self.content_panel.add_component(section)
     
   def text_box_widget_click(self, **event_args):
-    comp=widgets.text_box()
+    comp=widgets.text_box(section=self.tag.active_section)
     self.tag.active_section.column_panel.add_component(comp)
     self.color_rows()
     

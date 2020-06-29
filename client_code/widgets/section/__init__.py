@@ -14,7 +14,7 @@ class section(sectionTemplate):
     self.section_border_toggle()
     
     from ..toolbar import toolbar
-    toolbar=toolbar(spacer_bool=False, center_widgets=True)
+    toolbar=toolbar(align='center', section=self, parent=self)
     self.link.add_component(toolbar)
   
   def section_border_toggle(self, **event_args):
