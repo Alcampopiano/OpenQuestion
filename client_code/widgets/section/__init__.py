@@ -23,14 +23,11 @@ class section(sectionTemplate):
   
       for section in sections:
         if section is not self:
-          #section.border='solid gray .5px'
           section.role='section_no_shadow'
           
   def section_select(self, **event_args):
     
     if self.role=='section_no_shadow':
-    #if self.border is 'solid gray .5px':
-      #self.border='solid red .5px'
       self.role='section_shadow'
       get_open_form().tag.active_section=self
       self.section_border_toggle()

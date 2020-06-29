@@ -24,6 +24,18 @@ class toolbar(toolbarTemplate):
   def move_up(self, **event_args):
     
     if not self.tag.is_section:
-      print(len(self.tag.section.column_panel.get_components()))
-   
+        
+      comp=self.tag.parent
+      section=self.tag.section
+      list_of_comps=section.column_panel.get_components()
+      ind=list_of_comps.index(comp)
+      
+      if ind>0:
+        list_of_comps.pop(ind) 
+        list_of_comps.insert(ind-1, comp)
+        section.column_panel.clear()
+        [section.column_panel.add_component(item) for item in list_of_comps]
+      
+      
+      
 
