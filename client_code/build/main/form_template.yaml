@@ -6,7 +6,7 @@ container:
 components:
 - type: ColumnPanel
   properties: {col_widths: '{}'}
-  name: content_panel
+  name: column_panel
   layout_properties: {slot: default}
   event_bindings: {}
   components: []

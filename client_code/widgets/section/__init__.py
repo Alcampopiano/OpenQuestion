@@ -6,9 +6,9 @@ class section(sectionTemplate):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
              
-  def form_show(self, **event_args):
+  #def form_show(self, **event_args):
 
-    #self.border='solid red .5px'
+  #self.border='solid red .5px'
     self.role='section_shadow'
     get_open_form().tag.active_section=self
     self.section_border_toggle()
@@ -19,7 +19,7 @@ class section(sectionTemplate):
   
   def section_border_toggle(self, **event_args):
     
-      sections=get_open_form().content_panel.get_components()
+      sections=get_open_form().column_panel.get_components()
   
       for section in sections:
         if section is not self:

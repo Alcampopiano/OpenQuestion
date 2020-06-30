@@ -26,34 +26,16 @@ class toolbar(toolbarTemplate):
   def move_widget(self, **event_args):
     
     direction=event_args['sender'].tag.direction
-    
-    if not self.tag.is_section:
-        
-      comp=self.tag.parent
-      section=self.tag.section
-      items=section.column_panel.get_components()
-      ind=items.index(comp)
+    section=self.tag.parent if not self.tag.is_section else get_open_form()
+            
+    comp=self.tag.parent 
+    items=section.column_panel.get_components()
+    ind=items.index(comp)
       
-      if (ind>0 and direction==-1) or (ind<len(items)-1 and direction==1):
-        items[ind+direction], items[ind] = items[ind], items[ind+direction]
-        section.column_panel.clear()
-        [section.column_panel.add_component(item) for item in items]
-        
-    else:
-      
-      comp=self.tag.parent
-      section=get_open_form()
-      items=section.content_panel.get_components()
-      print(type(items[0]))
-      print(type(comp))
-      ind=items.index(comp)
-      print(ind)
-      
-      if (ind>0 and direction==-1) or (ind<len(items)-1 and direction==1):
-        items[ind+direction], items[ind] = items[ind], items[ind+direction]
-        section.content_panel.clear()
-        [section.content_panel.add_component(item) for item in items]
-      
+    if (ind>0 and direction==-1) or (ind<len(items)-1 and direction==1):
+      items[ind+direction], items[ind] = items[ind], items[ind+direction]
+      section.column_panel.clear()
+      [section.column_panel.add_component(item) for item in items]
       
       
       

@@ -16,7 +16,7 @@ class main(mainTemplate):
     
   def section_widget_click(self, **event_args):
     section=widgets.section()
-    self.content_panel.add_component(section)
+    self.column_panel.add_component(section)
     
   def text_box_widget_click(self, **event_args):
     comp=widgets.text_box(section=self.tag.active_section)
