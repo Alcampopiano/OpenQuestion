@@ -30,6 +30,10 @@ db_schema:
       name: title
       type: string
       admin_ui: {order: 1, width: 200}
+    tRLstr9GAuU=:
+      name: submissions
+      type: media
+      admin_ui: {order: 4, width: 200}
   access: {python_name: forms, app_id: RZCX3HWGWWPZJCOH, server: full, client: none,
     table_id: 63199}
 renamed: true
