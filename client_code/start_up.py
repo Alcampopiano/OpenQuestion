@@ -16,4 +16,4 @@ if get_url_hash():
   open_form('form.main')
   
 else:
-  open_form('build.main')
+  open_form('build.select_form')

@@ -7,20 +7,19 @@ from anvil.tables import app_tables
 
 class section(sectionTemplate):
   def __init__(self, **properties):
-    # Set Form properties and Data Bindings.
-    self.init_components(**properties)
-             
-  #def form_show(self, **event_args):
 
-  #self.border='solid red .5px'
+    self.init_components(**properties)
+    
     self.role='section_shadow'
-    get_open_form().tag.active_section=self
-    self.section_border_toggle()
     
     from ..toolbar import toolbar
     toolbar=toolbar(align='center', section=self, parent=self)
     self.link.add_component(toolbar)
-  
+      
+  def form_show(self, **event_args):
+    get_open_form().tag.active_section=self
+    self.section_border_toggle()
+    
   def section_border_toggle(self, **event_args):
     
       sections=get_open_form().column_panel.get_components()

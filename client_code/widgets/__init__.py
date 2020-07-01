@@ -14,7 +14,3 @@ from .section import section
 #    Package1.say_hello()
 #
 
-def add_toolbar():
-  print("Hello, world")
-  
-  

@@ -25,13 +25,12 @@ class toolbar(toolbarTemplate):
     self.tag.parent.remove_from_parent()
     
     if not self.tag.is_section:
-      get_open_form().color_rows()
+      get_open_form().color_rows(self.tag.section)
       
   def move_widget(self, **event_args):
     
     direction=event_args['sender'].tag.direction
-    section=self.tag.parent if not self.tag.is_section else get_open_form()
-            
+    section=self.tag.section if not self.tag.is_section else get_open_form()
     comp=self.tag.parent 
     items=section.column_panel.get_components()
     ind=items.index(comp)
@@ -41,7 +40,8 @@ class toolbar(toolbarTemplate):
       section.column_panel.clear()
       [section.column_panel.add_component(item) for item in items]
       
-      
+    if not self.tag.is_section:
+      get_open_form().color_rows(self.tag.section)
       
       
 

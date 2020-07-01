@@ -7,14 +7,15 @@ components:
     visible: true, text: build, font_size: null, wrap_on: mobile, font: '', col_spacing: medium,
     spacing_above: small, icon_align: left, col_widths: '', spacing_below: small,
     italic: false, background: '', bold: false, underline: false, icon: ''}
-  name: link_1
+  name: link_build
   layout_properties: {column: HMTFLI}
+  event_bindings: {click: link_build_click}
 - type: Link
   properties: {role: null, url: '', align: left, tooltip: '', border: '', foreground: '',
     visible: true, text: charts, font_size: null, wrap_on: mobile, font: '', col_spacing: medium,
     spacing_above: small, icon_align: left, col_widths: '', spacing_below: small,
     italic: false, background: '', bold: false, underline: false, icon: ''}
-  name: link_2
+  name: link_charts
   layout_properties: {column: HKBRYX}
   event_bindings: {}
 - type: Link
@@ -22,7 +23,7 @@ components:
     visible: true, text: data, font_size: null, wrap_on: mobile, font: '', col_spacing: medium,
     spacing_above: small, icon_align: left, col_widths: '', spacing_below: small,
     italic: false, background: '', bold: false, underline: false, icon: ''}
-  name: link_3
+  name: link_data
   layout_properties: {column: OJKXDS}
   event_bindings: {}
 - type: Link
@@ -30,12 +31,12 @@ components:
     visible: true, text: share, font_size: null, wrap_on: mobile, font: '', col_spacing: medium,
     spacing_above: small, icon_align: left, col_widths: '', spacing_below: small,
     italic: false, background: '', bold: false, underline: false, icon: ''}
-  name: link_4
+  name: link_share
   layout_properties: {column: TQNHSB}
   event_bindings: {}
 - type: Label
   properties: {}
-  name: label_1
+  name: label_title
   layout_properties: {column: EVCOPM}
   event_bindings: {}
 is_package: true
