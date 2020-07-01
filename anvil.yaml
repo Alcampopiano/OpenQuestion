@@ -1,4 +1,7 @@
-services: []
+services:
+- source: /runtime/services/tables.yml
+  client_config: {}
+  server_config: {auto_create_missing_columns: false}
 startup: {type: module, module: start_up}
 package_name: Open_Source_Forms
 allow_embedding: false
@@ -6,5 +9,27 @@ name: Open Source Forms
 runtime_options: {version: 2, client_version: '3', server_version: python3-sandbox}
 metadata: {}
 native_deps: {head_html: ''}
-db_schema: []
+db_schema:
+- name: forms
+  id: 63199
+  python_name: forms
+  columns:
+    0LurdekMZ08=:
+      name: form
+      type: simpleObject
+      admin_ui: {order: 3, width: 200}
+    CvauOTiUFnE=:
+      name: id
+      type: string
+      admin_ui: {order: 0, width: 200}
+    ZjE_pWQ+bOI=:
+      name: last_modified
+      type: datetime
+      admin_ui: {order: 2, width: 200}
+    lu7Wg5515RQ=:
+      name: title
+      type: string
+      admin_ui: {order: 1, width: 200}
+  access: {python_name: forms, app_id: RZCX3HWGWWPZJCOH, server: full, client: none,
+    table_id: 63199}
 renamed: true

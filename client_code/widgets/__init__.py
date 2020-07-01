@@ -1,3 +1,6 @@
+import anvil.tables as tables
+import anvil.tables.query as q
+from anvil.tables import app_tables
 from .text_box import text_box
 #from .toolbar import toolbar
 from .section import section

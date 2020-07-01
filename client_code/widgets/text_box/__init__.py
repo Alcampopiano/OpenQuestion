@@ -1,5 +1,8 @@
 from ._anvil_designer import text_boxTemplate
 from anvil import *
+import anvil.tables as tables
+import anvil.tables.query as q
+from anvil.tables import app_tables
 
 class text_box(text_boxTemplate):
   
