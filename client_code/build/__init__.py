@@ -26,15 +26,20 @@ def build_form(schema, column_panel):
         widget.text_box_title.text=widget_schema['title']
         widget.text_box.text=widget_schema['text']
         
-#       elif widget_schema['type']=='drop_down':
-#         pass
+      elif widget_schema['type']=='drop_down':
+        widget=widgets.drop_down(section=section)
+        widget.text_box_title.text=widget_schema['title']
+        widget.text_area_options.text=widget_schema['options']
         
 #       elif widget_schema['type']=='date':
 #         pass
-      
+
+      # remove this once all components are accounted for
+      if widget_schema['type'] in ('text_box', 'drop_down'):
         widget.tag.logic=widget_schema['logic']
         widget.tag.id=widget_schema['id']
         section.column_panel.add_component(widget)
+
     
     column_panel.add_component(section)
     

@@ -45,6 +45,16 @@ class main(mainTemplate):
     self.tag.active_section.column_panel.add_component(comp)
     self.color_rows(self.tag.active_section)
     
+  def drop_down_widget_click(self, **event_args):
+    comp=widgets.drop_down(section=self.tag.active_section)
+    self.tag.active_section.column_panel.add_component(comp)
+    self.color_rows(self.tag.active_section)
+    
+  def date_widget_click(self, **event_args):
+    comp=widgets.date(section=self.tag.active_section)
+    self.tag.active_section.column_panel.add_component(comp)
+    self.color_rows(self.tag.active_section)
+    
   def color_rows(self, section, **event_args):
             
     for i, comp in enumerate(section.column_panel.get_components()):
