@@ -9,7 +9,7 @@ def build_form(schema, column_panel):
   
   column_panel.tag.title=schema['title']
   column_panel.tag.id=schema['id']
-  print(schema)
+  #print(schema)
   
   for section_schema in schema['widgets']:
     
@@ -38,11 +38,8 @@ def build_form(schema, column_panel):
         widget.text_box_format.text=widget_schema['format']
         widget.text_box_placeholder.placeholder=widget_schema['placeholder']
 
-#       elif widget_schema['type']=='date':
-#         pass
-
       # remove this once all components are accounted for
-      if widget_schema['type'] in ('text_box', 'drop_down'):
+      if widget_schema['type'] in ('text_box', 'drop_down', 'date'):
         widget.tag.logic=widget_schema['logic']
         widget.tag.id=widget_schema['id']
         section.column_panel.add_component(widget)
