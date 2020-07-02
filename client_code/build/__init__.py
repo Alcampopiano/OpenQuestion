@@ -24,13 +24,20 @@ def build_form(schema, column_panel):
         
         widget=widgets.text_box(section=section)
         widget.text_box_title.text=widget_schema['title']
-        widget.text_box.text=widget_schema['text']
+        widget.text_box_placeholder.placeholder=widget_schema['placeholder']
         
       elif widget_schema['type']=='drop_down':
         widget=widgets.drop_down(section=section)
         widget.text_box_title.text=widget_schema['title']
         widget.text_area_options.text=widget_schema['options']
+        widget.text_box_placeholder.placeholder=widget_schema['placeholder']
         
+      elif widget_schema['type']=='date':
+        widget=widgets.date(section=section)
+        widget.text_box_title.text=widget_schema['title']
+        widget.text_box_format.text=widget_schema['format']
+        widget.text_box_placeholder.placeholder=widget_schema['placeholder']
+
 #       elif widget_schema['type']=='date':
 #         pass
 
