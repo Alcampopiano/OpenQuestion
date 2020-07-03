@@ -6,6 +6,7 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 from ... import widgets
 from ... import build
+from ... import form
 
 class main(mainTemplate):
   def __init__(self, row=None, **properties):
@@ -19,6 +20,7 @@ class main(mainTemplate):
     
     if row:
       self.tag.id=row['form_id']
+      self.preview_link.url=anvil.server.get_app_origin() + '#' + row['form_id']
       self.tag.num_widgets=row['schema']['num_widgets']
       self.text_box_title.text=row['title']
       build.build_form(row['schema'], self.column_panel)
@@ -29,8 +31,11 @@ class main(mainTemplate):
       
   def save_click(self, **event_args):
     schema=build.build_schema(self.column_panel)
-    anvil.server.call('save_schema', self.tag.id, schema)
-    
+    form_id=anvil.server.call('save_schema', self.tag.id, schema)
+    self.tag.id=form_id
+    self.preview_link.url=anvil.server.get_app_origin() + '#' + form_id
+
+
   def form_show(self, **event_args):
     
     if not self.tag.row:
@@ -86,9 +91,13 @@ class main(mainTemplate):
      open_form('build.select_form')
 
   def preview_link_click(self, **event_args):
-    """This method is called when the link is clicked"""
-    pass
+    
+    if not self.preview_link.url:
+      Notification('',title='Please save the form first').show()
 
+    else:
+      schema=build.build_schema(self.column_panel)
+      anvil.server.call('save_schema', self.tag.id, schema)
 
 
 

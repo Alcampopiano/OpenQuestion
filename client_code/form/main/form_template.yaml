@@ -14,6 +14,8 @@ components:
   name: navbar_links
   layout_properties: {slot: nav-right}
 - type: Label
-  properties: {}
+  properties: {role: null, align: left, tooltip: '', border: '', foreground: '', visible: true,
+    text: '', font_size: 30, font: '', spacing_above: small, icon_align: left, spacing_below: small,
+    italic: false, background: '', bold: false, underline: false, icon: ''}
   name: label_title
   layout_properties: {slot: title}

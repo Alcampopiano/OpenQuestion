@@ -5,7 +5,7 @@ container:
 components:
 - type: Label
   properties: {role: null, align: left, tooltip: '', border: '', foreground: 'theme:Black',
-    visible: true, text: '', font_size: null, font: '', spacing_above: small, icon_align: left,
+    visible: true, text: '', font_size: 20, font: '', spacing_above: small, icon_align: left,
     spacing_below: small, italic: false, background: '', bold: false, underline: false,
     icon: ''}
   name: label_title

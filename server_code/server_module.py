@@ -32,6 +32,8 @@ def save_schema(form_id, schema):
     form_id=str(form_id)
     row=app_tables.forms.get(form_id=form_id)
     row.update(title=schema['title'], schema=schema, last_modified=datetime.now())
+    
+  return form_id
   
   
 
