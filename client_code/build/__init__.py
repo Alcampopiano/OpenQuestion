@@ -51,7 +51,7 @@ def build_form(schema, column_panel):
 def build_schema(column_panel):
   
   schema={}
-  schema['title']=column_panel.text_box_title.text
+  schema['title']=get_open_form().text_box_title.text #column_panel.text_box_title.text
   schema['id']=column_panel.tag.id
   schema['widgets']=[]
 
