@@ -1,15 +1,19 @@
 container:
   type: ColumnPanel
   event_bindings: {}
-  properties: {col_widths: '{}'}
+  properties: {col_widths: '{"JUTUFE":55,"TRYKVB":4}'}
 components:
+- type: Spacer
+  properties: {height: 32}
+  name: spacer_1
+  layout_properties: {grid_position: 'LIKVTP,JUTUFE TSOUNU,BQIYHP'}
 - type: TextBox
   properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: title,
     border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
     font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
     background: '', bold: false, underline: false}
   name: text_box_title
-  layout_properties: {grid_position: 'LTGCKR,MZOAAO'}
+  layout_properties: {grid_position: 'LIKVTP,JUTUFE LTGCKR,MZOAAO'}
   event_bindings: {}
 - type: TextBox
   properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: placeholder,
@@ -17,6 +21,14 @@ components:
     font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
     background: '', bold: false, underline: false}
   name: text_box_placeholder
-  layout_properties: {grid_position: 'DUXWWE,LQDPWF'}
+  layout_properties: {grid_position: 'LIKVTP,JUTUFE DUXWWE,LQDPWF'}
+  event_bindings: {}
+- type: Label
+  properties: {role: null, align: center, tooltip: '', border: '', foreground: 'theme:Black',
+    visible: true, text: id, font_size: null, font: '', spacing_above: small, icon_align: left,
+    spacing_below: small, italic: false, background: '', bold: false, underline: false,
+    icon: 'fa:text-width'}
+  name: label_id
+  layout_properties: {grid_position: 'LIKVTP,TRYKVB'}
   event_bindings: {}
 is_package: true

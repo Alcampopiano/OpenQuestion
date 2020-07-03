@@ -65,7 +65,7 @@ class main(mainTemplate):
             
     for i, comp in enumerate(section.column_panel.get_components()):
 
-      if i%2:
+      if not i%2:
         comp.background='theme:Gray 100'
         
       else:

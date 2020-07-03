@@ -24,7 +24,7 @@ def save_schema(form_id, schema):
   else:
     form_id=str(form_id)
     row=app_tables.forms.get(form_id=form_id)
-    row.update(schema=schema, last_modified=datetime.now())
+    row.update(title=schema['title'], schema=schema, last_modified=datetime.now())
   
   
 
