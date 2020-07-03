@@ -18,8 +18,12 @@ class main(mainTemplate):
     self.add_component(save_button)
     
     if row:
-      build.build_form(row['schema'], self.column_panel)
+      self.tag.id=row['form_id']
       self.text_box_title.text=row['title']
+      build.build_form(row['schema'], self.column_panel)
+      
+    else:
+      self.tag.id=None
       
   def save_click(self, **event_args):
     schema=build.build_schema(self.column_panel)

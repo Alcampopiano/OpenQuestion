@@ -3,6 +3,7 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 import anvil.server
 from datetime import datetime
+import uuid 
 
 @anvil.server.callable
 def get_forms():
@@ -14,8 +15,16 @@ def get_forms():
 @anvil.server.callable
 def save_schema(form_id, schema):
   
-  row=app_tables.forms.get(form_id=form_id)
-  row.update(schema=schema, last_modified=datetime.now())
+  if not form_id:
+    form_id=str(uuid.uuid4())
+                
+    app_tables.forms.add_row(form_id=form_id, last_modified=datetime.now(), 
+                             schema=schema, title=schema['title'])
+           
+  else:
+    form_id=str(form_id)
+    row=app_tables.forms.get(form_id=form_id)
+    row.update(schema=schema, last_modified=datetime.now())
   
   
 
