@@ -9,7 +9,6 @@ def build_form(schema, column_panel):
   
   column_panel.tag.title=schema['title']
   column_panel.tag.id=schema['id']
-  #print(schema)
   
   for section_schema in schema['widgets']:
     
@@ -52,7 +51,7 @@ def build_schema(column_panel):
   
   schema={}
   schema['title']=get_open_form().text_box_title.text #column_panel.text_box_title.text
-  schema['id']=1 # column_panel.tag.id
+  schema['id']=get_open_form().tag.id # column_panel.tag.id
   schema['widgets']=[]
 
   for section in column_panel.get_components():
