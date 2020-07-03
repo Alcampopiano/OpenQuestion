@@ -23,7 +23,7 @@ class main(mainTemplate):
       
   def save_click(self, **event_args):
     schema=build.build_schema(self.column_panel)
-    #anvil.server.call('save_schema', schema)
+    anvil.server.call('save_schema', schema['id'], schema)
     
   def form_show(self, **event_args):
     

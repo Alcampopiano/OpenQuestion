@@ -52,46 +52,11 @@ def build_schema(column_panel):
   
   schema={}
   schema['title']=get_open_form().text_box_title.text #column_panel.text_box_title.text
-  schema['id']=column_panel.tag.id
+  schema['id']=1 # column_panel.tag.id
   schema['widgets']=[]
 
   for section in column_panel.get_components():
-    
-#     {'title': 'section_1',
-#  'id': 1,
-#  'type': 'section',
-#  'visible': True,
-#  'logic': None,
-#  'widgets': [{'title': 'widget_1',
-#    'id': 2,
-#    'type': 'text_box',
-#    'placeholder': 'place',
-#    'visible': True,
-#    'text': 'hello',
-#    'logic': None},
-#   {'title': 'widget_2',
-#    'id': 3,
-#    'type': 'drop_down',
-#    'placeholder': 'place',
-#    'options': [1, 2, 3, 4, 5, 6, 7],
-#    'visible': True,
-#    'logic': [{'id': 4,
-#      'func': 'all',
-#      'visible': False,
-#      'conditions': [{'comparison': '>', 'value': 3},
-#       {'comparison': '<=', 'value': 6}]},
-#     {'id': 6,
-#      'func': 'any',
-#      'visible': True,
-#      'conditions': [{'comparison': '>', 'value': 3}]}]},
-#   {'title': 'widget_3',
-#    'id': 4,
-#    'type': 'text_box',
-#    'placeholder': 'place',
-#    'visible': True,
-#    'text': 'hello2',
-#    'logic': None}]}
-    
+  
     section_schema={}
     section_schema['type']='section'
     section_schema['title']=section.text_box_title.text
@@ -103,7 +68,6 @@ def build_schema(column_panel):
     for widget in section.column_panel.get_components():
       
       widget_schema={}
-      print(type(widget))
       
       if 'text_box' in str(type(widget)):
         
@@ -139,8 +103,6 @@ def build_schema(column_panel):
       
     schema['widgets'].append(section_schema)
     
-  print(schema)
-
   return schema
  
 
