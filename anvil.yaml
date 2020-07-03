@@ -6,7 +6,7 @@ startup: {type: module, module: start_up}
 package_name: Open_Source_Forms
 allow_embedding: false
 name: Open Source Forms
-runtime_options: {version: 2, client_version: '3', server_version: python3-sandbox}
+runtime_options: {version: 2, client_version: '3', server_version: python3-full}
 metadata: {}
 native_deps: {head_html: ''}
 db_schema:
@@ -19,7 +19,7 @@ db_schema:
       type: simpleObject
       admin_ui: {order: 3, width: 200}
     CvauOTiUFnE=:
-      name: id
+      name: form_id
       type: string
       admin_ui: {order: 0, width: 200}
     ZjE_pWQ+bOI=:

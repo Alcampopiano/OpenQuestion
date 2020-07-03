@@ -19,9 +19,11 @@ class main(mainTemplate):
     
     if row:
       build.build_form(row['schema'], self.column_panel)
+      self.text_box_title.text=row['title']
       
   def save_click(self, **event_args):
-    print('save')
+    schema=build.build_schema(self.column_panel)
+    #anvil.server.call('save_schema', schema)
     
   def form_show(self, **event_args):
     
@@ -65,9 +67,13 @@ class main(mainTemplate):
       else:
         comp.background='white'
           
-       
   def link_select_form_click(self, **event_args):
      open_form('build.select_form')
+
+  def preview_link_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    pass
+
 
 
 
