@@ -6,6 +6,13 @@ from datetime import datetime
 import uuid 
 
 @anvil.server.callable
+def get_form(form_id):
+  
+  row=app_tables.forms.get(form_id=form_id)
+  return row['schema']
+  
+
+@anvil.server.callable
 def get_forms():
   
   forms=[dict(row) for row in app_tables.forms.search()]

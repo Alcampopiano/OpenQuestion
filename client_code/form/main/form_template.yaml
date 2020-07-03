@@ -2,13 +2,18 @@ is_package: true
 container:
   type: HtmlTemplate
   properties: {html: '@theme:standard-page.html'}
-  event_bindings: {}
+  event_bindings: {show: form_show}
 components:
 - type: ColumnPanel
   properties: {}
-  name: content_panel
+  name: column_panel
   layout_properties: {slot: default}
+  event_bindings: {}
 - type: FlowPanel
   properties: {}
   name: navbar_links
   layout_properties: {slot: nav-right}
+- type: Label
+  properties: {}
+  name: label_title
+  layout_properties: {slot: title}

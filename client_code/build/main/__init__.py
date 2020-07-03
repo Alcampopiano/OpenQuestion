@@ -19,15 +19,17 @@ class main(mainTemplate):
     
     if row:
       self.tag.id=row['form_id']
+      self.tag.num_widgets=row['schema']['num_widgets']
       self.text_box_title.text=row['title']
       build.build_form(row['schema'], self.column_panel)
       
     else:
       self.tag.id=None
+      self.tag.num_widgets=0
       
   def save_click(self, **event_args):
     schema=build.build_schema(self.column_panel)
-    anvil.server.call('save_schema', schema['id'], schema)
+    anvil.server.call('save_schema', self.tag.id, schema)
     
   def form_show(self, **event_args):
     
@@ -45,21 +47,30 @@ class main(mainTemplate):
   def section_widget_click(self, **event_args):
     section=widgets.section()
     self.column_panel.add_component(section)
+    section.label_id.text=self.tag.num_widgets
+    self.tag.num_widgets+=1
     
   def text_box_widget_click(self, **event_args):
     comp=widgets.text_box(section=self.tag.active_section)
     self.tag.active_section.column_panel.add_component(comp)
     self.color_rows(self.tag.active_section)
-    
+    comp.label_id.text=self.tag.num_widgets
+    self.tag.num_widgets+=1
+
+
   def drop_down_widget_click(self, **event_args):
     comp=widgets.drop_down(section=self.tag.active_section)
     self.tag.active_section.column_panel.add_component(comp)
     self.color_rows(self.tag.active_section)
-    
+    comp.label_id.text=self.tag.num_widgets
+    self.tag.num_widgets+=1
+
   def date_widget_click(self, **event_args):
     comp=widgets.date(section=self.tag.active_section)
     self.tag.active_section.column_panel.add_component(comp)
     self.color_rows(self.tag.active_section)
+    comp.label_id.text=self.tag.num_widgets
+    self.tag.num_widgets+=1
     
   def color_rows(self, section, **event_args):
             

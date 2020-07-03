@@ -5,17 +5,20 @@ from anvil.tables import app_tables
 from anvil import *
 from .. import widgets
 
+'%d %b, %Y %H:%M:%S'
+
 def build_form(schema, column_panel):
   
   column_panel.tag.title=schema['title']
-  column_panel.tag.id=schema['id']
+  #column_panel.tag.id=schema['id']
   
   for section_schema in schema['widgets']:
     
     section=widgets.section()
     section.text_box_title.text=section_schema['title']
-    section.tag.id=section_schema
-    section.tag.logic=section_schema['logic']
+    #section.tag.id=section_schema['id']
+    #section.tag.logic=section_schema['logic']
+    section.label_id.text=section_schema['id']
     
     for widget_schema in section_schema['widgets']:
       
@@ -24,23 +27,28 @@ def build_form(schema, column_panel):
         widget=widgets.text_box(section=section)
         widget.text_box_title.text=widget_schema['title']
         widget.text_box_placeholder.placeholder=widget_schema['placeholder']
+        widget.label_id.text=widget_schema['id']
         
       elif widget_schema['type']=='drop_down':
         widget=widgets.drop_down(section=section)
         widget.text_box_title.text=widget_schema['title']
         widget.text_area_options.text=widget_schema['options']
         widget.text_box_placeholder.placeholder=widget_schema['placeholder']
+        widget.label_id.text=widget_schema['id']
+
         
       elif widget_schema['type']=='date':
         widget=widgets.date(section=section)
         widget.text_box_title.text=widget_schema['title']
         widget.text_box_format.text=widget_schema['format']
         widget.text_box_placeholder.placeholder=widget_schema['placeholder']
+        widget.label_id.text=widget_schema['id']
+
 
       # remove this once all components are accounted for
       if widget_schema['type'] in ('text_box', 'drop_down', 'date'):
         widget.tag.logic=widget_schema['logic']
-        widget.tag.id=widget_schema['id']
+        #widget.tag.id=widget_schema['id']
         section.column_panel.add_component(widget)
 
     
@@ -51,7 +59,8 @@ def build_schema(column_panel):
   
   schema={}
   schema['title']=get_open_form().text_box_title.text #column_panel.text_box_title.text
-  schema['id']=get_open_form().tag.id # column_panel.tag.id
+  #schema['id']=get_open_form().tag.id # column_panel.tag.id
+  schema['num_widgets']=get_open_form().tag.num_widgets
   schema['widgets']=[]
 
   for section in column_panel.get_components():
@@ -59,7 +68,7 @@ def build_schema(column_panel):
     section_schema={}
     section_schema['type']='section'
     section_schema['title']=section.text_box_title.text
-    section_schema['id']=1
+    section_schema['id']=section.label_id.text
     section_schema['visible']=True # should be a tag property
     section_schema['logic']=None # should be a tag property
     section_schema['widgets']=[]
@@ -72,7 +81,7 @@ def build_schema(column_panel):
         
         widget_schema['type']='text_box'
         widget_schema['title']=widget.text_box_title.text
-        widget_schema['id']=1
+        widget_schema['id']=widget.label_id.text
         widget_schema['visible']=True  # should be a tag property
         widget_schema['logic']=None # should be a tag property
         widget_schema['placeholder']=widget.text_box_placeholder.text
@@ -81,7 +90,7 @@ def build_schema(column_panel):
         
         widget_schema['type']='drop_down'
         widget_schema['title']=widget.text_box_title.text
-        widget_schema['id']=1
+        widget_schema['id']=widget.label_id.text
         widget_schema['visible']=True  # should be a tag property
         widget_schema['logic']=None # should be a tag property
         widget_schema['placeholder']=widget.text_box_placeholder.text
@@ -91,7 +100,7 @@ def build_schema(column_panel):
         
         widget_schema['type']='date'
         widget_schema['title']=widget.text_box_title.text
-        widget_schema['id']=1
+        widget_schema['id']=widget.label_id.text
         widget_schema['visible']=True  # should be a tag property
         widget_schema['logic']=None # should be a tag property
         widget_schema['placeholder']=widget.text_box_placeholder.text

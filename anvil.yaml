@@ -3,9 +3,9 @@ services:
   client_config: {}
   server_config: {auto_create_missing_columns: false}
 startup: {type: module, module: start_up}
-package_name: Open_Source_Forms
+package_name: OpenQuestion
 allow_embedding: false
-name: Open Source Forms
+name: OpenQuestion
 runtime_options: {version: 2, client_version: '3', server_version: python3-full}
 metadata: {}
 native_deps: {head_html: ''}
