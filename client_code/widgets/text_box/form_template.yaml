@@ -1,23 +1,39 @@
 container:
   type: ColumnPanel
   event_bindings: {}
-  properties: {col_widths: '{"JUTUFE":55,"TRYKVB":4}'}
+  properties: {col_widths: '{"JUTUFE":55,"TRYKVB":4,"KYXTCQ":11,"MZOAAO":49,"MSQNHR":11,"LQDPWF":49}'}
 components:
 - type: Spacer
   properties: {height: 32}
   name: spacer_1
   layout_properties: {grid_position: 'LIKVTP,JUTUFE TSOUNU,BQIYHP'}
+- type: Label
+  properties: {role: null, align: left, tooltip: '', border: '', foreground: 'theme:Black',
+    visible: true, text: 'title:', font_size: 14, font: '', spacing_above: small,
+    icon_align: left, spacing_below: small, italic: true, background: '', bold: false,
+    underline: false, icon: ''}
+  name: label_1
+  layout_properties: {grid_position: 'LIKVTP,JUTUFE LTGCKR,KYXTCQ'}
+  event_bindings: {}
 - type: TextBox
-  properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: title,
-    border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
+  properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
+    border: '', enabled: true, foreground: '', visible: true, text: '', font_size: 14,
     font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
     background: '', bold: false, underline: false}
   name: text_box_title
   layout_properties: {grid_position: 'LIKVTP,JUTUFE LTGCKR,MZOAAO'}
   event_bindings: {}
+- type: Label
+  properties: {role: null, align: left, tooltip: '', border: '', foreground: 'theme:Black',
+    visible: true, text: 'placeholder:', font_size: 14, font: '', spacing_above: small,
+    icon_align: left, spacing_below: small, italic: true, background: '', bold: false,
+    underline: false, icon: ''}
+  name: label_2
+  layout_properties: {grid_position: 'LIKVTP,JUTUFE DUXWWE,MSQNHR'}
+  event_bindings: {}
 - type: TextBox
-  properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: placeholder,
-    border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
+  properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
+    border: '', enabled: true, foreground: '', visible: true, text: '', font_size: 14,
     font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
     background: '', bold: false, underline: false}
   name: text_box_placeholder

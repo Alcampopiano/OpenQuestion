@@ -8,7 +8,7 @@ components:
 - type: Link
   properties: {role: null, url: '', align: left, tooltip: '', border: '', foreground: '',
     visible: true, text: '', font_size: null, wrap_on: mobile, font: '', col_spacing: medium,
-    spacing_above: small, icon_align: left, col_widths: '{"ZAUZQL":57,"BCGWXO":3}',
+    spacing_above: small, icon_align: left, col_widths: '{"ZAUZQL":57,"BCGWXO":3,"HRVFFH":55}',
     spacing_below: small, italic: false, background: '', bold: false, underline: false,
     icon: ''}
   name: link
@@ -16,8 +16,8 @@ components:
   event_bindings: {click: section_select}
   components:
   - type: TextBox
-    properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: section title,
-      border: '', enabled: true, foreground: '', visible: true, text: '', font_size: 30,
+    properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: title,
+      border: '', enabled: true, foreground: '', visible: true, text: '', font_size: 20,
       font: '', spacing_above: small, type: text, spacing_below: none, italic: false,
       background: '', bold: true, underline: false}
     name: text_box_title
