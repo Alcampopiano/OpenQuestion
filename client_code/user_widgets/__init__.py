@@ -6,3 +6,5 @@ from .text_box import text_box
 from .drop_down import drop_down
 from .date import date
 from .section import section
+from .check_box import check_box
+from .radio_button import radio_button

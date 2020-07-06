@@ -43,10 +43,16 @@ def build_form(schema, column_panel):
         widget.text_box_format.text=widget_schema['format']
         widget.text_box_placeholder.placeholder=widget_schema['placeholder']
         widget.label_id.text=widget_schema['id']
+        
+      elif widget_schema['type']=='check_box':
+        widget=widgets.check_box(section=section)
+        widget.text_box_title.text=widget_schema['title']
+        widget.text_area_options.text=widget_schema['options']
+        widget.label_id.text=widget_schema['id']
 
 
       # remove this once all components are accounted for
-      if widget_schema['type'] in ('text_box', 'drop_down', 'date'):
+      if widget_schema['type'] in ('text_box', 'drop_down', 'date', 'check_box'):
         widget.tag.logic=widget_schema['logic']
         #widget.tag.id=widget_schema['id']
         section.column_panel.add_component(widget)
@@ -105,6 +111,15 @@ def build_schema(column_panel):
         widget_schema['logic']=None # should be a tag property
         widget_schema['placeholder']=widget.text_box_placeholder.text
         widget_schema['format']=widget.text_box_format.text
+        
+      elif 'check_box' in str(type(widget)):
+        
+        widget_schema['type']='check_box'
+        widget_schema['title']=widget.text_box_title.text
+        widget_schema['id']=widget.label_id.text
+        widget_schema['visible']=True  # should be a tag property
+        widget_schema['logic']=None # should be a tag property
+        widget_schema['options']=widget.text_area_options.text
     
     
       section_schema['widgets'].append(widget_schema)

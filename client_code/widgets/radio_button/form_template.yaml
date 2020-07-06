@@ -1,0 +1,53 @@
+container:
+  type: ColumnPanel
+  event_bindings: {}
+components:
+- type: Spacer
+  properties: {height: 32}
+  name: spacer_1
+  layout_properties:
+    col_widths: {}
+    grid_position: EHVDKA,DRZGNY
+- type: Label
+  properties: {role: null, align: center, tooltip: '', border: '', foreground: 'theme:Black',
+    visible: true, text: id, font_size: null, font: '', spacing_above: small, icon_align: left,
+    spacing_below: small, italic: false, background: '', bold: false, underline: false,
+    icon: 'fa:check-square'}
+  name: label_id
+  layout_properties:
+    col_widths: {}
+    grid_position: TACGPZ,ZKYJWA
+- type: Label
+  properties: {role: null, align: left, tooltip: '', border: '', foreground: 'theme:Black',
+    visible: true, text: 'title:', font_size: null, font: '', spacing_above: small,
+    icon_align: left, spacing_below: small, italic: true, background: '', bold: false,
+    underline: false, icon: ''}
+  name: label_1
+  layout_properties:
+    col_widths: {}
+    grid_position: LPMLBZ,DPUEFS
+- type: Label
+  properties: {role: null, align: left, tooltip: '', border: '', foreground: 'theme:Black',
+    visible: true, text: 'options:', font_size: null, font: '', spacing_above: small,
+    icon_align: left, spacing_below: small, italic: true, background: '', bold: false,
+    underline: false, icon: ''}
+  name: label_2
+  layout_properties:
+    col_widths: {}
+    grid_position: WSHQQM,ICXFQR
+- type: TextBox
+  properties: {}
+  name: text_box_title
+  layout_properties:
+    col_widths: {}
+    grid_position: TPZFQP,TTFQVI
+- type: TextArea
+  properties: {role: null, align: left, height: '', tooltip: '', placeholder: newline separated list,
+    border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
+    auto_expand: false, font: '', spacing_above: small, spacing_below: small, italic: false,
+    background: '', bold: false, underline: false}
+  name: text_area_options
+  layout_properties:
+    col_widths: {}
+    grid_position: FZMDJR,XOTTOF
+is_package: true

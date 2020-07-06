@@ -99,6 +99,15 @@ class main(mainTemplate):
       schema=build.build_schema(self.column_panel)
       anvil.server.call('save_schema', self.tag.id, schema)
 
+  def check_box_widget_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    comp=widgets.check_box(section=self.tag.active_section)
+    self.tag.active_section.column_panel.add_component(comp)
+    self.color_rows(self.tag.active_section)
+    comp.label_id.text=self.tag.num_widgets
+    self.tag.num_widgets+=1
+
+
 
 
 

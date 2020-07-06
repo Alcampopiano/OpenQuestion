@@ -5,7 +5,7 @@ from anvil.tables import app_tables
 from .text_box import text_box
 from .drop_down import drop_down
 from .date import date
-#from .toolbar import toolbar
+from .check_box import check_box
 from .section import section
 
 # This is a package.

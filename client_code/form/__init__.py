@@ -42,10 +42,17 @@ def build_form(schema, column_panel):
         widget.date_picker.format=widget_schema['format']
         widget.date_picker.placeholder=widget_schema['placeholder']
         #widget.tag.id=widget_schema['id']
-
+        
+      #####
+      elif widget_schema['type']=='check_box':
+        options=widget_schema['options'].split('\n')
+        widget=user_widgets.check_box(options=options)
+        widget.label_title.text=widget_schema['title']
+        #widget.tag.id=widget_schema['id']
+      ####
 
       # remove this once all components are accounted for
-      if widget_schema['type'] in ('text_box', 'drop_down', 'date'):
+      if widget_schema['type'] in ('text_box', 'drop_down', 'date', 'check_box'):
         widget.tag.logic=widget_schema['logic']
         widget.tag.id=widget_schema['id']
         section.column_panel.add_component(widget)
