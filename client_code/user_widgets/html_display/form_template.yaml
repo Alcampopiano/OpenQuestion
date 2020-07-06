@@ -1,0 +1,8 @@
+container:
+  type: HtmlTemplate
+  properties: {tooltip: '', background: '', foreground: 'theme:Black', border: '',
+    visible: true, role: null, html: "<center style=\"font-style:italic; color:#888;\
+      \ margin: 3em;\">\n  (Insert your custom HTML here)\n</center>"}
+  event_bindings: {}
+components: []
+is_package: true

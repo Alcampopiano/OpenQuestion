@@ -4,6 +4,12 @@ from anvil.tables import app_tables
 import anvil.server
 from datetime import datetime
 import uuid 
+import mistune
+
+@anvil.server.callable
+def convert_markdown(text):
+  return mistune.markdown(text, escape=False)
+  
 
 @anvil.server.callable
 def get_form(form_id):

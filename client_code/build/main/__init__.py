@@ -114,6 +114,15 @@ class main(mainTemplate):
     self.color_rows(self.tag.active_section)
     comp.label_id.text=self.tag.num_widgets
     self.tag.num_widgets+=1
+    
+    
+  def markdown_widget_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    comp=widgets.markdown(section=self.tag.active_section)
+    self.tag.active_section.column_panel.add_component(comp)
+    self.color_rows(self.tag.active_section)
+    comp.label_id.text=self.tag.num_widgets
+    self.tag.num_widgets+=1
 
 
 

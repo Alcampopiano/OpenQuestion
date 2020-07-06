@@ -54,9 +54,16 @@ def build_form(schema, column_panel):
         widget=user_widgets.radio_button(options=options)
         widget.label_title.text=widget_schema['title']
         #widget.tag.id=widget_schema['id']
+        
+      elif widget_schema['type']=='markdown':
+        widget=user_widgets.markdown()
+        html = anvil.server.call_s('convert_markdown', widget_schema['text'])
+        widget.html_display.html=html
+        #widget.tag.id=widget_schema['id']
 
       # remove this once all components are accounted for
-      if widget_schema['type'] in ('text_box', 'drop_down', 'date', 'check_box', 'radio_button'):
+      if widget_schema['type'] in ('text_box', 'drop_down', 'date', 
+                                   'check_box', 'radio_button',  'markdown'):
         widget.tag.logic=widget_schema['logic']
         widget.tag.id=widget_schema['id']
         section.column_panel.add_component(widget)

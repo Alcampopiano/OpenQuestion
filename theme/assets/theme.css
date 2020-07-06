@@ -2,6 +2,8 @@
  This CSS implements the Material Design look and feel for Anvil apps.
  **/
 
+
+
 /* Al roles */
 .anvil-role-section_shadow {
   border: 2px solid black;
@@ -787,3 +789,8 @@ textarea.anvil-component[disabled] {
 https://stackoverflow.com/questions/30533055/calculating-shadow-values-for-all-material-design-elevations
 */
 
+/* al hack */
+a, a:hover, a:visited
+{
+    text-decoration: none;
+}
