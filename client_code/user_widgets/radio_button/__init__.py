@@ -13,4 +13,5 @@ class radio_button(radio_buttonTemplate):
     # Any code you write here will run when the form opens.
     for op in options:
       b=RadioButton(text=op, foreground='black')
-      self.colum_panel.add_component(b)
+      b.group_name='group'
+      self.column_panel.add_component(b)

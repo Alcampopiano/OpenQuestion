@@ -49,10 +49,16 @@ def build_form(schema, column_panel):
         widget.text_box_title.text=widget_schema['title']
         widget.text_area_options.text=widget_schema['options']
         widget.label_id.text=widget_schema['id']
+        
+      elif widget_schema['type']=='radio_button':
+        widget=widgets.radio_button(section=section)
+        widget.text_box_title.text=widget_schema['title']
+        widget.text_area_options.text=widget_schema['options']
+        widget.label_id.text=widget_schema['id']
 
 
       # remove this once all components are accounted for
-      if widget_schema['type'] in ('text_box', 'drop_down', 'date', 'check_box'):
+      if widget_schema['type'] in ('text_box', 'drop_down', 'date', 'check_box', 'radio_button'):
         widget.tag.logic=widget_schema['logic']
         #widget.tag.id=widget_schema['id']
         section.column_panel.add_component(widget)
@@ -115,6 +121,15 @@ def build_schema(column_panel):
       elif 'check_box' in str(type(widget)):
         
         widget_schema['type']='check_box'
+        widget_schema['title']=widget.text_box_title.text
+        widget_schema['id']=widget.label_id.text
+        widget_schema['visible']=True  # should be a tag property
+        widget_schema['logic']=None # should be a tag property
+        widget_schema['options']=widget.text_area_options.text
+        
+      elif 'radio_button' in str(type(widget)):
+        
+        widget_schema['type']='radio_button'
         widget_schema['title']=widget.text_box_title.text
         widget_schema['id']=widget.label_id.text
         widget_schema['visible']=True  # should be a tag property

@@ -13,4 +13,4 @@ class check_box(check_boxTemplate):
     # Any code you write here will run when the form opens.
     for op in options:
       c=CheckBox(text=op, foreground='black')
-      self.colum_panel.add_component(c)
+      self.column_panel.add_component(c)

@@ -7,6 +7,7 @@ from .drop_down import drop_down
 from .date import date
 from .check_box import check_box
 from .section import section
+from .radio_button import radio_button
 
 # This is a package.
 # You can define variables and functions here, and use them from any form. For example, in a top-level form:
