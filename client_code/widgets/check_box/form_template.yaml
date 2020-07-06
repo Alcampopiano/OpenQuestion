@@ -39,7 +39,7 @@ components:
 - type: TextArea
   properties: {role: null, align: left, height: '', tooltip: '', placeholder: newline separated list,
     border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
-    auto_expand: false, font: '', spacing_above: small, spacing_below: small, italic: false,
+    auto_expand: true, font: '', spacing_above: small, spacing_below: small, italic: false,
     background: '', bold: false, underline: false}
   name: text_area_options
   layout_properties: {grid_position: 'ELJIQY,ZANBOV'}

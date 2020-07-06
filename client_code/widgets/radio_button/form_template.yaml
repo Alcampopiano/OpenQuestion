@@ -37,7 +37,10 @@ components:
   layout_properties: {grid_position: 'IQUTNR,NKWHKN'}
   event_bindings: {}
 - type: TextArea
-  properties: {}
+  properties: {role: null, align: left, height: '', tooltip: '', placeholder: '',
+    border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
+    auto_expand: true, font: '', spacing_above: small, spacing_below: small, italic: false,
+    background: '', bold: false, underline: false}
   name: text_area_options
   layout_properties: {grid_position: 'IQUTNR,BGHBQJ'}
 is_package: true
