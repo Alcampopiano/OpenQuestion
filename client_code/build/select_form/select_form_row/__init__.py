@@ -20,4 +20,10 @@ class select_form_row(select_form_rowTemplate):
     row=self.link_build.tag.row
     open_form('build.main', row=row)
 
+  def data_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    row=self.link_build.tag.row
+    download(row['submissions'])
+
+
   

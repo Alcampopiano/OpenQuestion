@@ -8,7 +8,6 @@ import mistune
 import pandas as pd
 import io
 
-
 @anvil.server.callable
 def submit_data(cols, data, form_id):
   
@@ -23,8 +22,9 @@ def submit_data(cols, data, form_id):
     
   else:
     m_old=row['submissions']
-    df_old=pd.read_csv(io.BytesIO(m_old.get_bytes()), index_col=0)
+    df_old=pd.read_csv(io.BytesIO(m_old.get_bytes()), index_col=0) # index_col=0
     df=pd.concat([df_old, df_new], axis=0)
+    df=df.reset_index(drop=True)
     csv_data=df.to_csv()
     m=anvil.BlobMedia('text/csv', csv_data, name='records.csv')
     row.update(submissions=m)

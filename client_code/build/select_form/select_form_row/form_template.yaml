@@ -25,7 +25,7 @@ components:
     italic: false, background: '', bold: false, underline: false, icon: ''}
   name: link_data
   layout_properties: {column: OJKXDS}
-  event_bindings: {}
+  event_bindings: {click: data_click}
 - type: Link
   properties: {role: null, url: '', align: left, tooltip: '', border: '', foreground: '',
     visible: true, text: share, font_size: null, wrap_on: mobile, font: '', col_spacing: medium,
