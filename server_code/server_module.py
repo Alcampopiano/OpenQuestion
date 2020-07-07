@@ -6,11 +6,30 @@ from datetime import datetime
 import uuid 
 import mistune
 import pandas as pd
+import io
+
 
 @anvil.server.callable
-def submit_data(data):
-  pass
-
+def submit_data(cols, data, form_id):
+  
+  df_new=pd.DataFrame([data], columns=cols)
+  df_new.columns=pd.io.parsers.ParserBase({'names':df_new.columns})._maybe_dedup_names(df_new.columns)
+  row=app_tables.forms.get(form_id=form_id)
+  
+  if not row['submissions']:
+    csv_data=df_new.to_csv()
+    m=anvil.BlobMedia('text/csv', csv_data, name='records.csv')
+    row.update(submissions=m)
+    
+  else:
+    m_old=row['submissions']
+    df_old=pd.read_csv(io.BytesIO(m_old.get_bytes()), index_col=0)
+    df=pd.concat([df_old, df_new], axis=0)
+    csv_data=df.to_csv()
+    m=anvil.BlobMedia('text/csv', csv_data, name='records.csv')
+    row.update(submissions=m)
+    
+    
 @anvil.server.callable
 def convert_markdown(text):
   return mistune.markdown(text, escape=False)

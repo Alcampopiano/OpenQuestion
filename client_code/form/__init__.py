@@ -1,4 +1,5 @@
 import anvil.server
+from anvil import *
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
@@ -8,69 +9,61 @@ from .. import user_widgets
 
 def submit_data(column_panel):
   
+  df_dict={}
+  cols=[]
+  data=[]
+  
   for section in column_panel.get_components():
     
+    
     for widget in section.column_panel.get_components():
-      
-      dicts=[]
-      
+            
       if 'text_box' in str(type(widget)):
         
         col=widget.label_title.text
-        data=widget.text_box.text
+        val=widget.text_box.text
     
       elif 'drop_down' in str(type(widget)):
         
         col=widget.label_title.text
-        data=widget.drop_down.selected_value
+        val=widget.drop_down.selected_value
      
       elif 'date' in str(type(widget)):
         
         col=widget.label_title.text
-        data=widget.date_picker.date
+        val=widget.date_picker.date
         
       elif 'check_box' in str(type(widget)):
         
         col=widget.label_title.text
         
-        data=[]
+        val=[]
         for c in widget.column_panel.get_components():
-          if c.selected:
-            data.append(c.text)
-        
-
+          if c.checked:
+            val.append(c.text)
         
       elif 'radio_button' in str(type(widget)):
         
-        widget_schema['type']='radio_button'
-        widget_schema['title']=widget.text_box_title.text
-        widget_schema['id']=widget.label_id.text
-        widget_schema['visible']=True  # should be a tag property
-        widget_schema['logic']=None # should be a tag property
-        widget_schema['options']=widget.text_area_options.text
+        col=widget.label_title.text
         
-      elif 'markdown' in str(type(widget)):
-        
-        widget_schema['type']='markdown'
-        widget_schema['placeholder']=widget.text_area_text.placeholder
-        widget_schema['text']=widget.text_area_text.text
-        widget_schema['id']=widget.label_id.text
-        widget_schema['visible']=True  # should be a tag property
-        widget_schema['logic']=None # should be a tag property
+        for c in widget.column_panel.get_components():
+          if c.selected:
+            val=c.text
+            break
         
       elif 'text_area' in str(type(widget)):
         
-        widget_schema['type']='text_area'
-        widget_schema['title']=widget.text_box_title.text
-        widget_schema['id']=widget.label_id.text
-        widget_schema['visible']=True  # should be a tag property
-        widget_schema['logic']=None # should be a tag property
-        widget_schema['placeholder']=widget.text_box_placeholder.text
+        col=widget.label_title.text
+        val=widget.text_area.text
+        
+      else:
+        continue
     
-    
-      section_schema['widgets'].append(widget_schema)
+      cols.append(col)
+      data.append(val)
       
-    schema['widgets'].append(section_schema)
+  anvil.server.call('submit_data', cols, data, get_url_hash())
+      
     
 
 def build_form(schema, column_panel):
