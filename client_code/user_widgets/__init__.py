@@ -9,3 +9,4 @@ from .section import section
 from .check_box import check_box
 from .radio_button import radio_button
 from .markdown import markdown
+from .text_area import text_area

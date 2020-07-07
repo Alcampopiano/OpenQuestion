@@ -60,10 +60,18 @@ def build_form(schema, column_panel):
         html = anvil.server.call_s('convert_markdown', widget_schema['text'])
         widget.html_display.html=html
         #widget.tag.id=widget_schema['id']
+        
+      elif widget_schema['type']=='text_area':
+        
+        widget=user_widgets.text_area()
+        widget.label_title.text=widget_schema['title']
+        widget.text_area.placeholder=widget_schema['placeholder']
+        #widget.tag.id=widget_schema['id']
 
       # remove this once all components are accounted for
       if widget_schema['type'] in ('text_box', 'drop_down', 'date', 
-                                   'check_box', 'radio_button',  'markdown'):
+                                   'check_box', 'radio_button',  'markdown', 'text_area'):
+        
         widget.tag.logic=widget_schema['logic']
         widget.tag.id=widget_schema['id']
         section.column_panel.add_component(widget)

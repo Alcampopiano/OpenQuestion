@@ -58,11 +58,18 @@ def build_form(schema, column_panel):
       elif widget_schema['type']=='markdown':
         widget=widgets.markdown(section=section)
         widget.text_area_text.text=widget_schema['text']
+        widget.text_area_text.placeholder=widget_schema['placeholder']
+        widget.label_id.text=widget_schema['id']
+        
+      elif widget_schema['type']=='text_area':
+        widget=widgets.text_area(section=section)
+        widget.text_box_title.text=widget_schema['title']
+        widget.text_box_placeholder.text=widget_schema['placeholder']
         widget.label_id.text=widget_schema['id']
 
       # remove this once all components are accounted for
       if widget_schema['type'] in ('text_box', 'drop_down', 'date', 
-                                   'check_box', 'radio_button', 'markdown'):
+                                   'check_box', 'radio_button', 'markdown', 'text_area'):
         
         widget.tag.logic=widget_schema['logic']
         #widget.tag.id=widget_schema['id']
@@ -144,10 +151,20 @@ def build_schema(column_panel):
       elif 'markdown' in str(type(widget)):
         
         widget_schema['type']='markdown'
+        widget_schema['placeholder']=widget.text_area_text.placeholder
         widget_schema['text']=widget.text_area_text.text
         widget_schema['id']=widget.label_id.text
         widget_schema['visible']=True  # should be a tag property
         widget_schema['logic']=None # should be a tag property
+        
+      elif 'text_area' in str(type(widget)):
+        
+        widget_schema['type']='text_area'
+        widget_schema['title']=widget.text_box_title.text
+        widget_schema['id']=widget.label_id.text
+        widget_schema['visible']=True  # should be a tag property
+        widget_schema['logic']=None # should be a tag property
+        widget_schema['placeholder']=widget.text_box_placeholder.text
     
     
       section_schema['widgets'].append(widget_schema)

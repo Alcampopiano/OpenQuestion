@@ -24,7 +24,10 @@ components:
   layout_properties: {grid_position: 'VZJQVP,CJEHIR'}
   event_bindings: {}
 - type: TextBox
-  properties: {}
+  properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
+    border: '', enabled: true, foreground: '', visible: true, text: '', font_size: 14,
+    font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
+    background: '', bold: false, underline: false}
   name: text_box_title
   layout_properties: {grid_position: 'VZJQVP,QOVVZB'}
   event_bindings: {}
@@ -38,9 +41,10 @@ components:
   event_bindings: {}
 - type: TextArea
   properties: {role: null, align: left, height: '', tooltip: '', placeholder: '',
-    border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
+    border: '', enabled: true, foreground: '', visible: true, text: '', font_size: 14,
     auto_expand: true, font: '', spacing_above: small, spacing_below: small, italic: false,
     background: '', bold: false, underline: false}
   name: text_area_options
   layout_properties: {grid_position: 'IQUTNR,BGHBQJ'}
+  event_bindings: {}
 is_package: true

@@ -9,6 +9,7 @@ from .check_box import check_box
 from .section import section
 from .radio_button import radio_button
 from .markdown import markdown
+from .text_area import text_area
 
 # This is a package.
 # You can define variables and functions here, and use them from any form. For example, in a top-level form:
