@@ -16,8 +16,4 @@ components:
   name: column_panel
   layout_properties: {grid_position: 'CPZUSJ,IXZWEC'}
   event_bindings: {}
-- type: CheckBox
-  properties: {text: check_box_1}
-  name: check_box_1
-  layout_properties: {grid_position: 'OOLKXB,NQHURM'}
 is_package: true
