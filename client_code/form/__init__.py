@@ -6,6 +6,85 @@ from .. import user_widgets
 
 'https://RZCX3HWGWWPZJCOH.anvil.app/MLWEXSSLJT4I3SM3B4MURYXP#5bdbc005-055e-45ea-9a65-cd81529d59f5'
 
+def submit_data(column_panel):
+  
+  for section in column_panel.get_components():
+    
+    for widget in section.column_panel.get_components():
+      
+      widget_schema={}
+      
+      if 'text_box' in str(type(widget)):
+        
+        widget_schema['type']='text_box'
+        widget_schema['title']=widget.text_box_title.text
+        widget_schema['id']=widget.label_id.text
+        widget_schema['visible']=True  # should be a tag property
+        widget_schema['logic']=None # should be a tag property
+        widget_schema['placeholder']=widget.text_box_placeholder.text
+    
+      elif 'drop_down' in str(type(widget)):
+        
+        widget_schema['type']='drop_down'
+        widget_schema['title']=widget.text_box_title.text
+        widget_schema['id']=widget.label_id.text
+        widget_schema['visible']=True  # should be a tag property
+        widget_schema['logic']=None # should be a tag property
+        widget_schema['placeholder']=widget.text_box_placeholder.text
+        widget_schema['options']=widget.text_area_options.text
+     
+      elif 'date' in str(type(widget)):
+        
+        widget_schema['type']='date'
+        widget_schema['title']=widget.text_box_title.text
+        widget_schema['id']=widget.label_id.text
+        widget_schema['visible']=True  # should be a tag property
+        widget_schema['logic']=None # should be a tag property
+        widget_schema['placeholder']=widget.text_box_placeholder.text
+        widget_schema['format']=widget.text_box_format.text
+        
+      elif 'check_box' in str(type(widget)):
+        
+        widget_schema['type']='check_box'
+        widget_schema['title']=widget.text_box_title.text
+        widget_schema['id']=widget.label_id.text
+        widget_schema['visible']=True  # should be a tag property
+        widget_schema['logic']=None # should be a tag property
+        widget_schema['options']=widget.text_area_options.text
+        
+      elif 'radio_button' in str(type(widget)):
+        
+        widget_schema['type']='radio_button'
+        widget_schema['title']=widget.text_box_title.text
+        widget_schema['id']=widget.label_id.text
+        widget_schema['visible']=True  # should be a tag property
+        widget_schema['logic']=None # should be a tag property
+        widget_schema['options']=widget.text_area_options.text
+        
+      elif 'markdown' in str(type(widget)):
+        
+        widget_schema['type']='markdown'
+        widget_schema['placeholder']=widget.text_area_text.placeholder
+        widget_schema['text']=widget.text_area_text.text
+        widget_schema['id']=widget.label_id.text
+        widget_schema['visible']=True  # should be a tag property
+        widget_schema['logic']=None # should be a tag property
+        
+      elif 'text_area' in str(type(widget)):
+        
+        widget_schema['type']='text_area'
+        widget_schema['title']=widget.text_box_title.text
+        widget_schema['id']=widget.label_id.text
+        widget_schema['visible']=True  # should be a tag property
+        widget_schema['logic']=None # should be a tag property
+        widget_schema['placeholder']=widget.text_box_placeholder.text
+    
+    
+      section_schema['widgets'].append(widget_schema)
+      
+    schema['widgets'].append(section_schema)
+    
+
 def build_form(schema, column_panel):
   
   #column_panel.tag.title=schema['title']

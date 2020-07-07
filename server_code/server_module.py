@@ -5,6 +5,11 @@ import anvil.server
 from datetime import datetime
 import uuid 
 import mistune
+import pandas as pd
+
+@anvil.server.callable
+def submit_data(data):
+  pass
 
 @anvil.server.callable
 def convert_markdown(text):

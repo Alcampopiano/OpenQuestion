@@ -10,9 +10,18 @@ class main(mainTemplate):
   def __init__(self, schema, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
+    
+    submit_button=Button(text='submit', role='primary-color')
+    submit_button.set_event_handler('click', self.submit_click)
+    self.add_component(submit_button)
 
     self.label_title.text=schema['title']
     form.build_form(schema, self.column_panel)  
+    
+  def submit_click(self, **event_args):
+    form.submit_data(self.column_panel)
+    Notification('You may close this window', 
+                 title='Your data have been submitted').show()
     
     
   def form_show(self, **event_args):
