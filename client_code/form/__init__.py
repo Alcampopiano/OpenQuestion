@@ -12,45 +12,33 @@ def submit_data(column_panel):
     
     for widget in section.column_panel.get_components():
       
-      widget_schema={}
+      dicts=[]
       
       if 'text_box' in str(type(widget)):
         
-        widget_schema['type']='text_box'
-        widget_schema['title']=widget.text_box_title.text
-        widget_schema['id']=widget.label_id.text
-        widget_schema['visible']=True  # should be a tag property
-        widget_schema['logic']=None # should be a tag property
-        widget_schema['placeholder']=widget.text_box_placeholder.text
+        col=widget.label_title.text
+        data=widget.text_box.text
     
       elif 'drop_down' in str(type(widget)):
         
-        widget_schema['type']='drop_down'
-        widget_schema['title']=widget.text_box_title.text
-        widget_schema['id']=widget.label_id.text
-        widget_schema['visible']=True  # should be a tag property
-        widget_schema['logic']=None # should be a tag property
-        widget_schema['placeholder']=widget.text_box_placeholder.text
-        widget_schema['options']=widget.text_area_options.text
+        col=widget.label_title.text
+        data=widget.drop_down.selected_value
      
       elif 'date' in str(type(widget)):
         
-        widget_schema['type']='date'
-        widget_schema['title']=widget.text_box_title.text
-        widget_schema['id']=widget.label_id.text
-        widget_schema['visible']=True  # should be a tag property
-        widget_schema['logic']=None # should be a tag property
-        widget_schema['placeholder']=widget.text_box_placeholder.text
-        widget_schema['format']=widget.text_box_format.text
+        col=widget.label_title.text
+        data=widget.date_picker.date
         
       elif 'check_box' in str(type(widget)):
         
-        widget_schema['type']='check_box'
-        widget_schema['title']=widget.text_box_title.text
-        widget_schema['id']=widget.label_id.text
-        widget_schema['visible']=True  # should be a tag property
-        widget_schema['logic']=None # should be a tag property
-        widget_schema['options']=widget.text_area_options.text
+        col=widget.label_title.text
+        
+        data=[]
+        for c in widget.column_panel.get_components():
+          if c.selected:
+            data.append(c.text)
+        
+
         
       elif 'radio_button' in str(type(widget)):
         
