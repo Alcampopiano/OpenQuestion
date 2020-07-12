@@ -139,6 +139,7 @@ def build_form(schema, column_panel):
         widget.label_value.text=widget_schema['value']
         widget.label_title.text=widget_schema['title']
         widget.slider.labels=widget_schema['labels'].split('\n')
+        print(widget.slider.labels)
         widget.slider.min_val=widget_schema['min_val']
         widget.slider.max_val=widget_schema['max_val']
         widget.slider.value=widget_schema['value']

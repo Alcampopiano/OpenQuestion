@@ -9,16 +9,20 @@ class slider(sliderTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-
-    #self.label_value.text=self.slider.value
+    
+    # debouce to avoid form show firing twice for some reason
+    self.tag.shown=False
 
   def form_show(self, **event_args):
-    array=self.slider.labels
-    min_val=self.slider.min_val
-    max_val=self.slider.max_val
-    step=self.slider.step
-    value=self.slider.value
-    self.call_js('set_tick_labels', self.slider, array, min_val, max_val, step, value)
+    
+    if not self.tag.shown:
+      array=self.slider.labels
+      min_val=self.slider.min_val
+      max_val=self.slider.max_val
+      step=self.slider.step
+      value=self.slider.value
+      self.call_js('set_tick_labels', self.slider, array, min_val, max_val, step, value)
+      self.tag.shown=True      
     
   def slider_change(self, **event_args):
     self.label_value.text = self.slider.value

@@ -8,6 +8,7 @@ allow_embedding: false
 name: OpenQuestion
 runtime_options: {version: 2, client_version: '3', server_version: python3-full}
 metadata: {}
+startup_form: build.main
 native_deps: {head_html: ''}
 db_schema:
 - name: forms
