@@ -56,6 +56,11 @@ def submit_data(column_panel):
         col=widget.label_title.text
         val=widget.text_area.text
         
+      elif 'slider' in str(type(widget)):
+        
+        col=widget.label_title.text
+        val=widget.label_value.text
+        
       else:
         continue
     
@@ -127,10 +132,22 @@ def build_form(schema, column_panel):
         widget.label_title.text=widget_schema['title']
         widget.text_area.placeholder=widget_schema['placeholder']
         #widget.tag.id=widget_schema['id']
+        
+      elif widget_schema['type']=='slider':
+        
+        widget=user_widgets.slider()
+        widget.label_value.text=widget_schema['value']
+        widget.label_title.text=widget_schema['title']
+        widget.slider.labels=widget_schema['labels'].split('\n')
+        widget.slider.min_val=widget_schema['min_val']
+        widget.slider.max_val=widget_schema['max_val']
+        widget.slider.value=widget_schema['value']
+        widget.slider.step=widget_schema['step']
 
       # remove this once all components are accounted for
       if widget_schema['type'] in ('text_box', 'drop_down', 'date', 
-                                   'check_box', 'radio_button',  'markdown', 'text_area'):
+                                   'check_box', 'radio_button',  'markdown', 
+                                   'text_area', 'slider'):
         
         widget.tag.logic=widget_schema['logic']
         widget.tag.id=widget_schema['id']

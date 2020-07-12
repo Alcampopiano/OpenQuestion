@@ -1,0 +1,67 @@
+container:
+  type: HtmlTemplate
+  properties: {tooltip: '', background: '', foreground: '', border: '', visible: true,
+    role: null, html: "<div class=\"range\">\n  <input type=\"range\" id=\"range\"\
+      >\n  <div class=\"ticks\" id=\"ticks\">\n    <!-- JS generates the spans\n \
+      \   <span class=\"tick\">really strongly disagree</span>\n    <span class=\"\
+      tick\">disagree</span>\n    <span class=\"tick\">neutral</span>\n\t-->\n  </div>\n\
+      </div>\n\n<script>\nfunction set_tick_labels(comp, array, minval, maxval, step,\
+      \ value) {\n  \n  // need a label array\n  //const array = [\"one\", \"two\"\
+      , \"three\", \"middle\", \"four\", \"five\", \"six\"]\n\n  // set attributes\
+      \ of range slider\n  //var range = document.getElementById(\"range\")\n  var\
+      \ range = comp.v._anvil.element[0]\n  //var range = this.find(\"input\")\n \
+      \ range.setAttribute('min', minval);\n  range.setAttribute('maxval', maxval);\n\
+      \  range.setAttribute('step', step);\n  range.setAttribute('value', value);\n\
+      \  \n  // get the outer \"ticks\" div \n  //var ticks = document.getElementById(\"\
+      ticks\");\n  var ticks = $(range).find(\"div\").find(\"div\");\n  \n  // for\
+      \ i in label array:\n\tarray.forEach(function (item, index) {\n    \n      \t\
+      // create a span\n  \t\tvar span = document.createElement(\"SPAN\");\n  \n \
+      \ \t\t// set text to indexed label, set class, append\n  \t\tspan.textContent\
+      \ = item;\n  \t\tspan.setAttribute('class', 'tick');\n  \t\tticks[0].appendChild(span)\n\
+      \    \n  \t// console.log(item, index);\n    \n\t});\n}\n  \n  \nfunction set_behavior(value,\
+      \ minval, maxval, step) {\n  var slider = this.find(\"input\");\n\n  slider.on(\"\
+      input\", function() {\n    var newValue = slider.parent().find(\"input\").val();\n\
+      \    anvil.call(slider, \"slider_change\", newValue);\n  })\n  \n  slider.prop({\n\
+      \    \"value\": value,\n    \"min\": minval,\n    \"max\": maxval,\n    \"step\"\
+      : step\n  });\n}\n  \n</script>\n\n<style>\n  \n.range {\n  padding-top: 5%;\n\
+      \  height: 100%;\n  /* padding-bottom: -40px; */\n  padding-right: 10px; /*\
+      \ 15px */\n  padding-left: 10px;\n  }\n  \ninput[type=range] {\n  -webkit-appearance:\
+      \ none;\n  display: block;\n  margin: 0;\n  width: 100%;\n  background: transparent;\n\
+      }\n  \ninput[type=\"range\"]:focus\n{\n    outline: none;\n}\n  \ninput[type=range]::-webkit-slider-runnable-track\
+      \ {\n  -webkit-appearance: none;\n  width: 100%;\n  /* padding-top: 2px; */\n\
+      \  height: 4px; /* 40px*/\n  color: transparent;\n  background: lightgray;\n\
+      \  border-radius: 7px; /* 999px */\n  /* border: none; */\n}\n  \ninput[type=\"\
+      range\"]:focus::-webkit-slider-runnable-track\n{\n    background: lightgray;\n\
+      }\n  \ninput[type=range]::-moz-range-track {\n  -webkit-appearance: none;\n\
+      \  width: 100%;\n  height: 4px;\n  color: transparent;\n  background: lightgray;\n\
+      \  border-radius: 7;\n  border: none;\n}\n  \ninput[type=range]::-ms-track {\n\
+      \  -webkit-appearance: none;\n  width: 100%;\n  height: 4px;\n  color: transparent;\n\
+      \  background: lightgray;\n  border-radius: 7px;\n  border: none;\n}\n  \ninput[type=range]::-ms-fill-lower\
+      \ {\n  display: none;\n}\n  \ninput[type=range]::-ms-fill-upper {\n  display:\
+      \ none;\n}\n  \ninput[type=range]::-webkit-slider-thumb {\n  -webkit-appearance:\
+      \ none;\n  height: 30px; /* 40px */\n  width: 30px; /* 40px */\n  margin-top:\
+      \ -15px; \n  border-radius: 50%; /* 30px */\n  border:1px solid #2196F3;\n \
+      \ cursor: pointer;\n  background: #2196F3;\n  /* box-shadow: 0px 2px 10px -2px\
+      \ black(1); */\n}\n  \ninput[type=range]::-moz-range-thumb {\n  -webkit-appearance:\
+      \ none;\n  height: 30px;\n  width: 30px;\n  border-radius: 50%;\n  border:1px\
+      \ solid #2196F3;\n  background: #2196F3;\n}\n  \ninput[type=range]::-ms-thumb\
+      \ {\n  -webkit-appearance: none;\n  height: 30px;\n  width: 30px;\n  border-radius:\
+      \ 50%;\n  background: black;\n  border:1px solid #2196F3;\n  box-shadow: 0px\
+      \ 2px 10px -2px black(1);\n}\n  \n.ticks {\n  display: flex;\n  justify-content:\
+      \ space-between;\n  padding: 30px 14px; /* 10px 20px;  top, right, I think*/\n\
+      }\n\n.tick {\n    position: relative;\n    display: flex;\n    justify-content:\
+      \ center;\n    width: 1px;\n    margin-top: 10px;\n}\n.tick::before {\n    content:\
+      \ \"\";\n    position: absolute;\n    top: -20px; /* */\n    width: 1px;\n \
+      \   background: gray;\n    height: 10px;\n}\n</style>"}
+  event_bindings: {show: form_show}
+components: []
+is_package: true
+custom_component: true
+properties:
+- {name: min_val, type: number, default_value: 0, default_binding_prop: true}
+- {name: max_val, type: number, default_value: 100}
+- {name: step, type: number, default_value: 1}
+- {name: value, type: number, default_value: 0}
+- {name: labels, type: 'text[]', default_value: null}
+events:
+- {name: change, default_event: true, description: When the slider is moved}

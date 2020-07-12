@@ -1,0 +1,26 @@
+container:
+  type: ColumnPanel
+  event_bindings: {show: form_show}
+  properties: {col_widths: '{}'}
+components:
+- type: Label
+  properties: {role: null, align: left, tooltip: '', border: '', foreground: 'theme:Black',
+    visible: true, text: '', font_size: 20, font: '', spacing_above: small, icon_align: left,
+    spacing_below: small, italic: false, background: '', bold: false, underline: false,
+    icon: ''}
+  name: label_title
+  layout_properties: {grid_position: 'PXKZEP,VVYDEX'}
+- type: form:user_widgets.utilities.slider_custom
+  properties: {}
+  name: slider
+  layout_properties: {grid_position: 'IMRIBL,DQJFWC'}
+  event_bindings: {change: slider_change}
+- type: Label
+  properties: {role: null, align: center, tooltip: '', border: '', foreground: '',
+    visible: true, text: '', font_size: 15, font: '', spacing_above: none, icon_align: left,
+    spacing_below: small, italic: false, background: '', bold: true, underline: false,
+    icon: ''}
+  name: label_value
+  layout_properties: {grid_position: 'SIPUVN,UCXCKQ'}
+  event_bindings: {}
+is_package: true

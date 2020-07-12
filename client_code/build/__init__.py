@@ -66,10 +66,21 @@ def build_form(schema, column_panel):
         widget.text_box_title.text=widget_schema['title']
         widget.text_box_placeholder.text=widget_schema['placeholder']
         widget.label_id.text=widget_schema['id']
+        
+      elif widget_schema['type']=='slider':
+        widget=widgets.slider(section=section)
+        widget.text_box_title.text=widget_schema['title']
+        widget.label_id.text=widget_schema['id']
+        widget.text_box_min_val.text=widget_schema['min_val']
+        widget.text_box_max_val.text=widget_schema['max_val']
+        widget.text_box_step.text=widget_schema['step']
+        widget.text_box_value.text=widget_schema['value']
+        widget.text_area_labels.text=widget_schema['labels']
 
       # remove this once all components are accounted for
       if widget_schema['type'] in ('text_box', 'drop_down', 'date', 
-                                   'check_box', 'radio_button', 'markdown', 'text_area'):
+                                   'check_box', 'radio_button', 'markdown', 
+                                   'text_area', 'slider'):
         
         widget.tag.logic=widget_schema['logic']
         #widget.tag.id=widget_schema['id']
@@ -165,6 +176,19 @@ def build_schema(column_panel):
         widget_schema['visible']=True  # should be a tag property
         widget_schema['logic']=None # should be a tag property
         widget_schema['placeholder']=widget.text_box_placeholder.text
+        
+      elif 'slider' in str(type(widget)):
+        
+        widget_schema['type']='slider'
+        widget_schema['title']=widget.text_box_title.text
+        widget_schema['id']=widget.label_id.text
+        widget_schema['visible']=True  # should be a tag property
+        widget_schema['logic']=None # should be a tag property
+        widget_schema['min_val']=widget.text_box_min_val.text
+        widget_schema['max_val']=widget.text_box_max_val.text
+        widget_schema['step']=widget.text_box_step.text
+        widget_schema['value']=widget.text_box_value.text
+        widget_schema['labels']=widget.text_area_labels.text
     
     
       section_schema['widgets'].append(widget_schema)
