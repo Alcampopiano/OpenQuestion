@@ -17,17 +17,18 @@ container:
       \ i in label array:\n\tarray.forEach(function (item, index) {\n    \n      \t\
       // create a span\n  \t\tvar span = document.createElement(\"SPAN\");\n  \n \
       \ \t\t// set text to indexed label, set class, append\n  \t\tspan.textContent\
-      \ = item;\n  \t\tspan.setAttribute('class', 'tick');\n  \t\tticks[0].appendChild(span)\n\
-      \    \n  \t// console.log(item, index);\n    \n\t});\n}\n  \n  \nfunction set_behavior(value,\
-      \ minval, maxval, step) {\n  var slider = this.find(\"input\");\n\n  slider.on(\"\
-      input\", function() {\n    var newValue = slider.parent().find(\"input\").val();\n\
-      \    anvil.call(slider, \"slider_change\", newValue);\n  })\n  \n  slider.prop({\n\
-      \    \"value\": value,\n    \"min\": minval,\n    \"max\": maxval,\n    \"step\"\
-      : step\n  });\n}\n  \n</script>\n\n<style>\n  \n.range {\n  padding-top: 5%;\n\
-      \  height: 100%;\n  /* padding-bottom: -40px; */\n  padding-right: 10px; /*\
-      \ 15px */\n  padding-left: 10px;\n  }\n  \ninput[type=range] {\n  -webkit-appearance:\
-      \ none;\n  display: block;\n  margin: 0;\n  width: 100%;\n  background: transparent;\n\
-      }\n  \ninput[type=\"range\"]:focus\n{\n    outline: none;\n}\n  \ninput[type=range]::-webkit-slider-runnable-track\
+      \ = item;\n      \tspan.setAttribute('style', 'color:black');\n  \t\tspan.setAttribute('class',\
+      \ 'tick');\n  \t\tticks[0].appendChild(span)\n    \n  \t// console.log(item,\
+      \ index);\n    \n\t});\n}\n  \n  \nfunction set_behavior(value, minval, maxval,\
+      \ step) {\n  var slider = this.find(\"input\");\n\n  slider.on(\"input\", function()\
+      \ {\n    var newValue = slider.parent().find(\"input\").val();\n    anvil.call(slider,\
+      \ \"slider_change\", newValue);\n  })\n  \n  slider.prop({\n    \"value\": value,\n\
+      \    \"min\": minval,\n    \"max\": maxval,\n    \"step\": step\n  });\n}\n\
+      \  \n</script>\n\n<style>\n  \n.range {\n  padding-top: 5%;\n  height: 100%;\n\
+      \  /* padding-bottom: -40px; */\n  padding-right: 10px; /* 15px */\n  padding-left:\
+      \ 10px;\n  }\n  \ninput[type=range] {\n  -webkit-appearance: none;\n  display:\
+      \ block;\n  margin: 0;\n  width: 100%;\n  background: transparent;\n}\n  \n\
+      input[type=\"range\"]:focus\n{\n    outline: none;\n}\n  \ninput[type=range]::-webkit-slider-runnable-track\
       \ {\n  -webkit-appearance: none;\n  width: 100%;\n  /* padding-top: 2px; */\n\
       \  height: 4px; /* 40px*/\n  color: transparent;\n  background: lightgray;\n\
       \  border-radius: 7px; /* 999px */\n  /* border: none; */\n}\n  \ninput[type=\"\
