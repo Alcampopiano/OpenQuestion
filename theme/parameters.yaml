@@ -31,6 +31,7 @@ roles:
   components: [Link]
 - {name: section_no_shadow}
 - {name: section_shadow}
+- {name: no_drag}
 color_scheme:
   preset_groups:
   - name: Primary Colour

@@ -2,6 +2,15 @@
  This CSS implements the Material Design look and feel for Anvil apps.
  **/
 
+/* Al roles */
+.anvil-role-no_drag {
+user-drag: none; 
+user-select: none;
+-moz-user-select: none;
+-webkit-user-drag: none;
+-webkit-user-select: none;
+-ms-user-select: none;
+}
 
 
 /* Al roles */
