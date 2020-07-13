@@ -9,7 +9,39 @@ name: OpenQuestion
 runtime_options: {version: 2, client_version: '3', server_version: python3-full}
 metadata: {}
 startup_form: build.main
-native_deps: {head_html: ''}
+native_deps: {head_html: "<script>\nfunction get_jQuery_obj(component) {\n    // deal\
+    \ with buttons being the surrounding div rather than the button element\n    if\
+    \ (component.v._anvil.element[0].classList.contains(\"anvil-button\")) {\n   \
+    \     return $(component.v._anvil.element[0].firstElementChild)\n        // jQuery\
+    \ object\n    } else {\n        return component.v._anvil.element\n    };  //\
+    \ jQuery object\n};\n\nfunction augment(component, event) {\n    const element\
+    \ = get_jQuery_obj(component);\n    component = component.v;\n\tcomponent._anvil.eventTypes[event]\
+    \ = {\n        'name': event,\n    };\n    // hover is different\n    const event_type\
+    \ = event == 'hover' ? 'mouseenter mouseleave' : event;\n\t\n  \t// set the event\
+    \ for the jquery element\n    element.on(event_type, function (e) {\n        let\
+    \ e_args = {};\n        if (event_type.includes('key')) {\n            e_args\
+    \ = {key:       e.key,       key_code: e.keyCode,\n                      shift_key:\
+    \ e.shiftKey,  alt_key:  e.altKey,\n                      meta_key:  e.metaKey,\
+    \   ctrl_key: e.ctrlKey,\n            };\n        }\n        e_args.event_type\
+    \ = e.type;\n      \n        // create event_params for PyDefUtils to handle.\n\
+    \      \tconst event_params = {}\n      \tfor (i in e_args) {\n          event_params[i]\
+    \ = {};\n          event_params[i].name = i;\n          event_params[i].pyVal\
+    \ = false;\n        }\n      \t\n        // update the event to include paramaters.\n\
+    \     \tcomponent._anvil.eventTypes[event] = {\n          'name': event,\n   \
+    \       'parameters': event_params\n        };\n\n      \t// call raise_event\
+    \ on the component\n        let handled = PyDefUtils.raiseEventOrSuspend(e_args,\
+    \ component, event);\n      \n        // check if it's a suspension or if the\
+    \ user returned a value to prevent default\n      \tif (handled){\n          if\
+    \ (handled.$isSuspension) {\n            // if it's a suspension convert to a\
+    \ promise\n            PyDefUtils.asyncToPromise(function() { return handled;\
+    \ });\n          } else if (handled.v) {\n            // check if there was a\
+    \ value returned\n            e.preventDefault();\n          }\n        }\n\n\
+    \    });\n\t\n  \t// add trigger method to component\n    component.constructor.prototype.trigger\
+    \ = new Sk.builtin.func(function (self, event) {\n        event = event.$jsstr();\n\
+    \        event = event == 'hover' ? 'mouseenter mouseleave' : event; // would\
+    \ probably never do this!\n      \tconst component = self\n      \tcomponent.v\
+    \ = self\n      \tconst element = get_jQuery_obj(component);\n        element.trigger(event);\n\
+    \    });\n}\n</script>"}
 db_schema:
 - name: forms
   id: 63199

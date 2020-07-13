@@ -4,6 +4,7 @@ import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
+from ...utilities import augment
 
 class section(sectionTemplate):
   def __init__(self, **properties):
@@ -11,10 +12,12 @@ class section(sectionTemplate):
     self.init_components(**properties)
     
     self.role='section_shadow'
+    augment.set_event_handler(self, 'click', self.section_select)
     
     from ..toolbar import toolbar
     toolbar=toolbar(align='center', section=self, parent=self)
-    self.link.add_component(toolbar)
+    #self.link.add_component(toolbar)
+    self.add_component(toolbar)
       
   def form_show(self, **event_args):
     get_open_form().tag.active_section=self
