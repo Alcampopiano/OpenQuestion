@@ -4,6 +4,7 @@ import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
+from ...build import branch
 
 class toolbar(toolbarTemplate):
   
@@ -45,7 +46,6 @@ class toolbar(toolbarTemplate):
       
 
   def click_branch(self, **event_args):
-    """This method is called when the link is clicked"""
-    pass
+    branch.show_branch_ui(self.tag.parent)
 
 

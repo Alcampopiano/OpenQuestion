@@ -62,7 +62,6 @@ class main(mainTemplate):
     comp.label_id.text=self.tag.num_widgets
     self.tag.num_widgets+=1
 
-
   def drop_down_widget_click(self, **event_args):
     comp=widgets.drop_down(section=self.tag.active_section)
     self.tag.active_section.column_panel.add_component(comp)
@@ -137,7 +136,6 @@ class main(mainTemplate):
     self.color_rows(self.tag.active_section)
     comp.label_id.text=self.tag.num_widgets
     self.tag.num_widgets+=1
-
 
 
 
