@@ -43,5 +43,9 @@ class toolbar(toolbarTemplate):
     if not self.tag.is_section:
       get_open_form().color_rows(self.tag.section)
       
-      
+
+  def click_branch(self, **event_args):
+    """This method is called when the link is clicked"""
+    pass
+
 

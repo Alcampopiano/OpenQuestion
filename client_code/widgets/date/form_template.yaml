@@ -2,7 +2,7 @@ container:
   type: ColumnPanel
   event_bindings: {}
   properties: {role: null, tooltip: '', border: '', foreground: 'theme:Black', visible: true,
-    wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{"MAYVHZ":55,"TSZWEA":5,"LWXOWQ":11,"SRRNVD":49,"PDFJDM":11,"ZZNLRH":49,"CFOESH":11,"CAKDSI":49,"LIYETE":10,"QQUFNM":50,"OPRPGU":10,"SWMAMO":50}',
+    wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{"MAYVHZ":55,"TSZWEA":5,"LWXOWQ":11,"SRRNVD":49,"PDFJDM":11,"ZZNLRH":49,"CFOESH":11,"CAKDSI":49,"LIYETE":10,"QQUFNM":50}',
     spacing_below: small, background: ''}
 components:
 - type: Spacer
@@ -80,20 +80,5 @@ components:
     italic: false, background: '', bold: false, checked: false, underline: false}
   name: check_box_mandatory
   layout_properties: {grid_position: 'PPVNHO,QQUFNM'}
-  event_bindings: {}
-- type: Label
-  properties: {role: null, align: left, tooltip: '', border: '', foreground: '', visible: true,
-    text: 'number:', font_size: 14, font: '', spacing_above: small, icon_align: left,
-    spacing_below: small, italic: true, background: '', bold: false, underline: false,
-    icon: ''}
-  name: label_5
-  layout_properties: {grid_position: 'MOCOVV,OPRPGU'}
-  event_bindings: {}
-- type: CheckBox
-  properties: {role: null, align: left, tooltip: '', border: '', enabled: true, foreground: '',
-    visible: true, text: '', font_size: 14, font: '', spacing_above: small, spacing_below: small,
-    italic: false, background: '', bold: false, checked: false, underline: false}
-  name: check_box_number
-  layout_properties: {grid_position: 'MOCOVV,SWMAMO'}
   event_bindings: {}
 is_package: true

@@ -20,8 +20,6 @@ class main(mainTemplate):
     
   def submit_click(self, **event_args):
     form.submit_data(self.column_panel)
-    Notification('You may close this window', 
-                 title='Your data have been submitted').show()
     
     
   def form_show(self, **event_args):

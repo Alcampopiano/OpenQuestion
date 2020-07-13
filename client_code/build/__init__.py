@@ -28,6 +28,7 @@ def build_form(schema, column_panel):
         widget.text_box_title.text=widget_schema['title']
         widget.text_box_placeholder.placeholder=widget_schema['placeholder']
         widget.label_id.text=widget_schema['id']
+        widget.check_box_mandatory.checked=widget_schema['mandatory']
         
       elif widget_schema['type']=='drop_down':
         widget=widgets.drop_down(section=section)
@@ -35,6 +36,7 @@ def build_form(schema, column_panel):
         widget.text_area_options.text=widget_schema['options']
         widget.text_box_placeholder.placeholder=widget_schema['placeholder']
         widget.label_id.text=widget_schema['id']
+        widget.check_box_mandatory.checked=widget_schema['mandatory']
         
       elif widget_schema['type']=='date':
         widget=widgets.date(section=section)
@@ -42,6 +44,7 @@ def build_form(schema, column_panel):
         widget.text_box_format.text=widget_schema['format']
         widget.text_box_placeholder.placeholder=widget_schema['placeholder']
         widget.label_id.text=widget_schema['id']
+        widget.check_box_mandatory.checked=widget_schema['mandatory']
         
       elif widget_schema['type']=='check_box':
         widget=widgets.check_box(section=section)
@@ -120,6 +123,7 @@ def build_schema(column_panel):
         widget_schema['visible']=True  # should be a tag property
         widget_schema['logic']=None # should be a tag property
         widget_schema['placeholder']=widget.text_box_placeholder.text
+        widget_schema['mandatory']=widget.check_box_mandatory.checked
     
       elif 'drop_down' in str(type(widget)):
         
@@ -130,6 +134,7 @@ def build_schema(column_panel):
         widget_schema['logic']=None # should be a tag property
         widget_schema['placeholder']=widget.text_box_placeholder.text
         widget_schema['options']=widget.text_area_options.text
+        widget_schema['mandatory']=widget.check_box_mandatory.checked
      
       elif 'date' in str(type(widget)):
         
@@ -140,6 +145,7 @@ def build_schema(column_panel):
         widget_schema['logic']=None # should be a tag property
         widget_schema['placeholder']=widget.text_box_placeholder.text
         widget_schema['format']=widget.text_box_format.text
+        widget_schema['mandatory']=widget.check_box_mandatory.checked
         
       elif 'check_box' in str(type(widget)):
         

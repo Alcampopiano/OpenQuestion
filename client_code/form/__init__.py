@@ -17,21 +17,33 @@ def submit_data(column_panel):
     
     
     for widget in section.column_panel.get_components():
-            
+                  
       if 'text_box' in str(type(widget)):
         
         col=widget.label_title.text
         val=widget.text_box.text
+        
+        if widget.label_mandatory.visible and not val.strip():
+          alert('Responses have not been submitted', title="Please fill out the mandatory fields")
+          return
     
       elif 'drop_down' in str(type(widget)):
         
         col=widget.label_title.text
         val=widget.drop_down.selected_value
+        
+        if widget.label_mandatory.visible and not val:
+          alert('Responses have not been submitted', title="Please fill out the mandatory fields")
+          return
      
       elif 'date' in str(type(widget)):
         
         col=widget.label_title.text
         val=widget.date_picker.date
+        
+        if widget.label_mandatory.visible and not val:
+          alert('Responses have not been submitted', title="Please fill out the mandatory fields")
+          return
         
       elif 'check_box' in str(type(widget)):
         
@@ -41,6 +53,8 @@ def submit_data(column_panel):
         for c in widget.column_panel.get_components():
           if c.checked:
             val.append(c.text)
+            
+        val='' if not val else val
         
       elif 'radio_button' in str(type(widget)):
         
@@ -68,6 +82,8 @@ def submit_data(column_panel):
       data.append(val)
       
   anvil.server.call('submit_data', cols, data, get_url_hash())
+  Notification('You may close this window', 
+                 title='Your data have been submitted').show()
       
     
 
@@ -91,6 +107,7 @@ def build_form(schema, column_panel):
         widget=user_widgets.text_box()
         widget.label_title.text=widget_schema['title']
         widget.text_box.placeholder=widget_schema['placeholder']
+        widget.label_mandatory.visible=widget_schema['mandatory']
         #widget.tag.id=widget_schema['id']
         
       elif widget_schema['type']=='drop_down':
@@ -99,6 +116,7 @@ def build_form(schema, column_panel):
         #widget.label_title.text=widget_schema['options'].replace('\n', '')
         widget.drop_down.items=widget_schema['options'].split('\n')
         widget.drop_down.placeholder=widget_schema['placeholder']
+        widget.label_mandatory.visible=widget_schema['mandatory']
         #widget.tag.id=widget_schema['id']
 
       elif widget_schema['type']=='date':
@@ -106,6 +124,7 @@ def build_form(schema, column_panel):
         widget.label_title.text=widget_schema['title']
         widget.date_picker.format=widget_schema['format']
         widget.date_picker.placeholder=widget_schema['placeholder']
+        widget.label_mandatory.visible=widget_schema['mandatory']
         #widget.tag.id=widget_schema['id']
         
       elif widget_schema['type']=='check_box':

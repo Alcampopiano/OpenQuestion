@@ -34,4 +34,13 @@ components:
   name: drop_down
   layout_properties: {grid_position: 'BCVEEL,ZTKXMF'}
   event_bindings: {}
+- type: Label
+  properties: {role: null, align: left, tooltip: '', border: '', foreground: 'theme:Secondary
+      500', visible: true, text: mandatory, font_size: null, font: '', spacing_above: small,
+    icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+    underline: false, icon: 'fa:asterisk'}
+  name: label_mandatory
+  layout_properties:
+    col_widths: {}
+    grid_position: CYWPMC,JJEVPL
 is_package: true
