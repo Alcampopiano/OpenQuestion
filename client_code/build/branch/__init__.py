@@ -21,7 +21,7 @@ def show_branch_ui(current_widget):
       
       
   drop_tuples=list(zip(titles, widgets))
-  content=confirm_content()
+  content=confirm_content(current_widget)
   content.drop_down_widgets.items=drop_tuples
   
   current_label=f'markdown widget (id: {current_widget.label_id.text})' \
@@ -36,18 +36,15 @@ def show_branch_ui(current_widget):
     conditions=[d.tag.logic for d in content.column_panel.get_components()]
     
     if conditions:
-    
+     
       logic={'func': 'any' if content.radio_button_any.selected else 'all'}
       logic['conditions']=conditions
       current_widget.tag.logic=logic
-      current_widget.visible=False
+      current_widget.tag.visible=False
       
     else:
-      current_label.visible=True
-      current_label.tag.logic=False
-    
-    print(current_widget.__name__)
-    print(current_widget.tag.logic)
+      current_widget.tag.visible=True
+      current_widget.tag.logic=False
       
   
       

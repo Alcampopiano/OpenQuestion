@@ -6,9 +6,44 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 
 class confirm_content(confirm_contentTemplate):
-  def __init__(self, **properties):
+  def __init__(self, current_widget, **properties):
 
     self.init_components(**properties)
+    
+    if current_widget.tag.logic:
+      
+      logic=current_widget.tag.logic
+      
+      func=logic['func']
+      
+      if func=='all':
+        self.radio_button_all.selected=True
+        
+      for d in logic['conditions']:
+        show_label=Label(text='Show if')
+        widget_label=Label(text=f"{d['title']}  id: {d['id']}")
+        oper_label=Label(text=d['comparison'])
+        value_label=Label(text=d['value'])
+        cond_flow=FlowPanel(background="theme:Gray 100", 
+                          spacing_above=None, 
+                          spacing_below=None)
+        
+        cond_flow.add_component(show_label)   
+        cond_flow.add_component(widget_label)
+        cond_flow.add_component(oper_label)
+        cond_flow.add_component(value_label)
+        
+        minus_but=Button(text='remove', icon='fa:minus-circle')
+        minus_but.set_event_handler('click', self.minus_click)
+        cond_flow.add_component(minus_but)
+        self.column_panel.add_component(cond_flow)
+        
+        cond_flow.tag.logic={
+        'id': d['id'],
+        'title': d['title'],
+        'comparison': d['comparison'],
+        'value': d['value']}
+    
 
   def add_click(self, **event_args):
     
@@ -45,6 +80,7 @@ class confirm_content(confirm_contentTemplate):
     
     cond_flow.tag.logic={
       'id': items[1].selected_value.label_id.text,
+      'title': items[1].selected_value.text_box_title.text,
       'comparison': oper_label.text,
       'value': val_label.text}
  
@@ -54,7 +90,6 @@ class confirm_content(confirm_contentTemplate):
     parent.remove_from_parent()
     
   def widget_change(self, **event_args):
-    """This method is called when an item is selected"""
     
     if len(self.flow_panel_build_condition.get_components())>3:
       self.flow_panel_build_condition.get_components()[-1].remove_from_parent()
