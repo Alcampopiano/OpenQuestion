@@ -7,48 +7,47 @@ from anvil.tables import app_tables
 
 class confirm_content(confirm_contentTemplate):
   def __init__(self, **properties):
-    # Set Form properties and Data Bindings.
+
     self.init_components(**properties)
-    self.tag.background='white'
 
   def add_click(self, **event_args):
     
     items=self.flow_panel_build_condition.get_components()
     
-    show_label=Label(text=items[0].selected_value)
-    if_label=Label(text='if', align='center')
+    show_label=Label(text="Show if")
     widget_label=Label(italic=True,
-      text=f"{items[2].selected_value.text_box_title.text} (id: {items[2].selected_value.label_id.text})")
+      text=f"{items[1].selected_value.text_box_title.text} (id: {items[1].selected_value.label_id.text})")
     
-    oper_label=Label(text=items[3].selected_value)
+    oper_label=Label(text=items[2].selected_value)
     
-    if str(type(items[4])) is "<class 'anvil.TextBox'>":
-      val_text=items[4].text 
+    if str(type(items[3])) is "<class 'anvil.TextBox'>":
+      val_text=items[3].text 
       
-    elif str(type(items[4])) is "<class 'anvil.DatePicker'>":
-      val_text=items[4].date 
+    elif str(type(items[3])) is "<class 'anvil.DatePicker'>":
+      val_text=items[3].date 
     else:
-      val_text=items[4].selected_value
+      val_text=items[3].selected_value
       
     val_label=Label(text=val_text)
     minus_but=Button(text='remove', icon='fa:minus-circle')
     minus_but.set_event_handler('click', self.minus_click)
-    
-    if self.tag.background=='white':
-      background='theme:Gray 200'
-      self.tag.background=background
-    else:
-      background='white' 
-      self.tag.background=background
       
-    cond_flow=FlowPanel(background=background, spacing_above=None, spacing_below=None)
+    cond_flow=FlowPanel(background="theme:Gray 100", 
+                        spacing_above=None, 
+                        spacing_below=None)
+    
     cond_flow.add_component(show_label)   
-    cond_flow.add_component(if_label)
     cond_flow.add_component(widget_label)
     cond_flow.add_component(oper_label)
     cond_flow.add_component(val_label)
     cond_flow.add_component(minus_but)
     self.column_panel.add_component(cond_flow)
+    
+    cond_flow.tag.logic={
+      'id': items[1].selected_value.label_id.text,
+      'comparison': oper_label.text,
+      'value': val_label.text}
+ 
     
   def minus_click(self, **event_args):
     parent=event_args['sender'].parent
@@ -57,7 +56,7 @@ class confirm_content(confirm_contentTemplate):
   def widget_change(self, **event_args):
     """This method is called when an item is selected"""
     
-    if len(self.flow_panel_build_condition.get_components())>4:
+    if len(self.flow_panel_build_condition.get_components())>3:
       self.flow_panel_build_condition.get_components()[-1].remove_from_parent()
     
     if self.drop_down_widgets.selected_value.__name__ in \

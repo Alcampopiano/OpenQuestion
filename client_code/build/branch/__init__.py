@@ -30,5 +30,24 @@ def show_branch_ui(current_widget):
   
   c=confirm(content, title=current_label, large=True, 
             buttons=[('apply', 'apply'), ('cancel', 'cancel')])
+  
+  if c == 'apply':
+    
+    conditions=[d.tag.logic for d in content.column_panel.get_components()]
+    
+    if conditions:
+    
+      logic={'func': 'any' if content.radio_button_any.selected else 'all'}
+      logic['conditions']=conditions
+      current_widget.tag.logic=logic
+      current_widget.visible=False
       
+    else:
+      current_label.visible=True
+      current_label.tag.logic=False
+    
+    print(current_widget.__name__)
+    print(current_widget.tag.logic)
+      
+  
       
