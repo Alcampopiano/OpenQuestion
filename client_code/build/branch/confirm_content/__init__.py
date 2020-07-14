@@ -9,6 +9,7 @@ class confirm_content(confirm_contentTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
+    self.tag.background='white'
 
   def add_click(self, **event_args):
     
@@ -16,20 +17,28 @@ class confirm_content(confirm_contentTemplate):
     
     show_label=Label(text=items[0].selected_value)
     if_label=Label(text='if', align='center')
-    widget_label=Label(text=items[2].selected_value)
-    # is_label=Label(text='if', align='center')
+    widget_label=Label(
+      text=f"{items[2].selected_value.text_box_title.text} (id: {items[2].selected_value.label_id.text})")
+    
     oper_label=Label(text=items[3].selected_value)
     
-    if str(type(items[4])) is "<class 'anvil.Label'>":
+    if str(type(items[4])) is "<class 'anvil.TextBox'>":
       val_text=items[4].text 
     else:
       val_text=items[4].selected_value
       
     val_label=Label(text=val_text)
-    minus_but=Button(icon='fa:minus')
+    minus_but=Button(text='remove', icon='fa:minus-circle')
     minus_but.set_event_handler('click', self.minus_click)
     
-    cond_flow=FlowPanel()
+    if self.tag.background=='white':
+      background='theme:Gray 200'
+      self.tag.background=background
+    else:
+      background='white' 
+      self.tag.background=background
+      
+    cond_flow=FlowPanel(background=background, spacing_above=None, spacing_below=None)
     cond_flow.add_component(show_label)   
     cond_flow.add_component(widget_label)
     cond_flow.add_component(if_label)
@@ -39,12 +48,13 @@ class confirm_content(confirm_contentTemplate):
     self.column_panel.add_component(cond_flow)
     
   def minus_click(self, **event_args):
-    print('minus')
+    parent=event_args['sender'].parent
+    parent.remove_from_parent()
     
   def widget_change(self, **event_args):
     """This method is called when an item is selected"""
     
-    if len(self.flow_panel_build_condition.get_components())>5:
+    if len(self.flow_panel_build_condition.get_components())>4:
       self.flow_panel_build_condition.get_components()[-1].remove_from_parent()
     
     if self.drop_down_widgets.selected_value.__name__ in \
