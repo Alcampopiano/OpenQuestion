@@ -5,29 +5,30 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 from .confirm_content import confirm_content
 
-def show_branch_ui(parent):
+def show_branch_ui(current_widget):
   
   titles=[]
-  ids=[]
+  widgets=[]
   for section in get_open_form().column_panel.get_components():
-    
-    titles.append(section.text_box_title.text)
-    ids.append(section.label_id.text)
     
     for widget in section.column_panel.get_components():
       
-      if 'markdown' in str(type(widget)):
-        titles.append('markdown_widget')
-      else:
-        titles.append(widget.text_box_title.text)
+      if widget.__name__ not in ('markdown', 'text_area', 'check_box') and\
+        widget != current_widget:
         
-      ids.append(widget.label_id.text)
+        titles.append(widget.text_box_title.text + f" (id: {widget.label_id.text})")
+        widgets.append(widget)
       
       
+  drop_tuples=list(zip(titles, widgets))
   content=confirm_content()
-  content.repeating_panel_1.items=[{'titles': titles}]
+  content.drop_down_widgets.items=drop_tuples
   
-  c=confirm(content, title="Create your logic", large=True, 
+  current_label=f'markdown widget (id: {current_widget.label_id.text})' \
+    if 'markdown' in str(type(current_widget)) \
+    else f'{current_widget.text_box_title.text} (id: {current_widget.label_id.text})'
+  
+  c=confirm(content, title=current_label, large=True, 
             buttons=[('apply', 'apply'), ('cancel', 'cancel')])
       
       
