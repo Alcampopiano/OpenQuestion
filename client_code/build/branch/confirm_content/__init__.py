@@ -17,13 +17,16 @@ class confirm_content(confirm_contentTemplate):
     
     show_label=Label(text=items[0].selected_value)
     if_label=Label(text='if', align='center')
-    widget_label=Label(
+    widget_label=Label(italic=True,
       text=f"{items[2].selected_value.text_box_title.text} (id: {items[2].selected_value.label_id.text})")
     
     oper_label=Label(text=items[3].selected_value)
     
     if str(type(items[4])) is "<class 'anvil.TextBox'>":
       val_text=items[4].text 
+      
+    elif str(type(items[4])) is "<class 'anvil.DatePicker'>":
+      val_text=items[4].date 
     else:
       val_text=items[4].selected_value
       
@@ -40,8 +43,8 @@ class confirm_content(confirm_contentTemplate):
       
     cond_flow=FlowPanel(background=background, spacing_above=None, spacing_below=None)
     cond_flow.add_component(show_label)   
-    cond_flow.add_component(widget_label)
     cond_flow.add_component(if_label)
+    cond_flow.add_component(widget_label)
     cond_flow.add_component(oper_label)
     cond_flow.add_component(val_label)
     cond_flow.add_component(minus_but)
