@@ -76,14 +76,6 @@ components:
     name: drop_down_widgets
     layout_properties: {grid_position: 'ELRHZK,DZAPMU'}
     event_bindings: {change: widget_change}
-  - type: Label
-    properties: {role: null, align: center, tooltip: '', border: '', foreground: '',
-      visible: true, text: is, font_size: 15, font: '', spacing_above: small, icon_align: left,
-      spacing_below: small, italic: false, background: '', bold: false, underline: false,
-      icon: ''}
-    name: label_4
-    layout_properties: {}
-    event_bindings: {}
   - type: DropDown
     properties:
       role: null
@@ -115,7 +107,7 @@ components:
     background: '', bold: false, underline: false, icon: 'fa:plus-circle'}
   name: button_add
   layout_properties: {grid_position: 'LKTUGA,RXXFVV'}
-  event_bindings: {show: add_click}
+  event_bindings: {click: add_click}
 - type: Spacer
   properties: {height: 32}
   name: spacer_1
