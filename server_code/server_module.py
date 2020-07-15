@@ -39,6 +39,20 @@ def convert_markdown(text):
 def get_form(form_id):
   
   row=app_tables.forms.get(form_id=form_id)
+  
+  schema=row['schema']
+  
+  for section_schema in schema['widgets']:
+    
+    section=user_widgets.section()
+    section.label_title.text=section_schema['title']
+    section.tag.logic=section_schema['logic']
+    section.tag.id=section_schema['id']
+    section.visible=False if section_schema['logic'] else True
+    
+    for widget_schema in section_schema['widgets']:
+      pass
+  
   return row['schema']
   
 
