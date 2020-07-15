@@ -12,3 +12,9 @@ class date(dateTemplate):
 
     self.tag.logic=None
     self.tag.logic_target_ids=[]
+    self.tag.current_value=None
+
+  def date_picker_change(self, **event_args):
+    self.tag.current_value=self.date_picker.date
+
+

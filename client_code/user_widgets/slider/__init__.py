@@ -15,6 +15,7 @@ class slider(sliderTemplate):
     
     self.tag.logic=None
     self.tag.logic_target_ids=[]
+    self.tag.current_value=None
 
   def form_show(self, **event_args):
     
@@ -29,3 +30,4 @@ class slider(sliderTemplate):
     
   def slider_change(self, **event_args):
     self.label_value.text = self.slider.value
+    self.tag.current_value=self.slider.value    

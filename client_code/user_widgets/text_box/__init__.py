@@ -12,3 +12,10 @@ class text_box(text_boxTemplate):
 
     self.tag.logic=None
     self.tag.logic_target_ids=[]
+    self.tag.current_value=None
+
+  def text_box_change(self, **event_args):
+    
+    if type(self.text_box.text) is not str:
+      self.tag.current_value=self.text_box.text
+

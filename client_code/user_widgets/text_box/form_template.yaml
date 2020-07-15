@@ -17,7 +17,7 @@ components:
   properties: {}
   name: text_box
   layout_properties: {grid_position: 'VAWRXY,WYMZOA'}
-  event_bindings: {}
+  event_bindings: {change: text_box_change}
 - type: Label
   properties: {role: null, align: left, tooltip: '', border: '', foreground: 'theme:Secondary
       500', visible: true, text: mandatory, font_size: null, font: '', spacing_above: small,

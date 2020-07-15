@@ -63,7 +63,7 @@ class confirm_content(confirm_contentTemplate):
       val_text=val.text
       
     elif type(val) == DatePicker:
-      val_text=val.date 
+      val_text=str(val.date)
       
     else:
       val_text=val.selected_value
@@ -82,6 +82,9 @@ class confirm_content(confirm_contentTemplate):
     cond_flow.add_component(val_label)
     cond_flow.add_component(minus_but)
     self.column_panel.add_component(cond_flow)
+    
+    #print(val_label.text)
+    #print(type(val_label.text))
     
     cond_flow.tag.logic={
       'id': widget.label_id.text,

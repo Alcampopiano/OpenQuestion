@@ -15,7 +15,7 @@ components:
   properties: {}
   name: date_picker
   layout_properties: {grid_position: 'NVXOQR,NYAHJW'}
-  event_bindings: {}
+  event_bindings: {change: date_picker_change}
 - type: Label
   properties: {role: null, align: left, tooltip: '', border: '', foreground: 'theme:Secondary
       500', visible: true, text: mandatory, font_size: null, font: '', spacing_above: small,

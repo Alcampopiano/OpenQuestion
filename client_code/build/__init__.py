@@ -109,6 +109,7 @@ def build_schema(column_panel):
       widget_schema={}
       #widget_schema['visible']=True#widget.tag.visible
       widget_schema['logic']=widget.tag.logic
+      #print(widget.tag.logic)
       widget_schema['id']=widget.label_id.text
       widget_schema['title']=widget.text_box_title.text
       

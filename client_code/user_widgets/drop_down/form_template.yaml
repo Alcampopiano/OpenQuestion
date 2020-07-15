@@ -33,7 +33,7 @@ components:
     include_placeholder: true
   name: drop_down
   layout_properties: {grid_position: 'BCVEEL,ZTKXMF'}
-  event_bindings: {}
+  event_bindings: {change: drop_down_change}
 - type: Label
   properties: {role: null, align: left, tooltip: '', border: '', foreground: 'theme:Secondary
       500', visible: true, text: mandatory, font_size: null, font: '', spacing_above: small,
