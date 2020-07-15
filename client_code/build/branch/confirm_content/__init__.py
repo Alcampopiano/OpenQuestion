@@ -6,6 +6,7 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 
 class confirm_content(confirm_contentTemplate):
+  
   def __init__(self, current_widget, **properties):
 
     self.init_components(**properties)
@@ -83,6 +84,8 @@ class confirm_content(confirm_contentTemplate):
       'title': items[1].selected_value.text_box_title.text,
       'comparison': oper_label.text,
       'value': val_label.text}
+    
+    #cond_flow.tag.logic_target_id=items[1].label_id.text
  
     
   def minus_click(self, **event_args):

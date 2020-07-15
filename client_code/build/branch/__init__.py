@@ -33,7 +33,8 @@ def show_branch_ui(current_widget):
   
   if c == 'apply':
     
-    conditions=[d.tag.logic for d in content.column_panel.get_components()]
+    conditions=[flow.tag.logic for flow in content.column_panel.get_components()]
+    #logic_target_ids=[flow.tag.logic_target_id for flow in content.column_panel.get_components()]
     
     if conditions:
      
@@ -44,7 +45,7 @@ def show_branch_ui(current_widget):
       
     else:
       current_widget.tag.visible=True
-      current_widget.tag.logic=False
+      current_widget.tag.logic=None
       
   
       
