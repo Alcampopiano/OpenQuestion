@@ -10,4 +10,4 @@ class text_area(text_areaTemplate):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
 
-    # Any code you write here will run when the form opens.
+    self.tag.logic=None

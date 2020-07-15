@@ -12,7 +12,7 @@ class section(sectionTemplate):
     self.init_components(**properties)
     
     self.tag.logic=None
-    self.tag.visible=True    
+    #self.tag.visible=True    
     self.role='section_shadow'
     augment.set_event_handler(self, 'click', self.section_select)
     

@@ -43,7 +43,8 @@ def show_branch_ui(current_widget):
       
       for condition in conditions:
         source_comp=get_open_form().tag.form_dict[condition['id']]
-        source_comp.tag.target_logic_ids.append(current_widget.label_id.text)
+        print(source_comp.text_box_title.text)
+        source_comp.tag.logic_target_ids.append(current_widget.label_id.text)
      
       logic={'func': 'any' if content.radio_button_any.selected else 'all'}
       logic['conditions']=conditions

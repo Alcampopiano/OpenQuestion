@@ -11,7 +11,7 @@ class check_box(check_boxTemplate):
     self.init_components(**properties)
     
     self.tag.logic=None
-    self.tag.visible=True
+    #self.tag.visible=True
 
     # Any code you write here will run when the form opens.
     from ..toolbar import toolbar

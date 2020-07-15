@@ -19,7 +19,7 @@ def build_form(schema, column_panel):
     section=widgets.section()
     section.text_box_title.text=section_schema['title']
     section.tag.logic=section_schema['logic']
-    section.visible=section_schema['visible']
+    #section.visible=section_schema['visible']
     section.label_id.text=section_schema['id']
     
     for widget_schema in section_schema['widgets']:
@@ -70,8 +70,8 @@ def build_form(schema, column_panel):
       widget.text_box_title.text=widget_schema['title']
       widget.label_id.text=widget_schema['id']
       widget.tag.logic=widget_schema['logic']
-      widget.visible=widget_schema['visible']
-    
+      #widget.visible=widget_schema['visible']
+          
       # save to flat structure on main form
       main.tag.form_dict[widget_schema['id']]=widget
     
@@ -82,6 +82,9 @@ def build_form(schema, column_panel):
     
     column_panel.add_component(section)
     
+  # set logic target ids
+  #set_target_ids(main.tag.form_dict)
+
     
 def build_schema(column_panel):
   
@@ -97,14 +100,14 @@ def build_schema(column_panel):
     section_schema['type']='section'
     section_schema['title']=section.text_box_title.text
     section_schema['id']=section.label_id.text
-    section_schema['visible']=section.tag.visible
-    section_schema['logic']=section.tag.visible
+    #section_schema['visible']=True#section.tag.visible
+    section_schema['logic']=section.tag.logic
     section_schema['widgets']=[]
     
     for widget in section.column_panel.get_components():
       
       widget_schema={}
-      widget_schema['visible']=widget.tag.visible
+      #widget_schema['visible']=True#widget.tag.visible
       widget_schema['logic']=widget.tag.logic
       widget_schema['id']=widget.label_id.text
       widget_schema['title']=widget.text_box_title.text

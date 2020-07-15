@@ -18,7 +18,7 @@ def submit_data(column_panel):
     
     for widget in section.column_panel.get_components():
                   
-      if 'text_box' in str(type(widget)):
+      if 'text_box' is widget.__name__:
         
         col=widget.label_title.text
         val=widget.text_box.text
@@ -27,7 +27,7 @@ def submit_data(column_panel):
           alert('Responses have not been submitted', title="Please fill out the mandatory fields")
           return
     
-      elif 'drop_down' in str(type(widget)):
+      elif 'drop_down' is widget.__name__:
         
         col=widget.label_title.text
         val=widget.drop_down.selected_value
@@ -36,7 +36,7 @@ def submit_data(column_panel):
           alert('Responses have not been submitted', title="Please fill out the mandatory fields")
           return
      
-      elif 'date' in str(type(widget)):
+      elif 'date' is widget.__name__:
         
         col=widget.label_title.text
         val=widget.date_picker.date
@@ -45,7 +45,7 @@ def submit_data(column_panel):
           alert('Responses have not been submitted', title="Please fill out the mandatory fields")
           return
         
-      elif 'check_box' in str(type(widget)):
+      elif 'check_box' is widget.__name__:
         
         col=widget.label_title.text
         
@@ -56,7 +56,7 @@ def submit_data(column_panel):
             
         val='' if not val else val
         
-      elif 'radio_button' in str(type(widget)):
+      elif 'radio_button' is widget.__name__:
         
         col=widget.label_title.text
         
@@ -65,12 +65,12 @@ def submit_data(column_panel):
             val=c.text
             break
         
-      elif 'text_area' in str(type(widget)):
+      elif 'text_area' is widget.__name__:
         
         col=widget.label_title.text
         val=widget.text_area.text
         
-      elif 'slider' in str(type(widget)):
+      elif 'slider' is widget.__name__:
         
         col=widget.label_title.text
         val=widget.label_value.text
@@ -89,16 +89,16 @@ def submit_data(column_panel):
 
 def build_form(schema, column_panel):
   
-  #column_panel.tag.title=schema['title']
-  #column_panel.tag.id=schema['id']
+  main=column_panel.parent
+  main.tag.form_dict={}
   
   for section_schema in schema['widgets']:
     
     section=user_widgets.section()
     section.label_title.text=section_schema['title']
-    #section.tag.id=section_schema['id']
-    #section.tag.logic=section_schema['logic']
+    section.tag.logic=section_schema['logic']
     section.tag.id=section_schema['id']
+    section.visible=False if section_schema['logic'] else True
     
     for widget_schema in section_schema['widgets']:
       
@@ -108,16 +108,13 @@ def build_form(schema, column_panel):
         widget.label_title.text=widget_schema['title']
         widget.text_box.placeholder=widget_schema['placeholder']
         widget.label_mandatory.visible=widget_schema['mandatory']
-        #widget.tag.id=widget_schema['id']
         
       elif widget_schema['type']=='drop_down':
         widget=user_widgets.drop_down()
         widget.label_title.text=widget_schema['title']
-        #widget.label_title.text=widget_schema['options'].replace('\n', '')
         widget.drop_down.items=widget_schema['options'].split('\n')
         widget.drop_down.placeholder=widget_schema['placeholder']
         widget.label_mandatory.visible=widget_schema['mandatory']
-        #widget.tag.id=widget_schema['id']
 
       elif widget_schema['type']=='date':
         widget=user_widgets.date()
@@ -125,32 +122,27 @@ def build_form(schema, column_panel):
         widget.date_picker.format=widget_schema['format']
         widget.date_picker.placeholder=widget_schema['placeholder']
         widget.label_mandatory.visible=widget_schema['mandatory']
-        #widget.tag.id=widget_schema['id']
         
       elif widget_schema['type']=='check_box':
         options=widget_schema['options'].split('\n')
         widget=user_widgets.check_box(options=options)
         widget.label_title.text=widget_schema['title']
-        #widget.tag.id=widget_schema['id']
       
       elif widget_schema['type']=='radio_button':
         options=widget_schema['options'].split('\n')
         widget=user_widgets.radio_button(options=options)
         widget.label_title.text=widget_schema['title']
-        #widget.tag.id=widget_schema['id']
         
       elif widget_schema['type']=='markdown':
         widget=user_widgets.markdown()
         html = anvil.server.call_s('convert_markdown', widget_schema['text'])
         widget.html_display.html=html
-        #widget.tag.id=widget_schema['id']
         
       elif widget_schema['type']=='text_area':
         
         widget=user_widgets.text_area()
         widget.label_title.text=widget_schema['title']
         widget.text_area.placeholder=widget_schema['placeholder']
-        #widget.tag.id=widget_schema['id']
         
       elif widget_schema['type']=='slider':
         
@@ -158,20 +150,31 @@ def build_form(schema, column_panel):
         widget.label_value.text=widget_schema['value']
         widget.label_title.text=widget_schema['title']
         widget.slider.labels=widget_schema['labels'].split('\n')
-        print(widget.slider.labels)
         widget.slider.min_val=widget_schema['min_val']
         widget.slider.max_val=widget_schema['max_val']
         widget.slider.value=widget_schema['value']
         widget.slider.step=widget_schema['step']
-
-      # remove this once all components are accounted for
-      if widget_schema['type'] in ('text_box', 'drop_down', 'date', 
-                                   'check_box', 'radio_button',  'markdown', 
-                                   'text_area', 'slider'):
         
-        widget.tag.logic=widget_schema['logic']
-        widget.tag.id=widget_schema['id']
-        section.column_panel.add_component(widget)
-
+      widget.tag.logic=widget_schema['logic']
+      widget.visible=False if widget_schema['logic'] else True
+      widget.tag.id=widget_schema['id']
+      section.column_panel.add_component(widget)
+      
+      # save to flat structure on main form
+      main.tag.form_dict[widget_schema['id']]=widget
     
     column_panel.add_component(section)
+    
+    # save to flat structure on main form
+    main.tag.form_dict[section_schema['id']]=section
+    
+  set_logic_target_ids(main.tag.form_dict)
+
+def set_logic_target_ids(form_dict):
+    
+  target_logic_components=[form_dict[k] for k in form_dict if form_dict[k].tag.logic]
+
+  for target_comp in target_logic_components:
+    for source_dict in target_comp.tag.logic['conditions']:
+      form_dict[source_dict['id']].tag.logic_target_ids.append(target_comp.tag.id)
+      

@@ -10,8 +10,8 @@ class section(sectionTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-
-    # Any code you write here will run when the form opens.
+    
+    self.tag.logic=None
     self.role='section_shadow'
     augment.set_event_handler(self, 'click', self.section_select)
 

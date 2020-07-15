@@ -12,6 +12,9 @@ class slider(sliderTemplate):
     
     # debouce to avoid form show firing twice for some reason
     self.tag.shown=False
+    
+    self.tag.logic=None
+    self.tag.logic_target_ids=[]
 
   def form_show(self, **event_args):
     
