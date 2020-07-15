@@ -10,7 +10,7 @@ class date(dateTemplate):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
 
-    # Any code you write here will run when the form opens.
+    self.tag.logic_target_ids=[]
         
     from ..toolbar import toolbar
     toolbar=toolbar(align='left', section=section, parent=self)

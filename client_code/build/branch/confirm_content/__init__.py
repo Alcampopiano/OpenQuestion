@@ -49,20 +49,24 @@ class confirm_content(confirm_contentTemplate):
   def add_click(self, **event_args):
     
     items=self.flow_panel_build_condition.get_components()
+    widget=items[1].selected_value
+    comparison=items[2]
+    val=items[3]
     
     show_label=Label(text="Show if")
     widget_label=Label(italic=True,
-      text=f"{items[1].selected_value.text_box_title.text} (id: {items[1].selected_value.label_id.text})")
+      text=f"{widget.text_box_title.text} (id: {widget.label_id.text})")
     
-    oper_label=Label(text=items[2].selected_value)
+    comparison_label=Label(text=comparison.selected_value)
     
-    if str(type(items[3])) is "<class 'anvil.TextBox'>":
-      val_text=items[3].text 
+    if type(val) is TextBox:
+      val_text=val.text
       
-    elif str(type(items[3])) is "<class 'anvil.DatePicker'>":
-      val_text=items[3].date 
+    elif type(val) == DatePicker:
+      val_text=val.date 
+      
     else:
-      val_text=items[3].selected_value
+      val_text=val.selected_value
       
     val_label=Label(text=val_text)
     minus_but=Button(text='remove', icon='fa:minus-circle')
@@ -74,19 +78,16 @@ class confirm_content(confirm_contentTemplate):
     
     cond_flow.add_component(show_label)   
     cond_flow.add_component(widget_label)
-    cond_flow.add_component(oper_label)
+    cond_flow.add_component(comparison_label)
     cond_flow.add_component(val_label)
     cond_flow.add_component(minus_but)
     self.column_panel.add_component(cond_flow)
     
     cond_flow.tag.logic={
-      'id': items[1].selected_value.label_id.text,
-      'title': items[1].selected_value.text_box_title.text,
-      'comparison': oper_label.text,
-      'value': val_label.text}
-    
-    #cond_flow.tag.logic_target_id=items[1].label_id.text
- 
+      'id': widget.label_id.text,
+      'title': widget.text_box_title.text,
+      'comparison': comparison_label.text,
+      'value': val_label.text} 
     
   def minus_click(self, **event_args):
     parent=event_args['sender'].parent

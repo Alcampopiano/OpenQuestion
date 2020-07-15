@@ -9,6 +9,8 @@ class radio_button(radio_buttonTemplate):
   def __init__(self, section, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
+    
+    self.tag.logic_target_ids=[]
 
     # Any code you write here will run when the form opens.
     from ..toolbar import toolbar

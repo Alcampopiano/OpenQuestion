@@ -13,7 +13,7 @@ class text_box(text_boxTemplate):
     
     self.tag.logic=None
     self.tag.visible=True
-    #self.tag.logic_target_ids=[]
+    self.tag.logic_target_ids=[]
     
     from ..toolbar import toolbar
     toolbar=toolbar(align='left', section=section, parent=self)

@@ -7,6 +7,24 @@ from .confirm_content import confirm_content
 
 def show_branch_ui(current_widget):
   
+  form_dict=get_open_form().tag.form_dict
+    titles=[]
+  widgets=[]
+  
+  for k in form_dict:
+    
+    try:
+      
+      if form_dict[k].__name__ is 'text_box':
+        form_dict[k].check_box_number.checked
+        
+    except:
+      continue
+    
+    if form_dict[k].__name__\
+      not in ('section', 'markdown', 'text_area', 'check_box') \
+      and form_dict[k] != current_widget\
+       
   titles=[]
   widgets=[]
   for section in get_open_form().column_panel.get_components():
@@ -34,9 +52,12 @@ def show_branch_ui(current_widget):
   if c == 'apply':
     
     conditions=[flow.tag.logic for flow in content.column_panel.get_components()]
-    #logic_target_ids=[flow.tag.logic_target_id for flow in content.column_panel.get_components()]
-    
+          
     if conditions:
+      
+      for condition in conditions:
+        source_comp=get_open_form().tag.form_dict[condition['id']]
+        source_comp.tag.target_logic_ids.append(current_widget.label_id.text)
      
       logic={'func': 'any' if content.radio_button_any.selected else 'all'}
       logic['conditions']=conditions

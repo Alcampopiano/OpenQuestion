@@ -10,6 +10,8 @@ from .. import widgets
 def build_form(schema, column_panel):
   
   column_panel.tag.title=schema['title']
+  main=column_panel.parent
+  main.tag.form_dict={}
   #column_panel.tag.id=schema['id']
   
   for section_schema in schema['widgets']:
@@ -79,16 +81,17 @@ def build_form(schema, column_panel):
         widget.text_box_step.text=widget_schema['step']
         widget.text_box_value.text=widget_schema['value']
         widget.text_area_labels.text=widget_schema['labels']
-
-      # remove this once all components are accounted for
-      if widget_schema['type'] in ('text_box', 'drop_down', 'date', 
-                                   'check_box', 'radio_button', 'markdown', 
-                                   'text_area', 'slider'):
         
-        widget.tag.logic=widget_schema['logic']
-        #widget.tag.id=widget_schema['id']
-        section.column_panel.add_component(widget)
-
+      widget.tag.logic=widget_schema['logic']
+      #widget.tag.id=widget_schema['id']
+    
+      # save to flat structure on main form
+      main.tag.form_dict[widget_schema['id']]=widget
+    
+      section.column_panel.add_component(widget)
+        
+    # save to flat structure on main form
+    main.tag.form_dict[section_schema['id']]=section
     
     column_panel.add_component(section)
     
@@ -96,7 +99,7 @@ def build_form(schema, column_panel):
 def build_schema(column_panel):
   
   schema={}
-  schema['title']=get_open_form().text_box_title.text #column_panel.text_box_title.text
+  schema['title']=get_open_form().text_box_title.text 
   #schema['id']=get_open_form().tag.id # column_panel.tag.id
   schema['num_widgets']=get_open_form().tag.num_widgets
   schema['widgets']=[]
@@ -124,6 +127,7 @@ def build_schema(column_panel):
         widget_schema['logic']=None # should be a tag property
         widget_schema['placeholder']=widget.text_box_placeholder.text
         widget_schema['mandatory']=widget.check_box_mandatory.checked
+        widget_schema['number']=widget.check_box_number.checked
     
       elif 'drop_down' in str(type(widget)):
         

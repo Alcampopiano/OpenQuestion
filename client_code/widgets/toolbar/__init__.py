@@ -23,6 +23,8 @@ class toolbar(toolbarTemplate):
       self.flow_panel.align='center'
    
   def remove_parent(self, **event_args):
+    
+    del get_open_form().tag.form_dict[self.tag.parent.label_id.text]
     self.tag.parent.remove_from_parent()
     
     if not self.tag.is_section:
