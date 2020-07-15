@@ -11,6 +11,8 @@ class text_area(text_areaTemplate):
     self.init_components(**properties)
 
     # Any code you write here will run when the form opens.
+    self.tag.logic=None
+    self.tag.visible=True
     
     from ..toolbar import toolbar
     toolbar=toolbar(align='left', section=section, parent=self)

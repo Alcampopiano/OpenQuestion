@@ -14,6 +14,7 @@ class main(mainTemplate):
     self.init_components(**properties)
     
     self.tag.row=row
+    self.tag.form_dict={}
     save_button=Button(text='save', role='primary-color')
     save_button.set_event_handler('click', self.save_click)
     self.add_component(save_button)

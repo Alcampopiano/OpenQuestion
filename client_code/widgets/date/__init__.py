@@ -10,6 +10,8 @@ class date(dateTemplate):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
 
+    self.tag.logic=None
+    self.tag.visible=True
     self.tag.logic_target_ids=[]
         
     from ..toolbar import toolbar

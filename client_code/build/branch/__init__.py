@@ -8,36 +8,22 @@ from .confirm_content import confirm_content
 def show_branch_ui(current_widget):
   
   form_dict=get_open_form().tag.form_dict
-    titles=[]
+  titles=[]
   widgets=[]
   
   for k in form_dict:
     
-    try:
-      
-      if form_dict[k].__name__ is 'text_box':
-        form_dict[k].check_box_number.checked
-        
-    except:
+    widget=form_dict[k]
+
+    if widget.__name__ is 'text_box' and widget.check_box_number.checked==False:
       continue
-    
-    if form_dict[k].__name__\
-      not in ('section', 'markdown', 'text_area', 'check_box') \
-      and form_dict[k] != current_widget\
-       
-  titles=[]
-  widgets=[]
-  for section in get_open_form().column_panel.get_components():
-    
-    for widget in section.column_panel.get_components():
+
+    if widget.__name__ not in ('section', 'markdown', 'text_area', 'check_box')\
+      and widget != current_widget:
       
-      if widget.__name__ not in ('markdown', 'text_area', 'check_box') and\
-        widget != current_widget:
-        
-        titles.append(widget.text_box_title.text + f" (id: {widget.label_id.text})")
-        widgets.append(widget)
-      
-      
+      titles.append(widget.text_box_title.text + f" (id: {widget.label_id.text})")
+      widgets.append(widget)
+          
   drop_tuples=list(zip(titles, widgets))
   content=confirm_content(current_widget)
   content.drop_down_widgets.items=drop_tuples
