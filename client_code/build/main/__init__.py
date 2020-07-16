@@ -49,7 +49,6 @@ class main(mainTemplate):
         
       section.section_select()
     
-    
   def section_widget_click(self, **event_args):
     section=widgets.section()
     self.column_panel.add_component(section)
@@ -91,8 +90,8 @@ class main(mainTemplate):
       else:
         comp.background='white'
           
-  def link_select_form_click(self, **event_args):
-     open_form('build.select_form')
+  def link_landing_click(self, **event_args):
+     open_form('landing.select_form')
 
   def preview_link_click(self, **event_args):
     
