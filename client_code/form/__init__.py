@@ -177,4 +177,62 @@ def set_logic_target_ids(form_dict):
   for target_comp in target_logic_components:
     for source_dict in target_comp.tag.logic['conditions']:
       form_dict[source_dict['id']].tag.logic_target_ids.append(target_comp.tag.id)
+
+      
+def check_logic_for_visibility(target_id):
+  
+      form_dict=get_open_form().tag.form_dict
+      logic=form_dict[target_id].tag.logic
+          
+      truth_array=[]
+      for condition in logic['conditions']:
+        
+        source_comp=form_dict[condition['id']]
+        comparison=condition['comparison']
+        actual_val=source_comp.tag.current_value  
+        
+        # escape doing nothing if actual value is None
+        if not actual_val:
+          return
+        
+        if source_comp.__name__=='date':
+          test_val=anvil.server.call_s('str_to_date_obj', 
+                                          condition['value'], 
+                                          source_comp.date_picker.format)
+        else:
+          test_val=condition['value']
+        
+        if comparison=='>':
+          truth_array.append(actual_val>test_val)
+          
+        elif comparison=='<':
+          truth_array.append(actual_val<test_val)
+          
+        elif comparison=='=':
+          truth_array.append(actual_val==test_val)
+          
+        elif comparison=='!=':
+          truth_array.append(actual_val!=test_val)
+          
+        elif comparison=='<=':
+          truth_array.append(actual_val<=test_val) 
+          
+        elif comparison=='>=':
+          truth_array.append(actual_val>=test_val)
+      
+#         print('comparison', condition['comparison'])
+#         print('test_val', test_val)
+#         print('actual_val', actual_val)
+      
+#       print('truth array', truth_array)
+#       print('func', logic['func'])
+      
+      if logic['func'] == 'any' and any(truth_array):
+        form_dict[target_id].visible=True
+        
+      elif logic['func'] == 'all' and truth_array and all(truth_array):
+        form_dict[target_id].visible=True
+
+      else:
+        form_dict[target_id].visible=False
       

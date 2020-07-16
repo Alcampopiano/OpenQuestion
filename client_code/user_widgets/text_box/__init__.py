@@ -7,7 +7,7 @@ from anvil.tables import app_tables
 
 class text_box(text_boxTemplate):
   def __init__(self, **properties):
-    # Set Form properties and Data Bindings.
+
     self.init_components(**properties)
 
     self.tag.logic=None
@@ -18,4 +18,8 @@ class text_box(text_boxTemplate):
     
     if type(self.text_box.text) is not str:
       self.tag.current_value=self.text_box.text
+      
+      from ... import form
+      for target_id in self.tag.logic_target_ids:
+        form.check_logic_for_visibility(target_id)
 

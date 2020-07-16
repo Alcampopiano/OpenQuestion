@@ -16,5 +16,9 @@ class date(dateTemplate):
 
   def date_picker_change(self, **event_args):
     self.tag.current_value=self.date_picker.date
+    
+    from ... import form
+    for target_id in self.tag.logic_target_ids:
+      form.check_logic_for_visibility(target_id)
 
 

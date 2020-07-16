@@ -9,6 +9,13 @@ import pandas as pd
 import io
 
 @anvil.server.callable
+def str_to_date_obj(date_str, date_format):
+  
+  # until strptime is implemented on the client (forcing to date until time is allowed as an option)
+  return datetime.strptime(date_str, date_format).date()
+  
+  
+@anvil.server.callable
 def submit_data(cols, data, form_id):
   
   df_new=pd.DataFrame([data], columns=cols)
@@ -39,20 +46,7 @@ def convert_markdown(text):
 def get_form(form_id):
   
   row=app_tables.forms.get(form_id=form_id)
-  
-  schema=row['schema']
-  
-  for section_schema in schema['widgets']:
-    
-    section=user_widgets.section()
-    section.label_title.text=section_schema['title']
-    section.tag.logic=section_schema['logic']
-    section.tag.id=section_schema['id']
-    section.visible=False if section_schema['logic'] else True
-    
-    for widget_schema in section_schema['widgets']:
-      pass
-  
+ 
   return row['schema']
   
 

@@ -1,6 +1,6 @@
 container:
   type: ColumnPanel
-  event_bindings: {}
+  event_bindings: {show: form_show}
   properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
     wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{"FBMGLX":55,"TXIVYR":5,"LKFVMK":10,"GMLBJS":50}',
     spacing_below: small, background: ''}

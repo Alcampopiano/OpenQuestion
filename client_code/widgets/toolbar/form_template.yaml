@@ -1,6 +1,6 @@
 container:
   type: ColumnPanel
-  event_bindings: {}
+  event_bindings: {show: form_show}
   properties: {col_widths: '{}'}
 components:
 - type: Spacer
@@ -39,8 +39,8 @@ components:
     layout_properties: {}
     event_bindings: {click: move_widget}
   - type: Link
-    properties: {role: null, url: '', align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: '', font_size: 20, wrap_on: mobile, font: '', col_spacing: medium,
+    properties: {role: null, url: '', align: left, tooltip: '', border: '', foreground: 'theme:Primary
+        700', visible: true, text: '', font_size: 20, wrap_on: mobile, font: '', col_spacing: medium,
       spacing_above: small, icon_align: left, col_widths: '', spacing_below: small,
       italic: false, background: '', bold: false, underline: false, icon: 'fa:code-fork'}
     name: link_branch

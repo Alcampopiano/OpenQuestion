@@ -48,6 +48,16 @@ class toolbar(toolbarTemplate):
       
 
   def click_branch(self, **event_args):
+    
     branch.show_branch_ui(self.tag.parent)
+    self.form_show()
+
+  def form_show(self, **event_args):
+    
+    if self.tag.parent.tag.logic:
+      self.link_branch.foreground='theme:Secondary 700'
+    else:
+      self.link_branch.foreground='theme:Primary 700'
+
 
 

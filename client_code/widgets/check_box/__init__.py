@@ -16,4 +16,5 @@ class check_box(check_boxTemplate):
     # Any code you write here will run when the form opens.
     from ..toolbar import toolbar
     toolbar=toolbar(align='left', section=section, parent=self)
+    
     self.add_component(toolbar)

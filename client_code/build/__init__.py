@@ -27,19 +27,19 @@ def build_form(schema, column_panel):
       if widget_schema['type']=='text_box':
         
         widget=widgets.text_box(section=section)
-        widget.text_box_placeholder.placeholder=widget_schema['placeholder']
+        widget.text_box_placeholder.text=widget_schema['placeholder']
         widget.check_box_mandatory.checked=widget_schema['mandatory']
         
       elif widget_schema['type']=='drop_down':
         widget=widgets.drop_down(section=section)
         widget.text_area_options.text=widget_schema['options']
-        widget.text_box_placeholder.placeholder=widget_schema['placeholder']
+        widget.text_box_placeholder.text=widget_schema['placeholder']
         widget.check_box_mandatory.checked=widget_schema['mandatory']
         
       elif widget_schema['type']=='date':
         widget=widgets.date(section=section)
         widget.text_box_format.text=widget_schema['format']
-        widget.text_box_placeholder.placeholder=widget_schema['placeholder']
+        widget.text_box_placeholder.text=widget_schema['placeholder']
         widget.check_box_mandatory.checked=widget_schema['mandatory']
         
       elif widget_schema['type']=='check_box':

@@ -16,3 +16,5 @@ class markdown(markdownTemplate):
     from ..toolbar import toolbar
     toolbar=toolbar(align='left', section=section, parent=self)
     self.add_component(toolbar)
+
+
