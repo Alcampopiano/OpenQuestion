@@ -23,7 +23,13 @@ def submit_data(cols, data, form_id):
   row=app_tables.forms.get(form_id=form_id)
   
   if not row['submissions']:
+    
+    # fix from forum since suddently we need bytes
+    #####
     csv_data=df_new.to_csv()
+    csv_data = bytes(csv_data, 'utf-8') # fix
+    #####
+    
     m=anvil.BlobMedia('text/csv', csv_data, name='records.csv')
     row.update(submissions=m)
     
@@ -32,7 +38,13 @@ def submit_data(cols, data, form_id):
     df_old=pd.read_csv(io.BytesIO(m_old.get_bytes()), index_col=0) # index_col=0
     df=pd.concat([df_old, df_new], axis=0)
     df=df.reset_index(drop=True)
+    
+    # fix from forum since suddently we need bytes
+    #####
     csv_data=df.to_csv()
+    csv_data = bytes(csv_data, 'utf-8') # fix
+    #####
+    
     m=anvil.BlobMedia('text/csv', csv_data, name='records.csv')
     row.update(submissions=m)
     
