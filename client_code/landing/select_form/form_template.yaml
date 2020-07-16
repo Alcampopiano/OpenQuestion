@@ -39,7 +39,7 @@ components:
     layout_properties: {grid_position: 'ARPAAL,GZUYLC'}
     components:
     - type: RepeatingPanel
-      properties: {spacing_above: none, spacing_below: none, item_template: build.select_form.select_form_row}
+      properties: {spacing_above: none, spacing_below: none, item_template: landing.select_form.select_form_row}
       name: repeating_panel_1
       layout_properties: {}
       event_bindings: {}
