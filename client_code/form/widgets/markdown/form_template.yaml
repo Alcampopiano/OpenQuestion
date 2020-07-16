@@ -10,7 +10,7 @@ components:
   name: label_title
   layout_properties: {grid_position: 'BPJXCD,WRQBPB'}
   event_bindings: {}
-- type: form:user_widgets.html_display
+- type: form:form.widgets.html_display
   properties: {}
   name: html_display
   layout_properties: {grid_position: 'ENDNFU,KYJDZS'}

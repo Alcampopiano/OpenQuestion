@@ -18,7 +18,7 @@ class drop_down(drop_downTemplate):
   def drop_down_change(self, **event_args):
     self.tag.current_value=self.drop_down.selected_value
 
-    from ... import form
+    from .... import form
     for target_id in self.tag.logic_target_ids:
       form.check_logic_for_visibility(target_id)
       

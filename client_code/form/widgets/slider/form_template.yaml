@@ -18,7 +18,7 @@ components:
     name: label_title
     layout_properties: {slot: default, grid_position: 'QICNUQ,KANBSL'}
     event_bindings: {}
-  - type: form:user_widgets.utilities.slider_custom
+  - type: form:form.widgets.slider_custom
     properties: {}
     name: slider
     layout_properties: {slot: default, grid_position: 'VHLLMQ,ALUHGU'}

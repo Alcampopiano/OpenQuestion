@@ -4,10 +4,9 @@ import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
-from ...build import branch
+from ... import branch
 
 class toolbar(toolbarTemplate):
-  
   def __init__(self, align, section, parent, **properties):
 
     self.init_components(**properties)

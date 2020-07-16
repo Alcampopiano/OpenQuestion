@@ -25,7 +25,7 @@ class radio_button(radio_buttonTemplate):
   def radio_clicked(self, **event_args):
     self.tag.current_value=event_args['sender'].text
     
-    from ... import form
+    from .... import form
     for target_id in self.tag.logic_target_ids:
       form.check_logic_for_visibility(target_id)
 

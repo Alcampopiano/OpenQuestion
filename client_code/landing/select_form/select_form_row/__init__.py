@@ -24,7 +24,7 @@ class select_form_row(select_form_rowTemplate):
     row=self.link_build.tag.row
     download(row['submissions'])
     
-  def data_click(self, **event_args):
+  def charts_click(self, **event_args):
 
     row=self.link_build.tag.row
     open_form('charts.main', row=row)

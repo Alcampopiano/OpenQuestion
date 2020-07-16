@@ -32,6 +32,6 @@ class slider(sliderTemplate):
     self.label_value.text = self.slider.value
     self.tag.current_value=self.slider.value    
     
-    from ... import form
+    from .... import form
     for target_id in self.tag.logic_target_ids:
       form.check_logic_for_visibility(target_id)

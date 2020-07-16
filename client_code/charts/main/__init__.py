@@ -4,9 +4,9 @@ import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
-from ... import widgets
 from ... import build
-from ... import form
+from ... import charts
+from .. import widgets
 
 class main(mainTemplate):
   def __init__(self, row=None, **properties):

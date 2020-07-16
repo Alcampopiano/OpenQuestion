@@ -19,7 +19,7 @@ class text_box(text_boxTemplate):
     if type(self.text_box.text) is not str:
       self.tag.current_value=self.text_box.text
       
-      from ... import form
+      from .... import form
       for target_id in self.tag.logic_target_ids:
         form.check_logic_for_visibility(target_id)
 
