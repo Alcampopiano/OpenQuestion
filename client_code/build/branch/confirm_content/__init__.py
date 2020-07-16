@@ -20,9 +20,11 @@ class confirm_content(confirm_contentTemplate):
       if func=='all':
         self.radio_button_all.selected=True
         
+      form_dict=get_open_form().tag.form_dict
+      
       for d in logic['conditions']:
         show_label=Label(text='Show if')
-        widget_label=Label(text=f"{d['title']}  id: {d['id']}")
+        widget_label=Label(text=f"{form_dict[d['id']].text_box_title.text}  id: {d['id']}")
         oper_label=Label(text=d['comparison'])
         value_label=Label(text=d['value'])
         cond_flow=FlowPanel(background="theme:Gray 100", 
@@ -41,7 +43,7 @@ class confirm_content(confirm_contentTemplate):
         
         cond_flow.tag.logic={
         'id': d['id'],
-        'title': d['title'],
+        'title': form_dict[d['id']].text_box_title.text,
         'comparison': d['comparison'],
         'value': d['value']}
     
