@@ -1,0 +1,123 @@
+is_package: true
+container:
+  type: HtmlTemplate
+  properties: {html: '@theme:standard-page.html'}
+  event_bindings: {}
+components:
+- type: ColumnPanel
+  properties: {col_widths: '{"ENYZVD":20,"TVNDOS":40,"JIYRQQ":20,"VJQZBP":40}'}
+  name: content_panel
+  layout_properties: {slot: default}
+  components:
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: Your Surveys, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_1
+    layout_properties: {grid_position: 'ICJYET,YQRFUY'}
+  - type: DataGrid
+    properties:
+      role: null
+      columns:
+      - {title: Column 1, id: EVCOPM, data_key: column_1}
+      - {title: Column 2, id: HMTFLI, data_key: column_2}
+      - {title: Column 4, id: OJKXDS, data_key: column_4}
+      - {title: Column 5, id: TQNHSB, data_key: column_5}
+      auto_header: false
+      tooltip: ''
+      border: ''
+      foreground: ''
+      rows_per_page: 20
+      visible: true
+      show_page_controls: true
+      spacing_above: small
+      spacing_below: small
+      background: ''
+    name: data_grid_1
+    layout_properties: {grid_position: 'ARPAAL,GZUYLC'}
+    components:
+    - type: RepeatingPanel
+      properties: {spacing_above: none, spacing_below: none, item_template: landing.select_action.survey_row}
+      name: repeating_panel_1
+      layout_properties: {}
+      event_bindings: {hide: repeating_panel_1_hide}
+    event_bindings: {}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: Start a new survey, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_2
+    layout_properties: {grid_position: 'QEKFNW,ENYZVD'}
+  - type: Button
+    properties: {role: primary-color, align: left, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: '', font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: 'fa:plus'}
+    name: primary_color_1
+    layout_properties: {grid_position: 'QEKFNW,TVNDOS'}
+    event_bindings: {click: new_survey_click}
+  - type: Spacer
+    properties: {height: 32}
+    name: spacer_1
+    layout_properties: {grid_position: 'ZOWWQV,ZDKPYQ'}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: Your reports, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_4
+    layout_properties: {grid_position: 'ESCNAG,GNOJTB'}
+  - type: DataGrid
+    properties:
+      role: null
+      columns:
+      - {title: Column 1, id: HERZHP, data_key: column_1}
+      - {title: Column 2, id: WNVKNI, data_key: column_2}
+      - {title: Column 3, id: SSDLKJ, data_key: column_3}
+      auto_header: false
+      tooltip: ''
+      border: ''
+      foreground: ''
+      rows_per_page: 20
+      visible: true
+      show_page_controls: true
+      spacing_above: small
+      spacing_below: small
+      background: ''
+    name: data_grid_2
+    layout_properties: {grid_position: 'TARDIO,AYBQHC'}
+    components:
+    - type: RepeatingPanel
+      properties: {spacing_above: none, spacing_below: none, item_template: landing.select_action.report_row}
+      name: repeating_panel_2
+      layout_properties: {}
+      event_bindings: {}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: Start a new report, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_5
+    layout_properties: {grid_position: 'VOYDUB,JIYRQQ'}
+  - type: Button
+    properties: {role: primary-color, align: left, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: '', font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: 'fa:plus'}
+    name: primary_color_2
+    layout_properties: {grid_position: 'VOYDUB,VJQZBP'}
+    event_bindings: {click: new_report_click}
+  event_bindings: {}
+- type: FlowPanel
+  properties: {}
+  name: navbar_links
+  layout_properties: {slot: nav-right}
+- type: Label
+  properties: {role: null, align: left, tooltip: '', border: '', foreground: '', visible: true,
+    text: OpenQuestion, font_size: null, font: '', spacing_above: small, icon_align: left,
+    spacing_below: small, italic: false, background: '', bold: false, underline: false,
+    icon: ''}
+  name: label_3
+  layout_properties: {slot: title}

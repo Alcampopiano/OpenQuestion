@@ -1,11 +1,11 @@
-from ._anvil_designer import select_form_rowTemplate
+from ._anvil_designer import survey_rowTemplate
 from anvil import *
 import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 
-class select_form_row(select_form_rowTemplate):
+class survey_row(survey_rowTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
@@ -25,7 +25,7 @@ class select_form_row(select_form_rowTemplate):
     download(row['submissions'])
     
   def charts_click(self, **event_args):
-
+    
     row=self.link_build.tag.row
     open_form('charts.main', row=row)
 

@@ -25,6 +25,7 @@ def submit_data(cols, data, form_id):
   if not row['submissions']:
     
     # fix from forum since suddently we need bytes
+    # USE FIX FROM BRIDGET
     #####
     csv_data=df_new.to_csv()
     csv_data = bytes(csv_data, 'utf-8') # fix
@@ -40,6 +41,7 @@ def submit_data(cols, data, form_id):
     df=df.reset_index(drop=True)
     
     # fix from forum since suddently we need bytes
+    # USE FIX FROM BRIDGET
     #####
     csv_data=df.to_csv()
     csv_data = bytes(csv_data, 'utf-8') # fix

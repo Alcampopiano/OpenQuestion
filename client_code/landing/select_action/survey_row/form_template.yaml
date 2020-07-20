@@ -12,14 +12,6 @@ components:
   event_bindings: {click: link_build_click}
 - type: Link
   properties: {role: null, url: '', align: left, tooltip: '', border: '', foreground: '',
-    visible: true, text: charts, font_size: null, wrap_on: mobile, font: '', col_spacing: medium,
-    spacing_above: small, icon_align: left, col_widths: '', spacing_below: small,
-    italic: false, background: '', bold: false, underline: false, icon: ''}
-  name: link_charts
-  layout_properties: {column: HKBRYX}
-  event_bindings: {click: charts_click}
-- type: Link
-  properties: {role: null, url: '', align: left, tooltip: '', border: '', foreground: '',
     visible: true, text: data, font_size: null, wrap_on: mobile, font: '', col_spacing: medium,
     spacing_above: small, icon_align: left, col_widths: '', spacing_below: small,
     italic: false, background: '', bold: false, underline: false, icon: ''}

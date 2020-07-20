@@ -1,11 +1,11 @@
-from ._anvil_designer import html_chartTemplate
+from ._anvil_designer import report_rowTemplate
 from anvil import *
 import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 
-class html_chart(html_chartTemplate):
+class report_row(report_rowTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)

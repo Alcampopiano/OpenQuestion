@@ -41,7 +41,9 @@ native_deps: {head_html: "<script>\nfunction get_jQuery_obj(component) {\n    //
     \        event = event == 'hover' ? 'mouseenter mouseleave' : event; // would\
     \ probably never do this!\n      \tconst component = self\n      \tcomponent.v\
     \ = self\n      \tconst element = get_jQuery_obj(component);\n        element.trigger(event);\n\
-    \    });\n}\n</script>"}
+    \    });\n}\n</script>\n\n<script src=\"https://cdn.jsdelivr.net/npm/vega@5.10.0\"\
+    ></script>\n<script src=\"https://cdn.jsdelivr.net/npm/vega-lite@4.7.0\"></script>\n\
+    <script src=\"https://cdn.jsdelivr.net/npm/vega-embed@6.5.1\"></script>"}
 db_schema:
 - name: forms
   id: 63199

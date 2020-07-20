@@ -12,7 +12,7 @@ from anvil.tables import app_tables
 if not get_url_hash():
   
   # authentication here
-  open_form('landing.select_form')
+  open_form('landing.select_action')
   
 else:
     schema=anvil.server.call('get_form', get_url_hash())
