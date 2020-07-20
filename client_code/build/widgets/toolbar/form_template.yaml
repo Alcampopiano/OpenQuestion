@@ -7,6 +7,7 @@ components:
   properties: {height: 32}
   name: spacer_1
   layout_properties: {grid_position: 'DPFLSI,ULSUSB'}
+  event_bindings: {}
 - type: FlowPanel
   properties: {}
   name: flow_panel

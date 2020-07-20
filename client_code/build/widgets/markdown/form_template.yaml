@@ -33,7 +33,7 @@ components:
   layout_properties: {grid_position: 'EABZLG,LKFVMK'}
   event_bindings: {}
 - type: TextArea
-  properties: {role: null, align: left, height: '', tooltip: '', placeholder: markdown supported,
+  properties: {role: null, align: left, height: '', tooltip: '', placeholder: markdown here,
     border: '', enabled: true, foreground: '', visible: true, text: '', font_size: 14,
     auto_expand: true, font: '', spacing_above: small, spacing_below: small, italic: false,
     background: '', bold: false, underline: false}

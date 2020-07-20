@@ -4,5 +4,4 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 from .section import section
 from .markdown import markdown
-from .vega_lite import vega_lite
-
+from .chart import chart

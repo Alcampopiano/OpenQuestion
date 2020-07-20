@@ -1,10 +1,18 @@
 container:
   type: ColumnPanel
   event_bindings: {}
-  properties: {col_widths: '{}'}
+  properties: {col_widths: '{"JMCEWO":55,"TCJCCQ":5}'}
 components:
-- type: form:reports.widgets.vega_lite
+- type: TextBox
   properties: {}
-  name: vega_lite
-  layout_properties: {grid_position: 'RSFHNX,VFJGSN'}
+  name: text_box_title
+  layout_properties: {grid_position: 'RCNYSH,JMCEWO'}
+  event_bindings: {}
+- type: Label
+  properties: {role: null, align: left, tooltip: '', border: '', foreground: '', visible: true,
+    text: '', font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small,
+    italic: false, background: '', bold: false, underline: false, icon: 'fa:area-chart'}
+  name: label_id
+  layout_properties: {grid_position: 'RCNYSH,TCJCCQ'}
+  event_bindings: {}
 is_package: true

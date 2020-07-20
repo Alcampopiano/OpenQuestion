@@ -1,5 +1,37 @@
 container:
   type: ColumnPanel
   event_bindings: {}
-components: []
+  properties: {col_widths: '{"LMVQSY":55,"AHTGBH":5}'}
+components:
+- type: Spacer
+  properties: {height: 32}
+  name: spacer_1
+  layout_properties: {grid_position: 'TBBJJE,LMVQSY'}
+- type: Label
+  properties: {role: null, align: left, tooltip: '', border: '', foreground: '', visible: true,
+    text: id, font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small,
+    italic: false, background: '', bold: false, underline: false, icon: 'data:image/png;base64,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'}
+  name: label_id
+  layout_properties: {grid_position: 'TBBJJE,AHTGBH'}
+  event_bindings: {}
+- type: TextBox
+  properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
+    border: '', enabled: true, foreground: '', visible: false, text: '', font_size: null,
+    font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
+    background: '', bold: false, underline: false}
+  name: text_box_title
+  layout_properties: {grid_position: 'XEFJTU,GUBCJD'}
+  event_bindings: {}
+- type: TextArea
+  properties: {role: null, align: left, height: '', tooltip: '', placeholder: markdown here,
+    border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
+    auto_expand: false, font: '', spacing_above: small, spacing_below: small, italic: false,
+    background: '', bold: false, underline: false}
+  name: text_area_text
+  layout_properties: {grid_position: 'UEAIGJ,CFHLAE'}
+  event_bindings: {}
+- type: form:reports.widgets.markdown_display
+  properties: {}
+  name: html_markdown
+  layout_properties: {grid_position: 'PUYBZD,ZRABOO'}
 is_package: true

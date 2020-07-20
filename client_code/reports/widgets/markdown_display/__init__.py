@@ -1,11 +1,11 @@
-from ._anvil_designer import html_markdownTemplate
+from ._anvil_designer import markdown_displayTemplate
 from anvil import *
 import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 
-class html_markdown(html_markdownTemplate):
+class markdown_display(markdown_displayTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)

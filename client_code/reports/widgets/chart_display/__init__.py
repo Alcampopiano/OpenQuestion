@@ -1,7 +1,7 @@
-from ._anvil_designer import vega_liteTemplate
+from ._anvil_designer import chart_displayTemplate
 from anvil import *
 
-class vega_lite(vega_liteTemplate):
+class chart_display(chart_displayTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
