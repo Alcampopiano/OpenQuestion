@@ -1,64 +1,132 @@
 container:
   type: ColumnPanel
   event_bindings: {}
-  properties: {col_widths: '{"JMCEWO":55,"TCJCCQ":5}'}
+  properties: {col_widths: '{"AOCCVV":56,"ZKSDMZ":4}'}
 components:
-- type: TextBox
-  properties: {}
-  name: text_box_title
-  layout_properties: {grid_position: 'RCNYSH,JMCEWO'}
+- type: Spacer
+  properties: {height: 32}
+  name: spacer_1
+  layout_properties: {grid_position: 'TAUXSS,AOCCVV YBMSWH,DNXCRN'}
+- type: Label
+  properties: {role: null, align: left, tooltip: '', border: '', foreground: '', visible: true,
+    text: 'dataset:', font_size: null, font: '', spacing_above: small, icon_align: left,
+    spacing_below: small, italic: true, background: '', bold: false, underline: false,
+    icon: ''}
+  name: label_1
+  layout_properties: {grid_position: 'TAUXSS,AOCCVV LKSWPL,ZSMDIJ'}
+- type: DropDown
+  properties:
+    role: null
+    align: full
+    tooltip: ''
+    placeholder: ''
+    border: ''
+    enabled: true
+    foreground: ''
+    items: [d1, d2, d3]
+    visible: true
+    font_size: null
+    font: ''
+    spacing_above: small
+    spacing_below: small
+    italic: false
+    background: ''
+    bold: false
+    underline: false
+    include_placeholder: false
+  name: drop_down_1
+  layout_properties: {grid_position: 'TAUXSS,AOCCVV LKSWPL,ASBQMH'}
   event_bindings: {}
+- type: Label
+  properties: {role: null, align: left, tooltip: '', border: '', foreground: '', visible: true,
+    text: 'mark:', font_size: null, font: '', spacing_above: small, icon_align: left,
+    spacing_below: small, italic: true, background: '', bold: false, underline: false,
+    icon: ''}
+  name: label_4
+  layout_properties: {grid_position: 'TAUXSS,AOCCVV HCQWNR,KWEOTU'}
+- type: DropDown
+  properties: {}
+  name: drop_down_2
+  layout_properties: {grid_position: 'TAUXSS,AOCCVV HCQWNR,MRXCQK'}
+- type: Label
+  properties: {role: null, align: left, tooltip: '', border: '', foreground: '', visible: true,
+    text: 'encoding channels:', font_size: null, font: '', spacing_above: small, icon_align: left,
+    spacing_below: small, italic: true, background: '', bold: false, underline: false,
+    icon: ''}
+  name: label_2
+  layout_properties: {grid_position: 'TAUXSS,AOCCVV TLDBOV,XIYVIE'}
 - type: Label
   properties: {role: null, align: left, tooltip: '', border: '', foreground: '', visible: true,
     text: '', font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small,
     italic: false, background: '', bold: false, underline: false, icon: 'fa:area-chart'}
   name: label_id
-  layout_properties: {grid_position: 'RCNYSH,TCJCCQ'}
+  layout_properties: {grid_position: 'TAUXSS,ZKSDMZ'}
   event_bindings: {}
-- type: GridPanel
+- type: FlowPanel
   properties: {}
-  name: grid_panel_1
-  layout_properties: {grid_position: 'HCIZAG,HPGDGZ'}
+  name: flow_panel_1
+  layout_properties: {grid_position: 'WSFRLP,WTPPJU'}
+  event_bindings: {}
   components:
-  - type: Button
-    properties: {text: primary_color_1, role: primary-color}
-    name: primary_color_1
-    layout_properties: {grid_position: 'OWXLMB,VYQCIX', row: AYQSWC, width_xs: 1,
-      col_xs: 0}
-  - type: Button
-    properties: {text: primary_color_3, role: primary-color}
-    name: primary_color_3
-    layout_properties: {row: AYQSWC, width_xs: 1, col_xs: 1}
-  - type: Button
-    properties: {text: primary_color_4, role: primary-color}
-    name: primary_color_4
-    layout_properties: {row: AYQSWC, width_xs: 1, col_xs: 2}
-  - type: Button
-    properties: {text: primary_color_5, role: primary-color}
-    name: primary_color_5
-    layout_properties: {row: AYQSWC, width_xs: 1, col_xs: 3}
-  - type: Button
-    properties: {text: primary_color_2, role: primary-color}
-    name: primary_color_2
-    layout_properties: {row: AYQSWC, width_xs: 1, col_xs: 4}
-  - type: Button
-    properties: {text: primary_color_6, role: primary-color}
-    name: primary_color_6
-    layout_properties: {row: MLNZHE, width_xs: 1, col_xs: 0}
-  - type: Button
-    properties: {text: primary_color_7, role: primary-color}
-    name: primary_color_7
-    layout_properties: {row: MLNZHE, width_xs: 1, col_xs: 1}
-  - type: Button
-    properties: {text: primary_color_8, role: primary-color}
-    name: primary_color_8
-    layout_properties: {row: MLNZHE, width_xs: 1, col_xs: 2}
-  - type: Button
-    properties: {text: primary_color_9, role: primary-color}
-    name: primary_color_9
-    layout_properties: {row: MLNZHE, width_xs: 1, col_xs: 3}
-  - type: Button
-    properties: {text: primary_color_10, role: primary-color}
-    name: primary_color_10
-    layout_properties: {row: MLNZHE, width_xs: 1, col_xs: 4}
+  - type: CheckBox
+    properties: {role: null, align: left, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: '', font_size: null, font: '', spacing_above: small,
+      spacing_below: small, italic: false, background: '', bold: false, checked: false,
+      underline: false}
+    name: check_box_1
+    layout_properties: {grid_position: 'BXGUAY,KHMMBI'}
+    event_bindings: {}
+  - type: CheckBox
+    properties: {role: null, align: left, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: '', font_size: null, font: '', spacing_above: small,
+      spacing_below: small, italic: false, background: '', bold: false, checked: false,
+      underline: false}
+    name: check_box_2
+    layout_properties: {grid_position: 'BVVXJI,HCVMBN'}
+    event_bindings: {}
+  - type: CheckBox
+    properties: {role: null, align: left, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: '', font_size: null, font: '', spacing_above: small,
+      spacing_below: small, italic: false, background: '', bold: false, checked: false,
+      underline: false}
+    name: check_box_2_copy
+    layout_properties:
+      col_widths: {}
+      grid_position: NDUAEK,JVZEVE
+  - type: CheckBox
+    properties: {role: null, align: left, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: '', font_size: null, font: '', spacing_above: small,
+      spacing_below: small, italic: false, background: '', bold: false, checked: false,
+      underline: false}
+    name: check_box_2_copy_2
+    layout_properties:
+      col_widths: {}
+      grid_position: SDGPCS,BSACTN
+  - type: CheckBox
+    properties: {role: null, align: left, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: '', font_size: null, font: '', spacing_above: small,
+      spacing_below: small, italic: false, background: '', bold: false, checked: false,
+      underline: false}
+    name: check_box_2_copy_3
+    layout_properties:
+      col_widths: {}
+      grid_position: DEZARX,FQVJHD
+  - type: CheckBox
+    properties: {role: null, align: left, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: '', font_size: null, font: '', spacing_above: small,
+      spacing_below: small, italic: false, background: '', bold: false, checked: false,
+      underline: false}
+    name: check_box_2_copy_4
+    layout_properties:
+      col_widths: {}
+      grid_position: JXYXXV,YQTTLI
+  - type: CheckBox
+    properties: {role: null, align: left, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: '', font_size: null, font: '', spacing_above: small,
+      spacing_below: small, italic: false, background: '', bold: false, checked: false,
+      underline: false}
+    name: check_box_2_copy_5
+    layout_properties:
+      col_widths: {}
+      grid_position: XBLNUZ,IZSKEB
 is_package: true
