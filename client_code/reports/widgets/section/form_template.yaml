@@ -1,5 +1,34 @@
 container:
   type: ColumnPanel
-  event_bindings: {}
-components: []
+  event_bindings: {show: form_show}
+components:
+- type: TextBox
+  properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: title,
+    border: '', enabled: true, foreground: '', visible: true, text: '', font_size: 20,
+    font: '', spacing_above: small, type: text, spacing_below: none, italic: false,
+    background: '', bold: true, underline: false}
+  name: text_box_title
+  layout_properties:
+    col_widths: {}
+    grid_position: XVIGTM,UEHXRO NQNNXG,WGIQYA
+- type: Spacer
+  properties: {height: 32}
+  name: spacer_1
+  layout_properties:
+    col_widths: {}
+    grid_position: XVIGTM,UEHXRO FUWXUC,KVPMOI
+- type: ColumnPanel
+  properties: {}
+  name: column_panel
+  layout_properties:
+    col_widths: {}
+    grid_position: CQVUGW,KMLTIC
+- type: Label
+  properties: {role: null, align: left, tooltip: '', border: '', foreground: '', visible: false,
+    text: id, font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small,
+    italic: false, background: '', bold: false, underline: false, icon: ''}
+  name: label_id
+  layout_properties:
+    col_widths: {}
+    grid_position: EOICXN,THRYXD
 is_package: true

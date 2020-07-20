@@ -14,6 +14,7 @@ class main(mainTemplate):
     
     #self.tag.row=row
     #self.tag.form_dict={}
+    self.tag.num_widgets=0
     save_button=Button(text='save', role='primary-color')
     save_button.set_event_handler('click', self.save_click)
     self.add_component(save_button)
@@ -27,16 +28,8 @@ class main(mainTemplate):
     pass
 
   def form_show(self, **event_args):
-    
-    if not self.tag.row:
-      self.section_widget_click()
+    self.section_widget_click()
       
-    else:
-      
-      for section in self.column_panel.get_components():
-        self.color_rows(section)
-        
-      section.section_select()
     
     
   def color_rows(self, section, **event_args):
