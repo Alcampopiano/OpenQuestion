@@ -1,0 +1,5 @@
+container:
+  type: ColumnPanel
+  event_bindings: {}
+components: []
+is_package: true
