@@ -1,5 +1,20 @@
 container:
   type: ColumnPanel
   event_bindings: {}
-components: []
+  properties: {col_widths: '{"XDXICX":15,"HIYDZE":45}'}
+components:
+- type: Label
+  properties: {role: null, align: left, tooltip: '', border: '', foreground: '', visible: true,
+    text: 'number of bins:', font_size: null, font: '', spacing_above: small, icon_align: left,
+    spacing_below: small, italic: true, background: '', bold: false, underline: false,
+    icon: ''}
+  name: label_1
+  layout_properties: {grid_position: 'HYNSYQ,XDXICX'}
+- type: TextBox
+  properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
+    border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
+    font: '', spacing_above: small, type: number, spacing_below: small, italic: false,
+    background: '', bold: false, underline: false}
+  name: text_box_1
+  layout_properties: {grid_position: 'HYNSYQ,HIYDZE'}
 is_package: true

@@ -136,7 +136,7 @@ components:
         underline: false, icon: ''}
       name: button_bin
       layout_properties: {}
-      event_bindings: {}
+      event_bindings: {click: button_bin_click}
     - type: Button
       properties: {role: raised, align: center, tooltip: '', border: '', enabled: true,
         foreground: '', visible: true, text: sort, font_size: null, font: '', spacing_above: small,
