@@ -1,7 +1,7 @@
 container:
   type: ColumnPanel
   event_bindings: {}
-  properties: {col_widths: '{}'}
+  properties: {col_widths: '{"CJEDOA":15,"ZTZCHO":45}'}
 components:
 - type: Label
   properties: {role: null, align: left, tooltip: '', border: '', foreground: '', visible: true,
