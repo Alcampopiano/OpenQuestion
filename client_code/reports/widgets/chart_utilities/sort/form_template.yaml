@@ -11,4 +11,12 @@ components:
   properties: {}
   name: label_2
   layout_properties: {grid_position: 'DAVJMZ,RZOIPH'}
+- type: Label
+  properties: {}
+  name: label_3
+  layout_properties: {grid_position: 'CHXCMT,KZTSXT'}
+- type: Label
+  properties: {}
+  name: label_4
+  layout_properties: {grid_position: 'ZGXULG,BFTLYJ'}
 is_package: true
