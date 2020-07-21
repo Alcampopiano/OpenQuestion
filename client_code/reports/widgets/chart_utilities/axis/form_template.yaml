@@ -52,6 +52,7 @@ components:
     italic: false, background: '', bold: false, checked: false, underline: false}
   name: check_box_1
   layout_properties: {grid_position: 'SBWQDS,JVCWVN'}
+  event_bindings: {}
 - type: Label
   properties: {role: null, align: left, tooltip: '', border: '', foreground: '', visible: true,
     text: 'label fontsize:', font_size: null, font: '', spacing_above: small, icon_align: left,
@@ -59,4 +60,8 @@ components:
     icon: ''}
   name: label_5
   layout_properties: {grid_position: 'OIPMVR,CLGNLF'}
+- type: TextBox
+  properties: {}
+  name: text_box_4
+  layout_properties: {grid_position: 'OIPMVR,UIWTGE'}
 is_package: true
