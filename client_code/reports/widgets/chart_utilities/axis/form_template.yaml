@@ -1,7 +1,7 @@
 container:
   type: ColumnPanel
   event_bindings: {}
-  properties: {col_widths: '{"CJEDOA":15,"ZTZCHO":45}'}
+  properties: {col_widths: '{"CJEDOA":15,"ZTZCHO":45,"QZMTHO":15,"JJOMGU":45}'}
 components:
 - type: Label
   properties: {role: null, align: left, tooltip: '', border: '', foreground: '', visible: true,
@@ -28,4 +28,8 @@ components:
     background: '', bold: false, underline: false}
   name: text_box_2
   layout_properties: {grid_position: 'STQLRZ,JJOMGU'}
+- type: Label
+  properties: {}
+  name: label_3
+  layout_properties: {grid_position: 'JPEJJY,XKIEJY'}
 is_package: true
