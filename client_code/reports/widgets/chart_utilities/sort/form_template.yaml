@@ -1,7 +1,7 @@
 container:
   type: ColumnPanel
   event_bindings: {}
-  properties: {col_widths: '{"DHKMBP":20,"KYLFEV":40,"BFTLYJ":20,"NOQKPM":40}'}
+  properties: {col_widths: '{"DHKMBP":20,"KYLFEV":40,"BFTLYJ":20,"NOQKPM":40,"RZOIPH":20,"IDYTQT":40,"KZTSXT":20,"FSASDZ":40}'}
 components:
 - type: Label
   properties: {role: null, align: left, tooltip: '', border: '', foreground: '', visible: true,
@@ -28,7 +28,7 @@ components:
 - type: Label
   properties: {role: null, align: left, tooltip: '', border: '', foreground: '', visible: true,
     text: 'aggregate:', font_size: null, font: '', spacing_above: small, icon_align: left,
-    spacing_below: small, italic: false, background: '', bold: false, underline: false,
+    spacing_below: small, italic: true, background: '', bold: false, underline: false,
     icon: ''}
   name: label_3
   layout_properties: {grid_position: 'CHXCMT,KZTSXT'}
@@ -39,7 +39,7 @@ components:
 - type: Label
   properties: {role: null, align: left, tooltip: '', border: '', foreground: '', visible: true,
     text: 'order:', font_size: null, font: '', spacing_above: small, icon_align: left,
-    spacing_below: small, italic: false, background: '', bold: false, underline: false,
+    spacing_below: small, italic: true, background: '', bold: false, underline: false,
     icon: ''}
   name: label_4
   layout_properties: {grid_position: 'ZGXULG,BFTLYJ'}
