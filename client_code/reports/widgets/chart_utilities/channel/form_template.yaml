@@ -4,15 +4,21 @@ container:
   properties: {col_widths: '{}'}
 components:
 - type: ColumnPanel
-  properties: {col_widths: '{"NSORXZ":12,"YXTZXE":9,"NAUODG":48,"UQUHLH":39,"IGOQEY":12,"THNRAF":48}'}
+  properties: {col_widths: '{"NSORXZ":12,"YXTZXE":9,"NAUODG":48,"UQUHLH":39,"IGOQEY":12,"THNRAF":48,"WFYTVU":12,"KMPTQM":48}'}
   name: column_panel_2
   layout_properties: {grid_position: 'DGXDZY,FTPYXP'}
   components:
+  - type: Canvas
+    properties: {role: null, height: '0', tooltip: '', border: solid lightgray .5px,
+      foreground: '', visible: true, spacing_above: small, spacing_below: small, background: ''}
+    name: canvas_1
+    layout_properties: {grid_position: 'VTXIBK,YIWOKB'}
+    event_bindings: {}
   - type: Label
     properties: {role: null, align: center, tooltip: '', border: '', foreground: '',
-      visible: true, text: X, font_size: null, font: '', spacing_above: small, icon_align: left,
-      spacing_below: small, italic: false, background: '', bold: true, underline: false,
-      icon: ''}
+      visible: true, text: channel name, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
+      underline: false, icon: ''}
     name: label_channel
     layout_properties: {grid_position: 'DBLFSO,BIYWWE'}
     event_bindings: {}
@@ -108,8 +114,15 @@ components:
     name: drop_down_type
     layout_properties: {grid_position: 'YYHDTH,THNRAF'}
     event_bindings: {}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: 'properties:', font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: true, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_3
+    layout_properties: {grid_position: 'CQXDXB,WFYTVU'}
   - type: FlowPanel
-    properties: {role: null, spacing: medium, align: center, tooltip: '', border: '',
+    properties: {role: null, spacing: medium, align: left, tooltip: '', border: '',
       foreground: '', visible: true, spacing_above: small, spacing_below: small, background: ''}
     name: flow_panel_1_copy
     layout_properties:
