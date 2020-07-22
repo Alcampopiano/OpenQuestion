@@ -25,15 +25,18 @@ class chart(chartTemplate):
     spacing_below=None)
     
     mark_drop_props=dict(items=['bar', 'area', 'line', 'rect',
-                           'circle', 'text', 'tick', 'rule'],
+                                'circle', 'text', 'tick', 'rule'],
+                            tag='selected_value',
                             **general_formats)
     
     type_drop_props=dict(items=['quantitaive', 'temporal', 
-                              'nominal', 'ordinal'], **general_formats)
+                                'nominal', 'ordinal'], 
+                         tag='selected_value',
+                         **general_formats)
     
-    empty_text_props=dict(**general_formats)
+    empty_text_props=dict(tag='text', **general_formats)
     
-    field_drop_props=dict(items=['column_1', 'column_2'], **general_formats)
+    field_drop_props=dict(items=['column_1', 'column_2'], tag='selected_value', **general_formats)
       
     spec={
   "config": {
@@ -67,14 +70,27 @@ class chart(chartTemplate):
         parent.column_panel.add_component(prop)
         
         
-  def comps_to_spec(self, column_panel):
+  def comps_to_spec(self, column_panel, spec={}):
     
-    spec={}
-    
-    for nodes in column_panel.get_components():
+    for comp in column_panel.get_components():
       
+      if comp.__name__ is 'node':
+        
+        key=spec[comp.link_label.text]
+        val=self.comps_to_spec(comp.column_panel, spec=spec)
+        
+        
+      else:
+        
+        key=comp.label_prop.text
+        prop_comp=comp.column_panel.get_components()[0]
+        val=getattr(prop_comp, prop_comp.tag)
+        
       
+    spec.update({key: val})
     
+    return spec
+
 
   def print_spec_click(self, **event_args):
     spec=self.comps_to_spec(self.column_panel)

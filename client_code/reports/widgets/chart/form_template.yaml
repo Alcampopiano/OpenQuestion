@@ -30,5 +30,5 @@ components:
     underline: false, icon: ''}
   name: button_1
   layout_properties: {grid_position: 'XFYWFI,QRZKQX'}
-  event_bindings: {show: print_spec_click}
+  event_bindings: {click: print_spec_click}
 is_package: true

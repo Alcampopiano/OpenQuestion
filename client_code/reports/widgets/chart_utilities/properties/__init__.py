@@ -13,4 +13,6 @@ class properties(propertiesTemplate):
     # Any code you write here will run when the form opens.
     self.label_prop.text=prop_text
     self.column_panel.add_component(spec_comp)
+    
+    
   
