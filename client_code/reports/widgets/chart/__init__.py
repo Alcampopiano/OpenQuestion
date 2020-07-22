@@ -70,14 +70,16 @@ class chart(chartTemplate):
         parent.column_panel.add_component(prop)
         
         
-  def comps_to_spec(self, column_panel, spec={}):
-    
+  def comps_to_spec(self, column_panel):
+
+    spec={}
     for comp in column_panel.get_components():
       
       if comp.__name__ is 'node':
-        
-        key=spec[comp.link_label.text]
-        val=self.comps_to_spec(comp.column_panel, spec=spec)
+        key=comp.link_label.text
+        res=self.comps_to_spec(comp.column_panel)
+        spec.update({key: res})
+
         
         
       else:
@@ -85,9 +87,9 @@ class chart(chartTemplate):
         key=comp.label_prop.text
         prop_comp=comp.column_panel.get_components()[0]
         val=getattr(prop_comp, prop_comp.tag)
+        spec.update({key: val})
         
-      
-    spec.update({key: val})
+    
     
     return spec
 
