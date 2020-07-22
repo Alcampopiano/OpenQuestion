@@ -96,5 +96,6 @@ class chart(chartTemplate):
 
   def print_spec_click(self, **event_args):
     spec=self.comps_to_spec(self.column_panel)
+    anvil.server.call('make_chart', spec)
     print(spec)
 
