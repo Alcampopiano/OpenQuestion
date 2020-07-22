@@ -23,4 +23,12 @@ components:
   layout_properties:
     col_widths: {}
     grid_position: CXZTDG,OICYDD
+- type: Button
+  properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+    foreground: '', visible: true, text: print_spec, font_size: null, font: '', spacing_above: small,
+    icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+    underline: false, icon: ''}
+  name: button_1
+  layout_properties: {grid_position: 'XFYWFI,QRZKQX'}
+  event_bindings: {show: print_spec_click}
 is_package: true

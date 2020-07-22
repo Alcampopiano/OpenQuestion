@@ -47,10 +47,10 @@ class chart(chartTemplate):
     },
   }
     
-    self.spec_build_recursive(spec, parent=self)
+    self.spec_to_comps(spec, parent=self)
     
     
-  def spec_build_recursive(self, spec, parent=None, **event_args):
+  def spec_to_comps(self, spec, parent=None, **event_args):
     
     for k in spec:
       
@@ -59,25 +59,14 @@ class chart(chartTemplate):
         dict_node=node(node_text=k)
         parent.column_panel.add_component(dict_node)
         
-        self.spec_build_recursive(spec[k], parent=dict_node)
+        self.spec_to_comps(spec[k], parent=dict_node)
         
       else:
         
         prop=properties(prop_text=k, spec_comp=spec[k])
         parent.column_panel.add_component(prop)
 
-          
-          
-          
-        
-        
-        
-        
-        
-        
-        
-        
-        
-    
-    
-    
+  def print_spec_click(self, **event_args):
+
+    spec=self.comps_to_spec()
+
