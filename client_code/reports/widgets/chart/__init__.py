@@ -65,8 +65,18 @@ class chart(chartTemplate):
         
         prop=properties(prop_text=k, spec_comp=spec[k])
         parent.column_panel.add_component(prop)
+        
+        
+  def comps_to_spec(self, column_panel):
+    
+    spec={}
+    
+    for nodes in column_panel.get_components():
+      
+      
+    
 
   def print_spec_click(self, **event_args):
-
-    spec=self.comps_to_spec()
+    spec=self.comps_to_spec(self.column_panel)
+    print(spec)
 
