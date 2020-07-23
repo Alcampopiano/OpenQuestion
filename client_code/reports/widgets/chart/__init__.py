@@ -116,7 +116,7 @@ class chart(chartTemplate):
     # set dropdown items to columns
     for c in self.tag.comp_list:
       if c.label_prop.text=='field':
-        c.column_panel.get_components()[0].items=columns
+        c.column_panel.get_components()[0].items=['']+ columns
         
     self.button_render.visible=True
     
