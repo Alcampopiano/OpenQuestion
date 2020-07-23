@@ -32,6 +32,7 @@ roles:
 - {name: section_no_shadow}
 - {name: section_shadow}
 - {name: no_drag}
+- {name: thinrow}
 color_scheme:
   preset_groups:
   - name: Primary Colour

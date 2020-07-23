@@ -91,7 +91,7 @@ class main(mainTemplate):
         comp.background='white'
           
   def link_landing_click(self, **event_args):
-     open_form('landing.select_form')
+     open_form('landing.select_action')
 
   def preview_link_click(self, **event_args):
     

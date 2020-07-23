@@ -2,6 +2,14 @@
  This CSS implements the Material Design look and feel for Anvil apps.
  **/
 
+/* junk */
+.anvil-role-thinrow {
+  margin-top: -15px !important;
+  margin-bottom: -15px !important;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
 /* Al roles */
 .anvil-role-no_drag {
 user-drag: none; 

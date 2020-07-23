@@ -11,11 +11,11 @@ components:
   components:
   - type: Label
     properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: Your Surveys, font_size: null, font: '', spacing_above: small,
+      visible: true, text: Your suveys, font_size: null, font: '', spacing_above: small,
       icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
       underline: false, icon: ''}
-    name: label_1
-    layout_properties: {grid_position: 'ICJYET,YQRFUY'}
+    name: label_6
+    layout_properties: {grid_position: 'JLHQSV,YANPVC'}
   - type: DataGrid
     properties:
       role: null
