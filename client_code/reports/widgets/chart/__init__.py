@@ -47,8 +47,8 @@ class chart(chartTemplate):
   "encoding": {
     "x": {"type": DropDown(**type_drop_props), "field": DropDown(**field_drop_props)},
     "y": {"type": DropDown(**type_drop_props), "field": DropDown(**field_drop_props)},
-    #"color": {"type": DropDown(**type_drop_props), "field": DropDown(**field_drop_props)},
-    #"column": {"type": DropDown(**type_drop_props), "field": DropDown(**field_drop_props)}
+    "color": {"type": DropDown(**type_drop_props), "field": DropDown(**field_drop_props)},
+    "column": {"type": DropDown(**type_drop_props), "field": DropDown(**field_drop_props)}
 
     },
    }
