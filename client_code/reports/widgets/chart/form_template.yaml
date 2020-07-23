@@ -68,15 +68,19 @@ components:
     name: column_panel_vl_container
     layout_properties: {grid_position: 'WRWTTX,XWIEBO'}
     components:
+    - type: Spacer
+      properties: {height: 32}
+      name: spacer_3
+      layout_properties: {grid_position: 'CQEBDD,PJDIAR'}
     - type: form:reports.widgets.chart_utilities.chart_display
       properties: {}
       name: chart_display
       layout_properties: {grid_position: 'WHEWVN,FVGGQH', width: 149}
-    event_bindings: {}
-  - type: Spacer
-    properties: {height: 32}
-    name: spacer_2
-    layout_properties: {grid_position: 'DXRVLI,XJDOAU'}
+    - type: Spacer
+      properties: {height: 32}
+      name: spacer_2
+      layout_properties: {grid_position: 'PJATAM,THESJR'}
+      event_bindings: {}
     event_bindings: {}
   - type: Button
     properties: {role: null, align: center, tooltip: '', border: '', enabled: true,

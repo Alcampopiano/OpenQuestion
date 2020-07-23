@@ -57,7 +57,8 @@ class chart(chartTemplate):
     "x": {"type": DropDown(**type_drop_props), "field": DropDown(**field_drop_props), "bin": CheckBox(**bin_check_props), "aggregate": DropDown(**agg_drop_props)},
     "y": {"type": DropDown(**type_drop_props), "field": DropDown(**field_drop_props), "bin": CheckBox(**bin_check_props), "aggregate": DropDown(**agg_drop_props)},
     "color": {"type": DropDown(**type_drop_props), "field": DropDown(**field_drop_props)},
-    "column": {"type": DropDown(**type_drop_props), "field": DropDown(**field_drop_props)}
+    "column": {"type": DropDown(**type_drop_props), "field": DropDown(**field_drop_props)},
+    "row": {"type": DropDown(**type_drop_props), "field": DropDown(**field_drop_props)}
     },
    }
     
