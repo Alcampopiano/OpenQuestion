@@ -34,24 +34,25 @@ class chart(chartTemplate):
                             tag='selected_value',
                             **general_formats)
     
-    type_drop_props=dict(items=['quantitative', 'temporal', 
+    type_drop_props=dict(items=['', 'quantitative', 'temporal', 
                                 'nominal', 'ordinal'], 
                          tag='selected_value',
                          **general_formats)
     
-    empty_text_props=dict(tag='text', text=300, type='number', **general_formats)
-    
+    empty_text_props_str=dict(tag='text', text='', type='string', **general_formats)
+    empty_text_props_num=dict(tag='text', text=300, type='number', **general_formats)
+
     field_drop_props=dict(tag='selected_value', **general_formats)
     
     bin_check_props=dict(tag='checked', **general_formats)
-      
+    
     # VL spec template
     spec={
   "config": {
     "view": {
-      "continuousWidth": TextBox(**empty_text_props), "continuousHeight": TextBox(**empty_text_props)}
+      "continuousWidth": TextBox(**empty_text_props_num), "continuousHeight": TextBox(**empty_text_props_num)}
      },
-  "mark": DropDown(**mark_drop_props),
+  "mark": {'type': DropDown(**mark_drop_props), 'color': TextBox(**empty_text_props_str)},
   "encoding": {
     "x": {"type": DropDown(**type_drop_props), "field": DropDown(**field_drop_props), "bin": CheckBox(**bin_check_props), "aggregate": DropDown(**agg_drop_props)},
     "y": {"type": DropDown(**type_drop_props), "field": DropDown(**field_drop_props), "bin": CheckBox(**bin_check_props), "aggregate": DropDown(**agg_drop_props)},
