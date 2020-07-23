@@ -2,8 +2,8 @@ container:
   type: HtmlTemplate
   properties: {tooltip: '', background: '', foreground: '', border: '', visible: true,
     role: null, html: "<div class=\"vis\"></div>\n<script>\n  function initVegaLite(spec)\
-      \ {\n    var visElt = $(this).find(\".vis\")[0];\n    vegaEmbed(visElt, spec);\n\
-      \  }\n</script>"}
+      \ {\n    var opt = {\"renderer\": \"svg\"}\n    var visElt = $(this).find(\"\
+      .vis\")[0];\n    vegaEmbed(visElt, spec, opt);\n  }\n</script>"}
   event_bindings: {show: form_show}
 components: []
 is_package: true

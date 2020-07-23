@@ -11,13 +11,13 @@ class chart(chartTemplate):
   def __init__(self, section, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-
-    #self.chart_display.vl_spec = anvil.server.call('make_chart')
     
     from ..toolbar import toolbar
     toolbar=toolbar(align='left', section=section, parent=self)
-    
     self.add_component(toolbar)
+    
+    # can a dict be used for easy look up?
+    self.tag.comp_list=[]
     
     general_formats=dict(
     font_size=14,
@@ -29,28 +29,31 @@ class chart(chartTemplate):
                             tag='selected_value',
                             **general_formats)
     
-    type_drop_props=dict(items=['quantitaive', 'temporal', 
+    type_drop_props=dict(items=['quantitative', 'temporal', 
                                 'nominal', 'ordinal'], 
                          tag='selected_value',
                          **general_formats)
     
     empty_text_props=dict(tag='text', **general_formats)
     
-    field_drop_props=dict(items=['column_1', 'column_2'], tag='selected_value', **general_formats)
+    field_drop_props=dict(items=['a', 'b'], tag='selected_value', **general_formats)
       
     spec={
   "config": {
     "view": {
-      "continuousWidth": TextBox(**empty_text_props), "continuousHeight": TextBox(**empty_text_props)}
-  },
+      "continuousWidth": TextBox(text=300, type='number', **empty_text_props), "continuousHeight": TextBox(text=300, type='number', **empty_text_props)}
+     },
   "mark": DropDown(**mark_drop_props),
   "encoding": {
     "x": {"type": DropDown(**type_drop_props), "field": DropDown(**field_drop_props)},
-    "y": {"type": DropDown(**type_drop_props), "field": DropDown(**field_drop_props)}
+    "y": {"type": DropDown(**type_drop_props), "field": DropDown(**field_drop_props)},
+    #"color": {"type": DropDown(**type_drop_props), "field": DropDown(**field_drop_props)},
+    #"column": {"type": DropDown(**type_drop_props), "field": DropDown(**field_drop_props)}
+
     },
-  }
+   }
     
-    self.spec_to_comps(spec, parent=self)
+    self.tag.spec=spec
     
     
   def spec_to_comps(self, spec, parent=None, **event_args):
@@ -68,6 +71,7 @@ class chart(chartTemplate):
         
         prop=properties(prop_text=k, spec_comp=spec[k])
         parent.column_panel.add_component(prop)
+        self.tag.comp_list.append(prop)
         
         
   def comps_to_spec(self, column_panel):
@@ -80,8 +84,6 @@ class chart(chartTemplate):
         res=self.comps_to_spec(comp.column_panel)
         spec.update({key: res})
 
-        
-        
       else:
         
         key=comp.label_prop.text
@@ -89,13 +91,36 @@ class chart(chartTemplate):
         val=getattr(prop_comp, prop_comp.tag)
         spec.update({key: val})
         
-    
-    
     return spec
 
 
-  def print_spec_click(self, **event_args):
+  def render_spec_click(self, **event_args):
     spec=self.comps_to_spec(self.column_panel)
-    anvil.server.call('make_chart', spec)
-    print(spec)
+    dataset=self.tag.dataset
+    spec=anvil.server.call('make_chart', spec, dataset)
+    self.chart_display.vl_spec = spec
+    self.column_panel_viz.visible=True
+    #print(spec)
+
+  def upload_change(self, file, **event_args):
+    
+    if file:
+      columns=anvil.server.call('get_columns', file)
+      self.tag.dataset=file
+      self.file_loader.text=file.name
+
+    # set the spec?
+    spec=self.tag.spec
+    self.spec_to_comps(spec, parent=self)
+
+    # set dropdown items to columns
+    for c in self.tag.comp_list:
+      if c.label_prop.text=='field':
+        c.column_panel.get_components()[0].items=columns
+        
+    self.button_render.visible=True
+    
+    
+
+
 
