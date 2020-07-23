@@ -19,6 +19,7 @@ class chart(chartTemplate):
     # can a dict be used for easy look up?
     self.tag.comp_list=[]
     
+    # formatting for components that represent editable aspects of the VL spec
     general_formats=dict(
     font_size=14,
     spacing_above=None,
@@ -29,27 +30,33 @@ class chart(chartTemplate):
                             tag='selected_value',
                             **general_formats)
     
+    agg_drop_props=dict(items=['', 'count', 'sum', 'mean', 'var'],
+                            tag='selected_value',
+                            **general_formats)
+    
     type_drop_props=dict(items=['quantitative', 'temporal', 
                                 'nominal', 'ordinal'], 
                          tag='selected_value',
                          **general_formats)
     
-    empty_text_props=dict(tag='text', **general_formats)
+    empty_text_props=dict(tag='text', text=300, type='number', **general_formats)
     
-    field_drop_props=dict(items=['a', 'b'], tag='selected_value', **general_formats)
+    field_drop_props=dict(tag='selected_value', **general_formats)
+    
+    bin_check_props=dict(tag='checked', **general_formats)
       
+    # VL spec template
     spec={
   "config": {
     "view": {
-      "continuousWidth": TextBox(text=300, type='number', **empty_text_props), "continuousHeight": TextBox(text=300, type='number', **empty_text_props)}
+      "continuousWidth": TextBox(**empty_text_props), "continuousHeight": TextBox(**empty_text_props)}
      },
   "mark": DropDown(**mark_drop_props),
   "encoding": {
-    "x": {"type": DropDown(**type_drop_props), "field": DropDown(**field_drop_props)},
-    "y": {"type": DropDown(**type_drop_props), "field": DropDown(**field_drop_props)},
+    "x": {"type": DropDown(**type_drop_props), "field": DropDown(**field_drop_props), "bin": CheckBox(**bin_check_props), "aggregate": DropDown(**agg_drop_props)},
+    "y": {"type": DropDown(**type_drop_props), "field": DropDown(**field_drop_props), "bin": CheckBox(**bin_check_props), "aggregate": DropDown(**agg_drop_props)},
     "color": {"type": DropDown(**type_drop_props), "field": DropDown(**field_drop_props)},
     "column": {"type": DropDown(**type_drop_props), "field": DropDown(**field_drop_props)}
-
     },
    }
     
@@ -99,8 +106,7 @@ class chart(chartTemplate):
     dataset=self.tag.dataset
     spec=anvil.server.call('make_chart', spec, dataset)
     self.chart_display.vl_spec = spec
-    self.column_panel_viz.visible=True
-    #print(spec)
+    self.column_panel_vl_container.visible=True
 
   def upload_change(self, file, **event_args):
     
@@ -118,7 +124,8 @@ class chart(chartTemplate):
       if c.label_prop.text=='field':
         c.column_panel.get_components()[0].items=['']+ columns
         
-    self.button_render.visible=True
+    #self.button_render.visible=True
+    self.column_panel_container.visible=True
     
     
 
