@@ -30,8 +30,24 @@ components:
   name: text_area_text
   layout_properties: {grid_position: 'UEAIGJ,CFHLAE'}
   event_bindings: {}
-- type: form:reports.widgets.markdown_display
-  properties: {}
-  name: html_markdown
-  layout_properties: {grid_position: 'PUYBZD,ZRABOO'}
+- type: ColumnPanel
+  properties: {role: null, tooltip: '', border: '', foreground: '', visible: false,
+    wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
+    spacing_below: small, background: ''}
+  name: column_panel_container
+  layout_properties: {grid_position: 'KHGTEQ,PTFKHA'}
+  event_bindings: {}
+  components:
+  - type: form:reports.widgets.html_display
+    properties: {}
+    name: html_display
+    layout_properties: {grid_position: 'HTHYUL,FKEPUK'}
+- type: Button
+  properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+    foreground: '', visible: true, text: render, font_size: 14, font: '', spacing_above: small,
+    icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+    underline: false, icon: ''}
+  name: button_1
+  layout_properties: {grid_position: 'HMKHZI,SBKGQN'}
+  event_bindings: {click: render_click}
 is_package: true

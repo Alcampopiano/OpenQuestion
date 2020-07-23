@@ -15,3 +15,11 @@ class markdown(markdownTemplate):
     toolbar=toolbar(align='left', section=section, parent=self)
     
     self.add_component(toolbar)
+
+  def render_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    text=self.text_area_text.text
+    html=anvil.server.call('convert_markdown',text)
+    self.html_display.html=html
+    self.column_panel_container.visible=True
+

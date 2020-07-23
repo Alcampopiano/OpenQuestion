@@ -8,6 +8,7 @@ allow_embedding: false
 name: OpenQuestion
 runtime_options: {version: 2, client_version: '3', server_version: python3-full}
 metadata: {}
+startup_form: build.branch.confirm_content
 native_deps: {head_html: "<script>\nfunction get_jQuery_obj(component) {\n    // deal\
     \ with buttons being the surrounding div rather than the button element\n    if\
     \ (component.v._anvil.element[0].classList.contains(\"anvil-button\")) {\n   \

@@ -46,17 +46,22 @@ class chart(chartTemplate):
     
     bin_check_props=dict(tag='checked', **general_formats)
     
+    mark_size_props=dict(tag='text', text=15, type='number', **general_formats)
+    
+    #  "config": {
+    #"view": {
+    #  "continuousWidth": TextBox(**empty_text_props_num), "continuousHeight": TextBox(**empty_text_props_num)}
+    # },
+    
     # VL spec template
     spec={
-  "config": {
-    "view": {
-      "continuousWidth": TextBox(**empty_text_props_num), "continuousHeight": TextBox(**empty_text_props_num)}
-     },
-  "mark": {'type': DropDown(**mark_drop_props), 'color': TextBox(**empty_text_props_str)},
+  "width": TextBox(**empty_text_props_num),
+  "height": TextBox(**empty_text_props_num),
+  "mark": {'type': DropDown(**mark_drop_props), 'color': TextBox(**empty_text_props_str), "size": TextBox(**mark_size_props)},
   "encoding": {
     "x": {"type": DropDown(**type_drop_props), "field": DropDown(**field_drop_props), "bin": CheckBox(**bin_check_props), "aggregate": DropDown(**agg_drop_props)},
     "y": {"type": DropDown(**type_drop_props), "field": DropDown(**field_drop_props), "bin": CheckBox(**bin_check_props), "aggregate": DropDown(**agg_drop_props)},
-    "color": {"type": DropDown(**type_drop_props), "field": DropDown(**field_drop_props)},
+    "color": {"type": DropDown(**type_drop_props), "field": DropDown(**field_drop_props), "bin": CheckBox(**bin_check_props), "aggregate": DropDown(**agg_drop_props)},
     "column": {"type": DropDown(**type_drop_props), "field": DropDown(**field_drop_props)},
     "row": {"type": DropDown(**type_drop_props), "field": DropDown(**field_drop_props)}
     },
