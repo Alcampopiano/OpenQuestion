@@ -3,15 +3,15 @@
  **/
 
 /* junk */
-.anvil-role-thinrow {
+/* .anvil-role-thinrow {
   margin-top: -15px !important;
   margin-bottom: -15px !important;
   padding-top: 2px;
   padding-bottom: 2px;
-}
+} */
 
 /* Al roles */
-.anvil-role-no_drag {
+/* .anvil-role-no_drag {
 user-drag: none; 
 user-select: none;
 -moz-user-select: none;
@@ -24,6 +24,11 @@ user-select: none;
 -moz-user-drag: none;
 -o-user-drag: none;
 user-drag: none;
+} */
+
+/* Al roles */
+.anvil-role-expand_height {
+   height: 400px;
 }
 
 

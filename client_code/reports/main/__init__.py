@@ -8,29 +8,42 @@ from anvil.tables import app_tables
 from .. import widgets
 
 class main(mainTemplate):
-  def __init__(self, **properties):
+  def __init__(self, row=None, **properties):
 
     self.init_components(**properties)
     
     #self.tag.row=row
-    self.tag.form_dict={}
-    self.tag.num_widgets=0
+    #self.tag.form_dict={}
+    #self.tag.num_widgets=0
     save_button=Button(text='save', role='primary-color')
     save_button.set_event_handler('click', self.save_click)
     self.add_component(save_button)
-
+      
+    if row:
+      print('call load method in report module')
+#       self.tag.id=row['form_id']
+#       self.preview_link.url=anvil.server.get_app_origin() + '#' + row['form_id']
+#       self.tag.num_widgets=row['schema']['num_widgets']
+#       self.text_box_title.text=row['title']
+#       build.build_form(row['schema'], self.column_panel)
+      
+    else:
+      self.tag.id=None
+      self.tag.num_widgets=0  
       
   def save_click(self, **event_args):
-    #schema=build.build_schema(self.column_panel)
-    #form_id=anvil.server.call('save_schema', self.tag.id, schema)
-    #self.tag.id=form_id
-    #self.share_link_click.url=anvil.server.get_app_origin() + '#' + form_id
-    pass
-
+    print('call save method in report module')
+#     report_id=1
+#     specs={}
+#     for widget_id, chart in enumerate(self.tag.chart_wigets):
+#       spec=chart.tag.vl_spec
+#       specs[str(widget_id)]=spec
+      
+#     datasets=self.tag.data_dicts
+#     anvil.server.call('save_report', '1', specs, datasets)
+    
   def form_show(self, **event_args):
     self.section_widget_click()
-      
-    
     
   def color_rows(self, section, **event_args):
             
@@ -78,6 +91,22 @@ class main(mainTemplate):
     comp.label_id.text=self.tag.num_widgets
     self.tag.num_widgets+=1
     self.tag.form_dict[comp.label_id.text]=comp
+
+  def download_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    pass
+
+  def link_datasets_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    file_loader=FileLoader(multiple=True)
+    file_loader.set_event_handler('change', self.file_loader_change)
+    file_loader.raise_event('change')
+    
+  def file_loader_change(self, files, **event_args):
+    data_dicts=anvil.server.call('return_datasets', files)
+    self.tag.data_dicts=data_dicts
+
+
 
 
 

@@ -1,0 +1,12 @@
+container:
+  type: HtmlTemplate
+  properties: {tooltip: '', background: '', foreground: '', border: '', visible: true,
+    role: null, html: "<div class=\"vis\"></div>\n<script>\n  function vega_embed_named_data(spec,\
+      \ data_name, data_values) {\n    var visElt = $(this).find(\".vis\")[0];\n \
+      \   \n    vegaEmbed(visElt, spec).then(res =>\n  \t\tres.view\n    \t.insert(data_name,\
+      \ data_values)\n    \t.run()\n\t);\n  }\n  \n  function vega_embed_no_named_data(spec)\
+      \ {\n    var visElt = $(this).find(\".vis\")[0];\n    vegaEmbed(visElt, spec)\n\
+      \  }\n</script>\n\n<style>\n\n</style>"}
+  event_bindings: {show: form_show}
+components: []
+is_package: true
