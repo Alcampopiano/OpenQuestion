@@ -26,6 +26,7 @@ user-select: none;
 user-drag: none;
 } */
 
+
 /* Al roles */
 .anvil-role-expand_height {
    height: 400px;
@@ -813,12 +814,21 @@ textarea.anvil-component[disabled] {
   font-size: 16px;
 }
 
+
 /* Shadow values taken from 
 https://stackoverflow.com/questions/30533055/calculating-shadow-values-for-all-material-design-elevations
 */
 
 /* al hack */
-a, a:hover, a:visited
+/* a, a:hover, a:visited
 {
     text-decoration: none;
+} */
+
+/* Al role */
+.anvil-role-raise_file_loader_icon {
+  margin-top: 0px !important;
+  padding-top: 0px !important;
+  border-radius: 20px;
 }
+

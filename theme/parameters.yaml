@@ -34,6 +34,7 @@ roles:
 - {name: no_drag}
 - {name: thinrow}
 - {name: expand_height}
+- {name: raise_file_loader_icon}
 color_scheme:
   preset_groups:
   - name: Primary Colour

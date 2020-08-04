@@ -4,42 +4,57 @@ container:
   properties: {html: '@theme:standard-page.html'}
   event_bindings: {show: form_show}
 components:
-- type: ColumnPanel
-  properties: {col_widths: '{}'}
-  name: column_panel
-  layout_properties: {slot: default}
-  event_bindings: {}
-  components: []
 - type: FlowPanel
   properties: {role: null, spacing: medium, align: center, tooltip: '', border: '',
     foreground: '', visible: true, spacing_above: small, spacing_below: small, background: ''}
   name: navbar_links
   layout_properties: {slot: nav-right}
   components:
-  - type: Link
-    properties: {role: null, url: '', align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: '', font_size: null, wrap_on: mobile, font: '', col_spacing: medium,
-      spacing_above: small, icon_align: left, col_widths: '', spacing_below: small,
-      italic: false, background: '', bold: false, underline: false, icon: 'fa:database'}
-    name: link_datasets
-    layout_properties: {grid_position: 'ZCTXRA,KZTCGP'}
-    event_bindings: {click: link_datasets_click}
+  - type: FileLoader
+    properties:
+      role: null
+      show_state: true
+      align: center
+      tooltip: ''
+      border: ''
+      file_types: null
+      enabled: true
+      files: []
+      foreground: theme:White
+      visible: true
+      text: ''
+      font_size: 20
+      font: ''
+      spacing_above: small
+      icon_align: left
+      spacing_below: small
+      italic: false
+      file: null
+      background: ''
+      bold: false
+      underline: false
+      multiple: false
+      icon: fa:database
+    name: file_loader
+    layout_properties: {grid_position: 'DSAVHY,CKOUPH'}
+    event_bindings: {change: file_loader_change}
   - type: Link
     properties: {role: null, url: '', align: center, tooltip: '', border: '', foreground: '',
-      visible: true, text: '', font_size: null, wrap_on: mobile, font: '', col_spacing: medium,
-      spacing_above: small, icon_align: left, col_widths: '', spacing_below: small,
-      italic: false, background: '', bold: false, underline: false, icon: 'fa:share'}
-    name: link_5
-    layout_properties: {}
-    event_bindings: {click: share_link_click}
-  - type: Link
-    properties: {role: null, url: '', align: left, tooltip: '', border: '', foreground: '',
       visible: true, text: '', font_size: null, wrap_on: mobile, font: '', col_spacing: medium,
       spacing_above: small, icon_align: left, col_widths: '{}', spacing_below: small,
       italic: false, background: '', bold: false, underline: false, icon: 'fa:home'}
     name: link_landing
-    layout_properties: {grid_position: 'HSXKHH,PJWAFP'}
+    layout_properties: {grid_position: 'WASXLK,ROOGGG'}
     event_bindings: {click: link_landing_click}
+    components: []
+  - type: Link
+    properties: {role: null, url: '', align: center, tooltip: '', border: '', foreground: '',
+      visible: true, text: '', font_size: null, wrap_on: mobile, font: '', col_spacing: medium,
+      spacing_above: small, icon_align: left, col_widths: '{}', spacing_below: small,
+      italic: false, background: '', bold: false, underline: false, icon: 'fa:share'}
+    name: link_5
+    layout_properties: {grid_position: 'SHMGEU,GZOTJE'}
+    event_bindings: {click: share_link_click}
     components: []
   event_bindings: {}
 - type: ColumnPanel
@@ -84,3 +99,8 @@ components:
     name: label_1
     layout_properties: {slot: title, grid_position: 'IMCCNP,ESFQDJ'}
     event_bindings: {}
+- type: ColumnPanel
+  properties: {col_widths: '{}'}
+  name: column_panel
+  layout_properties: {slot: default}
+  components: []

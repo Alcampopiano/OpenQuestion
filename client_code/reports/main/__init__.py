@@ -13,7 +13,7 @@ class main(mainTemplate):
     self.init_components(**properties)
     
     #self.tag.row=row
-    #self.tag.form_dict={}
+    self.tag.form_dict={}
     #self.tag.num_widgets=0
     save_button=Button(text='save', role='primary-color')
     save_button.set_event_handler('click', self.save_click)
@@ -91,20 +91,13 @@ class main(mainTemplate):
     comp.label_id.text=self.tag.num_widgets
     self.tag.num_widgets+=1
     self.tag.form_dict[comp.label_id.text]=comp
-
-  def download_click(self, **event_args):
-    """This method is called when the link is clicked"""
-    pass
-
-  def link_datasets_click(self, **event_args):
-    """This method is called when the link is clicked"""
-    file_loader=FileLoader(multiple=True)
-    file_loader.set_event_handler('change', self.file_loader_change)
-    file_loader.raise_event('change')
     
   def file_loader_change(self, files, **event_args):
     data_dicts=anvil.server.call('return_datasets', files)
     self.tag.data_dicts=data_dicts
+
+
+
 
 
 
