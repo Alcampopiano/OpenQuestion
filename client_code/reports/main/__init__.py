@@ -28,6 +28,7 @@ class main(mainTemplate):
 #       build.build_form(row['schema'], self.column_panel)
       
     else:
+      self.tag.data_dicts={}
       self.tag.id=None
       self.tag.num_widgets=0  
       
@@ -85,12 +86,17 @@ class main(mainTemplate):
     self.tag.form_dict[section.label_id.text]=section
 
   def chart_widget_click(self, **event_args):
-    comp=widgets.chart(section=self.tag.active_section)
-    self.tag.active_section.column_panel.add_component(comp)
-    self.color_rows(self.tag.active_section)
-    comp.label_id.text=self.tag.num_widgets
-    self.tag.num_widgets+=1
-    self.tag.form_dict[comp.label_id.text]=comp
+    
+    if self.tag.data_dicts:
+      comp=widgets.chart(section=self.tag.active_section)
+      self.tag.active_section.column_panel.add_component(comp)
+      self.color_rows(self.tag.active_section)
+      comp.label_id.text=self.tag.num_widgets
+      self.tag.num_widgets+=1
+      self.tag.form_dict[comp.label_id.text]=comp
+      
+    else:
+      alert("click the databse icon in the top nav bar", title="Please load datasets first")
     
   def file_loader_change(self, files, **event_args):
     data_dicts=anvil.server.call('return_datasets', files)

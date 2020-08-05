@@ -103,4 +103,8 @@ components:
   properties: {col_widths: '{}'}
   name: column_panel
   layout_properties: {slot: default}
-  components: []
+  components:
+  - type: Label
+    properties: {}
+    name: label_2
+    layout_properties: {grid_position: 'WOTMFF,YANXZJ'}
