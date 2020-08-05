@@ -61,7 +61,7 @@ class main(mainTemplate):
 
   def share_link_click(self, **event_args):
     
-    if not self.share_link_click.url:
+    if not self.share_link.url:
       Notification('',title='Please save the form first').show()
 
     else:

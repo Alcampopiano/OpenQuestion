@@ -4,22 +4,33 @@ import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
+from ....utilities import augment
 
 class markdown(markdownTemplate):
   def __init__(self, section, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
+    
+    augment.set_event_handler(self.column_panel_container, 'click', 
+                              self.column_panel_container_click)
 
-    # Any code you write here will run when the form opens.
     from ..toolbar import toolbar
     toolbar=toolbar(align='left', section=section, parent=self)
-    
     self.add_component(toolbar)
 
-  def render_click(self, **event_args):
-
+  def text_area_lost_focus(self, **event_args):
+    
     text=self.text_area_text.text
-    html=anvil.server.call('convert_markdown',text)
-    self.markdown_display.html=html
-    self.column_panel_container.visible=True
+    
+    if text:
+      html=anvil.server.call('convert_markdown',text)
+      self.markdown_display.html=html
+      self.column_panel_container.visible=True
+      self.text_area_text.visible=False
+    
+  def column_panel_container_click(self, **event_args):
+    self.text_area_text.visible=True
+    self.column_panel_container.visible=False
+
+
 
