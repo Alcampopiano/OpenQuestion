@@ -99,8 +99,12 @@ class main(mainTemplate):
       alert("click the databse icon in the top nav bar", title="Please load datasets first")
     
   def file_loader_change(self, files, **event_args):
-    data_dicts=anvil.server.call('return_datasets', files)
-    self.tag.data_dicts=data_dicts
+    
+    if files:
+      data_dicts=anvil.server.call('return_datasets', files)
+      self.tag.data_dicts=data_dicts
+      
+    self.file_loader.text=str(len(self.tag.data_dicts))
 
 
 

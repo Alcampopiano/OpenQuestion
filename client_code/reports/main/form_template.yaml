@@ -13,7 +13,7 @@ components:
   - type: FileLoader
     properties:
       role: null
-      show_state: true
+      show_state: false
       align: center
       tooltip: ''
       border: ''
@@ -22,7 +22,7 @@ components:
       files: []
       foreground: theme:White
       visible: true
-      text: ''
+      text: '0'
       font_size: 20
       font: ''
       spacing_above: small
@@ -33,7 +33,7 @@ components:
       background: ''
       bold: false
       underline: false
-      multiple: false
+      multiple: true
       icon: fa:database
     name: file_loader
     layout_properties: {grid_position: 'DSAVHY,CKOUPH'}
@@ -103,8 +103,5 @@ components:
   properties: {col_widths: '{}'}
   name: column_panel
   layout_properties: {slot: default}
-  components:
-  - type: Label
-    properties: {}
-    name: label_2
-    layout_properties: {grid_position: 'WOTMFF,YANXZJ'}
+  components: []
+  event_bindings: {}
