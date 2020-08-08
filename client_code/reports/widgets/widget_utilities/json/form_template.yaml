@@ -20,7 +20,10 @@ container:
       \  \t.then(function(resp){\n    \treturn resp.json();\n  \t})\n  \t.then(function(data)\
       \ {\n        schema=data\n  \t\tmake_editor(spec, schema, comp, parent);\n \
       \ });\n\n\n};\n*/\n</script>\n  \n</body>\n<head>\n<style type=\"text/css\"\
-      >\n  \n  .jsoneditor {\n    height: 400px;\n  }\n  \n  \n</style>\n</head>"}
+      >\n  \n  .jsoneditor {\n    height: 400px;\n  }\n  \n  .jsoneditor-menu {\n\
+      \  background-color: white;\n}\n  \n  .jsoneditor-menu > button.jsoneditor-transform\
+      \ {\n  color: black;\n  background-color: black; \n}\n  \n\n  \n  \n</style>\n\
+      </head>"}
   event_bindings: {show: form_show}
 components: []
 is_package: true
