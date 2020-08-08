@@ -13,13 +13,25 @@ class vega_lite(vega_liteTemplate):
     self.tag.form_shown=False
 
     self.tag.vl_spec={
+  "data": {
+    "url": "https://vega.github.io/vega-lite/data/cars.json" 
+  },
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-  "data": {"url": "https://vega.github.io/vega-lite/data/cars.json"},
-  "mark": "point",
+  "mark": "circle",
   "encoding": {
-    "x": {"field": "Horsepower", "type": "quantitative"},
-    "y": {"field": "Miles_per_Gallon", "type": "quantitative"},
-    "color": {"field": "Origin", "type": "nominal"}  
+    "x": {
+      "type": "quantitative",
+      "field": "Horsepower"
+    },
+    "y": {
+      "type": "quantitative",
+      "field": "Miles_per_Gallon"
+    },
+    "color": {
+      "type": "nominal",
+      "field": "Origin"
+    },
+    "tooltip": [{"field": "Acceleration", "title": "Acceleration"}]
   }
 }
   

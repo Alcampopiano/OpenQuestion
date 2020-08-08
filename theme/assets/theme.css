@@ -28,10 +28,18 @@ user-drag: none;
 
 
 /* Al roles */
-.anvil-role-expand_height {
-   height: 400px;
-}
+/* .anvil-role-json_editor {
+   width: 100%;
+   height: 100%;
+   overflow: auto;
+} */
 
+/* Al roles */
+.anvil-role-vega-lite {
+   width: 100%;
+   height: 100%;
+   overflow: auto;
+}
 
 /* Al roles */
 .anvil-role-section_shadow {
@@ -825,10 +833,5 @@ https://stackoverflow.com/questions/30533055/calculating-shadow-values-for-all-m
     text-decoration: none;
 } */
 
-/* Al role */
-.anvil-role-raise_file_loader_icon {
-  margin-top: 0px !important;
-  padding-top: 0px !important;
-  border-radius: 20px;
-}
+
 
