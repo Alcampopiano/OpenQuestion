@@ -13,16 +13,15 @@ class vega_lite(vega_liteTemplate):
     self.tag.form_shown=False
 
     self.tag.vl_spec={
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-    "description": "A simple bar chart with embedded data.",
-    "data": {"name": ""},
-    "mark": "bar",
-    "encoding": {
-      "x": {"field": "Year", "type": "nominal"},
-      "y": {"field": "Score", "type": "quantitative", 
-            "aggregate": "sum"}
-    }
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "data": {"url": "https://vega.github.io/vega-lite/data/cars.json"},
+  "mark": "point",
+  "encoding": {
+    "x": {"field": "Horsepower", "type": "quantitative"},
+    "y": {"field": "Miles_per_Gallon", "type": "quantitative"},
+    "color": {"field": "Origin", "type": "nominal"}  
   }
+}
   
   def form_show(self, **event_args):
     
