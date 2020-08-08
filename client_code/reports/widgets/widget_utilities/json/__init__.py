@@ -20,30 +20,4 @@ class json(jsonTemplate):
     if not self.tag.form_shown:
       self.tag.form_shown=True
       spec=self.tag.chart.tag.vl_spec
-     
-#       spec={
-#   "data": {
-#     "url": "https://vega.github.io/vega-lite/data/cars.json" 
-#   },
-#   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-#   "mark": "circle",
-#   "encoding": {
-#     "x": {
-#       "type": "quantitative",
-#       "field": "Horsepower"
-#     },
-#     "y": {
-#       "type": "quantitative",
-#       "field": "Miles_per_Gallon"
-#     },
-#     "color": {
-#       "type": "nominal",
-#       "field": "Origin"
-#     },
-#     "tooltip": [{"field": "Acceleration", "title": "Acceleration"}]
-#   }
-# }
-#       parent=self
-      self.call_js("make_editor", spec, self, self.tag.parent)
-      #self.call_js("make_editor", spec, self, parent)
-            
+      self.call_js("make_editor", spec, self, self.tag.parent)            

@@ -7,7 +7,7 @@ from anvil.tables import app_tables
 
 class vega_lite(vega_liteTemplate):
   def __init__(self, **properties):
-    # Set Form properties and Data Bindings.
+
     self.init_components(**properties)
     
     self.tag.form_shown=False
@@ -18,6 +18,8 @@ class vega_lite(vega_liteTemplate):
   },
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
   "mark": "circle",
+  "width": 310,
+  "height": 300,
   "encoding": {
     "x": {
       "type": "quantitative",

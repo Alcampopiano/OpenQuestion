@@ -21,7 +21,7 @@ container:
       \ {\n        schema=data\n  \t\tmake_editor(spec, schema, comp, parent);\n \
       \ });\n\n\n};\n*/\n</script>\n  \n</body>\n<head>\n<style type=\"text/css\"\
       >\n  \n  .jsoneditor {\n    height: 400px;\n    border: 0;\n  }\n  \n  .jsoneditor-menu\
-      \ {\n  background-color: gray;\n  border: 0;\n}\n  \n .ace-jsoneditor .ace_gutter-active-line\
+      \ {\n  background-color: lightgray;\n  border: 0;\n}\n  \n .ace-jsoneditor .ace_gutter-active-line\
       \ {\n\tbackground-color: white\n}\n  \n.ace-jsoneditor .ace_gutter {\n  background:\
       \ white\n  }\n  \n.jsoneditor-statusbar {\n  visibility: hidden;\n  }\n  \n\
       \  /*\n  \n  .jsoneditor-menu > button.jsoneditor-transform {\n  color: black;\n\
