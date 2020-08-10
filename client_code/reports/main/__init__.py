@@ -5,6 +5,7 @@ import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 #from ... import charts
+from ... import reports
 from .. import widgets
 
 class main(mainTemplate):
@@ -20,11 +21,11 @@ class main(mainTemplate):
       
     if row:
       print('call load method in report module')
-#       self.tag.id=row['form_id']
-#       self.preview_link.url=anvil.server.get_app_origin() + '#' + row['form_id']
-#       self.tag.num_widgets=row['schema']['num_widgets']
-#       self.text_box_title.text=row['title']
-#       build.build_form(row['schema'], self.column_panel)
+      self.tag.id=row['form_id']
+      #self.preview_link.url=anvil.server.get_app_origin() + '#' + row['form_id']
+      self.tag.num_widgets=row['schema']['num_widgets']
+      self.text_box_title.text=row['title']
+      reports.build_form(row['schema'], self.column_panel)
       
     else:
       
