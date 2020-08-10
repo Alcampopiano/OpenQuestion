@@ -58,8 +58,6 @@ def build_schema(column_panel):
     section_schema['type']='section'
     section_schema['title']=section.text_box_title.text
     section_schema['id']=section.label_id.text
-    #section_schema['visible']=True#section.tag.visible
-    section_schema['logic']=section.tag.logic
     section_schema['widgets']=[]
     
     for widget in section.column_panel.get_components():

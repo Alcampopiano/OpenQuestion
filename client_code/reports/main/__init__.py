@@ -89,7 +89,7 @@ class main(mainTemplate):
     """This method is called when the link is clicked"""
     comp=widgets.markdown(section=self.tag.active_section)
     self.tag.active_section.column_panel.add_component(comp)
-    self.color_rows(self.tag.active_section)
+    #self.color_rows(self.tag.active_section)
     comp.label_id.text=self.tag.num_widgets
     self.tag.num_widgets+=1
     self.tag.form_dict[comp.label_id.text]=comp
@@ -106,7 +106,7 @@ class main(mainTemplate):
     if self.tag.data_dicts:
       comp=widgets.chart(section=self.tag.active_section)
       self.tag.active_section.column_panel.add_component(comp)
-      self.color_rows(self.tag.active_section)
+      #self.color_rows(self.tag.active_section)
       comp.label_id.text=self.tag.num_widgets
       self.tag.num_widgets+=1
       self.tag.form_dict[comp.label_id.text]=comp
