@@ -11,11 +11,12 @@ components:
   components:
   - type: Label
     properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: Your suveys, font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      visible: true, text: Your suveys, font_size: 20, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
       underline: false, icon: ''}
     name: label_6
     layout_properties: {grid_position: 'JLHQSV,YANPVC'}
+    event_bindings: {}
   - type: DataGrid
     properties:
       role: null
@@ -64,11 +65,12 @@ components:
     layout_properties: {grid_position: 'ZOWWQV,ZDKPYQ'}
   - type: Label
     properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: Your reports, font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      visible: true, text: Your reports, font_size: 20, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
       underline: false, icon: ''}
     name: label_4
     layout_properties: {grid_position: 'ESCNAG,GNOJTB'}
+    event_bindings: {}
   - type: DataGrid
     properties:
       role: null

@@ -47,6 +47,7 @@ def build_report(schema, charts_dict, column_panel):
 def build_schema(column_panel):
   
   schema={}
+  chart_dict={}
   schema['title']=get_open_form().text_box_title.text 
   #schema['id']=get_open_form().tag.id # column_panel.tag.id
   schema['num_widgets']=get_open_form().tag.num_widgets
@@ -63,68 +64,23 @@ def build_schema(column_panel):
     for widget in section.column_panel.get_components():
       
       widget_schema={}
-      #widget_schema['visible']=True#widget.tag.visible
-      widget_schema['logic']=widget.tag.logic
-      #print(widget.tag.logic)
       widget_schema['id']=widget.label_id.text
-      widget_schema['title']=widget.text_box_title.text
       
-      if 'text_box' is widget.__name__:
+      if 'chart' is widget.__name__:
         
-        widget_schema['type']='text_box'
-        widget_schema['placeholder']=widget.text_box_placeholder.text
-        widget_schema['mandatory']=widget.check_box_mandatory.checked
-        widget_schema['number']=widget.check_box_number.checked
+        widget_schema['type']='chart'
+        chart_dict[str(widget_schema['id'])]=widget.tag.chart.tag.vl_spec
     
-      elif 'drop_down' is widget.__name__:
-        
-        widget_schema['type']='drop_down'
-        widget_schema['placeholder']=widget.text_box_placeholder.text
-        widget_schema['options']=widget.text_area_options.text
-        widget_schema['mandatory']=widget.check_box_mandatory.checked
-     
-      elif 'date' is widget.__name__:
-        
-        widget_schema['type']='date'
-        widget_schema['placeholder']=widget.text_box_placeholder.text
-        widget_schema['format']=widget.text_box_format.text
-        widget_schema['mandatory']=widget.check_box_mandatory.checked
-        
-      elif 'check_box' is widget.__name__:
-        
-        widget_schema['type']='check_box'
-        widget_schema['options']=widget.text_area_options.text
-        
-      elif 'radio_button' is widget.__name__:
-        
-        widget_schema['type']='radio_button'
-        widget_schema['options']=widget.text_area_options.text
-        
       elif 'markdown' is widget.__name__:
         
         widget_schema['type']='markdown'
-        widget_schema['placeholder']=widget.text_area_text.placeholder
         widget_schema['text']=widget.text_area_text.text
-        
-      elif 'text_area' is widget.__name__:
-        
-        widget_schema['type']='text_area'
-        widget_schema['placeholder']=widget.text_box_placeholder.text
-        
-      elif 'slider' is widget.__name__:
-        
-        widget_schema['type']='slider'
-        widget_schema['min_val']=widget.text_box_min_val.text
-        widget_schema['max_val']=widget.text_box_max_val.text
-        widget_schema['step']=widget.text_box_step.text
-        widget_schema['value']=widget.text_box_value.text
-        widget_schema['labels']=widget.text_area_labels.text
     
       section_schema['widgets'].append(widget_schema)
       
     schema['widgets'].append(section_schema)
     
-  return schema
+  return schema, chart_dict
 
     
 

@@ -9,15 +9,22 @@ name: OpenQuestion
 runtime_options: {version: 2, client_version: '3', server_version: python3-full}
 metadata: {}
 startup_form: build.branch.confirm_content
-native_deps: {head_html: "<script>\nfunction get_jQuery_obj(component) {\n    // deal\
-    \ with buttons being the surrounding div rather than the button element\n    if\
-    \ (component.v._anvil.element[0].classList.contains(\"anvil-button\")) {\n   \
-    \     return $(component.v._anvil.element[0].firstElementChild)\n        // jQuery\
-    \ object\n    } else {\n        return component.v._anvil.element\n    };  //\
-    \ jQuery object\n};\n\nfunction augment(component, event) {\n    const element\
-    \ = get_jQuery_obj(component);\n    component = component.v;\n\tcomponent._anvil.eventTypes[event]\
-    \ = {\n        'name': event,\n    };\n    // hover is different\n    const event_type\
-    \ = event == 'hover' ? 'mouseenter mouseleave' : event;\n\t\n  \t// set the event\
+native_deps: {head_html: "<script>\n/*\nfunction get_jQuery_obj(component) {\n   \
+    \ // deal with buttons being the surrounding div rather than the button element\n\
+    \    if (component.v._anvil.element[0].classList.contains(\"anvil-button\")) {\n\
+    \        return $(component.v._anvil.element[0].firstElementChild)\n        //\
+    \ jQuery object\n    } else {\n        return component.v._anvil.element\n   \
+    \ };  // jQuery object\n};\n*/\n  \nfunction get_jQuery_obj(component) {\n   \
+    \ // deal with buttons being the surrounding div rather than the button element\n\
+    \    const classlist = component.v._anvil.element[0].classList;\n    if (classlist.contains(\"\
+    anvil-button\")) {\n        return $(component.v._anvil.element[0].firstElementChild)\n\
+    \        // jQuery object\n    } else if (classlist.contains(\"file-loader\"))\
+    \ {\n        return component.v._anvil.element.find('form');\n    } else {\n \
+    \       return component.v._anvil.element\n    };  // jQuery object\n};\n\nfunction\
+    \ augment(component, event) {\n    const element = get_jQuery_obj(component);\n\
+    \    component = component.v;\n\tcomponent._anvil.eventTypes[event] = {\n    \
+    \    'name': event,\n    };\n    // hover is different\n    const event_type =\
+    \ event == 'hover' ? 'mouseenter mouseleave' : event;\n\t\n  \t// set the event\
     \ for the jquery element\n    element.on(event_type, function (e) {\n        let\
     \ e_args = {};\n        if (event_type.includes('key')) {\n            e_args\
     \ = {key:       e.key,       key_code: e.keyCode,\n                      shift_key:\

@@ -22,8 +22,8 @@ class toolbar(toolbarTemplate):
     del get_open_form().tag.form_dict[self.tag.parent.label_id.text]
     self.tag.parent.remove_from_parent()
     
-    if not self.tag.is_section:
-      get_open_form().color_rows(self.tag.section)
+#     if not self.tag.is_section:
+#       get_open_form().color_rows(self.tag.section)
       
   def move_widget(self, **event_args):
     
@@ -38,8 +38,8 @@ class toolbar(toolbarTemplate):
       section.column_panel.clear()
       [section.column_panel.add_component(item) for item in items]
       
-    if not self.tag.is_section:
-      get_open_form().color_rows(self.tag.section)
+#     if not self.tag.is_section:
+#       get_open_form().color_rows(self.tag.section)
       
       
   def preview_widget(self, **event_args):
