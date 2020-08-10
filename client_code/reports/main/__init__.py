@@ -13,7 +13,6 @@ class main(mainTemplate):
     self.init_components(**properties)
     
     #self.tag.row=row
-    self.tag.form_dict={}
     #self.tag.num_widgets=0
     save_button=Button(text='save', role='primary-color')
     save_button.set_event_handler('click', self.save_click)
@@ -28,6 +27,9 @@ class main(mainTemplate):
 #       build.build_form(row['schema'], self.column_panel)
       
     else:
+      
+      self.tag.form_dict={}
+      self.tag.chart_widgets={}
       self.tag.data_dicts={}
       self.tag.id=None
       self.tag.num_widgets=0  
