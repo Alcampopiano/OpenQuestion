@@ -54,6 +54,12 @@ def make_html_report(report_id):
   html="""
 <!DOCTYPE html>
 <html>
+<style>
+.center {
+  margin: auto;
+  width: 50%;
+}
+</style>
 <head>
   <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
 <script src="https://cdn.jsdelivr.net/npm/vega@5.10.0"></script>
@@ -64,6 +70,7 @@ var opts={"renderer": "svg", "mode": "vega-lite", "actions": {"export": true, "s
 </script>
 </head>
 <body>
+<div class="center">
 """
   
   for section_schema in schema['widgets']:
@@ -92,7 +99,8 @@ var opts={"renderer": "svg", "mode": "vega-lite", "actions": {"export": true, "s
         html+=convert_markdown(widget_schema['text'])
         
   
-  html+="</body></html>"
+  html+="</div></body></html>"
+  
   
   m=anvil.BlobMedia('text/html', html.encode(), name=report['title']+'.html')
   
@@ -103,19 +111,22 @@ var opts={"renderer": "svg", "mode": "vega-lite", "actions": {"export": true, "s
 def gen_vega_vis_named_data(div_id, spec, data_name, data_values):
   
   html=f"""
-<div id={div_id}></div>
+<p>
+<div id=vis{div_id}></div>
 
 <script type="text/javascript">
   var spec = {spec};
-  var data_name = {data_name};
-  var data_value = {data_values};
-  vegaEmbed('#{div_id}', spec, opts).then(res => res.view
+  var data_name = "{data_name}";
+  var data_values = {data_values};
+  vegaEmbed('#vis{div_id}', spec, opts).then(res => 
+                                                res.view
                                                 .insert(data_name, data_values)
                                                 .resize()
                                                 .run()
-                                                .catch(console.error)
                                                 );
+
 </script>
+</p>
   """
 
   return html
@@ -124,11 +135,11 @@ def gen_vega_vis_named_data(div_id, spec, data_name, data_values):
 def gen_vega_vis_no_named_data(div_id, spec):
   
   html=f"""
-<div id={div_id}></div>
+<div id="vis{div_id}"></div>
 
 <script type="text/javascript">
   var spec = {spec};
-  vegaEmbed('#{div_id}', spec, opts)
+  vegaEmbed('#vis{div_id}', spec, opts)
 </script>
   """
 
