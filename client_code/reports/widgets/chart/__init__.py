@@ -18,13 +18,15 @@ class chart(chartTemplate):
     
     json_editor=json()
     chart=vega_lite()
-        
+    self.tag.chart=chart
+     
     json_editor.tag.parent=self.column_panel_json_container
     json_editor.tag.chart=chart
 
     self.column_panel_json_container.add_component(json_editor, full_width_row=True)
     self.column_panel_vis_container.add_component(chart, full_width_row=True)
 
+    
     #self.column_panel.add_component(json_chart, full_width_row=True)
     #self.tag.chart_wigets.append(chart)
     

@@ -30,6 +30,7 @@ class markdown(markdownTemplate):
     
   def column_panel_container_click(self, **event_args):
     self.text_area_text.visible=True
+    self.text_area_text.focus()
     self.column_panel_container.visible=False
 
 

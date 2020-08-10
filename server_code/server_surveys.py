@@ -72,6 +72,13 @@ def get_forms():
   return forms
 
 @anvil.server.callable
+def get_reports():
+  
+  reports=[dict(row) for row in app_tables.reports.search()]
+  
+  return reports
+
+@anvil.server.callable
 def save_schema(form_id, schema):
   
   if not form_id:

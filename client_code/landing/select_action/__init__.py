@@ -15,6 +15,9 @@ class select_action(select_actionTemplate):
     rows=anvil.server.call('get_forms')
     self.repeating_panel_1.items=rows
     
+    rows=anvil.server.call("get_reports")
+    self.repeating_panel_2.items=rows
+    
 
   def new_survey_click(self, **event_args):
     """This method is called when the button is clicked"""

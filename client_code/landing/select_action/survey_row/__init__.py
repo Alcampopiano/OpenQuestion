@@ -14,7 +14,7 @@ class survey_row(survey_rowTemplate):
     self.label_title.text=self.item['title']
     self.link_build.tag.row=self.item
 
-  def link_build_click(self, **event_args):
+  def link_build_form_click(self, **event_args):
 
     row=self.link_build.tag.row
     open_form('build.main', row=row)
@@ -24,10 +24,10 @@ class survey_row(survey_rowTemplate):
     row=self.link_build.tag.row
     download(row['submissions'])
     
-  def charts_click(self, **event_args):
+#   def charts_click(self, **event_args):
     
-    row=self.link_build.tag.row
-    open_form('charts.main', row=row)
+#     row=self.link_build.tag.row
+#     open_form('charts.main', row=row)
 
 
   

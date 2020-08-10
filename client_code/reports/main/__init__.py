@@ -13,19 +13,19 @@ class main(mainTemplate):
 
     self.init_components(**properties)
     
-    #self.tag.row=row
+    self.tag.row=row
     #self.tag.num_widgets=0
     save_button=Button(text='save', role='primary-color')
     save_button.set_event_handler('click', self.save_click)
     self.add_component(save_button)
       
     if row:
-      print('call load method in report module')
-      self.tag.id=row['form_id']
+      self.tag.id=row['report_id']
+      self.tag.data_dicts=row['datasets']
       #self.preview_link.url=anvil.server.get_app_origin() + '#' + row['form_id']
       self.tag.num_widgets=row['schema']['num_widgets']
       self.text_box_title.text=row['title']
-      reports.build_form(row['schema'], self.column_panel)
+      reports.build_report(row['schema'], row['charts'], self.column_panel)
       
     else:
       
@@ -47,8 +47,21 @@ class main(mainTemplate):
 #     anvil.server.call('save_report', '1', specs, datasets)
     
   def form_show(self, **event_args):
-    self.section_widget_click()
     
+    if not self.tag.row:
+      self.section_widget_click()
+      
+    else:
+      
+      last_section=self.column_panel.get_components()[-1]
+      last_section.section_select()
+      
+#       for section in self.column_panel.get_components():
+#         self.color_rows(section)
+        
+#       section.section_select()
+
+      
   def color_rows(self, section, **event_args):
             
     for i, comp in enumerate(section.column_panel.get_components()):

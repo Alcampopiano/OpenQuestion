@@ -12,9 +12,9 @@ components:
     visible: true, text: build, font_size: null, wrap_on: mobile, font: '', col_spacing: medium,
     spacing_above: small, icon_align: left, col_widths: '', spacing_below: small,
     italic: false, background: '', bold: false, underline: false, icon: ''}
-  name: link_1
+  name: link_build
   layout_properties: {column: WNVKNI}
-  event_bindings: {}
+  event_bindings: {click: link_build_report_click}
 - type: Link
   properties: {role: null, url: '', align: left, tooltip: '', border: '', foreground: '',
     visible: true, text: share, font_size: null, wrap_on: mobile, font: '', col_spacing: medium,
