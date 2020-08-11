@@ -384,6 +384,10 @@ div.output_subarea {
     color: #000;
 }
 
+div.section_header {
+    text-align: center;
+}
+
 </style>
 <head>
   <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
@@ -400,20 +404,22 @@ var opts={"renderer": "svg", "mode": "vega-lite", "actions": {"export": true, "s
 """
   
   for section_schema in schema['widgets']:
-    
-    #html+=f"<h2>{section_schema['title']}</h2>"
+        
     html+="""
 <div tabindex="-1" id="notebook" class="border-box-sizing">
 	<div class="container" id="notebook-container">    
     """
     
-    html+=f"<h1>{section_schema['title']}</h1>"
+    html+=f"""
+      <div class="section_header">
+          <h1>{section_schema['title']}</h1>
+      </div>
+    """
 
     for widget_schema in section_schema['widgets']:
       
       if widget_schema['type']=='markdown':
-        
-        #html+=convert_markdown(widget_schema['text'])
+                
         html+="""
 		<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 			<div class="inner_cell">
