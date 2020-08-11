@@ -19,4 +19,8 @@ components:
   name: text_area
   layout_properties: {grid_position: 'RDOOFD,MHVNLS'}
   event_bindings: {}
+- type: form:form.widgets.widget_utilities.hr
+  properties: {}
+  name: hr
+  layout_properties: {grid_position: 'FPAWNW,FYJUWY'}
 is_package: true

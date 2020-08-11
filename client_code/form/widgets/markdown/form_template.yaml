@@ -14,4 +14,8 @@ components:
   properties: {}
   name: html_display
   layout_properties: {grid_position: 'ENDNFU,KYJDZS'}
+- type: form:form.widgets.widget_utilities.hr
+  properties: {}
+  name: hr
+  layout_properties: {grid_position: 'ZUXTPY,AFYPXR'}
 is_package: true

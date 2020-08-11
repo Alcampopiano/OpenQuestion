@@ -16,4 +16,8 @@ components:
   name: column_panel
   layout_properties: {grid_position: 'CPZUSJ,IXZWEC'}
   event_bindings: {}
+- type: form:form.widgets.widget_utilities.hr
+  properties: {}
+  name: hr
+  layout_properties: {grid_position: 'LRSWHY,ORMVOF'}
 is_package: true

@@ -18,7 +18,7 @@ components:
     name: label_title
     layout_properties: {slot: default, grid_position: 'QICNUQ,KANBSL'}
     event_bindings: {}
-  - type: form:form.widgets.slider_custom
+  - type: form:form.widgets.widget_utilities.slider_custom
     properties: {}
     name: slider
     layout_properties: {slot: default, grid_position: 'VHLLMQ,ALUHGU'}
@@ -31,4 +31,8 @@ components:
     name: label_value
     layout_properties: {slot: default, grid_position: 'OPWRFF,VJAJKD'}
     event_bindings: {show: form_show}
+- type: form:form.widgets.widget_utilities.hr
+  properties: {}
+  name: hr
+  layout_properties: {slot: default}
 is_package: true

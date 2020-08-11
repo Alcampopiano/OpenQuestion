@@ -27,4 +27,8 @@ components:
   layout_properties:
     col_widths: {}
     grid_position: YHHMHW,AUHOST
+- type: form:form.widgets.widget_utilities.hr
+  properties: {}
+  name: hr
+  layout_properties: {grid_position: 'XOYQIL,JSJNZM'}
 is_package: true

@@ -23,20 +23,23 @@ class main(mainTemplate):
     
     
   def form_show(self, **event_args):
-    
-    for section in self.column_panel.get_components():
-        self.color_rows(section)
-        
+    self.hide_last_hr()    
     self.column_panel.get_components()[0].section_select()
     
-    
-  def color_rows(self, section, **event_args):
-          
-    for i, comp in enumerate(section.column_panel.get_components()):
-  
-      if not i%2:
-        comp.background='theme:Gray 100'
         
-      else:
-        comp.background='white'
+  def hide_last_hr(self, **event_args):
+    
+    for section in self.column_panel.get_components():
+      
+      found=False
+      for comp in reversed(section.column_panel.get_components()):
+        
+        if comp.visible and not found:
+          comp.hr.visible=False
+          found=True
+          
+        else:
+          comp.hr.visible=True
+          
+        
     
