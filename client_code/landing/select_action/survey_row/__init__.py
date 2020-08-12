@@ -16,8 +16,9 @@ class survey_row(survey_rowTemplate):
 
   def button_build_form_click(self, **event_args):
 
-    row=self.button_build.tag.row
-    open_form('build.main', row=row)
+    with Notification('', title='please wait...'):
+      row=self.button_build.tag.row
+      open_form('build.main', row=row)
 
   def data_click(self, **event_args):
 

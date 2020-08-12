@@ -56,21 +56,6 @@ class main(mainTemplate):
       last_section=self.column_panel.get_components()[-1]
       last_section.section_select()
       
-#       for section in self.column_panel.get_components():
-#         self.color_rows(section)
-        
-#       section.section_select()
-
-      
-#   def color_rows(self, section, **event_args):
-            
-#     for i, comp in enumerate(section.column_panel.get_components()):
-
-#       if not i%2:
-#         comp.background='theme:Gray 100'
-        
-#       else:
-#         comp.background='white'
           
   def link_landing_click(self, **event_args):
      open_form('landing.select_action')
