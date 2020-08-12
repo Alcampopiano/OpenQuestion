@@ -421,7 +421,8 @@ var opts={"renderer": "svg", "mode": "vega-lite", "actions": {"export": true, "s
       if widget_schema['type']=='markdown':
                 
         html+="""
-		<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+		<div class="cell border-box-sizing text_cell rendered">
+          <div class="prompt input_prompt">
 			<div class="inner_cell">
 				<div class="text_cell_render border-box-sizing rendered_html">
         """
@@ -429,8 +430,9 @@ var opts={"renderer": "svg", "mode": "vega-lite", "actions": {"export": true, "s
         html+=convert_markdown(widget_schema['text'])
         
         html+="""
-				</div>
-			</div>
+    			</div>
+    		</div>
+          </div>
 		</div>        
         """
        
@@ -499,6 +501,7 @@ def gen_vega_vis_named_data(div_id, spec, data_name, data_values):
 
 def gen_vega_vis_no_named_data(div_id, spec):
   
+  print('heree')
   
   html=f"""
 		<div class="cell border-box-sizing code_cell rendered">

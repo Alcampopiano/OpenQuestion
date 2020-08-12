@@ -5,8 +5,6 @@ from anvil.tables import app_tables
 from anvil import *
 from . import widgets
 
-'%d %b, %Y %H:%M:%S'
-
 def build_report(schema, charts_dict, column_panel):
   
   column_panel.tag.title=schema['title']
