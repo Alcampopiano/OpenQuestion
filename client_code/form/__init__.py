@@ -4,7 +4,6 @@ import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 from . import widgets
-from .widgets.widget_utilities.hr import hr
 
 def submit_data(column_panel):
   
@@ -235,5 +234,6 @@ def check_logic_for_visibility(target_id):
       else:
         form_dict[target_id].visible=False
         
-      get_open_form().hide_last_hr()
+      #get_open_form().hide_last_hr()
+      get_open_form().color_rows()
       

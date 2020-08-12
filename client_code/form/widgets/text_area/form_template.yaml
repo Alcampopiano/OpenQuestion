@@ -19,8 +19,8 @@ components:
   name: text_area
   layout_properties: {grid_position: 'RDOOFD,MHVNLS'}
   event_bindings: {}
-- type: form:form.widgets.widget_utilities.hr
-  properties: {}
-  name: hr
-  layout_properties: {grid_position: 'FPAWNW,FYJUWY'}
+- type: Spacer
+  properties: {height: 32}
+  name: spacer_1
+  layout_properties: {grid_position: 'WQFSTQ,EUPINS'}
 is_package: true

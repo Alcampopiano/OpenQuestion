@@ -2,16 +2,16 @@ is_package: true
 container:
   type: HtmlTemplate
   properties: {html: '@theme:standard-page.html'}
-  event_bindings: {}
+  event_bindings: {show: form_show}
 components:
 - type: ColumnPanel
-  properties: {col_widths: '{"ENYZVD":20,"TVNDOS":40,"JIYRQQ":20,"VJQZBP":40}'}
+  properties: {col_widths: '{"TVNDOS":40,"VJQZBP":40}'}
   name: content_panel
   layout_properties: {slot: default}
   components:
   - type: Label
     properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: Your suveys, font_size: 20, font: '', spacing_above: small,
+      visible: true, text: Surveys, font_size: 20, font: '', spacing_above: small,
       icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
       underline: false, icon: ''}
     name: label_6
@@ -44,28 +44,21 @@ components:
       layout_properties: {}
       event_bindings: {hide: repeating_panel_1_hide}
     event_bindings: {}
-  - type: Label
-    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: Start a new survey, font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
-    name: label_2
-    layout_properties: {grid_position: 'QEKFNW,ENYZVD'}
   - type: Button
     properties: {role: primary-color, align: left, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: '', font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: 'fa:plus'}
+      foreground: '', visible: true, text: New survey, font_size: null, font: '',
+      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: 'fa:plus'}
     name: primary_color_1
     layout_properties: {grid_position: 'QEKFNW,TVNDOS'}
     event_bindings: {click: new_survey_click}
-  - type: Spacer
-    properties: {height: 32}
-    name: spacer_1
-    layout_properties: {grid_position: 'ZOWWQV,ZDKPYQ'}
+  - type: form:utilities.hr
+    properties: {}
+    name: custom_1
+    layout_properties: {grid_position: 'FGLTJQ,USTGEK'}
   - type: Label
     properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: Your reports, font_size: 20, font: '', spacing_above: small,
+      visible: true, text: Reports, font_size: 20, font: '', spacing_above: small,
       icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
       underline: false, icon: ''}
     name: label_4
@@ -96,18 +89,11 @@ components:
       name: repeating_panel_2
       layout_properties: {}
       event_bindings: {}
-  - type: Label
-    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: Start a new report, font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
-    name: label_5
-    layout_properties: {grid_position: 'VOYDUB,JIYRQQ'}
   - type: Button
     properties: {role: primary-color, align: left, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: '', font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: 'fa:plus'}
+      foreground: '', visible: true, text: new report, font_size: null, font: '',
+      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: 'fa:plus'}
     name: primary_color_2
     layout_properties: {grid_position: 'VOYDUB,VJQZBP'}
     event_bindings: {click: new_report_click}

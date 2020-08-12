@@ -27,8 +27,8 @@ components:
   layout_properties:
     col_widths: {}
     grid_position: YHHMHW,AUHOST
-- type: form:form.widgets.widget_utilities.hr
-  properties: {}
-  name: hr
-  layout_properties: {grid_position: 'XOYQIL,JSJNZM'}
+- type: Spacer
+  properties: {height: 32}
+  name: spacer_1
+  layout_properties: {grid_position: 'WHGWXR,UTMVNJ'}
 is_package: true

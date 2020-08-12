@@ -24,8 +24,8 @@ components:
   name: label_mandatory
   layout_properties: {grid_position: 'ROGUOR,RBIPJJ'}
   event_bindings: {}
-- type: form:form.widgets.widget_utilities.hr
-  properties: {}
-  name: hr
-  layout_properties: {grid_position: 'QBWAVD,XYIYDG'}
+- type: Spacer
+  properties: {height: 32}
+  name: spacer_1
+  layout_properties: {grid_position: 'KSXDJY,COVTPB'}
 is_package: true

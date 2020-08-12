@@ -7,20 +7,20 @@ components:
   name: label_title
   layout_properties: {column: HERZHP}
   event_bindings: {}
-- type: Link
-  properties: {role: null, url: '', align: left, tooltip: '', border: '', foreground: '',
-    visible: true, text: build, font_size: null, wrap_on: mobile, font: '', col_spacing: medium,
-    spacing_above: small, icon_align: left, col_widths: '', spacing_below: small,
-    italic: false, background: '', bold: false, underline: false, icon: ''}
-  name: link_build
+- type: Button
+  properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+    foreground: '', visible: true, text: '', font_size: null, font: '', spacing_above: small,
+    icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+    underline: false, icon: 'fa:pencil'}
+  name: button_build
   layout_properties: {column: WNVKNI}
-  event_bindings: {click: link_build_report_click}
-- type: Link
-  properties: {role: null, url: '', align: left, tooltip: '', border: '', foreground: '',
-    visible: true, text: download, font_size: null, wrap_on: mobile, font: '', col_spacing: medium,
-    spacing_above: small, icon_align: left, col_widths: '', spacing_below: small,
-    italic: false, background: '', bold: false, underline: false, icon: ''}
-  name: link_2
+  event_bindings: {click: button_build_click}
+- type: Button
+  properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+    foreground: '', visible: true, text: '', font_size: null, font: '', spacing_above: small,
+    icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+    underline: false, icon: 'fa:download'}
+  name: button_download
   layout_properties: {column: SSDLKJ}
   event_bindings: {}
 is_package: true

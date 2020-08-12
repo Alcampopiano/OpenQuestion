@@ -27,6 +27,26 @@ class select_action(select_actionTemplate):
     """This method is called when the button is clicked"""
     open_form('reports.main')
 
+  def form_show(self, **event_args):
+            
+    for i, comp in enumerate(self.repeating_panel_1.get_components()):
+
+      if not i%2:
+        comp.background='theme:Gray 100'
+        
+      else:
+        comp.background='white'
+        
+
+    for i, comp in enumerate(self.repeating_panel_2.get_components()):
+
+      if not i%2:
+        comp.background='theme:Gray 100'
+        
+      else:
+        comp.background='white'
+
+
 
 
 

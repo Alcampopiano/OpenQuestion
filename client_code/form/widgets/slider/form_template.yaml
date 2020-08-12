@@ -31,8 +31,8 @@ components:
     name: label_value
     layout_properties: {slot: default, grid_position: 'OPWRFF,VJAJKD'}
     event_bindings: {show: form_show}
-- type: form:form.widgets.widget_utilities.hr
-  properties: {}
-  name: hr
+- type: Spacer
+  properties: {height: 32}
+  name: spacer_1
   layout_properties: {slot: default}
 is_package: true

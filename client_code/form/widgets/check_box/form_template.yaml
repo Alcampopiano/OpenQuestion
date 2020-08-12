@@ -16,8 +16,8 @@ components:
   name: column_panel
   layout_properties: {grid_position: 'CPZUSJ,IXZWEC'}
   event_bindings: {}
-- type: form:form.widgets.widget_utilities.hr
-  properties: {}
-  name: hr
-  layout_properties: {grid_position: 'LRSWHY,ORMVOF'}
+- type: Spacer
+  properties: {height: 32}
+  name: spacer_1
+  layout_properties: {grid_position: 'HUTOYP,DBKEHM'}
 is_package: true
