@@ -25,5 +25,10 @@ class survey_row(survey_rowTemplate):
     row=self.button_build.tag.row
     download(row['submissions'])
 
+  def share_click(self, **event_args):
+    Notification('should copy the unique url to clipboard', 
+                 title="not yet implemented").show()
+
+
 
   

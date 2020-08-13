@@ -45,12 +45,9 @@ def make_html_report(report_id):
   schema=report['schema']
   charts=report['charts']
   datasets=report['datasets']
-   
-  #column_panel.tag.title=schema['title']
-  #main=column_panel.parent
-  #main.tag.form_dict={}
-  #column_panel.tag.id=schema['id']
   
+  # there is obviously a better way of doing this
+  # at least I should have this in an external location
   html="""
 <!DOCTYPE html>
 <html>
@@ -95,6 +92,7 @@ div#notebook {
 	line-height: 20px;
 	width: 100%;
 	padding-top: 20px;
+    padding-bottom: 50px;
 	margin: 0px;
 	outline: none;
 	-webkit-box-sizing: border-box;
@@ -143,7 +141,7 @@ div#notebook-container {
 
 /* JL CSS inspection shows just "#notebook-container" w/o "div" */
 div#notebook-container {
-    padding: 15px 150px 0px 150px; /* JL only used 15px as the only property*/
+    padding: 15px 150px 50px 150px; /* JL only used 15px as the only property*/
     background-color: #fff;
     min-height: 0;
     -webkit-box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);
@@ -481,11 +479,11 @@ def gen_vega_vis_named_data(div_id, spec, data_name, data_values):
 							  var data_name = "{data_name}";
 							  var data_values = {data_values};
 							  vegaEmbed('#vis{div_id}', spec, opts).then(res => 
-														                           res.view
-														                           .insert(data_name, data_values)
-														                           .resize()
-														                           .run()
-														                           );
+														                 res.view
+														                 .insert(data_name, data_values)
+														                 .resize()
+														                 .run()
+														                 );
 
 							</script>
 
@@ -500,9 +498,7 @@ def gen_vega_vis_named_data(div_id, spec, data_name, data_values):
 
 
 def gen_vega_vis_no_named_data(div_id, spec):
-  
-  print('heree')
-  
+    
   html=f"""
 		<div class="cell border-box-sizing code_cell rendered">
 			<div class="output_wrapper">

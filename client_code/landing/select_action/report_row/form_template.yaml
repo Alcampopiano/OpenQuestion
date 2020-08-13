@@ -22,5 +22,5 @@ components:
     underline: false, icon: 'fa:download'}
   name: button_download
   layout_properties: {column: SSDLKJ}
-  event_bindings: {}
+  event_bindings: {click: download_click}
 is_package: true

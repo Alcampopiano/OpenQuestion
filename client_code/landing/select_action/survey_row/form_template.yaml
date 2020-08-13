@@ -30,5 +30,5 @@ components:
     underline: false, icon: 'fa:share'}
   name: button_share
   layout_properties: {column: TQNHSB}
-  event_bindings: {}
+  event_bindings: {click: share_click}
 is_package: true

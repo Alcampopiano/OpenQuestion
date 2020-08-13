@@ -218,12 +218,6 @@ def check_logic_for_visibility(target_id):
         elif comparison=='>=':
           truth_array.append(actual_val>=test_val)
       
-#         print('comparison', condition['comparison'])
-#         print('test_val', test_val)
-#         print('actual_val', actual_val)
-      
-#       print('truth array', truth_array)
-#       print('func', logic['func'])
       
       if logic['func'] == 'any' and any(truth_array):
         form_dict[target_id].visible=True
@@ -234,6 +228,5 @@ def check_logic_for_visibility(target_id):
       else:
         form_dict[target_id].visible=False
         
-      #get_open_form().hide_last_hr()
       get_open_form().color_rows()
       

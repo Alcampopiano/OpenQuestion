@@ -44,7 +44,8 @@ def submit_data(cols, data, form_id):
     # USE FIX FROM BRIDGET
     #####
     csv_data=df.to_csv()
-    csv_data = bytes(csv_data, 'utf-8') # fix
+    csv_data=csv_data.encode()
+    #csv_data = bytes(csv_data, 'utf-8')
     #####
     
     m=anvil.BlobMedia('text/csv', csv_data, name='records.csv')
