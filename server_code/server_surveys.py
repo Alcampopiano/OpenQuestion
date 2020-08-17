@@ -59,7 +59,12 @@ def convert_markdown(text):
   return mistune.markdown(text, escape=False)
   
 
-def check_opening_closing_dates(current_date, opening_date, closing_date):
+def check_opening_closing_dates(opening_date, closing_date):
+  
+  current_date = datetime.now() #naive_local
+  print(opening_date < current_date)
+  print(current_date < closing_date)
+  print(current_date - closing_date)
 
   if opening_date and closing_date and (opening_date < current_date < closing_date):
     pass
@@ -81,13 +86,14 @@ def check_opening_closing_dates(current_date, opening_date, closing_date):
 @anvil.server.callable
 def get_form(form_id, current_date):
     
-  print("is it possible to get current date on the server (steal tz info from opening/closing date?)")
   row=app_tables.forms.get(form_id=form_id)
 
+  print('getting naive datetime from server rather than passing client aware tz')
+  print('not sure if this is the correct way to do it')
   print("check if current user is an admin that is testing so that dates do not disallow them")
   
   if True: # placeholder until user auth stuff is added 
-    check_opening_closing_dates(current_date, row['opening_date'], row['closing_date'])
+    check_opening_closing_dates(row['opening_date'], row['closing_date'])
  
   return row['schema']
   
