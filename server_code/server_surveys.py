@@ -61,10 +61,10 @@ def convert_markdown(text):
 
 def check_opening_closing_dates(opening_date, closing_date):
   
-  current_date = datetime.now() #naive_local
-  print(opening_date < current_date)
-  print(current_date < closing_date)
-  print(current_date - closing_date)
+  current_date = datetime.now(anvil.tz.tzlocal()) #aware_local
+  #print(current_date)
+  #print(opening_date)
+  #print(closing_date)
 
   if opening_date and closing_date and (opening_date < current_date < closing_date):
     pass
@@ -88,7 +88,7 @@ def get_form(form_id, current_date):
     
   row=app_tables.forms.get(form_id=form_id)
 
-  print('getting naive datetime from server rather than passing client aware tz')
+  print('getting aware datetime from server rather than passing client aware date')
   print('not sure if this is the correct way to do it')
   print("check if current user is an admin that is testing so that dates do not disallow them")
   
