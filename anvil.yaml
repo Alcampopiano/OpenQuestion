@@ -65,7 +65,7 @@ native_deps: {head_html: "<script>\n/*\nfunction get_jQuery_obj(component) {\n  
     : false}}  \n  \nfetch('https://vega.github.io/schema/vega-lite/v4.json')\n  \t\
     .then(function(resp){\n    \treturn resp.json();\n  \t})\n  \t.then(function(data)\
     \ {\n        schema=data\n  \t\t//make_editor(spec, schema, comp, parent);\n \
-    \ });\n</script>"}
+    \ });\n</script>\n\n"}
 db_schema:
 - name: Users
   id: 71213

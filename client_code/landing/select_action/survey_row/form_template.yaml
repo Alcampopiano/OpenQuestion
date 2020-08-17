@@ -27,7 +27,7 @@ components:
   properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
     foreground: '', visible: true, text: '', font_size: null, font: '', spacing_above: small,
     icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-    underline: false, icon: 'fa:share'}
+    underline: false, icon: 'fa:link'}
   name: button_share
   layout_properties: {column: TQNHSB}
   event_bindings: {click: share_click}

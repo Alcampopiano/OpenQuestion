@@ -14,5 +14,5 @@ if not get_url_hash():
   open_form('landing.select_action')
   
 else:
-    schema=anvil.server.call('get_form', get_url_hash(), datetime.now())
+    schema=anvil.server.call('get_form', get_url_hash())
     open_form('form.main', schema)

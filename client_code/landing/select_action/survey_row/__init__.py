@@ -7,6 +7,7 @@ import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 from ...settings.survey_settings import survey_settings
+from ...copy_link import copy_link
 
 class survey_row(survey_rowTemplate):
   def __init__(self, **properties):
@@ -30,8 +31,20 @@ class survey_row(survey_rowTemplate):
     download(row['submissions'])
 
   def share_click(self, **event_args):
-    Notification('should copy the unique url to clipboard', 
-                 title="not yet implemented").show()
+    
+    form_id=self.button_build.tag.row['form_id']
+    app_url=anvil.server.get_app_origin() + '#?' + 'form_id=' + form_id
+    content=copy_link()
+    #content.link_to_app.url=app_url
+    #content.link_to_app.text=app_url
+    
+    #c=confirm(content, large=True, 
+    #        buttons=[('copy', 'copy'), ('cancel', 'cancel')])
+    
+    #if c=='copy':
+    content.copy_click(app_url)
+    Notification('Share this link or paste it in the browser', title='Link copied!').show()
+  
 
   def settings_click(self, **event_args):
     row=self.button_build.tag.row

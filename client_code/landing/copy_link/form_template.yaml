@@ -1,0 +1,29 @@
+container:
+  type: HtmlTemplate
+  properties: {tooltip: '', background: '', foreground: '', border: '', visible: true,
+    role: null, html: "<script> \n  function copyclip(texttocopy) {\n    // Create\
+      \ new element\n    var el = document.createElement('textarea');\n    // Set\
+      \ value (string to be copied)\n    el.value = texttocopy;\n    // Set non-editable\
+      \ to avoid focus and move outside of view\n    el.setAttribute('readonly', '');\n\
+      \    el.style = {position: 'absolute', left: '-9999px'};\n    document.body.appendChild(el);\n\
+      \    // Select text inside element\n    el.select();\n    // Copy text to clipboard\n\
+      \    document.execCommand('copy');\n    // Remove temporary element\n    document.body.removeChild(el);\n\
+      \  }\n</script>"}
+  event_bindings: {}
+components:
+- type: ColumnPanel
+  properties: {col_widths: '{"HOOCGL":45}'}
+  name: column_panel_1
+  layout_properties: {slot: default}
+  event_bindings: {}
+  components:
+  - type: Link
+    properties: {role: null, url: '', align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: '', font_size: 12, wrap_on: mobile, font: '', col_spacing: medium,
+      spacing_above: small, icon_align: left, col_widths: '{}', spacing_below: small,
+      italic: false, background: '', bold: false, underline: false, icon: ''}
+    name: link_to_app
+    layout_properties: {slot: default, grid_position: 'KEQBGH,HOOCGL'}
+    event_bindings: {}
+    components: []
+is_package: true
