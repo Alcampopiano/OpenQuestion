@@ -59,10 +59,35 @@ def convert_markdown(text):
   return mistune.markdown(text, escape=False)
   
 
-@anvil.server.callable
-def get_form(form_id):
+def check_opening_closing_dates(current_date, opening_date, closing_date):
+
+  if opening_date and closing_date and (opening_date < current_date < closing_date):
+    pass
   
+  elif (opening_date and current_date>opening_date) and not closing_date:
+    pass
+  
+  elif (closing_date and current_date<closing_date) and not opening_date:
+    pass
+    
+  elif not opening_date and not closing_date:
+    pass
+  
+  else:
+    raise Exception("survey inactive")
+    
+    
+
+@anvil.server.callable
+def get_form(form_id, current_date):
+    
+  print("is it possible to get current date on the server (steal tz info from opening/closing date?)")
   row=app_tables.forms.get(form_id=form_id)
+
+  print("check if current user is an admin that is testing so that dates do not disallow them")
+  
+  if True: # placeholder until user auth stuff is added 
+    check_opening_closing_dates(current_date, row['opening_date'], row['closing_date'])
  
   return row['schema']
   
@@ -83,7 +108,7 @@ def get_reports():
 
 @anvil.server.callable
 def save_schema(form_id, schema):
-  
+    
   if not form_id:
     form_id=str(uuid.uuid4())
                 

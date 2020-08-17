@@ -3,11 +3,8 @@ import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
+from datetime import datetime
 
-'https://RZCX3HWGWWPZJCOH.anvil.app/MLWEXSSLJT4I3SM3B4MURYXP'
-'5bdbc005-055e-45ea-9a65-cd81529d59f5'
-
-'https://RZCX3HWGWWPZJCOH.anvil.app/MLWEXSSLJT4I3SM3B4MURYXP#5bdbc005-055e-45ea-9a65-cd81529d59f5'
 
 if not get_url_hash():
   
@@ -15,5 +12,5 @@ if not get_url_hash():
   open_form('landing.select_action')
   
 else:
-    schema=anvil.server.call('get_form', get_url_hash())
+    schema=anvil.server.call('get_form', get_url_hash(), datetime.now())
     open_form('form.main', schema)
