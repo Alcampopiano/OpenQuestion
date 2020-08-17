@@ -1,5 +1,7 @@
 from ._anvil_designer import select_actionTemplate
 from anvil import *
+import anvil.microsoft.auth
+import anvil.users
 import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
@@ -9,8 +11,9 @@ class select_action(select_actionTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-
-    # Any code you write here will run when the form opens.
+    
+    while not anvil.users.login_with_form():
+      pass
     
     rows=anvil.server.call('get_forms')
     self.repeating_panel_1.items=rows

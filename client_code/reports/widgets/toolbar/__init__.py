@@ -1,5 +1,7 @@
 from ._anvil_designer import toolbarTemplate
 from anvil import *
+import anvil.microsoft.auth
+import anvil.users
 import anvil.server
 
 class toolbar(toolbarTemplate):

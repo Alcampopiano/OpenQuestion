@@ -1,3 +1,5 @@
+import anvil.microsoft.auth
+import anvil.users
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
@@ -7,6 +9,14 @@ import uuid
 import mistune
 import pandas as pd
 import io
+
+def validate_user(u):
+  return u['admin']
+
+# @anvil.server.callable(require_user = validate_user)
+# def test():
+#   print("passed the test!")
+
 
 @anvil.server.callable
 def str_to_date_obj(date_str, date_format):
@@ -82,19 +92,19 @@ def check_opening_closing_dates(opening_date, closing_date):
     raise Exception("survey inactive")
     
     
-
 @anvil.server.callable
-def get_form(form_id, current_date):
+def get_form(form_id, current_date, preview_link_clicked):
     
   row=app_tables.forms.get(form_id=form_id)
 
   print('getting aware datetime from server rather than passing client aware date')
   print('not sure if this is the correct way to do it')
-  print("check if current user is an admin that is testing so that dates do not disallow them")
   
-  if True: # placeholder until user auth stuff is added 
+  # let admins preview otherwise, check for valid dates
+  if not anvil.users.get_user()['admin'] or \
+    (anvil.users.get_user()['admin'] and preview_link_clicked):
     check_opening_closing_dates(row['opening_date'], row['closing_date'])
- 
+        
   return row['schema']
   
 

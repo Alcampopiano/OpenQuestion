@@ -2,6 +2,13 @@ services:
 - source: /runtime/services/tables.yml
   client_config: {}
   server_config: {auto_create_missing_columns: false}
+- source: /runtime/services/anvil/users.yml
+  client_config: {allow_signup: false, enable_automatically: false, use_email: false,
+    confirm_email: false, use_microsoft: true}
+  server_config: {user_table: users}
+- source: /runtime/services/anvil/microsoft.yml
+  client_config: {}
+  server_config: {}
 startup: {type: module, module: start_up}
 package_name: OpenQuestion
 allow_embedding: false
@@ -60,6 +67,24 @@ native_deps: {head_html: "<script>\n/*\nfunction get_jQuery_obj(component) {\n  
     \ {\n        schema=data\n  \t\t//make_editor(spec, schema, comp, parent);\n \
     \ });\n</script>"}
 db_schema:
+- name: Users
+  id: 71213
+  python_name: users
+  columns:
+    FP3uvLzms0s=:
+      name: enabled
+      type: bool
+      admin_ui: {order: 1, width: 100}
+    ouhpmzg29iw=:
+      name: admin
+      type: bool
+      admin_ui: {order: 2, width: 200}
+    p8RYLBAw1qQ=:
+      name: email
+      type: string
+      admin_ui: {order: 0, width: 200}
+  access: {python_name: users, app_id: RZCX3HWGWWPZJCOH, server: full, client: none,
+    table_id: 71213}
 - name: forms
   id: 63199
   python_name: forms

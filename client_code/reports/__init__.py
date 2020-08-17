@@ -3,6 +3,8 @@ import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 from anvil import *
+import anvil.microsoft.auth
+import anvil.users
 from . import widgets
 
 def build_report(schema, charts_dict, column_panel):

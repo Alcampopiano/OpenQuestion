@@ -1,5 +1,7 @@
 from ._anvil_designer import slider_customTemplate
 from anvil import *
+import anvil.microsoft.auth
+import anvil.users
 
 class slider_custom(slider_customTemplate):
   def __init__(self, **properties):
