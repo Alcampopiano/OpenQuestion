@@ -51,6 +51,8 @@ def submit_data(cols, data, form_id):
     m=anvil.BlobMedia('text/csv', csv_data, name='records.csv')
     row.update(submissions=m)
     
+  return mistune.markdown(row['thank_you_msg'], escape=False)
+    
     
 @anvil.server.callable
 def convert_markdown(text):
@@ -85,8 +87,10 @@ def save_schema(form_id, schema):
   if not form_id:
     form_id=str(uuid.uuid4())
                 
+    default_thank_you="Thank you! Your responses have been submitted."
+    
     app_tables.forms.add_row(form_id=form_id, last_modified=datetime.now(), 
-                             schema=schema, title=schema['title'])
+                             schema=schema, title=schema['title'], thank_you_msg=default_thank_you)
            
   else:
     form_id=str(form_id)
@@ -94,6 +98,12 @@ def save_schema(form_id, schema):
     row.update(title=schema['title'], schema=schema, last_modified=datetime.now())
     
   return form_id
+  
+  
+@anvil.server.callable
+def save_survey_settings(form_id, settings_dict):
+  row=app_tables.forms.get(form_id=form_id)
+  row.update(**settings_dict)
   
   
 

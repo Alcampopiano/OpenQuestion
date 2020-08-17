@@ -79,10 +79,8 @@ def submit_data(column_panel):
       cols.append(col)
       data.append(val)
       
-  anvil.server.call('submit_data', cols, data, get_url_hash())
-  Notification('You may close this window', 
-                 title='Your data have been submitted').show()
-      
+  thank_you_msg=anvil.server.call('submit_data', cols, data, get_url_hash())
+  open_form('form.thank_you_msg', thank_you_msg)
     
 
 def build_form(schema, column_panel):

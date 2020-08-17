@@ -25,6 +25,7 @@ components:
       - {title: Column 2, id: HMTFLI, data_key: column_2}
       - {title: Column 4, id: OJKXDS, data_key: column_4}
       - {title: Column 5, id: TQNHSB, data_key: column_5}
+      - {title: Column 3, id: PLVZBJ, data_key: column_3}
       auto_header: false
       tooltip: ''
       border: ''

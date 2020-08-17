@@ -64,6 +64,10 @@ db_schema:
   id: 63199
   python_name: forms
   columns:
+    0A5NNm8d1Qo=:
+      name: thank_you_msg
+      type: string
+      admin_ui: {order: 7, width: 200}
     0LurdekMZ08=:
       name: schema
       type: simpleObject
@@ -76,6 +80,14 @@ db_schema:
       name: last_modified
       type: datetime
       admin_ui: {order: 2, width: 200}
+    bmyjwXkZDpo=:
+      name: opening_date
+      type: datetime
+      admin_ui: {order: 5, width: 200}
+    cBHbMLZ4TK4=:
+      name: closing_date
+      type: datetime
+      admin_ui: {order: 6, width: 200}
     lu7Wg5515RQ=:
       name: title
       type: string

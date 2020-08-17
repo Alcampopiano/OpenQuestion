@@ -40,8 +40,9 @@ class main(mainTemplate):
   def form_show(self, **event_args):
     
     if not self.tag.row:
-      self.section_widget_click()
-      
+      #self.section_widget_click()
+      self.add_widget_click(self.link_section)
+
     else:
       
       for section in self.column_panel.get_components():
@@ -78,11 +79,14 @@ class main(mainTemplate):
     widget_type=sender.text
     
     if widget_type != 'section':
+      
       comp = getattr(widgets, widget_type)(section=self.tag.active_section)
+      print(comp)      
       self.tag.active_section.column_panel.add_component(comp)
 
     else:
-      comp = getattr(widgets, widget_type)
+      comp = getattr(widgets, widget_type)()
+      print(comp)
       self.column_panel.add_component(comp)
 
     comp.label_id.text=self.tag.num_widgets

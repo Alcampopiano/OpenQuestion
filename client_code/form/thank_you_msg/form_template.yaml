@@ -1,0 +1,19 @@
+container:
+  type: ColumnPanel
+  event_bindings: {}
+  properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
+    spacing_below: small, background: ''}
+components:
+- type: FlowPanel
+  properties: {role: null, spacing: medium, align: center, tooltip: '', border: '',
+    foreground: '', visible: true, spacing_above: small, spacing_below: small, background: ''}
+  name: flow_panel_1
+  layout_properties: {grid_position: 'USRTXG,ARGHDV'}
+  event_bindings: {}
+  components:
+  - type: form:form.widgets.html_display
+    properties: {}
+    name: custom_html
+    layout_properties: {grid_position: 'BYWDCH,IVAAFO', row_background: campopianoa@hcdsb.org}
+is_package: true

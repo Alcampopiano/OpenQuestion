@@ -1,0 +1,52 @@
+container:
+  type: ColumnPanel
+  event_bindings: {}
+  properties: {col_widths: '{"JLNABB":12,"UDKFJZ":48,"EIWAAN":12,"ISHRRU":48,"PLDEXM":12,"RDYBKM":48}'}
+components:
+- type: Label
+  properties: {role: null, align: left, tooltip: '', border: '', foreground: '', visible: true,
+    text: 'opening_date:', font_size: null, font: '', spacing_above: small, icon_align: left,
+    spacing_below: small, italic: false, background: '', bold: false, underline: false,
+    icon: ''}
+  name: label_1
+  layout_properties: {grid_position: 'OZGLRC,JLNABB'}
+  event_bindings: {}
+- type: DatePicker
+  properties: {role: null, align: left, max_date: '', pick_time: true, tooltip: '',
+    placeholder: select date, border: '', enabled: true, foreground: '', visible: true,
+    font_size: null, font: '', spacing_above: small, spacing_below: small, italic: false,
+    date: '', min_date: '', background: '', bold: false, underline: false, format: ''}
+  name: date_picker_opening_date
+  layout_properties: {grid_position: 'OZGLRC,UDKFJZ'}
+  event_bindings: {}
+- type: Label
+  properties: {role: null, align: left, tooltip: '', border: '', foreground: '', visible: true,
+    text: 'closing_date:', font_size: null, font: '', spacing_above: small, icon_align: left,
+    spacing_below: small, italic: false, background: '', bold: false, underline: false,
+    icon: ''}
+  name: label_2
+  layout_properties: {grid_position: 'VCKAKY,EIWAAN'}
+- type: DatePicker
+  properties: {role: null, align: left, max_date: '', pick_time: true, tooltip: '',
+    placeholder: select date, border: '', enabled: true, foreground: '', visible: true,
+    font_size: null, font: '', spacing_above: small, spacing_below: small, italic: false,
+    date: '', min_date: '', background: '', bold: false, underline: false, format: ''}
+  name: date_picker_closing_date
+  layout_properties: {grid_position: 'VCKAKY,ISHRRU'}
+  event_bindings: {}
+- type: Label
+  properties: {role: null, align: left, tooltip: '', border: '', foreground: '', visible: true,
+    text: 'thank_you_msg:', font_size: null, font: '', spacing_above: small, icon_align: left,
+    spacing_below: small, italic: false, background: '', bold: false, underline: false,
+    icon: ''}
+  name: label_3
+  layout_properties: {grid_position: 'TUFURT,PLDEXM'}
+- type: TextArea
+  properties: {role: null, align: left, height: '', tooltip: '', placeholder: markdown here,
+    border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
+    auto_expand: true, font: '', spacing_above: small, spacing_below: small, italic: false,
+    background: '', bold: false, underline: false}
+  name: text_area_thank_you_msg
+  layout_properties: {grid_position: 'TUFURT,RDYBKM'}
+  event_bindings: {}
+is_package: true
