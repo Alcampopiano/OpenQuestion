@@ -3,8 +3,8 @@ services:
   client_config: {}
   server_config: {auto_create_missing_columns: false}
 - source: /runtime/services/anvil/users.yml
-  client_config: {allow_signup: false, enable_automatically: false, use_email: false,
-    confirm_email: false, use_microsoft: true}
+  client_config: {allow_signup: false, enable_automatically: false, use_email: true,
+    confirm_email: false, use_microsoft: true, require_secure_passwords: true}
   server_config: {user_table: users}
 - source: /runtime/services/anvil/microsoft.yml
   client_config: {}
@@ -83,6 +83,10 @@ db_schema:
       name: email
       type: string
       admin_ui: {order: 0, width: 200}
+    zaAkp+juu9E=:
+      name: last_login
+      type: datetime
+      admin_ui: {order: 3, width: 200}
   access: {python_name: users, app_id: RZCX3HWGWWPZJCOH, server: full, client: none,
     table_id: 71213}
 - name: forms
