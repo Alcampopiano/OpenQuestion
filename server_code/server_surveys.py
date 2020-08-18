@@ -13,11 +13,6 @@ import io
 def validate_user(u):
   return u['admin']
 
-# @anvil.server.callable(require_user = validate_user)
-# def test():
-#   print("passed the test!")
-
-
 @anvil.server.callable()
 def str_to_date_obj(date_str, date_format):
   
@@ -40,7 +35,9 @@ def submit_data(cols, data, url_hash):
     # USE FIX FROM BRIDGET
     #####
     csv_data=df_new.to_csv()
-    csv_data = bytes(csv_data, 'utf-8') # fix
+    csv_data=csv_data.encode()
+    #csv_data = bytes(csv_data, 'utf-8') # fix
+
     #####
     
     m=anvil.BlobMedia('text/csv', csv_data, name='records.csv')
