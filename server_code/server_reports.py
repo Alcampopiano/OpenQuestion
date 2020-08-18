@@ -19,12 +19,14 @@ def save_report(report_id, schema, specs, data_dicts):
   
   if not row:
     report_id=str(uuid.uuid4())
-    app_tables.reports.add_row(report_id=report_id, title=schema['title'], 
+    row=app_tables.reports.add_row(report_id=report_id, title=schema['title'], 
                                last_modified=datetime.datetime.now(),
                                schema=schema, charts=specs, datasets=data_dicts)
     
   else:
     row.update(title=schema['title'], schema=schema, charts=specs, datasets=data_dicts)
+    
+  return row['report_id']
 
 @anvil.server.callable
 def return_datasets(files):

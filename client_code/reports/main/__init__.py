@@ -43,10 +43,12 @@ class main(mainTemplate):
   def save_click(self, **event_args):
     schema, chart_dict=reports.build_schema(self.column_panel)
     datasets=self.tag.data_dicts
-
-    anvil.server.call('save_report', 
-                      self.tag.row['report_id'], 
+    
+    report_id=anvil.server.call('save_report', 
+                      self.tag.id, 
                       schema, chart_dict, datasets)
+    
+    self.tag.id=report_id
     
   def form_show(self, **event_args):
     
@@ -104,6 +106,10 @@ class main(mainTemplate):
     self.tag.file_loader.trigger('click')
 
   def link_download_click(self, **event_args):
+    
+    if not self.tag.id:
+      self.save_click()
+      
     m=anvil.server.call('make_html_report', self.tag.id)
     download(m)
 
