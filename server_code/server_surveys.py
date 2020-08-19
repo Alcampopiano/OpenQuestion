@@ -13,6 +13,12 @@ import io
 def validate_user(u):
   return u['admin']
 
+@anvil.server.callable(require_user = validate_user)
+def delete_survey(form_id):
+  
+  row=app_tables.forms.get(form_id=form_id)
+  row.delete()
+
 @anvil.server.callable()
 def str_to_date_obj(date_str, date_format):
   

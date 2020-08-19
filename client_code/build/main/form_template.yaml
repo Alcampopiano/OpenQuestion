@@ -27,10 +27,18 @@ components:
     properties: {role: null, url: '', align: left, tooltip: '', border: '', foreground: '',
       visible: true, text: '', font_size: null, wrap_on: mobile, font: '', col_spacing: medium,
       spacing_above: small, icon_align: left, col_widths: '', spacing_below: small,
-      italic: false, background: '', bold: false, underline: false, icon: 'fa:home'}
-    name: link_landing
+      italic: false, background: '', bold: false, underline: false, icon: 'fa:arrow-left'}
+    name: link_landing_survey
     layout_properties: {}
     event_bindings: {click: link_landing_click}
+  - type: Link
+    properties: {role: null, url: '', align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: '', font_size: null, wrap_on: mobile, font: '', col_spacing: medium,
+      spacing_above: small, icon_align: left, col_widths: '', spacing_below: small,
+      italic: false, background: '', bold: false, underline: false, icon: 'fa:home'}
+    name: link_home
+    layout_properties: {}
+    event_bindings: {click: link_home_click}
 - type: ColumnPanel
   properties: {col_widths: '{}'}
   name: column_panel_nav_bar

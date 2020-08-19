@@ -63,8 +63,11 @@ class main(mainTemplate):
         comp.background='white'
         
           
-  def link_landing_click(self, **event_args):
-     open_form('landing.select_action')
+  def link_landing_survey_click(self, **event_args):
+     open_form('landing.select_action_survey')
+      
+  def link_home_click(self, **event_args):
+    open_form('landing.main')
 
   def preview_link_click(self, **event_args):
     
@@ -166,6 +169,9 @@ class main(mainTemplate):
 #     comp.label_id.text=self.tag.num_widgets
 #     self.tag.num_widgets+=1
 #     self.tag.form_dict[comp.label_id.text]=comp
+
+
+
 
 
 

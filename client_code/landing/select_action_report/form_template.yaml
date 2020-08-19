@@ -1,0 +1,70 @@
+is_package: true
+container:
+  type: HtmlTemplate
+  properties: {html: '@theme:standard-page.html'}
+  event_bindings: {show: form_show}
+components:
+- type: ColumnPanel
+  properties: {col_widths: '{}'}
+  name: content_panel
+  layout_properties: {slot: default}
+  components:
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: Reports, font_size: 20, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
+      underline: false, icon: ''}
+    name: label_4
+    layout_properties:
+      col_widths: {}
+      grid_position: MPDMMQ,ZUPUKF
+  - type: DataGrid
+    properties:
+      role: null
+      columns:
+      - {title: Column 1, id: HERZHP, data_key: column_1}
+      - {title: Column 2, id: WNVKNI, data_key: column_2}
+      - {title: Column 3, id: SSDLKJ, data_key: column_3}
+      - {title: Column 4, id: ZWUCCV, data_key: column_4}
+      auto_header: false
+      tooltip: ''
+      border: ''
+      foreground: ''
+      rows_per_page: 20
+      visible: true
+      show_page_controls: true
+      spacing_above: small
+      spacing_below: small
+      background: ''
+    name: data_grid_2
+    layout_properties:
+      col_widths: {}
+      grid_position: TENEBQ,OFXPJX
+    components:
+    - type: RepeatingPanel
+      properties: {spacing_above: none, spacing_below: none, item_template: landing.select_action_report.report_row}
+      name: repeating_panel_reports
+      layout_properties: {}
+      event_bindings: {}
+  - type: Button
+    properties: {role: primary-color, align: left, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: new report, font_size: null, font: '',
+      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: 'fa:plus'}
+    name: primary_color_2
+    layout_properties:
+      col_widths: {}
+      grid_position: SWVEWZ,KLYGEC
+- type: FlowPanel
+  properties: {}
+  name: navbar_links
+  layout_properties: {slot: nav-right}
+  components:
+  - type: Link
+    properties: {role: null, url: '', align: center, tooltip: '', border: '', foreground: '',
+      visible: true, text: '', font_size: null, wrap_on: mobile, font: '', col_spacing: medium,
+      spacing_above: small, icon_align: left, col_widths: '', spacing_below: small,
+      italic: false, background: '', bold: false, underline: false, icon: 'fa:home'}
+    name: link_home
+    layout_properties: {}
+    event_bindings: {click: link_home_click}

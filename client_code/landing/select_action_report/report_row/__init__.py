@@ -27,6 +27,11 @@ class report_row(report_rowTemplate):
     Notification('should download the html report', 
                  title="not yet implemented").show()
 
+  def button_settings_click(self, **event_args):
+    row=self.button_build.tag.row
+    open_form('landing.settings.report_settings', row)
+
+
 
 
 

@@ -1,52 +1,145 @@
-container:
-  type: ColumnPanel
-  event_bindings: {}
-  properties: {col_widths: '{"JLNABB":15,"UDKFJZ":45,"EIWAAN":15,"ISHRRU":45,"PLDEXM":15,"RDYBKM":45}'}
-components:
-- type: Label
-  properties: {role: null, align: left, tooltip: '', border: '', foreground: '', visible: true,
-    text: 'opening_date:', font_size: null, font: '', spacing_above: small, icon_align: left,
-    spacing_below: small, italic: false, background: '', bold: false, underline: false,
-    icon: ''}
-  name: label_1
-  layout_properties: {grid_position: 'OZGLRC,JLNABB'}
-  event_bindings: {}
-- type: DatePicker
-  properties: {role: null, align: left, max_date: '', pick_time: true, tooltip: '',
-    placeholder: select date, border: '', enabled: true, foreground: '', visible: true,
-    font_size: null, font: '', spacing_above: small, spacing_below: small, italic: false,
-    date: '', min_date: '', background: '', bold: false, underline: false, format: ''}
-  name: date_picker_opening_date
-  layout_properties: {grid_position: 'OZGLRC,UDKFJZ'}
-  event_bindings: {}
-- type: Label
-  properties: {role: null, align: left, tooltip: '', border: '', foreground: '', visible: true,
-    text: 'closing_date:', font_size: null, font: '', spacing_above: small, icon_align: left,
-    spacing_below: small, italic: false, background: '', bold: false, underline: false,
-    icon: ''}
-  name: label_2
-  layout_properties: {grid_position: 'VCKAKY,EIWAAN'}
-- type: DatePicker
-  properties: {role: null, align: left, max_date: '', pick_time: true, tooltip: '',
-    placeholder: select date, border: '', enabled: true, foreground: '', visible: true,
-    font_size: null, font: '', spacing_above: small, spacing_below: small, italic: false,
-    date: '', min_date: '', background: '', bold: false, underline: false, format: ''}
-  name: date_picker_closing_date
-  layout_properties: {grid_position: 'VCKAKY,ISHRRU'}
-  event_bindings: {}
-- type: Label
-  properties: {role: null, align: left, tooltip: '', border: '', foreground: '', visible: true,
-    text: 'thank_you_msg:', font_size: null, font: '', spacing_above: small, icon_align: left,
-    spacing_below: small, italic: false, background: '', bold: false, underline: false,
-    icon: ''}
-  name: label_3
-  layout_properties: {grid_position: 'TUFURT,PLDEXM'}
-- type: TextArea
-  properties: {role: null, align: left, height: '', tooltip: '', placeholder: markdown here,
-    border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
-    auto_expand: true, font: '', spacing_above: small, spacing_below: small, italic: false,
-    background: '', bold: false, underline: false}
-  name: text_area_thank_you_msg
-  layout_properties: {grid_position: 'TUFURT,RDYBKM'}
-  event_bindings: {}
 is_package: true
+container:
+  type: HtmlTemplate
+  properties: {html: '@theme:standard-page.html'}
+  event_bindings: {}
+components:
+- type: ColumnPanel
+  properties: {col_widths: '{"UXGIQA":15,"LGTXTC":45,"ISQHSD":15,"XZBMIH":45,"OZOBWV":15,"FFMAUE":45}'}
+  name: content_panel
+  layout_properties: {slot: default}
+  components:
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: 'opening_date:', font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_1
+    layout_properties:
+      col_widths: {}
+      grid_position: QKTTJI,UXGIQA
+  - type: DatePicker
+    properties: {role: null, align: left, max_date: '', pick_time: true, tooltip: '',
+      placeholder: select date, border: '', enabled: true, foreground: '', visible: true,
+      font_size: null, font: '', spacing_above: small, spacing_below: small, italic: false,
+      date: '', min_date: '', background: '', bold: false, underline: false, format: ''}
+    name: date_picker_opening_date
+    layout_properties:
+      col_widths: {}
+      grid_position: QKTTJI,LGTXTC
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: 'closing_date:', font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_2
+    layout_properties:
+      col_widths: {}
+      grid_position: MCPAHZ,ISQHSD
+  - type: DatePicker
+    properties: {role: null, align: left, max_date: '', pick_time: true, tooltip: '',
+      placeholder: select date, border: '', enabled: true, foreground: '', visible: true,
+      font_size: null, font: '', spacing_above: small, spacing_below: small, italic: false,
+      date: '', min_date: '', background: '', bold: false, underline: false, format: ''}
+    name: date_picker_closing_date
+    layout_properties:
+      col_widths: {}
+      grid_position: MCPAHZ,XZBMIH
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: 'thank_you_msg:', font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_3
+    layout_properties:
+      col_widths: {}
+      grid_position: XHDKTH,OZOBWV
+  - type: TextArea
+    properties: {role: null, align: left, height: '', tooltip: '', placeholder: markdown here,
+      border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
+      auto_expand: true, font: '', spacing_above: small, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false}
+    name: text_area_thank_you_msg
+    layout_properties:
+      col_widths: {}
+      grid_position: XHDKTH,FFMAUE
+  - type: FlowPanel
+    properties: {role: null, spacing: medium, align: right, tooltip: '', border: '',
+      foreground: '', visible: true, spacing_above: small, spacing_below: small, background: ''}
+    name: flow_panel_1
+    layout_properties:
+      col_widths: {}
+      grid_position: WCKHDY,AXYJFU
+    components:
+    - type: Button
+      properties: {role: primary-color, align: center, tooltip: '', border: '', enabled: true,
+        foreground: '', visible: true, text: Apply, font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: button_apply
+      layout_properties: {grid_position: 'LKSHRJ,IETYMC'}
+      event_bindings: {click: button_apply_click}
+    - type: Button
+      properties: {role: primary-color, align: center, tooltip: '', border: '', enabled: true,
+        foreground: '', visible: true, text: Cancel, font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: button_cancel
+      layout_properties: {grid_position: 'LKSHRJ,UWMRUE'}
+      event_bindings: {click: button_cancel_click}
+  - type: Canvas
+    properties: {role: null, height: '1', tooltip: '', border: solid grey 1px, foreground: '',
+      visible: true, spacing_above: small, spacing_below: small, background: ''}
+    name: canvas_1
+    layout_properties:
+      col_widths: {}
+      grid_position: OCRTXY,VMOLBE
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: Danger area!, font_size: 20, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
+      underline: false, icon: ''}
+    name: label_4
+    layout_properties:
+      col_widths: {}
+      grid_position: EPSDDS,SZJIUX
+    event_bindings: {}
+  - type: Button
+    properties: {role: primary-color, align: left, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: delete survey, font_size: null, font: '',
+      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '#fb3c3c', bold: false, underline: false, icon: ''}
+    name: button_delete
+    layout_properties:
+      col_widths: {}
+      grid_position: JIQUCT,NEVTVV
+    event_bindings: {click: button_delete_click}
+- type: FlowPanel
+  properties: {}
+  name: navbar_links
+  layout_properties: {slot: nav-right}
+  components:
+  - type: Link
+    properties: {role: null, url: '', align: center, tooltip: '', border: '', foreground: '',
+      visible: true, text: '', font_size: null, wrap_on: mobile, font: '', col_spacing: medium,
+      spacing_above: small, icon_align: left, col_widths: '', spacing_below: small,
+      italic: false, background: '', bold: false, underline: false, icon: 'fa:arrow-left'}
+    name: link_back
+    layout_properties: {}
+    event_bindings: {click: link_back_click}
+  - type: Link
+    properties: {role: null, url: '', align: center, tooltip: '', border: '', foreground: '',
+      visible: true, text: '', font_size: null, wrap_on: mobile, font: '', col_spacing: medium,
+      spacing_above: small, icon_align: left, col_widths: '', spacing_below: small,
+      italic: false, background: '', bold: false, underline: false, icon: 'fa:home'}
+    name: link_home
+    layout_properties: {}
+    event_bindings: {click: link_home_click}
+- type: Label
+  properties: {role: null, align: left, tooltip: '', border: '', foreground: '', visible: true,
+    text: 'Survey settings: x', font_size: null, font: '', spacing_above: small, icon_align: left,
+    spacing_below: small, italic: false, background: '', bold: false, underline: false,
+    icon: ''}
+  name: label_survey
+  layout_properties: {slot: title}
+  event_bindings: {}

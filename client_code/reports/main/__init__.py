@@ -113,6 +113,11 @@ class main(mainTemplate):
     m=anvil.server.call('make_html_report', self.tag.id)
     download(m)
 
+  def link_landing_report_click(self, **event_args):
+     open_form('landing.select_action_report')
+      
+  def link_home_click(self, **event_args):
+    open_form('landing.main')
 
 
 

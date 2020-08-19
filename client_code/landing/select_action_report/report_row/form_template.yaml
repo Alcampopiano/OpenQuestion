@@ -23,4 +23,12 @@ components:
   name: button_download
   layout_properties: {column: SSDLKJ}
   event_bindings: {click: download_click}
+- type: Button
+  properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+    foreground: '', visible: true, text: '', font_size: null, font: '', spacing_above: small,
+    icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+    underline: false, icon: 'fa:cog'}
+  name: button_settings
+  layout_properties: {column: ZWUCCV}
+  event_bindings: {click: button_settings_click}
 is_package: true

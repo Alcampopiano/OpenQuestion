@@ -2,16 +2,13 @@ from anvil import *
 import anvil.microsoft.auth
 import anvil.users
 import anvil.server
-import anvil.tables as tables
-import anvil.tables.query as q
-from anvil.tables import app_tables
-from datetime import datetime
-
 
 if not get_url_hash():
   
-  # authentication here
-  open_form('landing.select_action')
+  while not anvil.users.login_with_form():
+    pass
+  
+  open_form('landing.main')
   
 else:
     schema=anvil.server.call('get_form', get_url_hash())

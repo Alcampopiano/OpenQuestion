@@ -12,7 +12,17 @@ import uuid
 import datetime
 import mistune
 
-@anvil.server.callable
+
+def validate_user(u):
+  return u['admin']
+
+@anvil.server.callable(require_user = validate_user)
+def delete_report(form_id):
+  
+  row=app_tables.reports.get(form_id=form_id)
+  row.delete()
+
+@anvil.server.callable(require_user = validate_user)
 def save_report(report_id, schema, specs, data_dicts):
     
   row=app_tables.reports.get(report_id=report_id)
@@ -28,7 +38,7 @@ def save_report(report_id, schema, specs, data_dicts):
     
   return row['report_id']
 
-@anvil.server.callable
+@anvil.server.callable(require_user = validate_user)
 def return_datasets(files):
   
   data_dicts={}
@@ -39,10 +49,11 @@ def return_datasets(files):
     
   return data_dicts
 
+@anvil.server.callable(require_user = validate_user)
 def convert_markdown(text):
   return mistune.markdown(text, escape=False)
 
-@anvil.server.callable
+@anvil.server.callable(require_user = validate_user)
 def make_html_report(report_id):
   
   report=app_tables.reports.get(report_id=report_id)
