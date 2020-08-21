@@ -3,7 +3,6 @@ import anvil.microsoft.auth
 import anvil.users
 import anvil.server
 
-# hello world
 
 if not get_url_hash():
   
