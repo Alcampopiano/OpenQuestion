@@ -3,8 +3,6 @@ import anvil.microsoft.auth
 import anvil.users
 import anvil.server
 
-def junk():
-    pass
 
 if not get_url_hash():
   
