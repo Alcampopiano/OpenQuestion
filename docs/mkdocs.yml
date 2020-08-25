@@ -1,0 +1,49 @@
+site_name: OpenQuestion
+google_analytics:
+  - UA-xxxxxxxx
+  - auto
+
+nav:
+    - Home: index.md
+    - Survey Development: survey_dev.md
+    - Reporting: reporting.md
+    - Widgets: widgets.md
+    - Installation: installation.md
+    - JSON format: as_json.md
+    - Settings: settings.md
+    - FAQ: faq.md
+
+repo_name: <i class="fa fa-github"></i> Github
+repo_url: https://github.com/Alcampopiano/OpenQuestion
+edit_uri: ""
+theme:
+  logo: img/vp.png
+  favicon: img/vp_inv.png
+  name: material
+  palette:
+    primary: black
+    accent: red
+copyright: "OpenQuestion is licensed under the <a href='https://github.com/Alcampopiano/OpenQuestion/blob/master/LICENSE'>BSD 3-Clause license"
+
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - footnotes
+  - toc:
+      permalink: true
+  - pymdownx.tabbed
+  - pymdownx.inlinehilite
+  - pymdownx.arithmatex
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_div_format
+
+extra_css:
+  - stylesheets/al_extra.css
+  - https://unpkg.com/mermaid@7.1.2/dist/mermaid.css
+extra_javascript:
+  - https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML
