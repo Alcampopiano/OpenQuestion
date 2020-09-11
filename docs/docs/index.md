@@ -1,5 +1,5 @@
 # OpenQuestion: An open source survey and reporting platform
-OpenQuestion is a open source and developer focused platform for building surveys and reports.
+OpenQuestion is an open source and developer focused platform for building surveys and reports.
 
 Surveys and reports can be designed using a GUI and are represented
 by an underlying and accesible JSON structure.
