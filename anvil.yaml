@@ -92,7 +92,7 @@ db_schema:
       type: datetime
       admin_ui: {order: 3, width: 200}
   access: {python_name: users, app_id: RZCX3HWGWWPZJCOH, server: full, client: none,
-    table_id: 71213}
+    table_mapping_name: null, table_mapping_id: null, table_id: 71213}
 - name: forms
   id: 63199
   python_name: forms
@@ -130,7 +130,7 @@ db_schema:
       type: media
       admin_ui: {order: 4, width: 200}
   access: {python_name: forms, app_id: RZCX3HWGWWPZJCOH, server: full, client: none,
-    table_id: 63199}
+    table_mapping_name: null, table_mapping_id: null, table_id: 63199}
 - name: reports
   id: 69868
   python_name: reports
@@ -160,5 +160,5 @@ db_schema:
       type: simpleObject
       admin_ui: {order: 4, width: 200}
   access: {python_name: reports, app_id: RZCX3HWGWWPZJCOH, server: full, client: none,
-    table_id: 69868}
+    table_mapping_name: null, table_mapping_id: null, table_id: 69868}
 renamed: true
