@@ -1,3 +1,14 @@
+properties:
+- {name: min_val, type: number, default_value: 0, default_binding_prop: true}
+- {name: max_val, type: number, default_value: 100}
+- {name: step, type: number, default_value: 1}
+- {name: value, type: number, default_value: 0}
+- {name: labels, type: 'text[]', default_value: null}
+is_package: true
+events:
+- {name: change, default_event: true, description: When the slider is moved}
+custom_component: true
+components: []
 container:
   type: HtmlTemplate
   properties: {tooltip: '', background: '', foreground: '', border: '', visible: true,
@@ -55,14 +66,3 @@ container:
       \ \"\";\n    position: absolute;\n    top: -20px; /* */\n    width: 1px;\n \
       \   background: gray;\n    height: 10px;\n}\n</style>"}
   event_bindings: {show: form_show}
-components: []
-is_package: true
-custom_component: true
-properties:
-- {name: min_val, type: number, default_value: 0, default_binding_prop: true}
-- {name: max_val, type: number, default_value: 100}
-- {name: step, type: number, default_value: 1}
-- {name: value, type: number, default_value: 0}
-- {name: labels, type: 'text[]', default_value: null}
-events:
-- {name: change, default_event: true, description: When the slider is moved}
