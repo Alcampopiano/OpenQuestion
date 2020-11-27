@@ -29,6 +29,8 @@ def str_to_date_obj(date_str, date_format):
 @anvil.server.callable
 def submit_data(cols, data, url_hash):
   
+  print(url_hash)
+  
   form_id=url_hash['form_id']
   
   df_new=pd.DataFrame([data], columns=cols)
