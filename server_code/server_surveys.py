@@ -32,6 +32,7 @@ def submit_data(cols, data, url_hash):
   print(url_hash)
   print(url_hash.keys())
   
+  hash_keys=url_hash.keys()
   form_id=url_hash['form_id']
   
   df_new=pd.DataFrame([data], columns=cols)
@@ -103,9 +104,8 @@ def check_opening_closing_dates(opening_date, closing_date):
     
 @anvil.server.callable
 def get_form(url_hash):
-  
-  # https://hcdsb-open-question.anvil.app/#?form_id=6c1f34c8-017a-4d13-a6bc-fcfadbafafdd&preview=true
-    
+      
+  #print(url_hash)
   form_id=url_hash['form_id']
   preview_link_clicked=url_hash.get('preview', False)
   
