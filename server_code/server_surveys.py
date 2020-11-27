@@ -29,10 +29,15 @@ def str_to_date_obj(date_str, date_format):
 @anvil.server.callable
 def submit_data(cols, data, url_hash):
   
-  print(url_hash)
-  print(url_hash.keys())
+#   print(url_hash)
+#   print(url_hash.keys())
   
-  hash_keys=url_hash.keys()
+  meta_hash_keys=[k for k in url_hash.keys()]
+  meta_hash_vals=[v for v in url_hash.values()]
+
+  cols+=meta_hash_keys
+  data+=meta_hash_vals
+
   form_id=url_hash['form_id']
   
   df_new=pd.DataFrame([data], columns=cols)
