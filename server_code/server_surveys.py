@@ -30,6 +30,7 @@ def str_to_date_obj(date_str, date_format):
 def submit_data(cols, data, url_hash):
   
   print(url_hash)
+  print(url_hash.keys())
   
   form_id=url_hash['form_id']
   
