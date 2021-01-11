@@ -1,18 +1,16 @@
-# OpenQuestion: An open source survey and reporting platform
-OpenQuestion is an open source and developer focused platform for building surveys and reports.
+# OpenQuestion: A Python based open source survey platform
+OpenQuestion is an open source and developer focused platform for building surveys.
+Surveys can be designed using a GUI and are represented
+by an underlying and accessible Python dictionary.
 
-Surveys and reports can be designed using a GUI and are represented
-by an underlying and accesible JSON structure.
-
-## Getting Started
-- [Survey Development](survey_dev.md)
-- [Reporting](reporting.md)
+# PUT GREAT EXAMPLE GIF HERE SPEEDING THROUGH MANY FEATURES
 
 ## User Guide
-- [Widget List](widgets.md)
 - [Installation](installation.md)
-- [Surveys as JSON](as_json.md)
-- [Settings](settings.md)
+- [Survey Development](survey_dev.md)
+- [Widget List](widgets.md)
+- [Survey Settings](settings.md)
+- [Surveys as JSON/Python Dict](as_json.md)
 - [FAQ](faq.md)
 
 ## Bug reports and Questions
