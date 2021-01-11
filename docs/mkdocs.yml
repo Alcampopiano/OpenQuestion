@@ -5,12 +5,11 @@ google_analytics:
 
 nav:
     - Home: index.md
-    - Survey Development: survey_dev.md
-    - Reporting: reporting.md
-    - Widgets: widgets.md
     - Installation: installation.md
-    - JSON format: as_json.md
+    - Survey Development: survey_dev.md
+    - Widgets: widgets.md
     - Settings: settings.md
+    - JSON format: as_json.md
     - FAQ: faq.md
 
 repo_name: <i class="fa fa-github"></i> Github

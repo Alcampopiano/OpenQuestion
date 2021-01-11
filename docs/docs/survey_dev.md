@@ -59,7 +59,7 @@ Once a widget has been added to the page, the widget's toolbar can be used to mo
 delete the widget, and control the widget's visibility with [branching](survey_dev.md#branching).
 
 **The widget toolbar**
-![design](img/wid_tool.gif)
+![design](img/wid_tool.png)
 
 ## Basic Widget controls
 The :minus: sign can be used to delete the widget and the up/down arrows can be used
