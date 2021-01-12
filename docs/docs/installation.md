@@ -8,7 +8,7 @@ pip install OpenQuestion
 
 ## Adding developers as users
 Before OpenQuestion can be used, developers must be added as registered users to the app's database. 
-This is described in the following sections (click [here]() for more information on the
+This is described in the following sections (click [here](faq.md) for more information on the
 available authentication services).
 
 ### Accessing OpenQuestion's Python Shell
@@ -33,7 +33,7 @@ password_hash = bcrypt.hashpw(b'new password', bcrypt.gensalt(16))
 new_user['password_hash'] = password_hash.decode()
 ```
 
-For more information on how to interact with the app's database using code, please click [here]().
+For more information on how to interact with the app's database using code, please click [here](advanced.md).
 
 ## Launching OpenQuestion
 Now that OpenQuestion has been installed, and you have added yourself as a user,

@@ -1,15 +1,15 @@
 # Widget list
-This section describes the available widgets and their options. When
-a widget is added to the designer, it's associated icon can be 
-seen in the top right corner of the widget area. This makes it easier
-to see which kinds of widgets have been added to the page since 
-OpenQuestion uses different interfaces for survey development and 
-end-user data acquisition. Note that each added widget is also assigned an ID.
-This can be ignored as it is mainly used internally (although, IDs
-can disambiguate widgets that have been given the same title, 
-especially in the branching interface). The following examples show the 
-designer version of the widget as well as an example of what the end user sees.
+This section describes the available widgets and their options. 
+The following examples show the designer version of the widget 
+as well as an example of what the end user sees.
 
+!!! note "Widget icons"
+    When a widget is added to the designer, it's associated icon can be 
+    seen in the top right corner of the widget area (not shown here). 
+    This makes it easier to see which kinds of widgets have been added to 
+    the page since OpenQuestion uses different interfaces for survey development 
+    and end user data acquisition.  
+    
 ## text_box
 The text box is uses for short text or number responses. It can be
 configured witht the following options:
@@ -27,9 +27,11 @@ configured witht the following options:
     - if checked, this field will be restricted to a number
     
 **in the designer**
+***
 ![wid](img/tb.png)
 
 **shown to the user**
+***
 ![wid](img/tb_u.png)
 
 ## text area
@@ -46,9 +48,11 @@ It can be configured with the following options:
     - if checked, this field must be filled out by the user before the survey can be submitted
 
 **in the designer**
+***
 ![wid](img/ta.png)
 
 **shown to the user**
+***
 ![wid](img/ta_u.png)
 
 ## drop_down
@@ -68,9 +72,11 @@ It can be configured with the following options:
     - if checked, this field must be filled out by the user before the survey can be submitted
 
 **in the designer**
+***
 ![wid](img/dd.png)
 
 **shown to the user**
+***
 ![wid](img/dd_u.png)
 
 ## check_box
@@ -84,9 +90,11 @@ can be selected at the same time. It can be configured with the following option
     - newline separated list of options
    
 **in the designer**
+***
 ![wid](img/cb.png)
 
 **shown to the user**
+***
 ![wid](img/cb_u.png)
 
 ## radio_button
@@ -100,9 +108,11 @@ can be selected at a same time. It can be configured with the following options:
     - newline separated list of options
 
 **in the designer**
+***
 ![wid](img/rd.png)
 
 **shown to the user**
+***
 ![wid](img/rd_u.png)
 
 ## date
@@ -123,9 +133,11 @@ It can be configured with the following options:
     - if checked, this field must be filled out by the user before the survey can be submitted
 
 **in the designer**
+***
 ![wid](img/da.png)
 
 **shown to the user**
+***
 ![wid](img/dt_u.png)
 
 ## slider
@@ -153,9 +165,11 @@ It can be configured with the following options:
       width of the slider widget
 
 **in the designer**
+***
 ![wid](img/sl.png)
 
 **shown to the user**
+***
 ![wid](img/sl_u.png)
 
 ## markdown
@@ -167,11 +181,24 @@ It can be configured with the following option:
     - the markdown text based on the [mistune](https://mistune.readthedocs.io/en/v0.8.4/) parser
 
 **in the designer**
-![wid](img/md.png)
+***
+![wid](img/md_i.png)
 
 **shown to the user**
-![wid](img/md_u.png)
+***
+![wid](img/md.gif)
 
 ## section
 The section widget is used to hold other widgets and give a visual separation of sets of widgets. 
 Sections have their own title which can be set in the "title" field (e.g., "Contact information").
+
+!!! note "Widget IDs"
+    Each widget that is added to the page is also assigned an ID.
+    This can be ignored as it is mainly used internally (although, IDs
+    can disambiguate widgets that have been given the same title, 
+    especially in the branching interface). 
+    
+!!! tip "Are widget settings represented as key/value pairs?"
+    Yes! In fact, all survey settings are represented by an underlying 
+    and accessible [JSON/Python dict](advanced.md) where keys and values
+    correspond exactly to what is shown in the designer

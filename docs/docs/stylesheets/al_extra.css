@@ -20,3 +20,19 @@
 .mermaid svg {
   text-align: center !important;
 }
+
+/* Al hack: Custom styles to override MkDocs defaults and enhance theme */
+/* got it from https://github.com/squidfunk/mkdocs-material/issues/508 */
+
+/* Unordered list <ul> symbols:
+ * - level 2 is hollow circle
+ * - level 3 is filled square
+ * - ul default is filled disc (bullet)
+ */
+article ul ul {
+        list-style-type:  circle !important;
+}
+
+article ul ul ul {
+        list-style-type:  square !important;
+}

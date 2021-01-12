@@ -1,33 +1,27 @@
-# OpenQuestion: An open source survey and reporting platform
-OpenQuestion is a open source and developer focused platform for building surveys and reports.
+# Survey settings
+Each Survey has its own settings and these can be 
+accessed through the [survey dashboard](survey_dev.md#survey-dashboard).
 
-Surveys and reports can be designed using a GUI and are represented
-by an underlying and accesible JSON structure.
+**Survey settings**
+![sets](img/sets.png)
 
-## Getting Started
-- [Survey Development](survey_dev.md)
-- [Reporting](reporting.md)
+## Opening and closing dates
+The opening and closing dates can be chosen by
+selecting a date and time from the "date picker" elements.
+If a date option is left blank, there is no restriction on the
+corresponding field.
 
-## User Guide
-- [Widget List](widgets.md)
-- [Installation](installation.md)
-- [Surveys as JSON](as_json.md)
-- [Settings](settings.md)
-- [FAQ](faq.md)
+## Thank you message
+The text area allows you to write markdown to express a "thank you message".
+The message will appear after the survey has been submitted by the user.
 
-## Bug reports and Questions
-OpenQuestion is BSD-licenced and the source code is available
-on [GitHub](https://github.com/Alcampopiano/OpenQuestion).
-For issues and questions, 
-please use [GitHub Issues](https://github.com/Alcampopiano/OpenQuestion/issues).
+## Deleting a survey
+The big red button allows a survey to be deleted. A confirmation
+dialogue will pop up just to be safe.
 
-## Citing Hypothesize
-coming soon ...
-
-## Contributing to OpenQuestion
-
-The best way to contribute to OpenQuestion is to ... 
-For more details, please see 
-[CONTRIBUTING.md](https://github.com/Alcampopiano/OpenQuestion/blob/master/CONTRIBUTING.md)
-in the GitHub repository.
-
+!!! danger "Deleting a survey?"
+    Be careful! Once a survey is deleted, its
+    structure and associated data cannot be restored; however,
+    if you have the JSON representation of your survey 
+    saved on your local computer, you can restore the 
+    survey structure using the [command line feature](advanced.md).

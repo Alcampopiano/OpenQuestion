@@ -10,7 +10,7 @@ by an underlying and accessible Python dictionary.
 - [Survey Development](survey_dev.md)
 - [Widget List](widgets.md)
 - [Survey Settings](settings.md)
-- [Surveys as JSON/Python Dict](as_json.md)
+- [Advanced Usage](advanced.md)
 - [FAQ](faq.md)
 
 ## Bug reports and Questions
@@ -19,7 +19,7 @@ on [GitHub](https://github.com/Alcampopiano/OpenQuestion).
 For issues and questions, 
 please use [GitHub Issues](https://github.com/Alcampopiano/OpenQuestion/issues).
 
-## Citing Hypothesize
+## Citing OpenQuestion
 coming soon ...
 
 ## Contributing to OpenQuestion
