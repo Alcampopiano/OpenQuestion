@@ -88,7 +88,7 @@ components:
       layout_properties: {grid_position: 'LKSHRJ,UWMRUE'}
       event_bindings: {click: button_cancel_click}
   - type: Canvas
-    properties: {role: null, height: '1', tooltip: '', border: solid grey 1px, foreground: '',
+    properties: {role: null, height: '1', tooltip: '', border: solid grey .5px, foreground: '',
       visible: true, spacing_above: small, spacing_below: small, background: ''}
     name: canvas_1
     layout_properties:
