@@ -7,8 +7,7 @@ or the :material-pencil: icon will take you to the survey designer (explained be
 existing survey, respectively.
 
 **The survey dashboard**
-***
-![dash](img/dash.png)
+![brd](img/dash.png)
 
 ## Survey designer
 The survey designer is where most of the survey development takes place. It consists of the 
@@ -19,8 +18,7 @@ your survey and control how it behaves. To preview the survey as the end user wo
 click "Preview" at the top of the page (or access the share link from the dashboard).
 
 **The survey designer**
-***
-![design](img/design.gif)
+![brd](img/design.gif)
 
 ## Designer toolbar
 The designer toolbar contains widgets (e.g., text_box, drop_down, sections, etc). Clicking on the widgets 
@@ -28,8 +26,7 @@ adds them to the page below the currently selected element. The :material-wrench
 toolbar's visibility.
 
 **The designer toolbar**
-***
-![design](img/des_tool.gif)
+![brd](img/des_tool.gif)
 
 ## Widget settings
 When a widget is added to the page during survey development, values need to be specified
@@ -37,28 +34,22 @@ to control how the widget appears to the end user.
 
 For example, the text_box widget requires the following information:
 
-- title
-    - For example, "What is your name?"
+- _title_. The label displayed on this widget. For example, "What is your name?"
     
-- placeholder
-    - text that prompts the user. For example, "Type your name here?"
+- _placeholder_. Text that prompts the user. For example, "Type your name here?"
    
-- mandatory flag
-    - if checked, this field must be filled out by the user before the survey can be submitted
+- _mandatory flag_. If checked, this field must be filled out by the user before the survey can be submitted
     
-- number
-    - if checked, this field will be restricted to a number
-    
-The following example shows the designer representation of the text_box as well as what the end user sees:
+- _number_. If checked, this field will be restricted to a number
 
-**in the designer**
-***
-![wid](img/tb.png)
-
-**shown to the user**
-***
-![wid](img/tb_u.png)
+The following example shows the designer representation of the text_box as well as what the end user sees.
     
+**Designer**
+![brd](img/tb.png)
+
+**Survey**
+![brd](img/tb_u.png)
+        
 All widgets have their own sets of options to be specified. Please click [here](widgets.md) 
 to learn about the available widgets and how they are used.
 
@@ -72,8 +63,8 @@ Once a widget has been added to the page, the widget's toolbar can be used to mo
 delete the widget, and control the widget's visibility with [branching](survey_dev.md#branching).
 
 **The widget toolbar**
-***
-![design](img/wid_tool.png)
+
+![brd](img/wid_tool.png)
 
 ## Basic Widget controls
 The :material-minus-circle: sign can be used to delete the widget and the up/down arrows can be used
@@ -90,9 +81,7 @@ the text_box is displayed. When branching exists on a widget, the :material-sour
 on the widget's toolbar is highlighted. 
 
 **Setting branching rules on a text_box**
-***
-![bran_rule](img/bran_ui.gif)
+![brd](img/bran_ui.gif)
 
 **The text_box is revealed when the condition is met**
-***
-![bran_proof](img/bran_proof.gif)
+![brd](img/bran_proof.gif)

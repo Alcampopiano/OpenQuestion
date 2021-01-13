@@ -11,191 +11,146 @@ as well as an example of what the end user sees.
     and end user data acquisition.  
     
 ## text_box
-The text box is uses for short text or number responses. It can be
+The text_box is uses for short text or number responses. It can be
 configured with the following options:
 
-- title 
-    - For example, "What is your name?"
+- _title_. The label displayed on this widget. For example, "What is your name?"
     
-- placeholder 
-    - text that prompts the user. For example, "Type your name here?"
+- _placeholder_. Text that prompts the user. For example, "Type your name here?"
    
-- mandatory flag
-    - if checked, this field must be filled out by the user before the survey can be submitted
+- _mandatory flag_. If checked, this field must be filled out by the user before the survey can be submitted
     
-- number
-    - if checked, this field will be restricted to a number
+- _number_. If checked, this field will be restricted to a number
     
-**designer**
->![wid](img/tb.png)
+**Designer**
+![brd](img/tb.png)
 
-<a href="https://Alcampopiano.github.io/hypothesize/"><img align="right" src="https://github.com/Alcampopiano/hypothesize/blob/master/docs/docs/img/vp_inv.png" height="50"></img></a>
-
-<kbd>
-  <img src="https://github.com/Alcampopiano/OpenQuestion/blob/master/docs/docs/img/cb.png">
-</kbd>
-
-
-**survey**
->![wid](img/tb_u.png)
+**Survey**
+![brd](img/tb_u.png)
 
 ## text_area
 The text_area widget is used for long, possibly multi-line text responses. 
 It can be configured with the following options:
 
-- title 
-    - For example, "Tell me about yourself?"
+- _title_. The label displayed on this widget. For example, "Tell me about yourself?"
     
-- placeholder 
-    - text that prompts the user. For example, "text goes here?"
+- _placeholder_. Text that prompts the user. For example, "text goes here?"
    
-- mandatory flag
-    - if checked, this field must be filled out by the user before the survey can be submitted
+- _mandatory flag_. If checked, this field must be filled out by the user before the survey can be submitted
 
-**in the designer**
-***
-![wid](img/ta.png)
+**Designer**
+![brd](img/ta.png)
 
-**shown to the user**
-***
-![wid](img/ta_u.png)
+**Survey**
+![brd](img/ta_u.png)
 
 ## drop_down
 The drop_down widget is used for selecting from a set of categories.
 It can be configured with the following options:
 
-- title 
-    - For example, "What is your highest completed educational level?"
+- _title_. The label displayed on this widget. For example, "What is your highest completed educational level?"
     
-- placeholder 
-    - text that prompts the user. For example, "select from here?"
+- _placeholder_. Text that prompts the user. For example, "select from here?"
     
-- options
-    - newline separated list of options to be displayed in the drop down
+- _options_. Newline separated list of options to be displayed in the drop down
    
-- mandatory flag
-    - if checked, this field must be filled out by the user before the survey can be submitted
+- _mandatory flag_. If checked, this field must be filled out by the user before the survey can be submitted
 
-**in the designer**
-***
-![wid](img/dd.png)
+**Designer**
+![brd](img/dd.png)
 
-**shown to the user**
-***
-![wid](img/dd_u.png)
+**Survey**
+![brd](img/dd_u.png)
 
 ## check_box
 The check_box component is used for selecting from a set of options where more than one option 
 can be selected at the same time. It can be configured with the following options:
 
-- title 
-    - For example, "Which scientific topics are you interested in?"
+- _title_. The label displayed on this widget. For example, "Which scientific topics are you interested in?"
     
-- options
-    - newline separated list of options
+- _options_. Newline separated list of options
    
-**in the designer**
-***
-![wid](img/cb.png)
+**Designer**
+![brd](img/cb.png)
 
-**shown to the user**
-***
-![wid](img/cb_u.png)
+**Survey**
+![brd](img/cb_u.png)
 
 ## radio_button
 The radio_button component is used for selecting from a set of options where only one option 
 can be selected at a same time. It can be configured with the following options:
 
-- title 
-    - For example, "Are you interested in science?"
+- _title_. The label displayed on this widget. For example, "Are you interested in science?"
     
-- options
-    - newline separated list of options
+- _options_. Newline separated list of options
 
-**in the designer**
-***
-![wid](img/rd.png)
+**Designer**
+![brd](img/rd.png)
 
-**shown to the user**
-***
-![wid](img/rd_u.png)
+**Survey**
+![brd](img/rd_u.png)
 
 ## date
 The date widget is used for selecting dates from a "date picker" interface. 
 It can be configured with the following options:
 
-- title 
-    - For example, "What is your date of birth?"
+- _title_. The label displayed on this widget. For example, "What is your date of birth?"
     
-- placeholder 
-    - text that prompts the user. For example, "date goes here?"
+- _placeholder_. Text that prompts the user. For example, "date goes here?"
     
-- format
-    - date format string based on [these directives](https://strftime.org/). 
-      For example, `%Y-%m-%d` yields `2021-01-11` in terms of the format.
+- _format_. Date format string based on [these directives](https://strftime.org/). For example, `%Y-%m-%d` yields `2021-01-11` 
+in terms of the format.
    
-- mandatory flag
-    - if checked, this field must be filled out by the user before the survey can be submitted
+- _mandatory flag_. If checked, this field must be filled out by the user before the survey can be submitted
 
-**in the designer**
-***
-![wid](img/da.png)
+**Designer**
+![brd](img/da.png)
 
-**shown to the user**
-***
-![wid](img/dt_u.png)
+**Survey**
+![brd](img/dt_u.png)
 
 ## slider
 The slider widget is used for choosing a quantitative value from a range.
 It can be configured with the following options:
 
-- title 
-    - For example, "How satisfied were you with your last science course?"
+- _title_. The label displayed on this widget. For example, "How satisfied were you with your last science course?"
     
-- min_val 
-    - the minimum value shown on the slider
+- _min_val_. The minimum value shown on the slider
     
-- max_val 
-    - the maximum value shown on the slider
+- _max_val_. The maximum value shown on the slider
     
-- step
-    - the number of discrete steps that the slider "thumb" can occupy 
-      between the min and max values (inclusive)
+- _step_. The number of discrete steps that the slider "thumb" can occupy between the min and max values (inclusive)
    
-- value
-    - the initial value of the slider "thumb"
+- _value_. The initial value of the slider "thumb"
     
-- labels
-    - newline seperated text labels that will be evenly spread across the
-      width of the slider widget
+- _labels_. Newline seperated text labels that will be evenly spread across the width of the slider widget
 
-**in the designer**
-***
-![wid](img/sl.png)
+**Designer**
+![brd](img/sl.png)
 
-**shown to the user**
-***
-![wid](img/sl_u.png)
+**Survey**
+![brd](img/sl_u.png)
 
 ## markdown
 The markdown component is used for blocks of rich text, including
 links, images, gifs, bullet points, raw HTML, and more. 
 It can be configured with the following option:
 
-- text
-    - the markdown text based on the [mistune](https://mistune.readthedocs.io/en/v0.8.4/) parser
+- _text_. The markdown text based on the [mistune](https://mistune.readthedocs.io/en/v0.8.4/) parser
 
-**in the designer**
-***
-![wid](img/md_i.png)
+**Designer** 
+![brd](img/md_i.png)
 
-**shown to the user**
-***
-![wid](img/md.gif)
+**Survey**
+![brd](img/md_u.gif)
 
 ## section
-The section widget is used to hold other widgets and give a visual separation of sets of widgets. 
-Sections have their own title which can be set in the "title" field (e.g., "Contact information").
+The section widget is used to hold other widgets and give a visual separation of 
+sets of widgets (within a single page). Sections have their own title which can be set in 
+the "title" field which is the label (e.g., "Contact information"). Note that 
+OpenQuestion does not yet support multi-page surveys.
+
+---
 
 !!! note "Widget IDs"
     Each widget that is added to the page is also assigned an ID.

@@ -25,6 +25,7 @@ theme:
 copyright: "OpenQuestion is licensed under the <a href='https://github.com/Alcampopiano/OpenQuestion/blob/master/LICENSE'>BSD 3-Clause license"
 
 markdown_extensions:
+  - pymdownx.details
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg

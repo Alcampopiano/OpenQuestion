@@ -11,7 +11,7 @@ Before OpenQuestion can be used, developers must be added as registered users to
 This is described in the following sections (click [here](faq.md) for more information on the
 available authentication services).
 
-### Accessing OpenQuestion's Python Shell
+## Accessing OpenQuestion's Python Shell
 From the command line (where the OpenQuestion is below the current directory) run the app server 
 with the `--shell` option. This will drop you into a Python interpreter that is 
 connected to OpenQuestion's database.
