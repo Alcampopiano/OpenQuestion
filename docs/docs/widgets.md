@@ -12,7 +12,7 @@ as well as an example of what the end user sees.
     
 ## text_box
 The text box is uses for short text or number responses. It can be
-configured witht the following options:
+configured with the following options:
 
 - title 
     - For example, "What is your name?"
@@ -26,15 +26,20 @@ configured witht the following options:
 - number
     - if checked, this field will be restricted to a number
     
-**in the designer**
-***
-![wid](img/tb.png)
+**designer**
+>![wid](img/tb.png)
 
-**shown to the user**
-***
-![wid](img/tb_u.png)
+<a href="https://Alcampopiano.github.io/hypothesize/"><img align="right" src="https://github.com/Alcampopiano/hypothesize/blob/master/docs/docs/img/vp_inv.png" height="50"></img></a>
 
-## text area
+<kbd>
+  <img src="https://github.com/Alcampopiano/OpenQuestion/blob/master/docs/docs/img/cb.png">
+</kbd>
+
+
+**survey**
+>![wid](img/tb_u.png)
+
+## text_area
 The text_area widget is used for long, possibly multi-line text responses. 
 It can be configured with the following options:
 
