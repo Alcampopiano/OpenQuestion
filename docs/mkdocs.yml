@@ -9,7 +9,7 @@ nav:
     - Survey Development: survey_dev.md
     - Widgets: widgets.md
     - Settings: settings.md
-    - JSON format: as_json.md
+    - Advanced: advanced.md
     - FAQ: faq.md
 
 repo_name: <i class="fa fa-github"></i> Github
