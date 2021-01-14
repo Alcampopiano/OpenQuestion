@@ -1,7 +1,7 @@
 
 /* Al hack to add border shadows to certain screen shots and gifs */
 img[alt="brd"] {
-  border: 1px solid;
+  border: 1px solid !important;
   padding: 10px;
   box-shadow: 1px 1px #888888;
   border-radius: 2px;
