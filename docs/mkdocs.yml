@@ -16,8 +16,8 @@ repo_name: <i class="fa fa-github"></i> Github
 repo_url: https://github.com/Alcampopiano/OpenQuestion
 edit_uri: ""
 theme:
-  logo: img/vp.png
-  favicon: img/vp_inv.png
+  logo: img/logow.png
+  favicon: img/logob.png
   name: material
   palette:
     primary: black
