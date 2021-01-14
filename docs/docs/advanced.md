@@ -193,7 +193,7 @@ In general, the survey `dict` is a nested, somewhat self-similar structure. For 
     }
     ```
 
-## Using the Surveys table from Python code
+## Using the Surveys table
 The Surveys table contains all surveys that are created in OpenQuestion.
 
 !!! note "Interacting with tables"
@@ -275,14 +275,41 @@ row=app_tables.surveys.get(title='simple survey')
 row['title']='My new title'
 ```
 
-## Using the Users table from Python
-OpenQuestion stores user information in the Users table.
+## Using the Users table
+OpenQuestion stores developer and administrator information in the Users table. Note that
+users in this case refers to survey developers and app admins (not end users who fill out the survey).
 
-### adding a user
+### Adding a user
+Please see [this](installation.md#adding-developers-and-administrators-as-users) 
+section on adding developers and admins as users in OpenQuestion.
 
-### deleting a user
+### Deleting a user
+Users can be deleted from the Users table as follows:
 
-### password reset
+```python
+# get a user from the Users table
+some_user=app_tables.users.get(email='your_username@example.com')
+some_user.delete()
+```
 
+## Adding data to submissions using query strings:
+OpenQuestion allows survey developers to add additional data 
+to a submission by accepting a [query string](https://en.wikipedia.org/wiki/Query_string)
+in the survey's URL.
 
-## URL parameters
+For example, in addition to the form's ID, the following survey
+passes `foo=42`, along with the data that is inputted by an end user, 
+to the submissions table.
+
+`https://your-app-url/#?form_id=<uuid>&foo=42`   
+
+This example uses a long query string. That is, it also passes `bar=baz` to
+the submission's table.
+
+`https://your-app-url/#?form_id=<uuid>&foo=42&bar=baz`   
+
+When an end user submits a response a new column is created for every parameter 
+in the query string and the new row in the submissions table will contain the value(s). When a 
+parameter matches an existing column header in the submissions table, 
+the parameter's value is merged (a new column is not created). Note that query strings 
+can be unique to each submission since new paramerters are added as new columns.

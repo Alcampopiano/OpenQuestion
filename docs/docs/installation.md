@@ -6,12 +6,12 @@ OpenQuestion is available from the Python Package Index and can be installed usi
 pip install OpenQuestion
 ```
 
-## Adding developers as users
-Before OpenQuestion can be used, developers must be added as registered users to the app's database. 
-This is described in the following sections (click [here](faq.md) for more information on the
+## Adding developers and administrators as users
+Before OpenQuestion's GUI can be used, survey developers and app administrators must be added as 
+registered users to the app's database. This is described in the following 
+sections (click [here](faq.md) for more information on the
 available authentication services).
 
-## Accessing OpenQuestion's Python Shell
 From the command line (where the OpenQuestion is below the current directory) run the app server 
 with the `--shell` option. This will drop you into a Python interpreter that is 
 connected to OpenQuestion's database.
@@ -20,12 +20,12 @@ connected to OpenQuestion's database.
 anvil-app-server --app OpenQuestion --shell
 ```
 
-Now add yourself as a user and, depending on the desired authentication 
-service, give yourself a password. 
+Now add a user (i.e., a survey developer and/or app administrator) and, depending on the desired authentication 
+service, set a password. 
 
 ```python
 # add a new row to the Users table
-new_user=app_tables.users.add_row(email='your_username@example.com', enabled=True, admin=True)
+new_user=app_tables.users.add_row(email='your_username@example.com', enabled=True)
 
 # these steps are not needed if using Google or Microsoft Authentication
 import bcrypt
@@ -33,12 +33,10 @@ password_hash = bcrypt.hashpw(b'new password', bcrypt.gensalt(16))
 new_user['password_hash'] = password_hash.decode()
 ```
 
-For more information on how to interact with the app's database using code, please click [here](advanced.md).
-
 ## Launching OpenQuestion
-Now that OpenQuestion has been installed, and you have added yourself as a user,
-the following command will launch the app and you can sign in with the 
-username and password associated with the previous step.
+Now that OpenQuestion has been installed, there are one or more valid users (i.e., developers and admins),
+the following command will launch the app which will prompt the user for 
+their authentication details associated with the previous step.
 
 ```
 anvil-app-server --app OpenQuestion
