@@ -3,7 +3,7 @@ Each Survey has its own settings and these can be
 accessed through the [survey dashboard](survey_dev.md#survey-dashboard).
 
 **Survey settings**
-![sets](img/sets.png)
+![brd](img/sets.png)
 
 ## Opening and closing dates
 The opening and closing dates can be chosen by

@@ -3,10 +3,11 @@
 img[alt="brd"] {
   border: 1px solid;
   padding: 10px;
-  box-shadow: 1px 1px #888888;
-  border-radius: 2px;
+  box-shadow: 1px 1px #888888 !important;
+  border-radius: 2px !important;
 }
 
+/*
 .button {
   display: block;
   width: 100%;
@@ -30,6 +31,8 @@ img[alt="brd"] {
   text-align: center !important;
 }
 
+*/
+
 /* Al hack: Custom styles to override MkDocs defaults and enhance theme */
 /* got it from https://github.com/squidfunk/mkdocs-material/issues/508 */
 
@@ -38,6 +41,8 @@ img[alt="brd"] {
  * - level 3 is filled square
  * - ul default is filled disc (bullet)
  */
+
+/*
 article ul ul {
         list-style-type:  circle !important;
 }
@@ -45,3 +50,4 @@ article ul ul {
 article ul ul ul {
         list-style-type:  square !important;
 }
+*/
