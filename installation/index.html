@@ -239,22 +239,9 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#adding-developers-as-users" class="md-nav__link">
-    Adding developers as users
+  <a href="#adding-developers-and-administrators-as-users" class="md-nav__link">
+    Adding developers and administrators as users
   </a>
-  
-    <nav class="md-nav" aria-label="Adding developers as users">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#accessing-openquestions-python-shell" class="md-nav__link">
-    Accessing OpenQuestion's Python Shell
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -365,22 +352,9 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#adding-developers-as-users" class="md-nav__link">
-    Adding developers as users
+  <a href="#adding-developers-and-administrators-as-users" class="md-nav__link">
+    Adding developers and administrators as users
   </a>
-  
-    <nav class="md-nav" aria-label="Adding developers as users">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#accessing-openquestions-python-shell" class="md-nav__link">
-    Accessing OpenQuestion's Python Shell
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -419,21 +393,21 @@
 <div class="highlight"><pre><span></span><code>pip install OpenQuestion
 </code></pre></div>
 
-<h2 id="adding-developers-as-users">Adding developers as users<a class="headerlink" href="#adding-developers-as-users" title="Permanent link">&para;</a></h2>
-<p>Before OpenQuestion can be used, developers must be added as registered users to the app's database. 
-This is described in the following sections (click <a href="../faq/">here</a> for more information on the
+<h2 id="adding-developers-and-administrators-as-users">Adding developers and administrators as users<a class="headerlink" href="#adding-developers-and-administrators-as-users" title="Permanent link">&para;</a></h2>
+<p>Before OpenQuestion's GUI can be used, survey developers and app administrators must be added as 
+registered users to the app's database. This is described in the following 
+sections (click <a href="../faq/">here</a> for more information on the
 available authentication services).</p>
-<h3 id="accessing-openquestions-python-shell">Accessing OpenQuestion's Python Shell<a class="headerlink" href="#accessing-openquestions-python-shell" title="Permanent link">&para;</a></h3>
 <p>From the command line (where the OpenQuestion is below the current directory) run the app server 
 with the <code>--shell</code> option. This will drop you into a Python interpreter that is 
 connected to OpenQuestion's database.</p>
 <div class="highlight"><pre><span></span><code>anvil-app-server --app OpenQuestion --shell
 </code></pre></div>
 
-<p>Now add yourself as a user and, depending on the desired authentication 
-service, give yourself a password. </p>
+<p>Now add a user (i.e., a survey developer and/or app administrator) and, depending on the desired authentication 
+service, set a password. </p>
 <div class="highlight"><pre><span></span><code><span class="c1"># add a new row to the Users table</span>
-<span class="n">new_user</span><span class="o">=</span><span class="n">app_tables</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">add_row</span><span class="p">(</span><span class="n">email</span><span class="o">=</span><span class="s1">&#39;your_username@example.com&#39;</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">admin</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">new_user</span><span class="o">=</span><span class="n">app_tables</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">add_row</span><span class="p">(</span><span class="n">email</span><span class="o">=</span><span class="s1">&#39;your_username@example.com&#39;</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># these steps are not needed if using Google or Microsoft Authentication</span>
 <span class="kn">import</span> <span class="nn">bcrypt</span>
@@ -441,11 +415,10 @@ service, give yourself a password. </p>
 <span class="n">new_user</span><span class="p">[</span><span class="s1">&#39;password_hash&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">password_hash</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
 </code></pre></div>
 
-<p>For more information on how to interact with the app's database using code, please click <a href="../advanced/">here</a>.</p>
 <h2 id="launching-openquestion">Launching OpenQuestion<a class="headerlink" href="#launching-openquestion" title="Permanent link">&para;</a></h2>
-<p>Now that OpenQuestion has been installed, and you have added yourself as a user,
-the following command will launch the app and you can sign in with the 
-username and password associated with the previous step.</p>
+<p>Now that OpenQuestion has been installed, there are one or more valid users (i.e., developers and admins),
+the following command will launch the app which will prompt the user for 
+their authentication details associated with the previous step.</p>
 <div class="highlight"><pre><span></span><code>anvil-app-server --app OpenQuestion
 </code></pre></div>
 

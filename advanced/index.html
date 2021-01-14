@@ -296,29 +296,90 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#openquestions-database" class="md-nav__link">
-    OpenQuestion's database
+  <a href="#accessing-the-python-shell-for-administrators" class="md-nav__link">
+    Accessing the Python Shell (for administrators)
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#accessing-the-python-shell-for-app-administrators" class="md-nav__link">
-    Accessing the Python Shell (for app administrators)
+  <a href="#accessing-the-python-shell-for-survey-developers" class="md-nav__link">
+    Accessing the Python Shell (for survey developers)
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#giving-developers-access-to-the-python-shell" class="md-nav__link">
-    Giving developers access to the Python shell
+  <a href="#json-representation-of-surveys" class="md-nav__link">
+    JSON representation of surveys
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#url-parameters" class="md-nav__link">
-    URL parameters
+  <a href="#using-the-surveys-table" class="md-nav__link">
+    Using the Surveys table
+  </a>
+  
+    <nav class="md-nav" aria-label="Using the Surveys table">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adding-a-survey" class="md-nav__link">
+    Adding a survey
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deleting-a-survey" class="md-nav__link">
+    Deleting a survey
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modifying-a-survey" class="md-nav__link">
+    Modifying a survey
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-users-table" class="md-nav__link">
+    Using the Users table
+  </a>
+  
+    <nav class="md-nav" aria-label="Using the Users table">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adding-a-user" class="md-nav__link">
+    Adding a user
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deleting-a-user" class="md-nav__link">
+    Deleting a user
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-data-to-submissions-using-query-strings" class="md-nav__link">
+    Adding data to submissions using query strings:
   </a>
   
 </li>
@@ -340,47 +401,294 @@
                 
                 
                 <h1 id="advanced-usage">Advanced usage<a class="headerlink" href="#advanced-usage" title="Permanent link">&para;</a></h1>
-<p>The following topics are for somewhat advanced use cases and are not needed for
-basic GUI-based survey development. The topics generally cover features that
-make it possible to automate survey development and modification, backup survey structures, 
-associate meta-data with surveys, and more.</p>
-<h2 id="openquestions-database">OpenQuestion's database<a class="headerlink" href="#openquestions-database" title="Permanent link">&para;</a></h2>
-<p><img alt="db" src="../img/db.png" /></p>
-<h2 id="accessing-the-python-shell-for-app-administrators">Accessing the Python Shell (for app administrators)<a class="headerlink" href="#accessing-the-python-shell-for-app-administrators" title="Permanent link">&para;</a></h2>
+<p>OpenQuestion's GUI can handle standard survey development and therefore this section is
+only intended for more advanced use cases. Where noted, certain topics are relevent only to
+OpenQuestion's administrator(s).</p>
+<h2 id="accessing-the-python-shell-for-administrators">Accessing the Python Shell (for administrators)<a class="headerlink" href="#accessing-the-python-shell-for-administrators" title="Permanent link">&para;</a></h2>
 <p>From the command line (where the OpenQuestion is below the current directory) run the app server 
-with the <code>--shell</code> option. This will drop you into a Python interpreter that is 
-connected to OpenQuestion's database. </p>
+with the <code>--shell</code> option. This will drop you into a Python interpreter that has access to
+OpenQuestion's priviledged code and database. </p>
 <div class="highlight"><pre><span></span><code>anvil-app-server --app OpenQuestion --shell
 </code></pre></div>
 
-<p>Once in the Python shell, OpenQuestion's priviledged server code and databases are accessible. 
-To interact with the databases, see Anvil's <a href="">DataTables API</a>. For example,</p>
-<p>bla bla</p>
-<h2 id="giving-developers-access-to-the-python-shell">Giving developers access to the Python shell<a class="headerlink" href="#giving-developers-access-to-the-python-shell" title="Permanent link">&para;</a></h2>
+<h2 id="accessing-the-python-shell-for-survey-developers">Accessing the Python Shell (for survey developers)<a class="headerlink" href="#accessing-the-python-shell-for-survey-developers" title="Permanent link">&para;</a></h2>
 <p>Developers can also interact with OpenQuestion's server code and databases from Python.
-First, the app's administrator must generate 
+The administrator must first generate 
 a token (a so-called <a href="https://anvil.works/docs/uplink">Uplink</a> key) and associate it with 
 OpenQuestion as follows:</p>
 <div class="highlight"><pre><span></span><code> anvil-app-server --app OpenQuestion --uplink-key &lt;you-secret-key&gt;
 </code></pre></div>
 
 <div class="admonition danger">
-<p class="admonition-title">Be careful when creating an Uplink key</p>
+<p class="admonition-title">Admins, be careful when creating an Uplink key</p>
 <p>Uplink keys should be long, secure, and random. Do not share the key
 with anyone except for those who you want to have access to
-OpenQuestions privileged server code and databases</p>
+OpenQuestion's privileged server code and databases</p>
 </div>
 <p>Developers can now connect to OpenQuestion with Python code by following these steps:</p>
 <div class="highlight"><pre><span></span><code>pip install anvil-uplink
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code><span class="c1"># connecting to OpenQuestion</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">anvil.server</span>
+
+<span class="c1"># connecting to OpenQuestion</span>
 <span class="n">anvil</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;[uplink-key goes here]&quot;</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="s2">&quot;ws://your-runtime-server:3030/_/uplink&quot;</span><span class="p">)</span><span class="err">`</span>
 </code></pre></div>
 
 <p>Once sucessfully connected, developers will have priviledged access to OpenQuestion's server code
 and databases from their Python environment.</p>
-<h2 id="url-parameters">URL parameters<a class="headerlink" href="#url-parameters" title="Permanent link">&para;</a></h2>
+<h2 id="json-representation-of-surveys">JSON representation of surveys<a class="headerlink" href="#json-representation-of-surveys" title="Permanent link">&para;</a></h2>
+<p>OpenQuestion represents surveys as a Python dictionary (stored as a JSON object in the backend database). The following
+two examples show the <code>dict</code> representation of two surveys: one that is simple, followed by one that is more complex.
+By studying these structures, one can learn how to create and modify surveys programatically 
+(also, see the sections pertaining to working with the Surveys table). </p>
+<p>In general, the survey <code>dict</code> is a nested, somewhat self-similar structure. For example,</p>
+<ul>
+<li>The survey itself contains sections (a type of widget)</li>
+<li>Sections contain the typical UI widgets (e.g., text_box, drop_down, etc)</li>
+<li>The UI widgets contain all of the properties set in the survey designer 
+(title, placeholder, mandatory flag, branching logic, etc)</li>
+</ul>
+<details class="example"><summary>Simple survey (click)</summary><div class="highlight"><pre><span></span><code><span class="n">my_survey</span><span class="o">=</span><span class="p">{</span>
+<span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;simple survey&quot;</span><span class="p">,</span>
+<span class="s2">&quot;widgets&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="p">{</span>
+  <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;section&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;logic&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+  <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;section&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;widgets&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;text_box&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;logic&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+      <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;what&#39;s your name?&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;number&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+      <span class="s2">&quot;mandatory&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+      <span class="s2">&quot;placeholder&quot;</span><span class="p">:</span> <span class="s2">&quot;placeholder here&quot;</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+<span class="p">],</span>
+<span class="s2">&quot;num_widgets&quot;</span><span class="p">:</span> <span class="mi">2</span>
+<span class="p">}</span>
+</code></pre></div>
+
+</details>
+<details class="example"><summary>A more complex survey (click)</summary><div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;science survey&quot;</span><span class="p">,</span>
+<span class="s2">&quot;widgets&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="p">{</span>
+  <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;section&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;logic&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+  <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;About you&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;widgets&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;This is a survey about **you** and **science**.</span><span class="se">\n\n</span><span class="s2">For more information about science click [here](https://en.wikipedia.org/wiki/Science).</span><span class="se">\n\n</span><span class="s2">- these </span><span class="se">\n</span><span class="s2">- are </span><span class="se">\n</span><span class="s2">- bullets</span><span class="se">\n\n</span><span class="s2">This is scientifically proven to be the cutest image:</span><span class="se">\n\n</span><span class="s2">&lt;img src=</span><span class="se">\&quot;</span><span class="s2">https://i.imgur.com/gPb2phg.gif</span><span class="se">\&quot;</span><span class="s2"> width=</span><span class="se">\&quot;</span><span class="s2">191</span><span class="se">\&quot;</span><span class="s2"> height=</span><span class="se">\&quot;</span><span class="s2">200</span><span class="se">\&quot;</span><span class="s2">&gt;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;markdown&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;logic&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+      <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;placeholder&quot;</span><span class="p">:</span> <span class="s2">&quot;markdown supported&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;text_box&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;logic&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+      <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;What is your name?&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;number&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+      <span class="s2">&quot;mandatory&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+      <span class="s2">&quot;placeholder&quot;</span><span class="p">:</span> <span class="s2">&quot;name goes here&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
+      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;date&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;logic&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+      <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;What is your date of birth?&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;format&quot;</span><span class="p">:</span> <span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;mandatory&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+      <span class="s2">&quot;placeholder&quot;</span><span class="p">:</span> <span class="s2">&quot;date goes here&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;text_area&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;logic&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+      <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Tell me about yourself&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;placeholder&quot;</span><span class="p">:</span> <span class="s2">&quot;text goes here&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;drop_down&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;logic&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+      <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;What is your highest completed educational level?&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="s2">&quot;high school diploma</span><span class="se">\n</span><span class="s2">college diploma or university degree</span><span class="se">\n</span><span class="s2">I have do not have a high school diploma&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;mandatory&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+      <span class="s2">&quot;placeholder&quot;</span><span class="p">:</span> <span class="s2">&quot;select from here&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span>
+      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;radio_button&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;logic&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+      <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Are you interested in science?&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="s2">&quot;Yes</span><span class="se">\n</span><span class="s2">No&quot;</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">},</span>
+<span class="p">{</span>
+  <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+  <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;section&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;logic&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+  <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;About you and science&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;widgets&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;check_box&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;logic&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+      <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Which scientific topics are you interested in? (check all that apply)&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="s2">&quot;mathematics</span><span class="se">\n</span><span class="s2">geography</span><span class="se">\n</span><span class="s2">data science</span><span class="se">\n</span><span class="s2">statistics</span><span class="se">\n</span><span class="s2">physics</span><span class="se">\n</span><span class="s2">neuroscience&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;labels&quot;</span><span class="p">:</span> <span class="s2">&quot;not satisfied</span><span class="se">\n</span><span class="s2">meh</span><span class="se">\n</span><span class="s2">very satisfied&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;min_val&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;50&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;slider&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;How satisfied were you with your last science course? &quot;</span><span class="p">,</span>
+      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+      <span class="s2">&quot;logic&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+      <span class="s2">&quot;step&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;max_val&quot;</span><span class="p">:</span> <span class="s2">&quot;100&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;text_area&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;logic&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;func&quot;</span><span class="p">:</span> <span class="s2">&quot;any&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;conditions&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+            <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;How satisfied were you with your last science course? &quot;</span><span class="p">,</span>
+            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span>
+            <span class="s2">&quot;comparison&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;&quot;</span>
+          <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;In your opinion, what would improve science education?&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;placeholder&quot;</span><span class="p">:</span> <span class="s2">&quot;Explain here&quot;</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+<span class="p">],</span>
+<span class="s2">&quot;num_widgets&quot;</span><span class="p">:</span> <span class="mi">22</span>
+<span class="p">}</span>
+</code></pre></div>
+
+</details>
+<h2 id="using-the-surveys-table">Using the Surveys table<a class="headerlink" href="#using-the-surveys-table" title="Permanent link">&para;</a></h2>
+<p>The Surveys table contains all surveys that are created in OpenQuestion.</p>
+<div class="admonition note">
+<p class="admonition-title">Interacting with tables</p>
+<p>For more information on the the API used for interacting with tables, 
+please see Anvil's <a href="https://anvil.works/docs/data-tables/data-tables-in-code">DataTables documentation</a>.</p>
+</div>
+<p>The Surveys table has the following columns:</p>
+<ul>
+<li><em>survey_id</em>: A long, random, secure, and unique string</li>
+<li><em>title</em>: The survey title</li>
+<li><em>last_modified</em>: A Python datetime object</li>
+<li><em>schema</em>: A JSON representation of the survey's structure (does not contain submission data)</li>
+<li><em>submissions</em>: A CSV <a href="https://anvil.works/docs/media">media object</a> which accumulates submissions</li>
+<li><em>opening_date</em>: A Python datetime object for an opening date</li>
+<li><em>closing_date</em>: A Python datetime object for an closing date</li>
+<li><em>thank_you_msg</em>: A string of Markdown text for the thank you message</li>
+</ul>
+<h3 id="adding-a-survey">Adding a survey<a class="headerlink" href="#adding-a-survey" title="Permanent link">&para;</a></h3>
+<p>The following example demonstrates how to programatically add a survey to the Surveys table.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">anvil.tables</span> <span class="kn">import</span> <span class="n">app_tables</span>
+
+<span class="n">my_survey</span><span class="o">=</span><span class="p">{</span>
+  <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;simple survey&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;widgets&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;section&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;logic&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+      <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;section&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;widgets&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;text_box&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;logic&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+          <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;what&#39;s your name?&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;number&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+          <span class="s2">&quot;mandatory&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+          <span class="s2">&quot;placeholder&quot;</span><span class="p">:</span> <span class="s2">&quot;placeholder here&quot;</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;num_widgets&quot;</span><span class="p">:</span> <span class="mi">2</span>
+<span class="p">}</span>
+
+<span class="n">app_tables</span><span class="o">.</span><span class="n">surveys</span><span class="o">.</span><span class="n">add_row</span><span class="p">(</span>
+    <span class="n">survey_id</span><span class="o">=</span><span class="s1">&#39;you secure survey ID&#39;</span><span class="p">,</span> <span class="c1"># A long, random, secure, and unique string</span>
+    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;simple survey&#39;</span><span class="p">,</span> 
+    <span class="n">schema</span><span class="o">=</span><span class="n">my_survey</span><span class="p">,</span> <span class="c1"># A Python dictionary following OpenQuestion&#39;s expected format</span>
+    <span class="n">submissions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">opening_date</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">closing_date</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">thank_you_msg</span><span class="o">=</span><span class="s1">&#39;# Thank you!&#39;</span><span class="p">)</span> <span class="c1"># Markdown goes here</span>
+</code></pre></div>
+
+<h3 id="deleting-a-survey">Deleting a survey<a class="headerlink" href="#deleting-a-survey" title="Permanent link">&para;</a></h3>
+<p>The following example demonstrates how to programatically delete a survey from the Surveys table.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">anvil.tables</span> <span class="kn">import</span> <span class="n">app_tables</span>
+
+<span class="c1"># Searching based on title property but any other search parameter can be used. </span>
+<span class="c1"># See Anvil&#39;s Datatable documentation https://anvil.works/docs/data-tables/data-tables-in-code</span>
+<span class="n">row</span><span class="o">=</span><span class="n">app_tables</span><span class="o">.</span><span class="n">surveys</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;simple survey&#39;</span><span class="p">)</span>
+<span class="n">row</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+</code></pre></div>
+
+<h3 id="modifying-a-survey">Modifying a survey<a class="headerlink" href="#modifying-a-survey" title="Permanent link">&para;</a></h3>
+<p>The following example demonstrates how to programatically modify a survey from the Surveys table.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">anvil.tables</span> <span class="kn">import</span> <span class="n">app_tables</span>
+
+<span class="n">row</span><span class="o">=</span><span class="n">app_tables</span><span class="o">.</span><span class="n">surveys</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;simple survey&#39;</span><span class="p">)</span>
+
+<span class="c1"># modifying the survey&#39;s title</span>
+<span class="n">row</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;My new title&#39;</span>
+</code></pre></div>
+
+<h2 id="using-the-users-table">Using the Users table<a class="headerlink" href="#using-the-users-table" title="Permanent link">&para;</a></h2>
+<p>OpenQuestion stores developer and administrator information in the Users table. Note that
+users in this case refers to survey developers and app admins (not end users who fill out the survey).</p>
+<h3 id="adding-a-user">Adding a user<a class="headerlink" href="#adding-a-user" title="Permanent link">&para;</a></h3>
+<p>Please see <a href="../installation/#adding-developers-and-administrators-as-users">this</a> 
+section on adding developers and admins as users in OpenQuestion.</p>
+<h3 id="deleting-a-user">Deleting a user<a class="headerlink" href="#deleting-a-user" title="Permanent link">&para;</a></h3>
+<p>Users can be deleted from the Users table as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># get a user from the Users table</span>
+<span class="n">some_user</span><span class="o">=</span><span class="n">app_tables</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">email</span><span class="o">=</span><span class="s1">&#39;your_username@example.com&#39;</span><span class="p">)</span>
+<span class="n">some_user</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+</code></pre></div>
+
+<h2 id="adding-data-to-submissions-using-query-strings">Adding data to submissions using query strings:<a class="headerlink" href="#adding-data-to-submissions-using-query-strings" title="Permanent link">&para;</a></h2>
+<p>OpenQuestion allows survey developers to add additional data 
+to a submission by accepting a <a href="https://en.wikipedia.org/wiki/Query_string">query string</a>
+in the survey's URL.</p>
+<p>For example, in addition to the form's ID, the following survey
+passes <code>foo=42</code>, along with the data that is inputted by an end user, 
+to the submissions table.</p>
+<p><code>https://your-app-url/#?form_id=&lt;uuid&gt;&amp;foo=42</code>   </p>
+<p>This example uses a long query string. That is, it also passes <code>bar=baz</code> to
+the submission's table.</p>
+<p><code>https://your-app-url/#?form_id=&lt;uuid&gt;&amp;foo=42&amp;bar=baz</code>   </p>
+<p>When an end user submits a response a new column is created for every parameter 
+in the query string and the new row in the submissions table will contain the value(s). When a 
+parameter matches an existing column header in the submissions table, 
+the parameter's value is merged (a new column is not created). Note that query strings 
+can be unique to each submission since new paramerters are added as new columns.</p>
                 
               
               
