@@ -6,10 +6,10 @@ by an underlying and accessible Python dictionary.
 # PUT GREAT EXAMPLE GIF HERE SPEEDING THROUGH MANY FEATURES
 
 ## User Guide
-- [Installation](installation.md)
 - [Survey Development](survey_dev.md)
 - [Widget List](widgets.md)
 - [Survey Settings](settings.md)
+- [Installation](installation.md)
 - [Advanced Usage](advanced.md)
 - [FAQ](faq.md)
 

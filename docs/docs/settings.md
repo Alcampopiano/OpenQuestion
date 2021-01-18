@@ -1,6 +1,7 @@
 # Survey settings
 Each Survey has its own settings and these can be 
-accessed through the [survey dashboard](survey_dev.md#survey-dashboard).
+accessed through the [survey dashboard](survey_dev.md#survey-dashboard) by clicking
+the :material-cog: icon.
 
 **Survey settings**
 ![brd](img/sets.png)

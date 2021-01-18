@@ -5,10 +5,10 @@ google_analytics:
 
 nav:
     - Home: index.md
-    - Installation: installation.md
     - Survey Development: survey_dev.md
     - Widgets: widgets.md
     - Settings: settings.md
+    - Installation: installation.md
     - Advanced: advanced.md
     - FAQ: faq.md
 
