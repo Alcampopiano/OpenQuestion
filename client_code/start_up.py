@@ -9,7 +9,9 @@ if not get_url_hash():
   while not anvil.users.login_with_form():
     pass
   
-  open_form('landing.main')
+  # disabling report module
+  # open_form('landing.main')
+  open_form('landing.select_action_survey')
   
 else:
     schema=anvil.server.call('get_form', get_url_hash())

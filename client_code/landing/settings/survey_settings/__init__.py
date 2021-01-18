@@ -6,6 +6,7 @@ import anvil.users
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
+from .. import ColourChanger
 
 class survey_settings(survey_settingsTemplate):
   def __init__(self, row, **properties):
@@ -50,6 +51,15 @@ class survey_settings(survey_settingsTemplate):
 
   def link_home_click(self, **event_args):
     open_form('landing.main')
+    
+    
+#   def button_1_click(self, **event_args):
+#     """This method is called when the button is clicked"""
+#     ColourChanger.set_theme({'Primary 500': 'red',
+#                              'Primary 700': 'pink',
+#                              'Secondary 500': 'yellow',
+#                              'Secondary 700': 'black'})
+
 
 
 

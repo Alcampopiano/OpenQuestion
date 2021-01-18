@@ -5,7 +5,7 @@ container:
   event_bindings: {}
 components:
 - type: ColumnPanel
-  properties: {col_widths: '{"UXGIQA":15,"LGTXTC":45,"ISQHSD":15,"XZBMIH":45,"OZOBWV":15,"FFMAUE":45}'}
+  properties: {col_widths: '{"UXGIQA":15,"LGTXTC":45,"ISQHSD":15,"XZBMIH":45,"OZOBWV":15,"FFMAUE":45,"VSHPSH":20,"IMEMKC":50,"EKPCGL":20,"QWLPNX":50,"NIPULQ":10,"BKKEEG":10}'}
   name: content_panel
   layout_properties: {slot: default}
   components:
@@ -63,6 +63,48 @@ components:
     layout_properties:
       col_widths: {}
       grid_position: XHDKTH,FFMAUE
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: 'primary_color:', font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_5
+    layout_properties: {grid_position: 'XEFRYW,VSHPSH'}
+  - type: TextBox
+    properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: hex color,
+      border: '', enabled: true, foreground: '', visible: true, text: '#2196F3', font_size: null,
+      font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false}
+    name: text_box_1
+    layout_properties: {grid_position: 'XEFRYW,IMEMKC'}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: '', font_size: null, font: '', spacing_above: small, icon_align: left,
+      spacing_below: small, italic: false, background: 'theme:Primary 500', bold: false,
+      underline: false, icon: ''}
+    name: label_7
+    layout_properties: {grid_position: 'XEFRYW,NIPULQ'}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: 'secondary_color:', font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_6
+    layout_properties: {grid_position: 'ITVWRD,EKPCGL'}
+  - type: TextBox
+    properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: hex color,
+      border: '', enabled: true, foreground: '', visible: true, text: '#1976D2', font_size: null,
+      font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false}
+    name: text_box_2
+    layout_properties: {grid_position: 'ITVWRD,QWLPNX'}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: '', font_size: null, font: '', spacing_above: small, icon_align: left,
+      spacing_below: small, italic: false, background: 'theme:Secondary 500', bold: false,
+      underline: false, icon: ''}
+    name: label_8
+    layout_properties: {grid_position: 'ITVWRD,BKKEEG'}
   - type: FlowPanel
     properties: {role: null, spacing: medium, align: right, tooltip: '', border: '',
       foreground: '', visible: true, spacing_above: small, spacing_below: small, background: ''}
