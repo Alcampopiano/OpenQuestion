@@ -11,7 +11,7 @@ as well as an example of what the end user sees.
     and end user data acquisition.  
     
 ## text_box
-The text_box is uses for short text or number responses. It can be
+The text_box is used for short text or number responses. It can be
 configured with the following options:
 
 - _title_. The label displayed on this widget. For example, "What is your name?"
