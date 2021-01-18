@@ -31,8 +31,8 @@ class select_action_survey(select_action_surveyTemplate):
       else:
         comp.background='white'
 
-  def link_home_click(self, **event_args):
-    open_form('landing.main')
+#   def link_home_click(self, **event_args):
+#     #open_form('landing.main')
 
 
 

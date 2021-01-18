@@ -7,16 +7,19 @@ import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 from ... import form
+from ...landing.settings import ColorChanger
 
 class main(mainTemplate):
   def __init__(self, schema, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     
+    settings_in_schema=schema['settings']
+    ColorChanger.set_theme({'Primary 500':
+                            settings_in_schema['survey_color']})
     submit_button=Button(text='submit', role='primary-color')
     submit_button.set_event_handler('click', self.submit_click)
     self.add_component(submit_button)
-
     self.label_title.text=schema['title']
     form.build_form(schema, self.column_panel)  
     
@@ -55,5 +58,16 @@ class main(mainTemplate):
         else:
           comp.hr.visible=True
           
+          
+  def survey_color_change(self, schema, **event_args):
+    ColourChanger.set_theme({'Primary 500': schema['survey_color'],
+                              #'Primary 700': 'pink',
+                              # 'Secondary 500': 'yellow',
+                              # 'Secondary 700': 'black'
+                            })
+
+
+
+
         
     

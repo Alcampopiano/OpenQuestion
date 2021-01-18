@@ -67,7 +67,7 @@ class main(mainTemplate):
      open_form('landing.select_action_survey')
       
   def link_home_click(self, **event_args):
-    open_form('landing.main')
+    open_form('landing.select_action_survey')
 
   def preview_link_click(self, **event_args):
     

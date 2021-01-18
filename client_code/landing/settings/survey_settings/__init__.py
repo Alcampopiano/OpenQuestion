@@ -6,7 +6,6 @@ import anvil.users
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
-from .. import ColourChanger
 
 class survey_settings(survey_settingsTemplate):
   def __init__(self, row, **properties):
@@ -16,21 +15,29 @@ class survey_settings(survey_settingsTemplate):
     # Any code you write here will run when the form opens.
     self.label_survey.text=f"Survey settings: {row['title']}"
     self.tag.row=row
+    schema_settings=row['schema']['settings']
     self.date_picker_opening_date.date=row['opening_date']
     self.date_picker_closing_date.date=row['closing_date']
-    self.text_area_thank_you_msg.text=row['thank_you_msg']
+    self.text_area_thank_you_msg.text=schema_settings['thank_you_msg']
+    self.text_box_survey_color.text=schema_settings['survey_color']
     
   def button_apply_click(self, **event_args):
     opening=self.date_picker_opening_date.date
     closing=self.date_picker_closing_date.date
     thank_you=self.text_area_thank_you_msg.text
-    form_id=self.tag.row['form_id']
-    settings_dict=dict(opening_date=opening,
-                      closing_date=closing,
-                      thank_you_msg=thank_you
-                      )
+    survey_color=self.text_box_survey_color.text
     
-    anvil.server.call('save_survey_settings', form_id, settings_dict)
+    settings_in_schema=dict(survey_color=survey_color,
+                            thank_you_msg=thank_you
+                           )
+    
+    form_id=self.tag.row['form_id']
+    settings_in_datatable=dict(opening_date=opening,
+                               closing_date=closing,
+                              )
+    
+    anvil.server.call('save_survey_settings', form_id, settings_in_schema,
+                      settings_in_datatable)
       
   def button_cancel_click(self, **event_args):
     open_form('landing.select_action_survey')
@@ -45,12 +52,11 @@ class survey_settings(survey_settingsTemplate):
       anvil.server.call('delete_survey', self.tag.row['form_id'])
       Notification('', title='Deleted').show()
 
-  def link_back_click(self, **event_args):
-    open_form('landing.select_action_survey')
-
+#   def link_back_click(self, **event_args):
+#     open_form('landing.select_action_survey')
 
   def link_home_click(self, **event_args):
-    open_form('landing.main')
+    open_form('landing.select_action_survey')
     
     
 #   def button_1_click(self, **event_args):

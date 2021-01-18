@@ -93,6 +93,7 @@ def build_schema(column_panel):
   #schema['id']=get_open_form().tag.id # column_panel.tag.id
   schema['num_widgets']=get_open_form().tag.num_widgets
   schema['widgets']=[]
+  schema['settings']={'thank_you_msg': '#Thank you!', 'survey_color': '#2196F3'}
 
   for section in column_panel.get_components():
   

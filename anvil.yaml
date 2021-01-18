@@ -65,7 +65,10 @@ native_deps: {head_html: "<script>\n/*\nfunction get_jQuery_obj(component) {\n  
     : false}}  \n  \nfetch('https://vega.github.io/schema/vega-lite/v4.json')\n  \t\
     .then(function(resp){\n    \treturn resp.json();\n  \t})\n  \t.then(function(data)\
     \ {\n        schema=data\n  \t\t//make_editor(spec, schema, comp, parent);\n \
-    \ });\n</script>\n\n"}
+    \ });\n</script>\n\n<script>\n  function setThemeCss(css) {\n    // Put the specified\
+    \ CSS into a <style> tag at the very end of <head>.\n    $(\"#custom-theme-css\"\
+    ).remove();\n    $(\"<style id='custom-theme-css'></style>\").text(css).appendTo($(\"\
+    head\"))\n  }\n</script>\n"}
 db_schema:
 - name: Users
   id: 71213
@@ -79,10 +82,6 @@ db_schema:
       name: password_hash
       type: string
       admin_ui: {order: 4, width: 200}
-    ouhpmzg29iw=:
-      name: admin
-      type: bool
-      admin_ui: {order: 2, width: 200}
     p8RYLBAw1qQ=:
       name: email
       type: string
@@ -97,10 +96,6 @@ db_schema:
   id: 63199
   python_name: forms
   columns:
-    0A5NNm8d1Qo=:
-      name: thank_you_msg
-      type: string
-      admin_ui: {order: 7, width: 200}
     0LurdekMZ08=:
       name: schema
       type: simpleObject

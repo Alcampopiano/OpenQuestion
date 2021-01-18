@@ -14,7 +14,7 @@ import mistune
 
 
 def validate_user(u):
-  return u['admin']
+  return u #u['admin']
 
 @anvil.server.callable(require_user = validate_user)
 def delete_report(form_id):

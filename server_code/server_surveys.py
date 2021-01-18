@@ -11,7 +11,7 @@ import pandas as pd
 import io
 
 def validate_user(u):
-  return u['admin']
+  return u #u['admin']
 
 @anvil.server.callable(require_user = validate_user)
 def delete_survey(form_id):
@@ -117,8 +117,8 @@ def get_form(url_hash):
   row=app_tables.forms.get(form_id=form_id)
   
   # let admins preview otherwise, check for valid dates
-  if not anvil.users.get_user()['admin'] or \
-    (anvil.users.get_user()['admin'] and not preview_link_clicked):
+  if not anvil.users.get_user() or \
+    (anvil.users.get_user() and not preview_link_clicked):
     check_opening_closing_dates(row['opening_date'], row['closing_date'])
         
   return row['schema']
@@ -144,10 +144,12 @@ def save_schema(form_id, schema):
   if not form_id:
     form_id=str(uuid.uuid4())
                 
-    default_thank_you="Thank you! Your responses have been submitted."
+    #default_thank_you="Thank you! Your responses have been submitted."
     
     app_tables.forms.add_row(form_id=form_id, last_modified=datetime.now(), 
-                             schema=schema, title=schema['title'], thank_you_msg=default_thank_you)
+                             schema=schema, title=schema['title'])
+    
+    #thank_you_msg=default_thank_you
            
   else:
     form_id=str(form_id)
@@ -158,9 +160,12 @@ def save_schema(form_id, schema):
   
   
 @anvil.server.callable(require_user = validate_user)
-def save_survey_settings(form_id, settings_dict):
+def save_survey_settings(form_id, settings_in_schema, settings_in_datatable):
   row=app_tables.forms.get(form_id=form_id)
-  row.update(**settings_dict)
+  schema=row['schema']
+  schema['settings'].update(**settings_in_schema)
+  row.update(schema=schema)
+  row.update(**settings_in_datatable)
   
   
 
