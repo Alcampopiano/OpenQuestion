@@ -12,14 +12,12 @@ def build_form(schema, column_panel):
   column_panel.tag.title=schema['title']
   main=column_panel.parent
   main.tag.form_dict={}
-  #column_panel.tag.id=schema['id']
   
   for section_schema in schema['widgets']:
     
     section=widgets.section()
     section.text_box_title.text=section_schema['title']
     section.tag.logic=section_schema['logic']
-    #section.visible=section_schema['visible']
     section.label_id.text=section_schema['id']
     
     for widget_schema in section_schema['widgets']:
@@ -81,9 +79,6 @@ def build_form(schema, column_panel):
     main.tag.form_dict[section_schema['id']]=section
     
     column_panel.add_component(section)
-    
-  # set logic target ids
-  #set_target_ids(main.tag.form_dict)
 
     
 def build_schema(column_panel):
@@ -93,13 +88,11 @@ def build_schema(column_panel):
   
   # get current survey settings
   if row:
-    print('found row')
     settings=row['schema']['settings']
     schema.update({'settings': settings})
     
   # set defaults
   else:
-    print('else')
     schema['settings']=dict(thank_you_msg='#Thank you!', 
                             survey_color='#2196F3')
   
@@ -113,16 +106,13 @@ def build_schema(column_panel):
     section_schema['type']='section'
     section_schema['title']=section.text_box_title.text
     section_schema['id']=section.label_id.text
-    #section_schema['visible']=True#section.tag.visible
     section_schema['logic']=section.tag.logic
     section_schema['widgets']=[]
     
     for widget in section.column_panel.get_components():
       
       widget_schema={}
-      #widget_schema['visible']=True#widget.tag.visible
       widget_schema['logic']=widget.tag.logic
-      #print(widget.tag.logic)
       widget_schema['id']=widget.label_id.text
       widget_schema['title']=widget.text_box_title.text
       

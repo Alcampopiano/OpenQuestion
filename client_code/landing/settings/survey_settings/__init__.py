@@ -51,23 +51,11 @@ class survey_settings(survey_settingsTemplate):
     if c=='yes':
       anvil.server.call('delete_survey', self.tag.row['form_id'])
       Notification('', title='Deleted').show()
-
-#   def link_back_click(self, **event_args):
-#     open_form('landing.select_action_survey')
+      open_form('landing.select_action_survey')
 
   def link_home_click(self, **event_args):
     open_form('landing.select_action_survey')
     
-    
-#   def button_1_click(self, **event_args):
-#     """This method is called when the button is clicked"""
-#     ColourChanger.set_theme({'Primary 500': 'red',
-#                              'Primary 700': 'pink',
-#                              'Secondary 500': 'yellow',
-#                              'Secondary 700': 'black'})
-
-
-
 
 
 
