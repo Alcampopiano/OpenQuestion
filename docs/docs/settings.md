@@ -16,6 +16,10 @@ corresponding field.
 The text area allows you to write markdown to express a "thank you message".
 The message will appear after the survey has been submitted by the user.
 
+## Survey color
+You can change the main color of the end user's survey by entering a hex code (e.g., #2196F3)
+This will not affect the color in the survey designer.
+
 ## Deleting a survey
 The big red button allows a survey to be deleted. A confirmation
 dialogue will pop up just to be safe.

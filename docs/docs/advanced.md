@@ -59,137 +59,145 @@ In general, the survey `dict` is a nested, somewhat self-similar structure. For 
 ??? example "Simple survey (click)"
     ```python
     my_survey={
-    "title": "simple survey",
-    "widgets": [
-    {
-      "id": 0,
-      "type": "section",
-      "logic": None,
-      "title": "section",
+      "title": "simple survey",
+      "settings": {
+      "survey_color": "#2196F3",
+      "thank_you_msg": "#Thank you!"
+      },
+      "num_widgets": 2,
       "widgets": [
         {
-          "id": 1,
-          "type": "text_box",
+          "id": 0,
+          "type": "section",
           "logic": None,
-          "title": "what's your name?",
-          "number": False,
-          "mandatory": True,
-          "placeholder": "placeholder here"
+          "title": "section",
+          "widgets": [
+            {
+              "id": 1,
+              "type": "text_box",
+              "logic": None,
+              "title": "what's your name?",
+              "number": False,
+              "mandatory": True,
+              "placeholder": "placeholder here"
+            }
+          ]
         }
       ]
-    }
-    ],
-    "num_widgets": 2
     }
     ```
     
 ??? example "A more complex survey (click)"
     ```python
-    {
-    "title": "science survey",
-    "widgets": [
-    {
-      "id": 0,
-      "type": "section",
-      "logic": None,
-      "title": "About you",
+    my_survey={
+      "title": "science survey",
+      "settings": {
+      "survey_color": "#2196F3",
+      "thank_you_msg": "#Thank you!"
+      },
+      "num_widgets": 22,
       "widgets": [
         {
-          "id": 1,
-          "text": "This is a survey about **you** and **science**.\n\nFor more information about science click [here](https://en.wikipedia.org/wiki/Science).\n\n- these \n- are \n- bullets\n\nThis is scientifically proven to be the cutest image:\n\n<img src=\"https://i.imgur.com/gPb2phg.gif\" width=\"191\" height=\"200\">\n\n",
-          "type": "markdown",
+          "id": 0,
+          "type": "section",
           "logic": None,
-          "title": "",
-          "placeholder": "markdown supported"
+          "title": "About you",
+          "widgets": [
+            {
+              "id": 1,
+              "text": "This is a survey about **you** and **science**.\n\nFor more information about science click [here](https://en.wikipedia.org/wiki/Science).\n\n- these \n- are \n- bullets\n\nThis is scientifically proven to be the cutest image:\n\n<img src=\"https://i.imgur.com/gPb2phg.gif\" width=\"191\" height=\"200\">\n\n",
+              "type": "markdown",
+              "logic": None,
+              "title": "",
+              "placeholder": "markdown supported"
+            },
+            {
+              "id": 2,
+              "type": "text_box",
+              "logic": None,
+              "title": "What is your name?",
+              "number": False,
+              "mandatory": False,
+              "placeholder": "name goes here"
+            },
+            {
+              "id": 7,
+              "type": "date",
+              "logic": None,
+              "title": "What is your date of birth?",
+              "format": "%Y-%m-%d",
+              "mandatory": False,
+              "placeholder": "date goes here"
+            },
+            {
+              "id": 3,
+              "type": "text_area",
+              "logic": None,
+              "title": "Tell me about yourself",
+              "placeholder": "text goes here"
+            },
+            {
+              "id": 4,
+              "type": "drop_down",
+              "logic": None,
+              "title": "What is your highest completed educational level?",
+              "options": "high school diploma\ncollege diploma or university degree\nI have do not have a high school diploma",
+              "mandatory": True,
+              "placeholder": "select from here"
+            },
+            {
+              "id": 11,
+              "type": "radio_button",
+              "logic": None,
+              "title": "Are you interested in science?",
+              "options": "Yes\nNo"
+            }
+          ]
         },
         {
-          "id": 2,
-          "type": "text_box",
+          "id": 5,
+          "type": "section",
           "logic": None,
-          "title": "What is your name?",
-          "number": False,
-          "mandatory": False,
-          "placeholder": "name goes here"
-        },
-        {
-          "id": 7,
-          "type": "date",
-          "logic": None,
-          "title": "What is your date of birth?",
-          "format": "%Y-%m-%d",
-          "mandatory": False,
-          "placeholder": "date goes here"
-        },
-        {
-          "id": 3,
-          "type": "text_area",
-          "logic": None,
-          "title": "Tell me about yourself",
-          "placeholder": "text goes here"
-        },
-        {
-          "id": 4,
-          "type": "drop_down",
-          "logic": None,
-          "title": "What is your highest completed educational level?",
-          "options": "high school diploma\ncollege diploma or university degree\nI have do not have a high school diploma",
-          "mandatory": True,
-          "placeholder": "select from here"
-        },
-        {
-          "id": 11,
-          "type": "radio_button",
-          "logic": None,
-          "title": "Are you interested in science?",
-          "options": "Yes\nNo"
+          "title": "About you and science",
+          "widgets": [
+            {
+              "id": 8,
+              "type": "check_box",
+              "logic": None,
+              "title": "Which scientific topics are you interested in? (check all that apply)",
+              "options": "mathematics\ngeography\ndata science\nstatistics\nphysics\nneuroscience"
+            },
+            {
+              "labels": "not satisfied\nmeh\nvery satisfied",
+              "min_val": "0",
+              "value": "50",
+              "type": "slider",
+              "title": "How satisfied were you with your last science course? ",
+              "id": 10,
+              "logic": None,
+              "step": "1",
+              "max_val": "100"
+            },
+            {
+              "id": 12,
+              "type": "text_area",
+              "logic": {
+                "func": "any",
+                "conditions": [
+                  {
+                    "id": 10,
+                    "title": "How satisfied were you with your last science course? ",
+                    "value": 40,
+                    "comparison": "<"
+                  }
+                ]
+              },
+              "title": "In your opinion, what would improve science education?",
+              "placeholder": "Explain here"
+            }
+          ]
         }
       ]
-    },
-    {
-      "id": 5,
-      "type": "section",
-      "logic": None,
-      "title": "About you and science",
-      "widgets": [
-        {
-          "id": 8,
-          "type": "check_box",
-          "logic": None,
-          "title": "Which scientific topics are you interested in? (check all that apply)",
-          "options": "mathematics\ngeography\ndata science\nstatistics\nphysics\nneuroscience"
-        },
-        {
-          "labels": "not satisfied\nmeh\nvery satisfied",
-          "min_val": "0",
-          "value": "50",
-          "type": "slider",
-          "title": "How satisfied were you with your last science course? ",
-          "id": 10,
-          "logic": None,
-          "step": "1",
-          "max_val": "100"
-        },
-        {
-          "id": 12,
-          "type": "text_area",
-          "logic": {
-            "func": "any",
-            "conditions": [
-              {
-                "id": 10,
-                "title": "How satisfied were you with your last science course? ",
-                "value": 40,
-                "comparison": "<"
-              }
-            ]
-          },
-          "title": "In your opinion, what would improve science education?",
-          "placeholder": "Explain here"
-        }
-      ]
-    }
-    ],
-    "num_widgets": 22
     }
     ```
 
@@ -209,7 +217,6 @@ The Surveys table has the following columns:
 - _submissions_: A CSV [media object](https://anvil.works/docs/media) which accumulates submissions
 - _opening_date_: A Python datetime object for an opening date
 - _closing_date_: A Python datetime object for an closing date
-- _thank_you_msg_: A string of Markdown text for the thank you message
 
 ### Adding a survey
 The following example demonstrates how to programatically add a survey to the Surveys table.
@@ -219,6 +226,11 @@ from anvil.tables import app_tables
 
 my_survey={
   "title": "simple survey",
+  "settings": {
+  "survey_color": "#2196F3",
+  "thank_you_msg": "#Thank you!"
+  },
+  "num_widgets": 2,
   "widgets": [
     {
       "id": 0,
@@ -237,8 +249,7 @@ my_survey={
         }
       ]
     }
-  ],
-  "num_widgets": 2
+  ]
 }
 
 app_tables.surveys.add_row(
@@ -247,8 +258,7 @@ app_tables.surveys.add_row(
     schema=my_survey, # A Python dictionary following OpenQuestion's expected format
     submissions=None,
     opening_date=None,
-    closing_date=None,
-    thank_you_msg='# Thank you!') # Markdown goes here
+    closing_date=None)
 ```
 
 ### Deleting a survey

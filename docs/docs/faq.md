@@ -56,5 +56,33 @@ tools that do this far better than OpenQuestion ever could 😃.
 For example, please see [Altair](https://altair-viz.github.io/), 
 [Jupyter](https://jupyterlab.readthedocs.io/en/stable/), and [Deepnote](https://deepnote.com/).
 
-# Can I change the color of my survey?
-#2196F3, #1976D2
+## Can I change the color of a survey?
+Yes, please see [this part](settings.md#survey-color) of the settings page.
+
+## Can I change the default authentication services (for admins)?
+Survey developers must authenticate into OpenQuestion. Various authentication options are available 
+and can be configured by editing the file "anvil.yaml" located at the top level of OpenQuestion.
+Inside that file you will see the following section:
+
+```yaml
+  client_config: {allow_signup: false, enable_automatically: false, use_email: true,
+    confirm_email: false, use_microsoft: true, require_secure_passwords: true}
+```
+
+By default, OpenQuestion includes the entries `use_email: true` and `use_microsoft: true` (described below).
+You can remove these entries or set them to `false` if you would like to remove them as 
+authentication options in OpenQuestion. The available authentication options are as follows:
+
+- `use_email: true/false`. Authenticate with an email address and password. 
+    Developers have to be added as registered users as described 
+    [here](installation.md#adding-developers-and-administrators-as-users)
+- `use_microsoft: true/false`. Authenticate with Microsoft.
+- `use_google: true/false`. Authenticate with Google.
+- `use_facebook: true/false`. Authenticate with Facebook.
+- `use_token: true/false`. Users sign in by following a link in their email.
+    Developers have to be added as registered users as described 
+    [here](installation.md#adding-developers-and-administrators-as-users)
+
+For more information on the above options in OpenQuestion, please see Anvil's documentation on
+[authentication](https://anvil.works/docs/users/authentication_choices.html). 
+
