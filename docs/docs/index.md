@@ -3,7 +3,8 @@ OpenQuestion is an open source and developer focused platform for building surve
 Surveys can be designed using a GUI and are represented
 by an underlying and accessible Python dictionary.
 
-# PUT GREAT EXAMPLE GIF HERE SPEEDING THROUGH MANY FEATURES
+**Example of survey development in OpenQuestion**
+![brd](img/question_types.gif)
 
 ## User Guide
 - [Survey Development](survey_dev.md)
