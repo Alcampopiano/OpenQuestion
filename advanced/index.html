@@ -574,136 +574,144 @@ By studying these structures, one can learn how to create and modify surveys pro
 (title, placeholder, mandatory flag, branching logic, etc)</li>
 </ul>
 <details class="example"><summary>Simple survey (click)</summary><div class="highlight"><pre><span></span><code><span class="n">my_survey</span><span class="o">=</span><span class="p">{</span>
-<span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;simple survey&quot;</span><span class="p">,</span>
-<span class="s2">&quot;widgets&quot;</span><span class="p">:</span> <span class="p">[</span>
-<span class="p">{</span>
-  <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;section&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;logic&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
-  <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;section&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;simple survey&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;settings&quot;</span><span class="p">:</span> <span class="p">{</span>
+  <span class="s2">&quot;survey_color&quot;</span><span class="p">:</span> <span class="s2">&quot;#2196F3&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;thank_you_msg&quot;</span><span class="p">:</span> <span class="s2">&quot;#Thank you!&quot;</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;num_widgets&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
   <span class="s2">&quot;widgets&quot;</span><span class="p">:</span> <span class="p">[</span>
     <span class="p">{</span>
-      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;text_box&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;section&quot;</span><span class="p">,</span>
       <span class="s2">&quot;logic&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
-      <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;what&#39;s your name?&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;number&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
-      <span class="s2">&quot;mandatory&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-      <span class="s2">&quot;placeholder&quot;</span><span class="p">:</span> <span class="s2">&quot;placeholder here&quot;</span>
+      <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;section&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;widgets&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;text_box&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;logic&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+          <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;what&#39;s your name?&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;number&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+          <span class="s2">&quot;mandatory&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+          <span class="s2">&quot;placeholder&quot;</span><span class="p">:</span> <span class="s2">&quot;placeholder here&quot;</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
     <span class="p">}</span>
   <span class="p">]</span>
-<span class="p">}</span>
-<span class="p">],</span>
-<span class="s2">&quot;num_widgets&quot;</span><span class="p">:</span> <span class="mi">2</span>
 <span class="p">}</span>
 </code></pre></div>
 
 </details>
-<details class="example"><summary>A more complex survey (click)</summary><div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;science survey&quot;</span><span class="p">,</span>
-<span class="s2">&quot;widgets&quot;</span><span class="p">:</span> <span class="p">[</span>
-<span class="p">{</span>
-  <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;section&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;logic&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
-  <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;About you&quot;</span><span class="p">,</span>
+<details class="example"><summary>A more complex survey (click)</summary><div class="highlight"><pre><span></span><code><span class="n">my_survey</span><span class="o">=</span><span class="p">{</span>
+  <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;science survey&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;settings&quot;</span><span class="p">:</span> <span class="p">{</span>
+  <span class="s2">&quot;survey_color&quot;</span><span class="p">:</span> <span class="s2">&quot;#2196F3&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;thank_you_msg&quot;</span><span class="p">:</span> <span class="s2">&quot;#Thank you!&quot;</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;num_widgets&quot;</span><span class="p">:</span> <span class="mi">22</span><span class="p">,</span>
   <span class="s2">&quot;widgets&quot;</span><span class="p">:</span> <span class="p">[</span>
     <span class="p">{</span>
-      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-      <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;This is a survey about **you** and **science**.</span><span class="se">\n\n</span><span class="s2">For more information about science click [here](https://en.wikipedia.org/wiki/Science).</span><span class="se">\n\n</span><span class="s2">- these </span><span class="se">\n</span><span class="s2">- are </span><span class="se">\n</span><span class="s2">- bullets</span><span class="se">\n\n</span><span class="s2">This is scientifically proven to be the cutest image:</span><span class="se">\n\n</span><span class="s2">&lt;img src=</span><span class="se">\&quot;</span><span class="s2">https://i.imgur.com/gPb2phg.gif</span><span class="se">\&quot;</span><span class="s2"> width=</span><span class="se">\&quot;</span><span class="s2">191</span><span class="se">\&quot;</span><span class="s2"> height=</span><span class="se">\&quot;</span><span class="s2">200</span><span class="se">\&quot;</span><span class="s2">&gt;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;markdown&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;section&quot;</span><span class="p">,</span>
       <span class="s2">&quot;logic&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
-      <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;placeholder&quot;</span><span class="p">:</span> <span class="s2">&quot;markdown supported&quot;</span>
+      <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;About you&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;widgets&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;This is a survey about **you** and **science**.</span><span class="se">\n\n</span><span class="s2">For more information about science click [here](https://en.wikipedia.org/wiki/Science).</span><span class="se">\n\n</span><span class="s2">- these </span><span class="se">\n</span><span class="s2">- are </span><span class="se">\n</span><span class="s2">- bullets</span><span class="se">\n\n</span><span class="s2">This is scientifically proven to be the cutest image:</span><span class="se">\n\n</span><span class="s2">&lt;img src=</span><span class="se">\&quot;</span><span class="s2">https://i.imgur.com/gPb2phg.gif</span><span class="se">\&quot;</span><span class="s2"> width=</span><span class="se">\&quot;</span><span class="s2">191</span><span class="se">\&quot;</span><span class="s2"> height=</span><span class="se">\&quot;</span><span class="s2">200</span><span class="se">\&quot;</span><span class="s2">&gt;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;markdown&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;logic&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+          <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;placeholder&quot;</span><span class="p">:</span> <span class="s2">&quot;markdown supported&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;text_box&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;logic&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+          <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;What is your name?&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;number&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+          <span class="s2">&quot;mandatory&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+          <span class="s2">&quot;placeholder&quot;</span><span class="p">:</span> <span class="s2">&quot;name goes here&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
+          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;date&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;logic&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+          <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;What is your date of birth?&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;format&quot;</span><span class="p">:</span> <span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;mandatory&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+          <span class="s2">&quot;placeholder&quot;</span><span class="p">:</span> <span class="s2">&quot;date goes here&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;text_area&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;logic&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+          <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Tell me about yourself&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;placeholder&quot;</span><span class="p">:</span> <span class="s2">&quot;text goes here&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;drop_down&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;logic&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+          <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;What is your highest completed educational level?&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="s2">&quot;high school diploma</span><span class="se">\n</span><span class="s2">college diploma or university degree</span><span class="se">\n</span><span class="s2">I have do not have a high school diploma&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;mandatory&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+          <span class="s2">&quot;placeholder&quot;</span><span class="p">:</span> <span class="s2">&quot;select from here&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span>
+          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;radio_button&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;logic&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+          <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Are you interested in science?&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="s2">&quot;Yes</span><span class="se">\n</span><span class="s2">No&quot;</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
     <span class="p">},</span>
     <span class="p">{</span>
-      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;text_box&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;section&quot;</span><span class="p">,</span>
       <span class="s2">&quot;logic&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
-      <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;What is your name?&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;number&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
-      <span class="s2">&quot;mandatory&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
-      <span class="s2">&quot;placeholder&quot;</span><span class="p">:</span> <span class="s2">&quot;name goes here&quot;</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
-      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;date&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;logic&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
-      <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;What is your date of birth?&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;format&quot;</span><span class="p">:</span> <span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;mandatory&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
-      <span class="s2">&quot;placeholder&quot;</span><span class="p">:</span> <span class="s2">&quot;date goes here&quot;</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;text_area&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;logic&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
-      <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Tell me about yourself&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;placeholder&quot;</span><span class="p">:</span> <span class="s2">&quot;text goes here&quot;</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
-      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;drop_down&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;logic&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
-      <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;What is your highest completed educational level?&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="s2">&quot;high school diploma</span><span class="se">\n</span><span class="s2">college diploma or university degree</span><span class="se">\n</span><span class="s2">I have do not have a high school diploma&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;mandatory&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-      <span class="s2">&quot;placeholder&quot;</span><span class="p">:</span> <span class="s2">&quot;select from here&quot;</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span>
-      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;radio_button&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;logic&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
-      <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Are you interested in science?&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="s2">&quot;Yes</span><span class="se">\n</span><span class="s2">No&quot;</span>
+      <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;About you and science&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;widgets&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;check_box&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;logic&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+          <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Which scientific topics are you interested in? (check all that apply)&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="s2">&quot;mathematics</span><span class="se">\n</span><span class="s2">geography</span><span class="se">\n</span><span class="s2">data science</span><span class="se">\n</span><span class="s2">statistics</span><span class="se">\n</span><span class="s2">physics</span><span class="se">\n</span><span class="s2">neuroscience&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;labels&quot;</span><span class="p">:</span> <span class="s2">&quot;not satisfied</span><span class="se">\n</span><span class="s2">meh</span><span class="se">\n</span><span class="s2">very satisfied&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;min_val&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;50&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;slider&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;How satisfied were you with your last science course? &quot;</span><span class="p">,</span>
+          <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+          <span class="s2">&quot;logic&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+          <span class="s2">&quot;step&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;max_val&quot;</span><span class="p">:</span> <span class="s2">&quot;100&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;text_area&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;logic&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;func&quot;</span><span class="p">:</span> <span class="s2">&quot;any&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;conditions&quot;</span><span class="p">:</span> <span class="p">[</span>
+              <span class="p">{</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+                <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;How satisfied were you with your last science course? &quot;</span><span class="p">,</span>
+                <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span>
+                <span class="s2">&quot;comparison&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;&quot;</span>
+              <span class="p">}</span>
+            <span class="p">]</span>
+          <span class="p">},</span>
+          <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;In your opinion, what would improve science education?&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;placeholder&quot;</span><span class="p">:</span> <span class="s2">&quot;Explain here&quot;</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
     <span class="p">}</span>
   <span class="p">]</span>
-<span class="p">},</span>
-<span class="p">{</span>
-  <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-  <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;section&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;logic&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
-  <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;About you and science&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;widgets&quot;</span><span class="p">:</span> <span class="p">[</span>
-    <span class="p">{</span>
-      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
-      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;check_box&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;logic&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
-      <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Which scientific topics are you interested in? (check all that apply)&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="s2">&quot;mathematics</span><span class="se">\n</span><span class="s2">geography</span><span class="se">\n</span><span class="s2">data science</span><span class="se">\n</span><span class="s2">statistics</span><span class="se">\n</span><span class="s2">physics</span><span class="se">\n</span><span class="s2">neuroscience&quot;</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-      <span class="s2">&quot;labels&quot;</span><span class="p">:</span> <span class="s2">&quot;not satisfied</span><span class="se">\n</span><span class="s2">meh</span><span class="se">\n</span><span class="s2">very satisfied&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;min_val&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;50&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;slider&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;How satisfied were you with your last science course? &quot;</span><span class="p">,</span>
-      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
-      <span class="s2">&quot;logic&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
-      <span class="s2">&quot;step&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;max_val&quot;</span><span class="p">:</span> <span class="s2">&quot;100&quot;</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
-      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;text_area&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;logic&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;func&quot;</span><span class="p">:</span> <span class="s2">&quot;any&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;conditions&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="p">{</span>
-            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
-            <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;How satisfied were you with your last science course? &quot;</span><span class="p">,</span>
-            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span>
-            <span class="s2">&quot;comparison&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;&quot;</span>
-          <span class="p">}</span>
-        <span class="p">]</span>
-      <span class="p">},</span>
-      <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;In your opinion, what would improve science education?&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;placeholder&quot;</span><span class="p">:</span> <span class="s2">&quot;Explain here&quot;</span>
-    <span class="p">}</span>
-  <span class="p">]</span>
-<span class="p">}</span>
-<span class="p">],</span>
-<span class="s2">&quot;num_widgets&quot;</span><span class="p">:</span> <span class="mi">22</span>
 <span class="p">}</span>
 </code></pre></div>
 
@@ -724,7 +732,6 @@ please see Anvil's <a href="https://anvil.works/docs/data-tables/data-tables-in-
 <li><em>submissions</em>: A CSV <a href="https://anvil.works/docs/media">media object</a> which accumulates submissions</li>
 <li><em>opening_date</em>: A Python datetime object for an opening date</li>
 <li><em>closing_date</em>: A Python datetime object for an closing date</li>
-<li><em>thank_you_msg</em>: A string of Markdown text for the thank you message</li>
 </ul>
 <h3 id="adding-a-survey">Adding a survey<a class="headerlink" href="#adding-a-survey" title="Permanent link">&para;</a></h3>
 <p>The following example demonstrates how to programatically add a survey to the Surveys table.</p>
@@ -732,6 +739,11 @@ please see Anvil's <a href="https://anvil.works/docs/data-tables/data-tables-in-
 
 <span class="n">my_survey</span><span class="o">=</span><span class="p">{</span>
   <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;simple survey&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;settings&quot;</span><span class="p">:</span> <span class="p">{</span>
+  <span class="s2">&quot;survey_color&quot;</span><span class="p">:</span> <span class="s2">&quot;#2196F3&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;thank_you_msg&quot;</span><span class="p">:</span> <span class="s2">&quot;#Thank you!&quot;</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;num_widgets&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
   <span class="s2">&quot;widgets&quot;</span><span class="p">:</span> <span class="p">[</span>
     <span class="p">{</span>
       <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
@@ -750,8 +762,7 @@ please see Anvil's <a href="https://anvil.works/docs/data-tables/data-tables-in-
         <span class="p">}</span>
       <span class="p">]</span>
     <span class="p">}</span>
-  <span class="p">],</span>
-  <span class="s2">&quot;num_widgets&quot;</span><span class="p">:</span> <span class="mi">2</span>
+  <span class="p">]</span>
 <span class="p">}</span>
 
 <span class="n">app_tables</span><span class="o">.</span><span class="n">surveys</span><span class="o">.</span><span class="n">add_row</span><span class="p">(</span>
@@ -760,8 +771,7 @@ please see Anvil's <a href="https://anvil.works/docs/data-tables/data-tables-in-
     <span class="n">schema</span><span class="o">=</span><span class="n">my_survey</span><span class="p">,</span> <span class="c1"># A Python dictionary following OpenQuestion&#39;s expected format</span>
     <span class="n">submissions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">opening_date</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">closing_date</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">thank_you_msg</span><span class="o">=</span><span class="s1">&#39;# Thank you!&#39;</span><span class="p">)</span> <span class="c1"># Markdown goes here</span>
+    <span class="n">closing_date</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 </code></pre></div>
 
 <h3 id="deleting-a-survey">Deleting a survey<a class="headerlink" href="#deleting-a-survey" title="Permanent link">&para;</a></h3>

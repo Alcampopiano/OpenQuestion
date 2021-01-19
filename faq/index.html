@@ -327,8 +327,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-do-i-add-an-image-to-my-markdown-widget" class="md-nav__link">
-    How do I add an image to my markdown widget?
+  <a href="#how-do-i-add-an-imagegif-to-my-markdown-widget" class="md-nav__link">
+    How do I add an image/GIF to my markdown widget?
   </a>
   
 </li>
@@ -348,8 +348,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#can-i-do-any-kind-of-data-analysis-andor-visualization-in-openquestion" class="md-nav__link">
-    Can I do any kind of data analysis and/or visualization in OpenQuestion
+  <a href="#can-i-perform-data-analysis-andor-visualization-in-openquestion" class="md-nav__link">
+    Can I perform data analysis and/or visualization in OpenQuestion?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#can-i-change-the-color-of-a-survey" class="md-nav__link">
+    Can I change the color of a survey?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#can-i-change-the-default-authentication-services-for-admins" class="md-nav__link">
+    Can I change the default authentication services (for admins)?
   </a>
   
 </li>
@@ -415,8 +429,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-do-i-add-an-image-to-my-markdown-widget" class="md-nav__link">
-    How do I add an image to my markdown widget?
+  <a href="#how-do-i-add-an-imagegif-to-my-markdown-widget" class="md-nav__link">
+    How do I add an image/GIF to my markdown widget?
   </a>
   
 </li>
@@ -436,8 +450,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#can-i-do-any-kind-of-data-analysis-andor-visualization-in-openquestion" class="md-nav__link">
-    Can I do any kind of data analysis and/or visualization in OpenQuestion
+  <a href="#can-i-perform-data-analysis-andor-visualization-in-openquestion" class="md-nav__link">
+    Can I perform data analysis and/or visualization in OpenQuestion?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#can-i-change-the-color-of-a-survey" class="md-nav__link">
+    Can I change the color of a survey?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#can-i-change-the-default-authentication-services-for-admins" class="md-nav__link">
+    Can I change the default authentication services (for admins)?
   </a>
   
 </li>
@@ -476,8 +504,8 @@ will merge and/or add any additional data to each submission.</p>
 <p>Not yet! But requests are welcome on OpenQuestion's issues page on GitHub.
 For now, one would have to flatten out items into multiple
 widgets ☹️.</p>
-<h2 id="how-do-i-add-an-image-to-my-markdown-widget">How do I add an image to my markdown widget?<a class="headerlink" href="#how-do-i-add-an-image-to-my-markdown-widget" title="Permanent link">&para;</a></h2>
-<p>markdown widgets support web-hosted images. This means
+<h2 id="how-do-i-add-an-imagegif-to-my-markdown-widget">How do I add an image/GIF to my markdown widget?<a class="headerlink" href="#how-do-i-add-an-imagegif-to-my-markdown-widget" title="Permanent link">&para;</a></h2>
+<p><a href="../widgets/#markdown">markdown widgets</a> support web-hosted images. This means
 that any publically hosted image address should work with the usual
 Markdown syntax. For example,</p>
 <div class="highlight"><pre><span></span><code>![img](https://i.imgur.com/kZ9piPH.gif)
@@ -493,7 +521,7 @@ currently OpenQuestion only supports a single page survey.</p>
 <p>Currently OpenQuestion only supports a single page survey. Section widgets
 are used to visually delimit groupings of widgets but they are still presented
 on the same page. This feature will be likely be implemented in a future release.</p>
-<h2 id="can-i-do-any-kind-of-data-analysis-andor-visualization-in-openquestion">Can I do any kind of data analysis and/or visualization in OpenQuestion<a class="headerlink" href="#can-i-do-any-kind-of-data-analysis-andor-visualization-in-openquestion" title="Permanent link">&para;</a></h2>
+<h2 id="can-i-perform-data-analysis-andor-visualization-in-openquestion">Can I perform data analysis and/or visualization in OpenQuestion?<a class="headerlink" href="#can-i-perform-data-analysis-andor-visualization-in-openquestion" title="Permanent link">&para;</a></h2>
 <p>Not at the moment and likely it will stay that way. Originally, OpenQuestion included a 
 so-called reporting module that allowed developers to 
 add <a href="https://vega.github.io/vega-lite/">VegaLite</a> specs 
@@ -504,6 +532,32 @@ If fast and powerful metrics and visualizations are needed, there are many exist
 tools that do this far better than OpenQuestion ever could 😃.
 For example, please see <a href="https://altair-viz.github.io/">Altair</a>, 
 <a href="https://jupyterlab.readthedocs.io/en/stable/">Jupyter</a>, and <a href="https://deepnote.com/">Deepnote</a>.</p>
+<h2 id="can-i-change-the-color-of-a-survey">Can I change the color of a survey?<a class="headerlink" href="#can-i-change-the-color-of-a-survey" title="Permanent link">&para;</a></h2>
+<p>Yes, please see <a href="../settings/#survey-color">this part</a> of the settings page.</p>
+<h2 id="can-i-change-the-default-authentication-services-for-admins">Can I change the default authentication services (for admins)?<a class="headerlink" href="#can-i-change-the-default-authentication-services-for-admins" title="Permanent link">&para;</a></h2>
+<p>Survey developers must authenticate into OpenQuestion. Various authentication options are available 
+and can be configured by editing the file "anvil.yaml" located at the top level of OpenQuestion.
+Inside that file you will see the following section:</p>
+<div class="highlight"><pre><span></span><code>  <span class="nt">client_config</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt">allow_signup</span><span class="p">:</span> <span class="nv">false</span><span class="p p-Indicator">,</span><span class="nt"> enable_automatically</span><span class="p">:</span> <span class="nv">false</span><span class="p p-Indicator">,</span><span class="nt"> use_email</span><span class="p">:</span> <span class="nv">true</span><span class="p p-Indicator">,</span>
+<span class="nt">    confirm_email</span><span class="p">:</span> <span class="nv">false</span><span class="p p-Indicator">,</span><span class="nt"> use_microsoft</span><span class="p">:</span> <span class="nv">true</span><span class="p p-Indicator">,</span><span class="nt"> require_secure_passwords</span><span class="p">:</span> <span class="nv">true</span><span class="p p-Indicator">}</span>
+</code></pre></div>
+
+<p>By default, OpenQuestion includes the entries <code>use_email: true</code> and <code>use_microsoft: true</code> (described below).
+You can remove these entries or set them to <code>false</code> if you would like to remove them as 
+authentication options in OpenQuestion. The available authentication options are as follows:</p>
+<ul>
+<li><code>use_email: true/false</code>. Authenticate with an email address and password. 
+    Developers have to be added as registered users as described 
+    <a href="../installation/#adding-developers-and-administrators-as-users">here</a></li>
+<li><code>use_microsoft: true/false</code>. Authenticate with Microsoft.</li>
+<li><code>use_google: true/false</code>. Authenticate with Google.</li>
+<li><code>use_facebook: true/false</code>. Authenticate with Facebook.</li>
+<li><code>use_token: true/false</code>. Users sign in by following a link in their email.
+    Developers have to be added as registered users as described 
+    <a href="../installation/#adding-developers-and-administrators-as-users">here</a></li>
+</ul>
+<p>For more information on the above options in OpenQuestion, please see Anvil's documentation on
+<a href="https://anvil.works/docs/users/authentication_choices.html">authentication</a>. </p>
                 
               
               
