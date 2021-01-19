@@ -65,8 +65,8 @@ and can be configured by editing the file "anvil.yaml" located at the top level 
 Inside that file you will see the following section:
 
 ```yaml
-  client_config: {allow_signup: false, enable_automatically: false, use_email: true,
-    confirm_email: false, use_microsoft: true, require_secure_passwords: true}
+client_config: {allow_signup: false, enable_automatically: false, use_email: true,
+  confirm_email: false, use_microsoft: true, require_secure_passwords: true}
 ```
 
 By default, OpenQuestion includes the entries `use_email: true` and `use_microsoft: true` (described below).
