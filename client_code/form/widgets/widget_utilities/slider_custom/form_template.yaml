@@ -53,10 +53,10 @@ container:
       \ none;\n}\n  \ninput[type=range]::-webkit-slider-thumb {\n  -webkit-appearance:\
       \ none;\n  height: 30px; /* 40px */\n  width: 30px; /* 40px */\n  margin-top:\
       \ -15px; \n  border-radius: 50%; /* 30px */\n  border:1px solid #2196F3;\n \
-      \ cursor: pointer;\n  background: #2196F3;\n  /* box-shadow: 0px 2px 10px -2px\
-      \ black(1); */\n}\n  \ninput[type=range]::-moz-range-thumb {\n  -webkit-appearance:\
-      \ none;\n  height: 30px;\n  width: 30px;\n  border-radius: 50%;\n  border:1px\
-      \ solid #2196F3;\n  background: #2196F3;\n}\n  \ninput[type=range]::-ms-thumb\
+      \ cursor: pointer;\n  background: #2196F3; /* #2196F3 */\n  /* box-shadow: 0px\
+      \ 2px 10px -2px black(1); */\n}\n  \ninput[type=range]::-moz-range-thumb {\n\
+      \  -webkit-appearance: none;\n  height: 30px;\n  width: 30px;\n  border-radius:\
+      \ 50%;\n  border:1px solid #2196F3;\n  background: #2196F3;\n}\n  \ninput[type=range]::-ms-thumb\
       \ {\n  -webkit-appearance: none;\n  height: 30px;\n  width: 30px;\n  border-radius:\
       \ 50%;\n  background: black;\n  border:1px solid #2196F3;\n  box-shadow: 0px\
       \ 2px 10px -2px black(1);\n}\n  \n.ticks {\n  display: flex;\n  justify-content:\
