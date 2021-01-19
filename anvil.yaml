@@ -3,10 +3,17 @@ services:
   client_config: {}
   server_config: {auto_create_missing_columns: false}
 - source: /runtime/services/anvil/users.yml
-  client_config: {allow_signup: false, enable_automatically: false, use_email: true,
-    confirm_email: false, use_microsoft: true, require_secure_passwords: true}
+  client_config: {use_microsoft: true, require_secure_passwords: true, use_token: false,
+    use_saml: false, use_email: true, allow_signup: false, enable_automatically: false,
+    confirm_email: false, use_google: false, use_facebook: false}
   server_config: {user_table: users}
 - source: /runtime/services/anvil/microsoft.yml
+  client_config: {}
+  server_config: {}
+- source: /runtime/services/google.yml
+  client_config: {}
+  server_config: {}
+- source: /runtime/services/facebook.yml
   client_config: {}
   server_config: {}
 startup: {type: module, module: start_up}
