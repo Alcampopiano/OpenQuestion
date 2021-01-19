@@ -13,10 +13,8 @@ class main(mainTemplate):
   def __init__(self, schema, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
+    self.survey_color_change(schema['settings']['survey_color'])
     
-    settings_in_schema=schema['settings']
-    ColorChanger.set_theme({'Primary 500':
-                            settings_in_schema['survey_color']})
     submit_button=Button(text='submit', role='primary-color')
     submit_button.set_event_handler('click', self.submit_click)
     self.add_component(submit_button)
@@ -28,6 +26,10 @@ class main(mainTemplate):
     
     
   def form_show(self, **event_args):
+#     ColorChanger.set_theme(
+#       {'Primary 500':
+#         self.tag.schema['settings']['survey_color']})
+    
     self.color_rows()
     self.column_panel.get_components()[0].section_select()
     
@@ -59,12 +61,14 @@ class main(mainTemplate):
           comp.hr.visible=True
           
           
-  def survey_color_change(self, schema, **event_args):
-    ColourChanger.set_theme({'Primary 500': schema['survey_color'],
-                              #'Primary 700': 'pink',
-                              # 'Secondary 500': 'yellow',
-                              # 'Secondary 700': 'black'
-                            })
+  def survey_color_change(self, color, **event_args):
+    
+    if color:
+      ColorChanger.set_theme({'Primary 500': color,
+                                #'Primary 700': 'pink',
+                                # 'Secondary 500': 'yellow',
+                                # 'Secondary 700': 'black'
+                              })
 
 
 

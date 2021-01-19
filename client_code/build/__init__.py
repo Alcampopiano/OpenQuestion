@@ -88,14 +88,24 @@ def build_form(schema, column_panel):
     
 def build_schema(column_panel):
   
+  row=get_open_form().tag.row
   schema={}
+  
+  # get current survey settings
+  if row:
+    print('found row')
+    settings=row['schema']['settings']
+    schema.update({'settings': settings})
+    
+  # set defaults
+  else:
+    print('else')
+    schema['settings']=dict(thank_you_msg='#Thank you!', 
+                            survey_color='#2196F3')
+  
   schema['title']=get_open_form().text_box_title.text 
-  #schema['id']=get_open_form().tag.id # column_panel.tag.id
   schema['num_widgets']=get_open_form().tag.num_widgets
   schema['widgets']=[]
-  
-  # get current schema settings
-  schema['settings']={'thank_you_msg': '#Thank you!', 'survey_color': '#2196F3'}
 
   for section in column_panel.get_components():
   

@@ -29,6 +29,7 @@ class main(mainTemplate):
       build.build_form(row['schema'], self.column_panel)
       
     else:
+      #self.tag.row={}
       self.tag.id=None
       self.tag.num_widgets=0
       
@@ -98,81 +99,6 @@ class main(mainTemplate):
     self.tag.form_dict[comp.label_id.text]=comp
     comp.scroll_into_view()
     self.color_rows(self.tag.active_section)
-
-#   def section_widget_click(self, **event_args):
-#     section=widgets.section()
-#     self.column_panel.add_component(section)
-#     section.label_id.text=self.tag.num_widgets
-#     self.tag.num_widgets+=1
-#     self.tag.form_dict[section.label_id.text]=section
-    
-#   def text_box_widget_click(self, **event_args):
-#     comp=widgets.text_box(section=self.tag.active_section)
-#     self.tag.active_section.column_panel.add_component(comp)
-#     self.color_rows(self.tag.active_section)
-#     comp.label_id.text=self.tag.num_widgets
-#     self.tag.num_widgets+=1
-#     self.tag.form_dict[comp.label_id.text]=comp
-
-#   def drop_down_widget_click(self, **event_args):
-#     comp=widgets.drop_down(section=self.tag.active_section)
-#     self.tag.active_section.column_panel.add_component(comp)
-#     self.color_rows(self.tag.active_section)
-#     comp.label_id.text=self.tag.num_widgets
-#     self.tag.num_widgets+=1
-#     self.tag.form_dict[comp.label_id.text]=comp
-
-#   def date_widget_click(self, **event_args):
-#     comp=widgets.date(section=self.tag.active_section)
-#     self.tag.active_section.column_panel.add_component(comp)
-#     self.color_rows(self.tag.active_section)
-#     comp.label_id.text=self.tag.num_widgets
-#     self.tag.num_widgets+=1
-#     self.tag.form_dict[comp.label_id.text]=comp
-
-#   def check_box_widget_click(self, **event_args):
-#     comp=widgets.check_box(section=self.tag.active_section)
-#     self.tag.active_section.column_panel.add_component(comp)
-#     self.color_rows(self.tag.active_section)
-#     comp.label_id.text=self.tag.num_widgets
-#     self.tag.num_widgets+=1
-#     self.tag.form_dict[comp.label_id.text]=comp
-    
-#   def radio_button_widget_click(self, **event_args):
-#     comp=widgets.radio_button(section=self.tag.active_section)
-#     self.tag.active_section.column_panel.add_component(comp)
-#     self.color_rows(self.tag.active_section)
-#     comp.label_id.text=self.tag.num_widgets
-#     self.tag.num_widgets+=1
-#     self.tag.form_dict[comp.label_id.text]=comp
-    
-#   def markdown_widget_click(self, **event_args):
-#     comp=widgets.markdown(section=self.tag.active_section)
-#     self.tag.active_section.column_panel.add_component(comp)
-#     self.color_rows(self.tag.active_section)
-#     comp.label_id.text=self.tag.num_widgets
-#     self.tag.num_widgets+=1
-#     self.tag.form_dict[comp.label_id.text]=comp
-    
-#   def text_area_widget_click(self, **event_args):
-#     comp=widgets.text_area(section=self.tag.active_section)
-#     self.tag.active_section.column_panel.add_component(comp)
-#     self.color_rows(self.tag.active_section)
-#     comp.label_id.text=self.tag.num_widgets
-#     self.tag.num_widgets+=1
-#     self.tag.form_dict[comp.label_id.text]=comp
-    
-#   def slider_widget_click(self, **event_args):
-#     comp=widgets.slider(section=self.tag.active_section)
-#     self.tag.active_section.column_panel.add_component(comp)
-#     self.color_rows(self.tag.active_section)
-#     comp.label_id.text=self.tag.num_widgets
-#     self.tag.num_widgets+=1
-#     self.tag.form_dict[comp.label_id.text]=comp
-
-
-
-
 
 
 

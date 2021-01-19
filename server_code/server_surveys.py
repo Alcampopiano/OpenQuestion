@@ -142,15 +142,10 @@ def get_reports():
 def save_schema(form_id, schema):
     
   if not form_id:
-    form_id=str(uuid.uuid4())
-                
-    #default_thank_you="Thank you! Your responses have been submitted."
-    
+    form_id=str(uuid.uuid4())    
     app_tables.forms.add_row(form_id=form_id, last_modified=datetime.now(), 
                              schema=schema, title=schema['title'])
-    
-    #thank_you_msg=default_thank_you
-           
+               
   else:
     form_id=str(form_id)
     row=app_tables.forms.get(form_id=form_id)
