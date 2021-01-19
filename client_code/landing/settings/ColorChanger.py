@@ -9,7 +9,7 @@ def set_theme(theme_map):
 
 
 # This is the subset of theme.css that is affected by theme colour choice.
-# (I just copy-pasted theme.css and searched for theme:)
+# (I just copy-pasted theme.css and searched for theme:) 
   
 themed_css = """
 a, a:focus {
@@ -43,11 +43,13 @@ a:hover, a:active {
   color: %color:Primary 500%;
 }
 
+
 .btn:hover, .btn:focus, .file-loader>label:hover {
   color: %color:Primary 500%;
 }
 
-.btn:active, .btn:active:focus {
+/* , .btn:active:focus*/
+.btn:active {
   color: %color:Primary 500%;
 }
 
@@ -76,7 +78,7 @@ textarea.anvil-component:focus {
   background-color: %color:Primary 700%;
 }
 
-.daterangepicker .btn-success {
+.daterangepicker .btn-success{
   color: %color:Primary 500%;
 }
 """

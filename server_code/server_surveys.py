@@ -75,7 +75,9 @@ def submit_data(cols, data, url_hash):
     m=anvil.BlobMedia('text/csv', csv_data, name='records.csv')
     row.update(submissions=m)
     
-  return mistune.markdown(row['thank_you_msg'], escape=False)
+    print(row['schema'])
+    
+  return mistune.markdown(row['schema']['settings']['thank_you_msg'], escape=False)
     
     
 @anvil.server.callable(require_user = validate_user)
