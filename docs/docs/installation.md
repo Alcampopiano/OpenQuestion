@@ -9,8 +9,8 @@ pip install OpenQuestion
 ## Adding developers and administrators as users
 Before OpenQuestion's GUI can be used, survey developers and app administrators must be added as 
 registered users to the app's database. This is described in the following 
-sections (click [here](faq.md) for more information on the
-available authentication services).
+sections (click [here](faq.md#can-i-change-the-default-authentication-services-for-admins) 
+for more information on the available authentication services).
 
 From the command line (where the OpenQuestion is below the current directory) run the app server 
 with the `--shell` option. This will drop you into a Python interpreter that is 

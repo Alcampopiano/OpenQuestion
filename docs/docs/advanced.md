@@ -313,13 +313,13 @@ to the submissions table.
 
 `https://your-app-url/#?form_id=<uuid>&foo=42`   
 
-This example uses a long query string. That is, it also passes `bar=baz` to
+This example adds another parameter to the query string. That is, it also passes `bar=baz` to
 the submission's table.
 
 `https://your-app-url/#?form_id=<uuid>&foo=42&bar=baz`   
 
-When an end user submits a response a new column is created for every parameter 
+When an end user submits a response, a new column is created for every parameter 
 in the query string and the new row in the submissions table will contain the value(s). When a 
 parameter matches an existing column header in the submissions table, 
 the parameter's value is merged (a new column is not created). Note that query strings 
-can be unique to each submission since new paramerters are added as new columns.
+can be unique to each submission since new parameters are added as new columns.
