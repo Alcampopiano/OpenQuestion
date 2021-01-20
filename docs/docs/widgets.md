@@ -160,5 +160,5 @@ OpenQuestion does not yet support multi-page surveys.
     
 !!! tip "Are widget settings represented as key/value pairs?"
     Yes! In fact, all survey settings are represented by an underlying 
-    and accessible [JSON/Python dict](advanced.md) where keys and values
-    correspond exactly to what is shown in the designer
+    and accessible [JSON/Python dict](advanced.md#json-representation-of-surveys) 
+    where keys and values correspond exactly to what is shown in the designer
