@@ -815,14 +815,14 @@ in the survey's URL.</p>
 passes <code>foo=42</code>, along with the data that is inputted by an end user, 
 to the submissions table.</p>
 <p><code>https://your-app-url/#?form_id=&lt;uuid&gt;&amp;foo=42</code>   </p>
-<p>This example uses a long query string. That is, it also passes <code>bar=baz</code> to
+<p>This example adds another parameter to the query string. That is, it also passes <code>bar=baz</code> to
 the submission's table.</p>
 <p><code>https://your-app-url/#?form_id=&lt;uuid&gt;&amp;foo=42&amp;bar=baz</code>   </p>
-<p>When an end user submits a response a new column is created for every parameter 
+<p>When an end user submits a response, a new column is created for every parameter 
 in the query string and the new row in the submissions table will contain the value(s). When a 
 parameter matches an existing column header in the submissions table, 
 the parameter's value is merged (a new column is not created). Note that query strings 
-can be unique to each submission since new paramerters are added as new columns.</p>
+can be unique to each submission since new parameters are added as new columns.</p>
                 
               
               
