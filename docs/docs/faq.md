@@ -50,7 +50,7 @@ so-called reporting module that allowed developers to
 add [VegaLite](https://vega.github.io/vega-lite/) specs 
 and markdown widgets to a notebook-like web page to demonstrate their
 findings. The reporting module still exists 
-but is has been turned off to reduce the scope of this project. 
+but it has been turned off to reduce the scope of this project. 
 If fast and powerful metrics and visualizations are needed, there are many existing 
 tools that do this far better than OpenQuestion ever could 😃.
 For example, please see [Altair](https://altair-viz.github.io/), 

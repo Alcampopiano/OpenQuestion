@@ -93,3 +93,6 @@ docs/site/
 
 # R history file
 *.Rhistory
+
+# gimp file
+*.xcf
