@@ -1,5 +1,5 @@
 ---
-title: 'OpenQuestion: A Web-Based Survey Platform written in Python'
+title: 'OpenQuestion: A survey building platform written in Python'
 tags:
   - python
   - survey
@@ -30,9 +30,9 @@ bibliography: paper.bib
 
 # Summary
 
-[OpenQuestion](https://alcampopiano.github.io/OpenQuestion/) is a web-based survey 
+[OpenQuestion](https://alcampopiano.github.io/OpenQuestion/) is a survey 
 building platform written in Python. Surveys can be developed using a GUI or by writing 
-Python code. OpenQuestion is built upon the open source Anvil App Server, a runtime engine, 
+Python code. OpenQuestion is built on the open source Anvil App Server, a runtime engine 
 for writting full-stack web applications in Python [@anvil]. ^[Note that an Anvil account is not 
 required to use OpenQuestion.] 
 
