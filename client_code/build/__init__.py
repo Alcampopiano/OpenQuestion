@@ -89,12 +89,12 @@ def build_schema(column_panel):
   row=get_open_form().tag.row
   schema={}
   
-  # get current survey settings
+  # get current survey settings 
   if row:
     settings=row['schema']['settings']
     schema.update({'settings': settings})
     
-  # set defaults
+  # set defaults (probably a better way)
   else:
     schema['settings']=dict(thank_you_msg='#Thank you!', 
                             survey_color='#2196F3')
