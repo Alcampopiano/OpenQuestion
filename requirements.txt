@@ -1,3 +1,5 @@
 pandas
 numpy
+anvil-app-server
+mistune
 anvil-uplink
