@@ -34,7 +34,7 @@ new_user['password_hash'] = password_hash.decode()
 ```
 
 ## Launching OpenQuestion
-Now that OpenQuestion has been installed, there are one or more valid users (i.e., developers and admins),
+Now that OpenQuestion has been installed, and there are one or more valid users (i.e., developers and admins),
 the following command will launch the app which will prompt the user for 
 their authentication details associated with the previous step.
 
