@@ -1,5 +1,8 @@
 from ._anvil_designer import select_action_surveyTemplate
 from anvil import *
+import anvil.facebook.auth
+import anvil.google.auth, anvil.google.drive
+from anvil.google.drive import app_files
 import anvil.microsoft.auth
 import anvil.users
 import anvil.server
@@ -31,8 +34,8 @@ class select_action_survey(select_action_surveyTemplate):
       else:
         comp.background='white'
 
-  def link_home_click(self, **event_args):
-    open_form('landing.main')
+#   def link_home_click(self, **event_args):
+#     #open_form('landing.main')
 
 
 

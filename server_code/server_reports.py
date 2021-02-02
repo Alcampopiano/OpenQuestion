@@ -1,3 +1,6 @@
+import anvil.facebook.auth
+import anvil.google.auth, anvil.google.drive, anvil.google.mail
+from anvil.google.drive import app_files
 import anvil.microsoft.auth
 import anvil.users
 import anvil.microsoft.auth
@@ -14,7 +17,7 @@ import mistune
 
 
 def validate_user(u):
-  return u['admin']
+  return u #u['admin']
 
 @anvil.server.callable(require_user = validate_user)
 def delete_report(form_id):

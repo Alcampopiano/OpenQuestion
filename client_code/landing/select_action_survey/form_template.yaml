@@ -63,7 +63,7 @@ components:
   components:
   - type: Link
     properties: {role: null, url: '', align: center, tooltip: '', border: '', foreground: '',
-      visible: true, text: '', font_size: null, wrap_on: mobile, font: '', col_spacing: medium,
+      visible: false, text: '', font_size: null, wrap_on: mobile, font: '', col_spacing: medium,
       spacing_above: small, icon_align: left, col_widths: '', spacing_below: small,
       italic: false, background: '', bold: false, underline: false, icon: 'fa:home'}
     name: link_1

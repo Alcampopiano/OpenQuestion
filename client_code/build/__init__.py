@@ -3,6 +3,9 @@ import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 from anvil import *
+import anvil.facebook.auth
+import anvil.google.auth, anvil.google.drive
+from anvil.google.drive import app_files
 import anvil.microsoft.auth
 import anvil.users
 from . import widgets
@@ -12,14 +15,12 @@ def build_form(schema, column_panel):
   column_panel.tag.title=schema['title']
   main=column_panel.parent
   main.tag.form_dict={}
-  #column_panel.tag.id=schema['id']
   
   for section_schema in schema['widgets']:
     
     section=widgets.section()
     section.text_box_title.text=section_schema['title']
     section.tag.logic=section_schema['logic']
-    #section.visible=section_schema['visible']
     section.label_id.text=section_schema['id']
     
     for widget_schema in section_schema['widgets']:
@@ -81,16 +82,24 @@ def build_form(schema, column_panel):
     main.tag.form_dict[section_schema['id']]=section
     
     column_panel.add_component(section)
-    
-  # set logic target ids
-  #set_target_ids(main.tag.form_dict)
 
     
 def build_schema(column_panel):
   
+  row=get_open_form().tag.row
   schema={}
+  
+  # get current survey settings 
+  if row:
+    settings=row['schema']['settings']
+    schema.update({'settings': settings})
+    
+  # set defaults (probably a better way)
+  else:
+    schema['settings']=dict(thank_you_msg='#Thank you!', 
+                            survey_color='#2196F3')
+  
   schema['title']=get_open_form().text_box_title.text 
-  #schema['id']=get_open_form().tag.id # column_panel.tag.id
   schema['num_widgets']=get_open_form().tag.num_widgets
   schema['widgets']=[]
 
@@ -100,16 +109,13 @@ def build_schema(column_panel):
     section_schema['type']='section'
     section_schema['title']=section.text_box_title.text
     section_schema['id']=section.label_id.text
-    #section_schema['visible']=True#section.tag.visible
     section_schema['logic']=section.tag.logic
     section_schema['widgets']=[]
     
     for widget in section.column_panel.get_components():
       
       widget_schema={}
-      #widget_schema['visible']=True#widget.tag.visible
       widget_schema['logic']=widget.tag.logic
-      #print(widget.tag.logic)
       widget_schema['id']=widget.label_id.text
       widget_schema['title']=widget.text_box_title.text
       

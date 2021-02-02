@@ -1,5 +1,8 @@
 from ._anvil_designer import survey_rowTemplate
 from anvil import *
+import anvil.facebook.auth
+import anvil.google.auth, anvil.google.drive
+from anvil.google.drive import app_files
 import anvil.microsoft.auth
 import anvil.users
 import anvil.server
@@ -35,36 +38,13 @@ class survey_row(survey_rowTemplate):
     form_id=self.button_build.tag.row['form_id']
     app_url=anvil.server.get_app_origin() + '#?' + 'form_id=' + form_id
     content=copy_link()
-    #content.link_to_app.url=app_url
-    #content.link_to_app.text=app_url
-    
-    #c=confirm(content, large=True, 
-    #        buttons=[('copy', 'copy'), ('cancel', 'cancel')])
-    
-    #if c=='copy':
     content.copy_click(app_url)
     Notification('Share this link or paste it in the browser', title='Link copied!').show()
   
 
   def settings_click(self, **event_args):
-    row=self.button_build.tag.row
+    row=self.button_build.tag.row      
     open_form('landing.settings.survey_settings', row)
-    #settings=survey_settings(row=row)
-    #c=confirm(content=settings, large=True, buttons=[('save', 'save'), ('cancel', 'cancel')])
-    
-#     if c=='save':
-#       opening=settings.date_picker_opening_date.date
-#       closing=settings.date_picker_closing_date.date
-#       thank_you=settings.text_area_thank_you_msg.text
-#       form_id=self.button_build.tag.row['form_id']
-#       settings_dict=dict(opening_date=opening,
-#                         closing_date=closing,
-#                         thank_you_msg=thank_you
-#                         )
-      
-#       anvil.server.call('save_survey_settings', form_id, settings_dict)
-#       row.update(**settings_dict)
-
 
 
   
