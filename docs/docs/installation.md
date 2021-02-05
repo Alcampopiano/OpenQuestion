@@ -6,15 +6,24 @@ OpenQuestion is available from the Python Package Index and can be installed usi
 pip install OpenQuestion
 ```
 
+## Clone the OpenQuestion project
+
+The following command will clone the OpenQuestion project into your current working directory
+
+```
+git clone https://github.com/Alcampopiano/OpenQuestion.git
+```
+
 ## Adding developers and administrators as users
 Before OpenQuestion's GUI can be used, survey developers and app administrators must be added as 
 registered users to the app's database. This is described in the following 
 sections (click [here](faq.md#can-i-change-the-default-authentication-services-for-admins) 
 for more information on the available authentication services).
 
-From the command line (where the OpenQuestion is below the current directory) run the app server 
+From the command line, run the app server 
 with the `--shell` option. This will drop you into a Python interpreter that is 
-connected to OpenQuestion's database.
+connected to OpenQuestion's database. Note that is this case the OpenQuestion project that was cloned
+is directly below the current working directory.
 
 ```
 anvil-app-server --app OpenQuestion --shell
