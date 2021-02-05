@@ -275,6 +275,13 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#clone-the-openquestion-project" class="md-nav__link">
+    Clone the OpenQuestion project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#adding-developers-and-administrators-as-users" class="md-nav__link">
     Adding developers and administrators as users
   </a>
@@ -352,6 +359,13 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#clone-the-openquestion-project" class="md-nav__link">
+    Clone the OpenQuestion project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#adding-developers-and-administrators-as-users" class="md-nav__link">
     Adding developers and administrators as users
   </a>
@@ -393,14 +407,20 @@
 <div class="highlight"><pre><span></span><code>pip install OpenQuestion
 </code></pre></div>
 
+<h2 id="clone-the-openquestion-project">Clone the OpenQuestion project<a class="headerlink" href="#clone-the-openquestion-project" title="Permanent link">&para;</a></h2>
+<p>The following command will clone the OpenQuestion project into your current working directory</p>
+<div class="highlight"><pre><span></span><code>git clone https://github.com/Alcampopiano/OpenQuestion.git
+</code></pre></div>
+
 <h2 id="adding-developers-and-administrators-as-users">Adding developers and administrators as users<a class="headerlink" href="#adding-developers-and-administrators-as-users" title="Permanent link">&para;</a></h2>
 <p>Before OpenQuestion's GUI can be used, survey developers and app administrators must be added as 
 registered users to the app's database. This is described in the following 
 sections (click <a href="../faq/#can-i-change-the-default-authentication-services-for-admins">here</a> 
 for more information on the available authentication services).</p>
-<p>From the command line (where the OpenQuestion is below the current directory) run the app server 
+<p>From the command line, run the app server 
 with the <code>--shell</code> option. This will drop you into a Python interpreter that is 
-connected to OpenQuestion's database.</p>
+connected to OpenQuestion's database. Note that is this case the OpenQuestion project that was cloned
+is directly below the current working directory.</p>
 <div class="highlight"><pre><span></span><code>anvil-app-server --app OpenQuestion --shell
 </code></pre></div>
 
@@ -416,7 +436,7 @@ service, set a password. </p>
 </code></pre></div>
 
 <h2 id="launching-openquestion">Launching OpenQuestion<a class="headerlink" href="#launching-openquestion" title="Permanent link">&para;</a></h2>
-<p>Now that OpenQuestion has been installed, there are one or more valid users (i.e., developers and admins),
+<p>Now that OpenQuestion has been installed, and there are one or more valid users (i.e., developers and admins),
 the following command will launch the app which will prompt the user for 
 their authentication details associated with the previous step.</p>
 <div class="highlight"><pre><span></span><code>anvil-app-server --app OpenQuestion
