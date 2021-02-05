@@ -29,9 +29,14 @@ class survey_row(survey_rowTemplate):
       open_form('build.main', row=row)
 
   def data_click(self, **event_args):
-
+    
     row=self.button_build.tag.row
-    download(row['submissions'])
+    
+    if row['submissions']:
+      download(row['submissions'])
+      
+    else:
+      Notification("", title="No data to download just yet!").show()
 
   def share_click(self, **event_args):
     
