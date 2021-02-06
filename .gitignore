@@ -96,3 +96,6 @@ docs/site/
 
 # gimp file
 *.xcf
+
+# anvil data
+.anvil-data

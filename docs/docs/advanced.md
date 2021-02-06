@@ -37,7 +37,7 @@ pip install anvil-uplink
 import anvil.server
 
 # connecting to OpenQuestion
-anvil.server.connect("[uplink-key goes here]", url="ws://your-runtime-server:3030/_/uplink")`
+anvil.server.connect("[uplink-key goes here]", url="ws://your-runtime-server:3030/_/uplink")
 ```
 
 Once sucessfully connected, developers will have priviledged access to OpenQuestion's server code
@@ -47,7 +47,7 @@ and databases from their Python environment.
 OpenQuestion represents surveys as a Python dictionary (stored as a JSON object in the backend database). The following
 two examples show the `dict` representation of two surveys: one that is simple, followed by one that is more complex.
 By studying these structures, one can learn how to create and modify surveys programatically 
-(also, see the sections pertaining to working with the Surveys table). 
+(also, see the sections pertaining to working with the Forms table). 
 
 In general, the survey `dict` is a nested, somewhat self-similar structure. For example,
 
@@ -201,16 +201,16 @@ In general, the survey `dict` is a nested, somewhat self-similar structure. For 
     }
     ```
 
-## Using the Surveys table
-The Surveys table contains all surveys that are created in OpenQuestion.
+## Using the Forms table
+The Forms table contains all surveys that are created in OpenQuestion.
 
 !!! note "Interacting with tables"
     For more information on the the API used for interacting with tables, 
     please see Anvil's [DataTables documentation](https://anvil.works/docs/data-tables/data-tables-in-code).
     
-The Surveys table has the following columns:
+The Forms table has the following columns:
 
-- _survey_id_: A long, random, secure, and unique string
+- _form_id_: A long, random, secure, and unique string
 - _title_: The survey title
 - _last_modified_: A Python datetime object
 - _schema_: A JSON representation of the survey's structure (does not contain submission data)
@@ -219,7 +219,7 @@ The Surveys table has the following columns:
 - _closing_date_: A Python datetime object for an closing date
 
 ### Adding a survey
-The following example demonstrates how to programatically add a survey to the Surveys table.
+The following example demonstrates how to programatically add a survey to the Forms table.
 
 ```python
 from anvil.tables import app_tables
@@ -252,8 +252,8 @@ my_survey={
   ]
 }
 
-app_tables.surveys.add_row(
-    survey_id='you secure survey ID', # A long, random, secure, and unique string
+app_tables.forms.add_row(
+    form_id='you secure survey ID', # A long, random, secure, and unique string
     title='simple survey', 
     schema=my_survey, # A Python dictionary following OpenQuestion's expected format
     submissions=None,
@@ -262,24 +262,24 @@ app_tables.surveys.add_row(
 ```
 
 ### Deleting a survey
-The following example demonstrates how to programatically delete a survey from the Surveys table.
+The following example demonstrates how to programatically delete a survey from the Forms table.
 
 ```python
 from anvil.tables import app_tables
 
 # Searching based on title property but any other search parameter can be used. 
 # See Anvil's Datatable documentation https://anvil.works/docs/data-tables/data-tables-in-code
-row=app_tables.surveys.get(title='simple survey')
+row=app_tables.forms.get(title='simple survey')
 row.delete()
 ```
 
 ### Modifying a survey
-The following example demonstrates how to programatically modify a survey from the Surveys table.
+The following example demonstrates how to programatically modify a survey from the Forms table.
 
 ```python
 from anvil.tables import app_tables
 
-row=app_tables.surveys.get(title='simple survey')
+row=app_tables.forms.get(title='simple survey')
 
 # modifying the survey's title
 row['title']='My new title'
