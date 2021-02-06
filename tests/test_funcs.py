@@ -19,7 +19,7 @@ def start_server():
 print("before app server")
 threading.Thread(target=start_server).start()
 print("after app server")
-time.sleep(10)
+time.sleep(320)
 
 print("b4 connect")
 anvil.server.connect('42', url="ws://localhost:3030/_/uplink")
