@@ -14,7 +14,7 @@ from server_code.server_surveys import *
 os.system("fuser -k 3030/tcp")
 
 def start_server():
-  os.system("anvil-app-server --app ../OpenQuestion --uplink-key 42")
+  os.system("anvil-app-server --app ../OpenQuestion --uplink-key 42 --port 3030")
 
 threading.Thread(target=start_server).start()
 time.sleep(10)
