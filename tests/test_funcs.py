@@ -4,41 +4,39 @@ import time
 from server_code.server_surveys import *
 import anvil.server
 import pytest
-# import anvil.users
-# from tables import app_tables
-# import uuid
 
-# look at what's running on a port
-# lsof -i :3030
-
-# kill process on port in case it is running
-os.system("fuser -k 3030/tcp")
 
 @pytest.fixture(scope="session", autouse=True)
-def cleanup(request):
-  print("b4 first test")
-  yield True
-  print("after last test")
-  anvil.server.disconnect()
+def start_up_and_tear_down():
+
+  """
+  Everything before "yield" is run before any tests
+  Everything after "yield" is run after all tests have finished
+  """
+
+  # kill process on port in case it is running
   os.system("fuser -k 3030/tcp")
 
+  # func to call app server
+  def start_server():
+    os.system("anvil-app-server --app ../OpenQuestion --uplink-key 42 --port 3030")
 
-def start_server():
-  os.system("anvil-app-server --app ../OpenQuestion --uplink-key 42 --port 3030")
+  # start app server on a thread, allowing the rest of the script to run
+  threading.Thread(target=start_server).start()
 
-print("before app server")
-threading.Thread(target=start_server).start()
-print("after app server")
-time.sleep(60)
+  # give time for the web server to spin up before continuing
+  time.sleep(60)
 
-print("b4 connect")
-anvil.server.connect('42', url="ws://localhost:3030/_/uplink")
-print("after connect")
+  # connect
+  anvil.server.connect('42', url="ws://localhost:3030/_/uplink")
 
-u = app_tables.users.get(email='test@test.com')
+  yield True
 
-if not u:
-  u=app_tables.users.add_row(email='test@test.com')
+  # disconnect from uplink
+  anvil.server.disconnect()
+
+  # kill process on that port
+  os.system("fuser -k 3030/tcp")
 
 # basic survey
 schema={
@@ -70,7 +68,13 @@ schema={
 }
 
 def test_save_schema():
+
+  # current number of surveys
   cur_num_forms=len(app_tables.forms.search())
+
+  # add a survey to the database
   save_schema(None, schema)
+
+  # a simple assertion that there is one more survey in the database
   assert cur_num_forms < len(app_tables.forms.search())
 
