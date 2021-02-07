@@ -3,6 +3,7 @@ import threading
 import time
 from server_code.server_surveys import *
 import anvil.server
+import pytest
 # import anvil.users
 # from tables import app_tables
 # import uuid
@@ -13,13 +14,17 @@ import anvil.server
 # kill process on port in case it is running
 os.system("fuser -k 3030/tcp")
 
+@pytest.fixture(scope="session", autouse=True)
+def cleanup(request):
+  os.system("fuser -k 3030/tcp")
+
 def start_server():
   os.system("anvil-app-server --app ../OpenQuestion --uplink-key 42 --port 3030")
 
 print("before app server")
 threading.Thread(target=start_server).start()
 print("after app server")
-time.sleep(320)
+time.sleep(60)
 
 print("b4 connect")
 anvil.server.connect('42', url="ws://localhost:3030/_/uplink")
@@ -63,3 +68,4 @@ def test_save_schema():
   cur_num_forms=len(app_tables.forms.search())
   save_schema(None, schema)
   assert cur_num_forms < len(app_tables.forms.search())
+
