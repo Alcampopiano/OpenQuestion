@@ -16,7 +16,12 @@ os.system("fuser -k 3030/tcp")
 
 @pytest.fixture(scope="session", autouse=True)
 def cleanup(request):
+  print("b4 first test")
+  yield True
+  print("after last test")
+  anvil.server.disconnect()
   os.system("fuser -k 3030/tcp")
+
 
 def start_server():
   os.system("anvil-app-server --app ../OpenQuestion --uplink-key 42 --port 3030")
@@ -24,7 +29,7 @@ def start_server():
 print("before app server")
 threading.Thread(target=start_server).start()
 print("after app server")
-time.sleep(60)
+time.sleep(10)
 
 print("b4 connect")
 anvil.server.connect('42', url="ws://localhost:3030/_/uplink")
