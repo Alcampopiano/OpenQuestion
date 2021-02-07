@@ -5,13 +5,7 @@ Feedback, bug reports, and contributions are welcome via the
 
 ### Setting up your Git environment
 
-1. Install the latest version of OpenQuestion locally using 
-    
-    ```
-    $ pip install git+https://github.com/Alcampopiano/OpenQuestion/
-    ```
-
-2. Fork the repository on GitHub and clone the fork to you local
+1. Fork the repository on GitHub and clone the fork to you local
 machine. For more details on forking see the [GitHub
 Documentation](https://help.github.com/en/articles/fork-a-repo).
     
@@ -19,7 +13,7 @@ Documentation](https://help.github.com/en/articles/fork-a-repo).
     $ git clone https://github.com/YOUR-USERNAME/OpenQuestion.git
     ```
 
-3. Create a sync to the original upstream repository by creating a so-called 
+2. Create a sync to the original upstream repository by creating a 
 [remote](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/configuring-a-remote-for-a-fork).
 
     ```
@@ -35,7 +29,9 @@ working directly on your master branch.
 
 ### Commiting new code to OpenQuestion
 
-1. Create a new local branch and commit changes to your remote branch:
+1. Create an issue on GitHub to discuss the changes before you start working on a pull request.
+
+2. Create a new local branch, commit changes to your local branch and push those changes to your github fork:
 
     ```
     $ git checkout -b <branch-name>
@@ -50,13 +46,36 @@ working directly on your master branch.
     $ git push origin <branch-name>
     ```
 
-2. Write a unit test for your code (optional)
+3. Write a unit test for your code (optional)
 
     OpenQuestion uses `pytest` for unit testing. To run the test suite,
     first navigate to the "tests" directory then use the `pytest` command from your terminal.
 
-3. Submit a pull request (PR) to merge your new branch to OpenQuestion's master branch
+4. Submit a pull request (PR) to merge your new branch to OpenQuestion's master branch
 
     For details on creating a PR see GitHub documentation [Creating a pull
     request](https://help.github.com/en/articles/creating-a-pull-request). 
 
+
+### Hacking
+
+When orking with OpenQuestion locally, it is best to create a virtual environment.
+
+```bash
+# inside the OpenQuestion directory
+$ venv -m env
+$ source env/bin/activate
+(env) $ pip install -r requirements.txt
+```
+
+To set up the app server you will need to cd into the parent directory. The anvil-app-server expects to find the anvil app folder in the current directory. For trouble shooting check the anvil-app-server docs.
+
+```bash
+(env) $ cd ..
+(env) $ anvil-app-server --app OpenQuestion --shell
+>>> # set up an admin user - follow the instructions in the OpenQuestion docs
+(env) $ anvil-app-server --app OpenQuestion
+```
+
+The app should be running at `localhost:3030`. You can make changes locally, refresh the app to see those changes.
+Note you will now have a `.anvil-data` folder in the parent directory. Deleting this folder will remove all the local data  associated with your instance of OpenQuestion.
