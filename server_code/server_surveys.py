@@ -156,6 +156,9 @@ def save_schema(form_id, schema):
   
 @anvil.server.callable(require_user = validate_user)
 def save_survey_settings(form_id, settings_in_schema, settings_in_datatable):
+  
+  print(settings_in_schema)
+  print(settings_in_datatable)
   row=app_tables.forms.get(form_id=form_id)
   schema=row['schema']
   schema['settings'].update(**settings_in_schema)
