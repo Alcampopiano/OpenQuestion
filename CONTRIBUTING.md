@@ -57,9 +57,9 @@ working directly on your master branch.
     request](https://help.github.com/en/articles/creating-a-pull-request). 
 
 
-### Hacking
+### Working with OpenQuestion locally
 
-When orking with OpenQuestion locally, it is best to create a virtual environment.
+When working with OpenQuestion locally, it is best to create a virtual environment.
 
 ```bash
 # inside the OpenQuestion directory
@@ -68,7 +68,7 @@ $ source env/bin/activate
 (env) $ pip install -r requirements.txt
 ```
 
-To set up the app server you will need to cd into the parent directory. The anvil-app-server expects to find the anvil app folder in the current directory. For trouble shooting check the anvil-app-server docs.
+To set up the app server you will need to cd into the parent directory. The anvil-app-server expects to find the OpenQuestion folder in the current directory. For trouble shooting check the anvil-app-server docs.
 
 ```bash
 (env) $ cd ..
@@ -78,4 +78,4 @@ To set up the app server you will need to cd into the parent directory. The anvi
 ```
 
 The app should be running at `localhost:3030`. You can make changes locally, refresh the app to see those changes.
-Note you will now have a `.anvil-data` folder in the parent directory. Deleting this folder will remove all the local data  associated with your instance of OpenQuestion.
+Note you will now have a `.anvil-data` folder in the parent directory. Deleting this folder will remove all the local data associated with your instance of OpenQuestion.
