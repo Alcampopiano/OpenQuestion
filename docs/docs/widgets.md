@@ -16,7 +16,7 @@ configured with the following options:
 
 - _title_. The label displayed on this widget. For example, "What is your name?"
     
-- _placeholder_. Text that prompts the user. For example, "Type your name here?"
+- _placeholder_. Text that prompts the user. For example, "Type your name here"
    
 - _mandatory flag_. If checked, this field must be filled out by the user before the survey can be submitted
     
@@ -32,9 +32,9 @@ configured with the following options:
 The text_area widget is used for long, possibly multi-line text responses. 
 It can be configured with the following options:
 
-- _title_. The label displayed on this widget. For example, "Tell me about yourself?"
+- _title_. The label displayed on this widget. For example, "Tell me about yourself"
     
-- _placeholder_. Text that prompts the user. For example, "text goes here?"
+- _placeholder_. Text that prompts the user. For example, "text goes here"
    
 - _mandatory flag_. If checked, this field must be filled out by the user before the survey can be submitted
 
@@ -50,7 +50,7 @@ It can be configured with the following options:
 
 - _title_. The label displayed on this widget. For example, "What is your highest completed educational level?"
     
-- _placeholder_. Text that prompts the user. For example, "select from here?"
+- _placeholder_. Text that prompts the user. For example, "select from here"
     
 - _options_. Newline separated list of options to be displayed in the drop down
    
@@ -69,6 +69,10 @@ can be selected at the same time. It can be configured with the following option
 - _title_. The label displayed on this widget. For example, "Which scientific topics are you interested in?"
     
 - _options_. Newline separated list of options
+
+- _other_option_. Label for an additional check box option. When checked, it will display a text box
+
+- _other_placeholder_. Text that prompts the user (associated with _other_option_). For example, "Please describe"
    
 **Designer**
 ![brd](img/cb.png)
