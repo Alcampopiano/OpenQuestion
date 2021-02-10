@@ -14,7 +14,7 @@ def read(path, encoding="utf-8"):
 
 setup(
     name='OpenQuestion',
-    version='0.0.7',
+    version='0.0.8',
     description='An open source survey platform written in Python.',
     author='Allan Campopiano',
     author_email="campopianoa@hcdsb.org",
