@@ -308,11 +308,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#using-the-surveys-table" class="md-nav__link">
-    Using the Surveys table
+  <a href="#using-the-forms-table" class="md-nav__link">
+    Using the Forms table
   </a>
   
-    <nav class="md-nav" aria-label="Using the Surveys table">
+    <nav class="md-nav" aria-label="Using the Forms table">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -441,11 +441,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#using-the-surveys-table" class="md-nav__link">
-    Using the Surveys table
+  <a href="#using-the-forms-table" class="md-nav__link">
+    Using the Forms table
   </a>
   
-    <nav class="md-nav" aria-label="Using the Surveys table">
+    <nav class="md-nav" aria-label="Using the Forms table">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -556,7 +556,7 @@ OpenQuestion's privileged server code and databases</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">anvil.server</span>
 
 <span class="c1"># connecting to OpenQuestion</span>
-<span class="n">anvil</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;[uplink-key goes here]&quot;</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="s2">&quot;ws://your-runtime-server:3030/_/uplink&quot;</span><span class="p">)</span><span class="err">`</span>
+<span class="n">anvil</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;[uplink-key goes here]&quot;</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="s2">&quot;ws://your-runtime-server:3030/_/uplink&quot;</span><span class="p">)</span>
 </code></pre></div>
 
 <p>Once sucessfully connected, developers will have priviledged access to OpenQuestion's server code
@@ -565,7 +565,7 @@ and databases from their Python environment.</p>
 <p>OpenQuestion represents surveys as a Python dictionary (stored as a JSON object in the backend database). The following
 two examples show the <code>dict</code> representation of two surveys: one that is simple, followed by one that is more complex.
 By studying these structures, one can learn how to create and modify surveys programatically 
-(also, see the sections pertaining to working with the Surveys table). </p>
+(also, see the sections pertaining to working with the Forms table). </p>
 <p>In general, the survey <code>dict</code> is a nested, somewhat self-similar structure. For example,</p>
 <ul>
 <li>The survey itself contains sections (a type of widget)</li>
@@ -716,16 +716,16 @@ By studying these structures, one can learn how to create and modify surveys pro
 </code></pre></div>
 
 </details>
-<h2 id="using-the-surveys-table">Using the Surveys table<a class="headerlink" href="#using-the-surveys-table" title="Permanent link">&para;</a></h2>
-<p>The Surveys table contains all surveys that are created in OpenQuestion.</p>
+<h2 id="using-the-forms-table">Using the Forms table<a class="headerlink" href="#using-the-forms-table" title="Permanent link">&para;</a></h2>
+<p>The Forms table contains all surveys that are created in OpenQuestion.</p>
 <div class="admonition note">
 <p class="admonition-title">Interacting with tables</p>
 <p>For more information on the the API used for interacting with tables, 
 please see Anvil's <a href="https://anvil.works/docs/data-tables/data-tables-in-code">DataTables documentation</a>.</p>
 </div>
-<p>The Surveys table has the following columns:</p>
+<p>The Forms table has the following columns:</p>
 <ul>
-<li><em>survey_id</em>: A long, random, secure, and unique string</li>
+<li><em>form_id</em>: A long, random, secure, and unique string</li>
 <li><em>title</em>: The survey title</li>
 <li><em>last_modified</em>: A Python datetime object</li>
 <li><em>schema</em>: A JSON representation of the survey's structure (does not contain submission data)</li>
@@ -734,7 +734,7 @@ please see Anvil's <a href="https://anvil.works/docs/data-tables/data-tables-in-
 <li><em>closing_date</em>: A Python datetime object for an closing date</li>
 </ul>
 <h3 id="adding-a-survey">Adding a survey<a class="headerlink" href="#adding-a-survey" title="Permanent link">&para;</a></h3>
-<p>The following example demonstrates how to programatically add a survey to the Surveys table.</p>
+<p>The following example demonstrates how to programatically add a survey to the Forms table.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">anvil.tables</span> <span class="kn">import</span> <span class="n">app_tables</span>
 
 <span class="n">my_survey</span><span class="o">=</span><span class="p">{</span>
@@ -765,8 +765,8 @@ please see Anvil's <a href="https://anvil.works/docs/data-tables/data-tables-in-
   <span class="p">]</span>
 <span class="p">}</span>
 
-<span class="n">app_tables</span><span class="o">.</span><span class="n">surveys</span><span class="o">.</span><span class="n">add_row</span><span class="p">(</span>
-    <span class="n">survey_id</span><span class="o">=</span><span class="s1">&#39;you secure survey ID&#39;</span><span class="p">,</span> <span class="c1"># A long, random, secure, and unique string</span>
+<span class="n">app_tables</span><span class="o">.</span><span class="n">forms</span><span class="o">.</span><span class="n">add_row</span><span class="p">(</span>
+    <span class="n">form_id</span><span class="o">=</span><span class="s1">&#39;you secure survey ID&#39;</span><span class="p">,</span> <span class="c1"># A long, random, secure, and unique string</span>
     <span class="n">title</span><span class="o">=</span><span class="s1">&#39;simple survey&#39;</span><span class="p">,</span> 
     <span class="n">schema</span><span class="o">=</span><span class="n">my_survey</span><span class="p">,</span> <span class="c1"># A Python dictionary following OpenQuestion&#39;s expected format</span>
     <span class="n">submissions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -775,20 +775,20 @@ please see Anvil's <a href="https://anvil.works/docs/data-tables/data-tables-in-
 </code></pre></div>
 
 <h3 id="deleting-a-survey">Deleting a survey<a class="headerlink" href="#deleting-a-survey" title="Permanent link">&para;</a></h3>
-<p>The following example demonstrates how to programatically delete a survey from the Surveys table.</p>
+<p>The following example demonstrates how to programatically delete a survey from the Forms table.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">anvil.tables</span> <span class="kn">import</span> <span class="n">app_tables</span>
 
 <span class="c1"># Searching based on title property but any other search parameter can be used. </span>
 <span class="c1"># See Anvil&#39;s Datatable documentation https://anvil.works/docs/data-tables/data-tables-in-code</span>
-<span class="n">row</span><span class="o">=</span><span class="n">app_tables</span><span class="o">.</span><span class="n">surveys</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;simple survey&#39;</span><span class="p">)</span>
+<span class="n">row</span><span class="o">=</span><span class="n">app_tables</span><span class="o">.</span><span class="n">forms</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;simple survey&#39;</span><span class="p">)</span>
 <span class="n">row</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
 </code></pre></div>
 
 <h3 id="modifying-a-survey">Modifying a survey<a class="headerlink" href="#modifying-a-survey" title="Permanent link">&para;</a></h3>
-<p>The following example demonstrates how to programatically modify a survey from the Surveys table.</p>
+<p>The following example demonstrates how to programatically modify a survey from the Forms table.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">anvil.tables</span> <span class="kn">import</span> <span class="n">app_tables</span>
 
-<span class="n">row</span><span class="o">=</span><span class="n">app_tables</span><span class="o">.</span><span class="n">surveys</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;simple survey&#39;</span><span class="p">)</span>
+<span class="n">row</span><span class="o">=</span><span class="n">app_tables</span><span class="o">.</span><span class="n">forms</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;simple survey&#39;</span><span class="p">)</span>
 
 <span class="c1"># modifying the survey&#39;s title</span>
 <span class="n">row</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;My new title&#39;</span>
