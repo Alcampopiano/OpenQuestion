@@ -54,8 +54,12 @@ def submit_data(column_panel):
         
         val=[]
         for c in widget.column_panel.get_components():
-          if c.checked:
+          if 'check_box_other' is c.__name__ and c.check_box.checked:
+            val.append(c.text_box.text)
+            
+          elif c.checked:
             val.append(c.text)
+            
             
         val='' if not val else val
         
@@ -125,7 +129,13 @@ def build_form(schema, column_panel):
         widget.label_mandatory.visible=widget_schema['mandatory']
         
       elif widget_schema['type']=='check_box':
-        options=widget_schema['options'].split('\n')
+        
+        options={
+          'regular_options': widget_schema['options'].split('\n'),
+          'other_option': widget_schema['other_option'],
+          'other_placeholder': widget_schema['other_placeholder']
+        }
+        
         widget=widgets.check_box(options=options)
         widget.label_title.text=widget_schema['title']
       
