@@ -1,6 +1,6 @@
 container:
   type: ColumnPanel
-  properties: {col_widths: '{"ELANIO":10,"CBFVDL":50,"UOILGI":10,"ZANBOV":50,"WYGPPB":55,"RODTIQ":5}'}
+  properties: {col_widths: '{"ELANIO":10,"CBFVDL":50,"UOILGI":10,"ZANBOV":50,"WYGPPB":55,"RODTIQ":5,"NAUINB":10,"WCVWVS":50,"OYAHOL":10,"URGEKJ":50}'}
   event_bindings: {}
 components:
 - type: Spacer
@@ -47,4 +47,32 @@ components:
   name: text_area_options
   layout_properties: {grid_position: 'ELJIQY,ZANBOV'}
   event_bindings: {}
+- type: Label
+  properties: {role: null, align: left, tooltip: '', border: '', foreground: '', visible: true,
+    text: 'other_option:', font_size: 14, font: '', spacing_above: small, icon_align: left,
+    spacing_below: small, italic: true, background: '', bold: false, underline: false,
+    icon: ''}
+  name: label_3
+  layout_properties: {grid_position: 'EDUEMA,NAUINB'}
+- type: TextBox
+  properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: label for "other" option,
+    border: '', enabled: true, foreground: '', visible: true, text: '', font_size: 14,
+    font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
+    background: '', bold: false, underline: false}
+  name: text_box_other_option
+  layout_properties: {grid_position: 'EDUEMA,WCVWVS'}
+- type: Label
+  properties: {role: null, align: left, tooltip: '', border: '', foreground: '', visible: true,
+    text: 'other_placeholder:', font_size: 14, font: '', spacing_above: small, icon_align: left,
+    spacing_below: small, italic: true, background: '', bold: false, underline: false,
+    icon: ''}
+  name: label_4
+  layout_properties: {grid_position: 'BCOHHR,OYAHOL'}
+- type: TextBox
+  properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: placeholder for "other" option,
+    border: '', enabled: true, foreground: '', visible: true, text: '', font_size: 14,
+    font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
+    background: '', bold: false, underline: false}
+  name: text_box_other_placeholder
+  layout_properties: {grid_position: 'BCOHHR,URGEKJ'}
 is_package: true

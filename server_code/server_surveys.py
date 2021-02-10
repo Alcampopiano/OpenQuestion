@@ -77,9 +77,7 @@ def submit_data(cols, data, url_hash):
     
     m=anvil.BlobMedia('text/csv', csv_data, name='records.csv')
     row.update(submissions=m)
-    
-    print(row['schema'])
-    
+        
   return mistune.markdown(row['schema']['settings']['thank_you_msg'], escape=False)
     
     
@@ -92,9 +90,6 @@ def check_opening_closing_dates(opening_date, closing_date):
   
   # getting aware datetime from server rather than passing client aware date
   current_date = datetime.now(anvil.tz.tzlocal()) #aware_local
-  #print(current_date)
-  #print(opening_date)
-  #print(closing_date)
 
   if opening_date and closing_date and (opening_date < current_date < closing_date):
     pass
@@ -161,6 +156,7 @@ def save_schema(form_id, schema):
   
 @anvil.server.callable(require_user = validate_user)
 def save_survey_settings(form_id, settings_in_schema, settings_in_datatable):
+  
   row=app_tables.forms.get(form_id=form_id)
   schema=row['schema']
   schema['settings'].update(**settings_in_schema)

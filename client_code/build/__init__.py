@@ -46,6 +46,8 @@ def build_form(schema, column_panel):
       elif widget_schema['type']=='check_box':
         widget=widgets.check_box(section=section)
         widget.text_area_options.text=widget_schema['options']
+        widget.text_box_other_option.text=widget_schema['other_option']
+        widget.text_box_other_placeholder.text=widget_schema['other_placeholder']          
         
       elif widget_schema['type']=='radio_button':
         widget=widgets.radio_button(section=section)
@@ -144,6 +146,8 @@ def build_schema(column_panel):
         
         widget_schema['type']='check_box'
         widget_schema['options']=widget.text_area_options.text
+        widget_schema['other_option']=widget.text_box_other_option.text
+        widget_schema['other_placeholder']=widget.text_box_other_placeholder.text
         
       elif 'radio_button' is widget.__name__:
         
