@@ -6,6 +6,8 @@ import anvil.server
 import pytest
 import uuid
 from datetime import datetime
+import pandas as pd
+import io
 
 # basic survey
 schema={
@@ -36,9 +38,6 @@ schema={
   ]
 }
 
-# id
-form_id = str(uuid.uuid4())
-
 @pytest.fixture(scope="session", autouse=True)
 def set_up_and_tear_down():
 
@@ -63,10 +62,6 @@ def set_up_and_tear_down():
   # connect
   anvil.server.connect('42', url="ws://localhost:3030/_/uplink")
 
-  # add a survey
-  app_tables.forms.add_row(form_id=form_id, last_modified=datetime.now(),
-                           schema=schema, title=schema['title'])
-
   yield True
 
   # disconnect from uplink
@@ -77,6 +72,12 @@ def set_up_and_tear_down():
 
 def test_delete_survey():
 
+  form_id=str(uuid.uuid4())
+
+  # add a survey
+  app_tables.forms.add_row(form_id=form_id, last_modified=datetime.now(),
+                           schema=schema, title=schema['title'])
+
   # current number of surveys
   init_num_forms = len(app_tables.forms.search())
 
@@ -85,6 +86,40 @@ def test_delete_survey():
 
   # a simple assertion that there is one more survey in the database
   assert init_num_forms > len(app_tables.forms.search())
+
+def test_submit_data():
+
+  """
+  Test that data is stored into the data after a submission
+
+  Test that columns are added to the dataframe as expected even when
+  using query string parameters in the URL hash
+  """
+
+  form_id=str(uuid.uuid4())
+
+  # add a survey
+  app_tables.forms.add_row(form_id=form_id, last_modified=datetime.now(),
+                           schema=schema, title=schema['title'])
+
+  # submit some initial data
+  cols=['a', 'b', 'c']
+
+  data=[1,2,3]
+  submit_data(cols.copy(), data.copy(), {'form_id': form_id})
+
+  # submit data with query parameters (meta data)
+  cols_from_hash=['form_id', '1st_param', '2nd_param']
+  submit_data(cols.copy(), data.copy(), {cols_from_hash[0]: form_id,
+                           cols_from_hash[1]: 'foo',
+                           cols_from_hash[2]: 'bar'})
+
+  media=app_tables.forms.get(form_id=form_id)['submissions']
+  df = pd.read_csv(io.BytesIO(media.get_bytes()), index_col=0)
+  should_be_cols=cols + cols_from_hash
+  new_cols=list(df.columns)
+
+  assert new_cols==should_be_cols
 
 def test_save_schema():
 
@@ -99,8 +134,11 @@ def test_save_schema():
 
 def test_save_survey_settings():
 
-  row=app_tables.forms.add_row(form_id=form_id, schema=schema,
-                           title=schema['title'])
+  form_id=str(uuid.uuid4())
+
+  # add a survey
+  row=app_tables.forms.add_row(form_id=form_id, last_modified=datetime.now(),
+                           schema=schema, title=schema['title'])
 
   settings_in_schema={'survey_color': '#F0F0F0',
                    'thank_you_msg': '#Thank you!'}
@@ -111,3 +149,4 @@ def test_save_survey_settings():
   save_survey_settings(form_id, settings_in_schema, settings_in_datatable)
 
   assert schema['settings'] != row['schema']['settings']
+
