@@ -121,6 +121,34 @@ def test_submit_data():
 
   assert new_cols==should_be_cols
 
+def test_check_opening_closing_dates():
+
+  """
+  assert that a survey is deemed inactive if closing date has passed
+  """
+
+  x = datetime(2017, 11, 16, 23, 45, 15, 0, anvil.tz.tzoffset(hours=3))
+  y = datetime(2018, 11, 16, 23, 45, 15, 0, anvil.tz.tzoffset(hours=3))
+
+  try:
+    check_opening_closing_dates(x, y)
+  except Exception as e:
+    error_str=str(e)
+
+  assert error_str == 'survey inactive'
+
+def test_get_form():
+
+  form_id=str(uuid.uuid4())
+
+  # add a survey
+  app_tables.forms.add_row(form_id=form_id, last_modified=datetime.now(),
+                           schema=schema, title=schema['title'])
+
+  the_schema=get_form({'form_id': form_id, 'preview': True})
+
+  assert the_schema==schema
+
 def test_save_schema():
 
   # current number of surveys
