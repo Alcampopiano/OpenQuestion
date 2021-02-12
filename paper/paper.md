@@ -53,11 +53,19 @@ created and modified
 - Query strings can be used in survey URLs to associate arbitrary data with a given submission
 - Markdown widgets can be used for embedding images, GIFs, rich text, links, and more
 
-Another notable Python library that can be used for web-based data collection is Docassemble [@docassemble]. In contrast
+# Statement of need
+
+Many popular survey platforms are commercial products. This presents significant challenges
+for researchers with limited budgets and due to the proprietary nature of the software,
+developers cannot modify the code if the product fails to meet their needs. 
+OpenQuestion fills this gap by giving researchers a survey tool that is free and open source. 
+
+Another free and open source Python-based survey platform is Docassemble [@docassemble]. In contrast
 to OpenQuestion, Docassemble focuses on document generation, and in terms of development, web forms are 
 created by writing YAML, Markdown, and Python. OpenQuestion on the other hand, is designed for surveys 
-that save submissions to a database and survey development is most easly accomplished by using the 
-GUI (although programmatic development is also possible).
+that save submissions to a database and survey development is most easily accomplished using the 
+GUI (although programmatic development is also possible). Docassemble is a mature project with a thriving
+community and should be considered by researchers looking to automate document generation via web-based forms.
 
 # Acknowledgements
 
@@ -66,7 +74,7 @@ James Desjardins,
 Stefon van Noordt, 
 Meredydd Luff,
 Ian Davies,
-P Colbert,
+Phil Colbert,
 Lisa Collimore, 
 Jennifer MacDonald,
 Zoe Walters,
