@@ -1,7 +1,6 @@
 from setuptools import find_packages, setup
 import io
 import os
-import re
 
 def get_install_requirements(path):
     content = read(path)
@@ -14,7 +13,7 @@ def read(path, encoding="utf-8"):
 
 setup(
     name='OpenQuestion',
-    version='0.0.8',
+    version='0.0.9',
     description='An open source survey platform written in Python.',
     author='Allan Campopiano',
     author_email="campopianoa@hcdsb.org",
