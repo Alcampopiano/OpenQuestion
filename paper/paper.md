@@ -10,6 +10,7 @@ tags:
   - anvil
   - qualtrics
   - cognito
+  - anvil
   - docassemble
 authors:
   - name: Allan Campopiano
@@ -32,8 +33,8 @@ bibliography: paper.bib
 
 [OpenQuestion](https://alcampopiano.github.io/OpenQuestion/) is a survey 
 building platform written in Python. Surveys can be developed using a GUI or by writing 
-Python code. OpenQuestion is built on the open source Anvil App Server, a runtime engine 
-for writting full-stack web applications in Python [@anvil]. ^[Note that an Anvil account is not 
+Python code. OpenQuestion is built with the open source Anvil App Server, a runtime engine 
+for writing full-stack web applications in Python [@anvil]. ^[Note that an Anvil account is not 
 required to use OpenQuestion.] 
 
 OpenQuestion has many of the features that exist in other survey platforms. For example,
@@ -43,21 +44,20 @@ OpenQuestion has many of the features that exist in other survey platforms. For 
 - Several authentication options for survey developers
 - Configurable survey settings (e.g., open/closing dates)
 
-In addition, OpenQuestion includes a number of other developer-friendly features. For example,
+In addition, OpenQuestion includes several other developer-friendly features. For example,
 
 - A Python interpreter can be connected to OpenQuestion, giving admins and developers
-access to the application's database
-- Surveys are represented (in the backend) as a Python `dict` and can therefore be programatically 
+access to the application's database and server-side functions
+- Surveys are represented (in the backend) as a Python `dict` and can therefore be programmatically 
 created and modified
 - Query strings can be used in survey URLs to associate arbitrary data with a given submission
 - Markdown widgets can be used for embedding images, GIFs, rich text, links, and more
 
-Another notable Python library that can be used for web-based data collection is Docassemble [@docassemble]. Web forms 
-in Docassemble (so-called guided interviews), are developed by writing YAML, Markdown, and Python. 
-In contrast to OpenQuestion, Docassemble is focused on document generation based on the answers provided in 
-the guided interview. OpenQuestion on the other hand, is designed for surveys that save submissions 
-to a backend table. Further, surveys in OpenQuestion can be designed using a GUI (as well as by using Python) 
-and therefore developers with limited technical expertise may have a lower barrier to entry. 
+Another notable Python library that can be used for web-based data collection is Docassemble [@docassemble]. In contrast
+to OpenQuestion, Docassemble focuses on document generation, and in terms of development, web forms are 
+created by writing YAML, Markdown, and Python. OpenQuestion on the other hand, is designed for surveys 
+that save submissions to a database and survey development is most easly accomplished by using the 
+GUI (although programmatic development is also possible).
 
 # Acknowledgements
 
@@ -66,6 +66,7 @@ James Desjardins,
 Stefon van Noordt, 
 Meredydd Luff,
 Ian Davies,
+P Colbert,
 Lisa Collimore, 
 Jennifer MacDonald,
 Zoe Walters,
