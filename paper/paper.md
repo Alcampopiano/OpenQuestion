@@ -31,14 +31,15 @@ bibliography: paper.bib
 
 # Summary
 [OpenQuestion](https://alcampopiano.github.io/OpenQuestion/) is a survey 
-building platform written in Python. Researchers can develop and manage surveys using a GUI or by writing 
-Python code. End-user surveys (ie., web forms for data acquisition) can be distributed by
-sharing a unique URL.^[OpenQuestion is built with the open source Anvil App Server, a runtime engine
-for writing full-stack web applications in Python [@anvil]. Note that an Anvil account is not 
-required to use OpenQuestion.]
+building platform that allows researchers to develop and manage surveys using a GUI or by writing 
+Python code. When a survey is accessed by an end user, OpenQuestion renders it, according to design,
+as an interactive web application for data acquisision.
+^[OpenQuestion is built with the open source Anvil App Server, a runtime engine for 
+writing full-stack web applications in Python [@anvil].Note that an Anvil account
+is not required to use OpenQuestion.]
 
 # Statement of need
-OpenQuestion's GUI and general functionality will be familiar to researchers to have used 
+OpenQuestion's GUI and general functionality will be familiar to researchers who have used 
 commercial survey platforms. However, OpenQuestion is unique in comparison since 
 much of the platform can be controlled via Python^[Those without Python knowledge can simply use OpenQuestion's GUI as a 
 free alternative to other commonly used survey platforms.]. There are two main features that allow researchers
@@ -57,7 +58,7 @@ In addition to using Python code to interact with OpenQuesion, the GUI also incl
 researcher-friendly features that are often not available in commonly used commercial survey platforms:
 
 - Markdown widgets can be used to quickly write rich text areas (as well as 
-to embedding images, GIFs, links, etc.)
+to embed images, GIFs, links, etc.)
 - Query strings parameters can be added to URLs. This allows data that the end-user _did not_ 
 indicate on the web form to be merged with a submission. This meta data can then be used for downstream 
 data processing and/or analysis
