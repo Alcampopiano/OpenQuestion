@@ -30,51 +30,56 @@ bibliography: paper.bib
 ---
 
 # Summary
-
 [OpenQuestion](https://alcampopiano.github.io/OpenQuestion/) is a survey 
-building platform written in Python. Surveys can be developed using a GUI or by writing 
-Python code. OpenQuestion is built with the open source Anvil App Server, a runtime engine 
-for writing full-stack web applications in Python [@anvil]. ^[Note that an Anvil account is not 
-required to use OpenQuestion.] 
-
-OpenQuestion has many of the features that exist in other survey platforms. For example,
-
-- A web-based GUI for survey development and data acquisition
-- Familiar survey widgets (e.g., text box, drop down, slider)
-- Several authentication options for survey developers
-- Configurable survey settings (e.g., open/closing dates)
-
-In addition, OpenQuestion includes several other developer-friendly features. For example,
-
-- A Python interpreter can be connected to OpenQuestion, giving admins and developers
-access to the application's database and server-side functions
-- Surveys are represented (in the backend) as a Python `dict` and can therefore be programmatically 
-created and modified
-- Query strings can be used in survey URLs to associate arbitrary data with a given submission
-- Markdown widgets can be used for embedding images, GIFs, rich text, links, and more
+building platform written in Python. Researchers can develop and manage surveys using a GUI or by writing 
+Python code. End-user surveys (ie., web forms for data acquisition) can be distributed by
+sharing a unique URL.^[OpenQuestion is built with the open source Anvil App Server, a runtime engine
+for writing full-stack web applications in Python. Note that an Anvil account is not 
+required to use OpenQuestion [@anvil].]
 
 # Statement of need
+OpenQuestion's GUI and general functionality will be familiar to researchers to have used 
+commercial survey platforms. However, OpenQuestion is unique in comparison since 
+much of the platform can be controlled via Python^[Those without Python knowledge can simply use OpenQuestion's GUI as a 
+free alternative to other commonly used survey platforms.]. There are two main features that allow researchers
+to leverage Python for survey development/management:
 
-Many popular survey platforms are commercial products. This presents significant challenges
-for researchers with limited budgets and due to the proprietary nature of the software,
-developers cannot modify the code if the product fails to meet their needs. 
-OpenQuestion fills this gap by giving researchers a survey tool that is free and open source. 
+- Surveys designs are stored as a Python `dict`/JSON
+- A Python interpreter can be connected to OpenQuestion's internal database
 
-Another free and open source Python-based survey platform is Docassemble [@docassemble]. In contrast
+As a result, researchers familiar with Python could, for example, perform the following tasks with OpenQuestion:
+
+- Batch create surveys
+- Archive survey designs
+- Perform CRUD tasks on the backend database (e.g., survey and/or user management)
+
+In addition to using Python code to interact with OpenQuesion, the GUI also includes the following
+researcher-friendly features that are often not available in commonly used commercial survey platforms:
+
+- Markdown widgets can be used to quickly write rich text areas (as well as 
+to embedding images, GIFs, links, etc.)
+- Query strings parameters can be added to URLs. This allows data that the end-user _did not_ 
+indicate on the web form to be merged with a submission. This meta data can then be used for downstream 
+data processing and/or analysis
+- A labelled slider bar widget can be used to collect continuous quantitative data
+
+Another notable Python-based survey platform is Docassemble [@docassemble]. In contrast
 to OpenQuestion, Docassemble focuses on document generation, and in terms of development, web forms are 
 created by writing YAML, Markdown, and Python. OpenQuestion on the other hand, is designed for surveys 
-that save submissions to a database and survey development is most easily accomplished using the 
-GUI (although programmatic development is also possible). Docassemble is a mature project with a thriving
+that save submissions to a database and survey development can be accomplished using the 
+GUI or by writing Python code. Docassemble is a mature project with a thriving
 community and should be considered by researchers looking to automate document generation via web-based forms.
 
 # Acknowledgements
-
 The authors would like to thank 
 James Desjardins, 
 Stefon van Noordt, 
 Meredydd Luff,
 Ian Davies,
 Phil Colbert,
+Grant Bryer,
+Stephanie Spicer,
+Trevor Dixon,
 Lisa Collimore, 
 Jennifer MacDonald,
 Zoe Walters,
