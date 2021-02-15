@@ -34,8 +34,8 @@ bibliography: paper.bib
 building platform written in Python. Researchers can develop and manage surveys using a GUI or by writing 
 Python code. End-user surveys (ie., web forms for data acquisition) can be distributed by
 sharing a unique URL.^[OpenQuestion is built with the open source Anvil App Server, a runtime engine
-for writing full-stack web applications in Python. Note that an Anvil account is not 
-required to use OpenQuestion [@anvil].]
+for writing full-stack web applications in Python [@anvil]. Note that an Anvil account is not 
+required to use OpenQuestion.]
 
 # Statement of need
 OpenQuestion's GUI and general functionality will be familiar to researchers to have used 
