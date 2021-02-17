@@ -46,10 +46,17 @@ class survey_row(survey_rowTemplate):
     content.copy_click(app_url)
     Notification('Share this link or paste it in the browser', title='Link copied!').show()
   
-
   def settings_click(self, **event_args):
     row=self.button_build.tag.row      
     open_form('landing.settings.survey_settings', row)
+
+  def button_chart_click(self, **event_args):
+
+    print(' this context manager is not working for some reason')
+    with Notification('', title='please wait...'):
+      row=self.button_build.tag.row
+      open_form('reports.main', row=row)
+
 
 
   

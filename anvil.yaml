@@ -116,6 +116,12 @@ db_schema:
       name: last_modified
       type: datetime
       admin_ui: {order: 2, width: 200}
+    ZyPWM1iuKCU=:
+      name: reports
+      type: liveObject
+      backend: anvil.tables.Row
+      admin_ui: {order: 7, width: 200}
+      table_id: 69868
     bmyjwXkZDpo=:
       name: opening_date
       type: datetime

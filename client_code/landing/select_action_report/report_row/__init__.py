@@ -20,7 +20,7 @@ class report_row(report_rowTemplate):
 
     # Any code you write here will run when the form opens.
   def button_build_click(self, **event_args):
-
+    
     print(' this context manager is not working for some reason')
     with Notification('', title='please wait...'):
       row=self.button_build.tag.row
