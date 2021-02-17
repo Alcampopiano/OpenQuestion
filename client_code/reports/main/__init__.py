@@ -14,7 +14,7 @@ from .. import widgets
 from ...utilities import augment
 
 class main(mainTemplate):
-  def __init__(self, row=None, **properties):
+  def __init__(self, row, **properties):
 
     self.init_components(**properties)
     
@@ -24,38 +24,40 @@ class main(mainTemplate):
     self.tag.file_loader=file_loader
     
     self.tag.row=row
+    self.tag.report_row=row['reports']
     save_button=Button(text='save', role='primary-color')
     save_button.set_event_handler('click', self.save_click)
     self.add_component(save_button)
       
-    if row:
-      self.tag.id=row['report_id']
-      self.tag.data_dicts=row['datasets']
+    if row['reports']:
+      #self.tag.id=row['report_id']
+      self.tag.data_dicts=row['reports']['datasets']
       self.link_datasets.text=str(len(self.tag.data_dicts))
-      self.tag.num_widgets=row['schema']['num_widgets']
-      self.text_box_title.text=row['title']
-      reports.build_report(row['schema'], row['charts'], self.column_panel)
+      self.tag.num_widgets=row['reports']['schema']['num_widgets']
+      self.text_box_title.text=row['reports']['title']
+      reports.build_report(row['reports']['schema'], 
+                           row['reports']['charts'], self.column_panel)
       
     else:
       
       self.tag.form_dict={}
       self.tag.data_dicts={}
-      self.tag.id=None
+      #self.tag.id=None
       self.tag.num_widgets=0  
       
   def save_click(self, **event_args):
     schema, chart_dict=reports.build_schema(self.column_panel)
     datasets=self.tag.data_dicts
     
-    report_id=anvil.server.call('save_report', 
-                      self.tag.id, 
+    report_row=anvil.server.call('save_report', 
+                      self.tag.row,
                       schema, chart_dict, datasets)
     
-    self.tag.id=report_id
+    self.tag.report_row=report_row
     
   def form_show(self, **event_args):
     
-    if not self.tag.row:
+    if not self.tag.report_row:
       self.section_widget_click()
       
     else:
@@ -63,9 +65,9 @@ class main(mainTemplate):
       last_section=self.column_panel.get_components()[-1]
       last_section.section_select()
       
-          
-  def link_landing_click(self, **event_args):
-     open_form('landing.select_action')
+   
+#   def link_landing_click(self, **event_args):
+#      open_form('landing.select_action')
     
   def markdown_widget_click(self, **event_args):
     """This method is called when the link is clicked"""
@@ -100,7 +102,7 @@ class main(mainTemplate):
   def file_loader_change(self, files, **event_args):
     
     if files:
-      data_dicts=anvil.server.call('return_datasets', files)
+      data_dicts=anvil.server.call('return_datasets', self.tag.row, files)
       self.tag.data_dicts=data_dicts
       
     self.link_datasets.text=str(len(self.tag.data_dicts))
@@ -110,17 +112,17 @@ class main(mainTemplate):
 
   def link_download_click(self, **event_args):
     
-    if not self.tag.id:
+    if not self.tag.report_row:
       self.save_click()
       
-    m=anvil.server.call('make_html_report', self.tag.id)
+    m=anvil.server.call('make_html_report', self.tag.row)
     download(m)
 
-  def link_landing_report_click(self, **event_args):
-     open_form('landing.select_action_report')
+#   def link_landing_report_click(self, **event_args):
+#      open_form('landing.select_action_report')
       
   def link_home_click(self, **event_args):
-    open_form('landing.main')
+    open_form('landing.select_action_survey')
 
 
 

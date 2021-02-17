@@ -19,30 +19,30 @@ import mistune
 def validate_user(u):
   return u #u['admin']
 
-@anvil.server.callable(require_user = validate_user)
-def delete_report(form_id):
+# @anvil.server.callable(require_user = validate_user)
+# def delete_report(form_id):
   
-  row=app_tables.reports.get(form_id=form_id)
-  row.delete()
+#   row=app_tables.reports.get(form_id=form_id)
+#   row.delete()
 
 @anvil.server.callable(require_user = validate_user)
-def save_report(report_id, schema, specs, data_dicts):
+def save_report(survey_row, schema, specs, data_dicts):
     
-  row=app_tables.reports.get(report_id=report_id)
+  report_row=app_tables.reports.get(reports=survey_row['reports'])
   
-  if not row:
-    report_id=str(uuid.uuid4())
-    row=app_tables.reports.add_row(report_id=report_id, title=schema['title'], 
+  if not report_row:
+    #report_id=str(uuid.uuid4())
+    report_row=app_tables.reports.add_row(title=schema['title'], 
                                last_modified=datetime.datetime.now(),
                                schema=schema, charts=specs, datasets=data_dicts)
     
   else:
-    row.update(title=schema['title'], schema=schema, charts=specs, datasets=data_dicts)
+    report_row.update(title=schema['title'], schema=schema, charts=specs, datasets=data_dicts)
     
-  return row['report_id']
+  return report_row
 
 @anvil.server.callable(require_user = validate_user)
-def return_datasets(files):
+def return_datasets(row, files):
   
   data_dicts={}
   for file in files:   
@@ -57,12 +57,12 @@ def convert_markdown(text):
   return mistune.markdown(text, escape=False)
 
 @anvil.server.callable(require_user = validate_user)
-def make_html_report(report_id):
+def make_html_report(survey_row):
   
-  report=app_tables.reports.get(report_id=report_id)
-  schema=report['schema']
-  charts=report['charts']
-  datasets=report['datasets']
+  report_row=survey_row['reports']
+  schema=report_row['schema']
+  charts=report_row['charts']
+  datasets=report_row['datasets']
   
   # there is obviously a better way of doing this
   # at least I should have this in an external location
@@ -475,7 +475,7 @@ var opts={"renderer": "svg", "mode": "vega-lite", "actions": {"export": true, "s
 </html> 
   """
   
-  m=anvil.BlobMedia('text/html', html.encode(), name=report['title']+'.html')
+  m=anvil.BlobMedia('text/html', html.encode(), name=report_row['title']+'.html')
   
   return m
   
