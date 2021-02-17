@@ -26,9 +26,10 @@ def validate_user(u):
 #   row.delete()
 
 @anvil.server.callable(require_user = validate_user)
-def save_report(survey_row, schema, specs, data_dicts):
-    
-  report_row=app_tables.reports.get(reports=survey_row['reports'])
+def save_report(survey_dict, schema, specs, data_dicts):
+      
+  survey_row=app_tables.forms.get(form_id=survey_dict['form_id'])  
+  report_row=survey_row['reports']
   
   if not report_row:
     #report_id=str(uuid.uuid4())
@@ -36,13 +37,15 @@ def save_report(survey_row, schema, specs, data_dicts):
                                last_modified=datetime.datetime.now(),
                                schema=schema, charts=specs, datasets=data_dicts)
     
+    survey_row.update(reports=report_row)
+    
   else:
     report_row.update(title=schema['title'], schema=schema, charts=specs, datasets=data_dicts)
     
-  return report_row
+  return dict(survey_row)
 
 @anvil.server.callable(require_user = validate_user)
-def return_datasets(row, files):
+def return_datasets(files):
   
   data_dicts={}
   for file in files:   

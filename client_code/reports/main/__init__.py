@@ -24,56 +24,56 @@ class main(mainTemplate):
     self.tag.file_loader=file_loader
     
     self.tag.row=row
-    self.tag.report_row=row['reports']
     save_button=Button(text='save', role='primary-color')
     save_button.set_event_handler('click', self.save_click)
     self.add_component(save_button)
       
-    if row['reports']:
-      #self.tag.id=row['report_id']
+  def save_click(self, **event_args):
+    schema, chart_dict=reports.build_schema(self.column_panel)
+    datasets=self.tag.data_dicts
+    
+    row=anvil.server.call('save_report', 
+                      self.tag.row,
+                      schema, chart_dict, datasets)
+    
+    self.tag.row=row
+    
+  def form_show(self, **event_args):
+    
+    row=self.tag.row
+    if not row['reports']:
+      
+      # first time in report module      
+      self.tag.form_dict={}
+      self.tag.data_dicts=anvil.server.call('return_datasets', [row['submissions']])
+      self.tag.num_widgets=0  
+      self.link_datasets.text=str(len(self.tag.data_dicts))
+      self.section_widget_click()
+      self.save_click()
+      
+      
+    else:
+      
+      # subsequesnt time visiting the report module
       self.tag.data_dicts=row['reports']['datasets']
+      
+      # update datasets to current state of core data
+      current_core_data=anvil.server.call('return_datasets', [row['submissions']])
+      self.tag.data_dicts.update({'records.csv': current_core_data})                
       self.link_datasets.text=str(len(self.tag.data_dicts))
       self.tag.num_widgets=row['reports']['schema']['num_widgets']
       self.text_box_title.text=row['reports']['title']
       reports.build_report(row['reports']['schema'], 
                            row['reports']['charts'], self.column_panel)
       
-    else:
-      
-      self.tag.form_dict={}
-      self.tag.data_dicts={}
-      #self.tag.id=None
-      self.tag.num_widgets=0  
-      
-  def save_click(self, **event_args):
-    schema, chart_dict=reports.build_schema(self.column_panel)
-    datasets=self.tag.data_dicts
-    
-    report_row=anvil.server.call('save_report', 
-                      self.tag.row,
-                      schema, chart_dict, datasets)
-    
-    self.tag.report_row=report_row
-    
-  def form_show(self, **event_args):
-    
-    if not self.tag.report_row:
-      self.section_widget_click()
-      
-    else:
-      
       last_section=self.column_panel.get_components()[-1]
       last_section.section_select()
       
-   
-#   def link_landing_click(self, **event_args):
-#      open_form('landing.select_action')
-    
+
   def markdown_widget_click(self, **event_args):
     """This method is called when the link is clicked"""
     comp=widgets.markdown(section=self.tag.active_section)
     self.tag.active_section.column_panel.add_component(comp)
-    #self.color_rows(self.tag.active_section)
     comp.label_id.text=self.tag.num_widgets
     self.tag.num_widgets+=1
     self.tag.form_dict[comp.label_id.text]=comp
@@ -90,7 +90,6 @@ class main(mainTemplate):
     if self.tag.data_dicts:
       comp=widgets.chart(section=self.tag.active_section)
       self.tag.active_section.column_panel.add_component(comp)
-      #self.color_rows(self.tag.active_section)
       comp.label_id.text=self.tag.num_widgets
       self.tag.num_widgets+=1
       self.tag.form_dict[comp.label_id.text]=comp
@@ -102,7 +101,11 @@ class main(mainTemplate):
   def file_loader_change(self, files, **event_args):
     
     if files:
-      data_dicts=anvil.server.call('return_datasets', self.tag.row, files)
+      datasets=[self.tag.row['submissions']]+files
+      print(type(datasets))
+      print(len(datasets))
+      print(datasets)
+      data_dicts=anvil.server.call('return_datasets', datasets)
       self.tag.data_dicts=data_dicts
       
     self.link_datasets.text=str(len(self.tag.data_dicts))

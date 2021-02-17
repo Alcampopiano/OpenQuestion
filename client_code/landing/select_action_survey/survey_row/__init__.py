@@ -52,7 +52,6 @@ class survey_row(survey_rowTemplate):
 
   def button_chart_click(self, **event_args):
 
-    print(' this context manager is not working for some reason')
     with Notification('', title='please wait...'):
       row=self.button_build.tag.row
       open_form('reports.main', row=row)
