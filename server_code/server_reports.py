@@ -50,6 +50,12 @@ def return_datasets(files):
   data_dicts={}
   for file in files:   
     df=pd.read_csv(io.BytesIO(file.get_bytes()))
+    
+    try:
+      df=df.drop(columns={'Unnamed: 0'})
+    except:
+      pass
+    
     data_dict=df.to_dict(orient="records")
     data_dicts[file.name]=data_dict
     
@@ -59,6 +65,17 @@ def return_datasets(files):
 def convert_markdown(text):
   return mistune.markdown(text, escape=False)
 
+@anvil.server.callable(require_user = validate_user)
+def data_dicts_to_html(data_dicts):
+  
+  html=''
+  for k,v in data_dicts.items():
+    html+='<h3>{0}</h3>'.format(k)
+    html+=pd.DataFrame.from_records(v).head().to_html(index=False)
+    html+='<br><hr><br>'
+    
+  return convert_markdown(html)
+  
 @anvil.server.callable(require_user = validate_user)
 def make_html_report(survey_row):
   

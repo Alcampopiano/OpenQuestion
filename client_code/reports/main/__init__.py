@@ -12,6 +12,7 @@ from anvil.tables import app_tables
 from ... import reports
 from .. import widgets
 from ...utilities import augment
+from ..widgets.widget_utilities.data_info_view import data_info_view
 
 class main(mainTemplate):
   def __init__(self, row, **properties):
@@ -59,7 +60,7 @@ class main(mainTemplate):
       
       # update datasets to current state of core data
       current_core_data=anvil.server.call('return_datasets', [row['submissions']])
-      self.tag.data_dicts.update({'records.csv': current_core_data})                
+      self.tag.data_dicts.update({'records.csv': current_core_data['records.csv']})                
       self.link_datasets.text=str(len(self.tag.data_dicts))
       self.tag.num_widgets=row['reports']['schema']['num_widgets']
       self.text_box_title.text=row['reports']['title']
@@ -102,9 +103,6 @@ class main(mainTemplate):
     
     if files:
       datasets=[self.tag.row['submissions']]+files
-      print(type(datasets))
-      print(len(datasets))
-      print(datasets)
       data_dicts=anvil.server.call('return_datasets', datasets)
       self.tag.data_dicts=data_dicts
       
@@ -115,17 +113,20 @@ class main(mainTemplate):
 
   def link_download_click(self, **event_args):
     
-    if not self.tag.report_row:
-      self.save_click()
+#     if not self.tag.row['reports']:
+#       self.save_click()
       
     m=anvil.server.call('make_html_report', self.tag.row)
     download(m)
-
-#   def link_landing_report_click(self, **event_args):
-#      open_form('landing.select_action_report')
       
   def link_home_click(self, **event_args):
     open_form('landing.select_action_survey')
+
+  def link_info_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    data_dicts=self.tag.data_dicts
+    alert(data_info_view(data_dicts), large=True, buttons=[('ok', 'ok')])
+
 
 
 
