@@ -97,7 +97,7 @@ how many data sets you have loaded (including the data set associated with the c
 
 ### Looking at data set heads (i.e., first 5 rows and column headers)
 While charting, column names must be referred to. In order to see the first 5 rows
-and the collumn headers of all loaded data sets, click in the "info" icon.
+and the column headers of all loaded data sets, click in the "info" icon.
 
 ### Downloading interactive HTML reports
 Clicking the download icon in the upper right toolbar compiles the report to 
@@ -108,7 +108,7 @@ all of the interactivity in the chart widgets and removes the JSON spec panels. 
 ![brd](img/report_download.gif)
 
 !!! note "Refreshing the core dataset"
-    Whenever new data sets are loaded, a report is saves, or the report module is opened,
+    Whenever new data sets are loaded, a report is saved, or the report module is opened,
     the newest version of the data set associated with the survey is loaded. This means that if new 
     submissions have been accumulating since you last looked at report, 
     the charts may look different as the data set has grown. If you prefer a static data set from the survey, 
