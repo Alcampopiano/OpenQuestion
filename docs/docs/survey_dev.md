@@ -6,6 +6,17 @@ Survey data and share links can also be accessed from the dashboard. Clicking "N
 or the :material-pencil: icon will take you to the survey designer (explained below) for a new or
 existing survey, respectively.
 
+In addition, the survey dashboard gives you access to OpenQuestion's reporting module which allows
+researchers to do the following:
+
+- build interactive charts with vega-lite
+    - charts can be built from survey data or datasets collected
+outside of OpenQuestion
+- Describe data using markdown widgets
+- Export reports as interactive HTML files
+
+Just click the chart icon and see the docs on [reporting](reporting.md) to learn more!
+
 **The survey dashboard**
 ![brd](img/dash.png)
 

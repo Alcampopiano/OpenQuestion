@@ -45,16 +45,10 @@ are used to visually delimit groupings of widgets but they are still presented
 on the same page. This feature will be likely be implemented in a future release.
 
 ## Can I perform data analysis and/or visualization in OpenQuestion?
-Not at the moment and likely it will stay that way. Originally, OpenQuestion included a 
-so-called reporting module that allowed developers to 
-add [VegaLite](https://vega.github.io/vega-lite/) specs 
-and markdown widgets to a notebook-like web page to demonstrate their
-findings. The reporting module still exists 
-but it has been turned off to reduce the scope of this project. 
-If fast and powerful metrics and visualizations are needed, there are many existing 
-tools that do this far better than OpenQuestion ever could 😃.
-For example, please see [Altair](https://altair-viz.github.io/), 
-[Jupyter](https://jupyterlab.readthedocs.io/en/stable/), and [Deepnote](https://deepnote.com/).
+Yes! OpenQuestion's reporting module allows researchers to describe their data by building
+custom interactive visualizations, and writing rich text. In addition, 
+reports can be exported as interactive HTML files for sharing.
+Please see the [reporting](reporting.md) page for more details.
 
 ## Can I change the color of a survey?
 Yes, please see [this part](settings.md#survey-color) of the settings page.

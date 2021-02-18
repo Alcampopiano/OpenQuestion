@@ -10,6 +10,7 @@ nav:
     - Settings: settings.md
     - Installation: installation.md
     - Advanced: advanced.md
+    - Reporting: reporting.md
     - FAQ: faq.md
 
 repo_name: <i class="fa fa-github"></i> Github
