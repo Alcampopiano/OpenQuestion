@@ -39,12 +39,15 @@ class chart(chartTemplate):
 
   def button_generate_click(self, **event_args):
     
-    datasets=[k for k in get_open_form().tag.data_dicts]
-    chart_params=gen_chart_params(datasets)
-    c=confirm(chart_params, 
+    chart_params=gen_chart_params()
+    c=confirm(chart_params,
               buttons=[('ok', 'ok'), ('cancel', 'cancel')],
               large=True,title='Choose parameters for automatic chart creation')
 
+    if c=='ok' and chart_params.flow_panel_columns.tag.current_cols:
+      cols=chart_params.flow_panel_columns.tag.current_cols
+      print(cols)
+    
   def button_save_template_click(self, **event_args):
     """This method is called when the button is clicked"""
     pass

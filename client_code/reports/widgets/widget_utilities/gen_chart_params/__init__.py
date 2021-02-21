@@ -11,9 +11,49 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 
 class gen_chart_params(gen_chart_paramsTemplate):
-  def __init__(self, datasets, **properties):
+  def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
+    self.flow_panel_columns.tag.current_cols=[]
+    
+  def form_show(self, **event_args):
+    data_dicts=get_open_form().tag.data_dicts
+    names=[k for k in data_dicts]
+    self.drop_down_dataset.items=names
+    self.set_columns()
+    
+  def set_columns(self, **event_args):
+    name=self.drop_down_dataset.selected_value
+    data_dicts=get_open_form().tag.data_dicts
+    cols=data_dicts[name][0].keys()
+    self.drop_down_columns.items=cols
+    
+  def drop_down_dataset_change(self, **event_args):
+    """This method is called when an item is selected"""
+    self.set_columns()
 
-    # Any code you write here will run when the form opens.
-    self.drop_down_dataset.items=datasets
+  def drop_down_columns_change(self, **event_args):
+    """This method is called when an item is selected"""
+    value=self.drop_down_columns.selected_value
+    
+    if value:
+      b=Button(text=value, role='primary-color', font_size=12, icon='fa:times-circle')
+      b.set_event_handler('click', self.but_click)
+      self.flow_panel_columns.add_component(b)
+      self.flow_panel_columns.tag.current_cols.append(value)
+      
+  def but_click(self, **event_args):
+    event_args['sender'].remove_from_parent()
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+
