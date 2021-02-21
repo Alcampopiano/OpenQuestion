@@ -11,6 +11,7 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 from ..widget_utilities.json import json
 from ..widget_utilities.vega_lite import vega_lite
+from ..widget_utilities.gen_chart_params import gen_chart_params
 
 class chart(chartTemplate):
   def __init__(self, section, **properties):
@@ -30,7 +31,23 @@ class chart(chartTemplate):
 
     self.column_panel_json_container.add_component(json_editor, full_width_row=True)
     self.column_panel_vis_container.add_component(chart, full_width_row=True)
+    
 
+  def button_nav_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    pass
+
+  def button_generate_click(self, **event_args):
+    
+    datasets=[k for k in get_open_form().tag.data_dicts]
+    chart_params=gen_chart_params(datasets)
+    c=confirm(chart_params, 
+              buttons=[('ok', 'ok'), ('cancel', 'cancel')],
+              large=True,title='Choose parameters for automatic chart creation')
+
+  def button_save_template_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    pass
     
     #self.column_panel.add_component(json_chart, full_width_row=True)
     #self.tag.chart_wigets.append(chart)
@@ -73,6 +90,10 @@ class chart(chartTemplate):
 #     return spec
     
     
+
+
+
+
 
 
 

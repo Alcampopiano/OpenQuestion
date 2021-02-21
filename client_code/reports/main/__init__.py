@@ -112,9 +112,6 @@ class main(mainTemplate):
     self.tag.file_loader.trigger('click')
 
   def link_download_click(self, **event_args):
-    
-#     if not self.tag.row['reports']:
-#       self.save_click()
       
     m=anvil.server.call('make_html_report', self.tag.row)
     download(m)

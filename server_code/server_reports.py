@@ -45,7 +45,7 @@ def save_report(survey_dict, schema, specs, data_dicts):
   return dict(survey_row)
 
 @anvil.server.callable(require_user = validate_user)
-def return_datasets(files):
+def return_datasets(files, survey_dict=None):
   
   data_dicts={}
   for file in files:   
@@ -58,6 +58,12 @@ def return_datasets(files):
     
     data_dict=df.to_dict(orient="records")
     data_dicts[file.name]=data_dict
+    
+    if survey_dict:
+      print('officially saving datasets here now')
+      survey_row=app_tables.forms.get(form_id=survey_dict['form_id'])
+      report_row=survey_row['reports']
+      report_row.update(datasets=data_dicts)
     
   return data_dicts
 
