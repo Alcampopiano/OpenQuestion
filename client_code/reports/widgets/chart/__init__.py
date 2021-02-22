@@ -46,7 +46,11 @@ class chart(chartTemplate):
 
     if c=='ok' and chart_params.flow_panel_columns.tag.current_cols:
       cols=chart_params.flow_panel_columns.tag.current_cols
-      print(cols)
+      dataset_name=chart_params.drop_down_dataset.selected_value
+      survey_row=get_open_form().tag.row
+      chart_schemas=anvil.server.call('data_to_spec', survey_row, cols, dataset_name)
+      print(chart_schemas)
+    
     
   def button_save_template_click(self, **event_args):
     """This method is called when the button is clicked"""

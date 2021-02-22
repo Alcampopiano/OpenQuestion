@@ -14,16 +14,81 @@ import io
 import uuid
 import datetime
 import mistune
+import ast
 
 
 def validate_user(u):
   return u #u['admin']
 
-# @anvil.server.callable(require_user = validate_user)
-# def delete_report(form_id):
+@anvil.server.callable
+def data_to_spec(survey_row, cols, dataset_name):
   
-#   row=app_tables.reports.get(form_id=form_id)
-#   row.delete()
+  dataset=app_tables.forms.get(form_id=survey_row['form_id'])['reports']['datasets'][dataset_name]
+  df=pd.DataFrame(dataset)
+  
+  templates=[t['templates'] for t in app_tables.chart_templates.search()]
+    
+  col_and_types = df.dtypes[cols]
+
+  rules={}
+  for col, dtype in col_and_types.iteritems():
+    if dtype=='O':
+      rules[col]='n'
+    else:
+      rules[col]='q'
+
+
+  new_schemas=[]
+  for s in templates:
+    if sorted(rules.values()) == sorted(s['rules']):
+
+      str_dict = str(s)
+      for k, v in rules.items():
+        str_dict = str_dict.replace(f'{{{v}}}', k, 1)
+
+      new_spec=ast.literal_eval(str_dict)
+      new_spec["data"].update({"name": dataset_name})
+      del new_spec['rules']
+      new_schemas.append(new_spec)
+
+
+  return new_schemas
+
+
+@anvil.server.callable
+def spec_to_template(df, spec):
+
+  key='field'
+  rules=[]
+  def search_dict_and_create_template(tree):
+
+    for node in tree:
+      print(node)
+      if node == key and type(tree[node]) is str:
+
+        if df[tree[key]].dtype=='O':
+          tree[key]='{n}'
+          rules.append('n')
+        else:
+          tree[key]='{q}'
+          rules.append('q')
+
+      elif type(tree[node]) is dict:
+        search_dict_and_create_template(tree[node])
+
+      elif type(tree[node]) is list:
+        print('in a list')
+        for item in tree[node]:
+          if type(item) is dict:
+            search_dict_and_create_template(item)
+
+    return tree
+
+  spec=search_dict_and_create_template(spec)
+  spec["data"]={"name": ''}
+  spec['rules']=rules
+
+  return spec
 
 @anvil.server.callable(require_user = validate_user)
 def save_report(survey_dict, schema, specs, data_dicts):
