@@ -50,11 +50,4 @@ components:
     visible: true, spacing_above: small, spacing_below: small, background: ''}
   name: flow_panel_columns
   layout_properties: {grid_position: 'FSTHJI,XRWJEN'}
-- type: Button
-  properties: {role: primary-color, align: center, tooltip: '', border: '', enabled: true,
-    foreground: '', visible: true, text: primary_color_1, font_size: null, font: '',
-    spacing_above: small, icon_align: left, spacing_below: small, italic: false, background: '',
-    bold: false, underline: false, icon: 'fa:times-circle'}
-  name: primary_color_1
-  layout_properties: {grid_position: 'OSBWAX,SWFIQF'}
 is_package: true

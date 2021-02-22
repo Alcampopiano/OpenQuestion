@@ -25,6 +25,7 @@ class chart(chartTemplate):
     json_editor=json()
     chart=vega_lite()
     self.tag.chart=chart
+    self.tag.json_editor=json_editor
      
     json_editor.tag.parent=self.column_panel_json_container
     json_editor.tag.chart=chart
@@ -49,7 +50,18 @@ class chart(chartTemplate):
       dataset_name=chart_params.drop_down_dataset.selected_value
       survey_row=get_open_form().tag.row
       chart_schemas=anvil.server.call('data_to_spec', survey_row, cols, dataset_name)
-      print(chart_schemas)
+      self.build_auto_charts(chart_schemas)
+
+    
+  def build_auto_charts(self, chart_schemas, **event_args):
+    
+    if chart_schemas:
+      self.tag.json_editor.on_editor_change(spec=chart_schemas[0])
+      
+    else:
+      alert('Please see the docs on automatic chart generation', 
+            title='No charts could be generated given the templates and chosen parameters')
+  
     
     
   def button_save_template_click(self, **event_args):
