@@ -35,8 +35,22 @@ class chart(chartTemplate):
     
 
   def button_nav_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    pass
+    
+    chart_schemas=self.tag.auto_charts
+    ind=self.tag.current_auto_chart_ind
+          
+    if not ind==len(chart_schemas)-1 and event_args['sender'].icon=='fa:arrow-circle-right':
+        spec=chart_schemas[ind+1]
+        self.tag.json_editor.call_js('set_editor', spec)
+        self.tag.json_editor.on_editor_change(spec=spec)        
+        self.tag.current_auto_chart_ind+=1
+      
+    elif not ind==0 and event_args['sender'].icon=='fa:arrow-circle-left':
+        spec=chart_schemas[ind-1]
+        self.tag.json_editor.call_js('set_editor', spec)
+        self.tag.json_editor.on_editor_change(spec=spec)
+        self.tag.current_auto_chart_ind-=1
+      
 
   def button_generate_click(self, **event_args):
     
@@ -46,19 +60,28 @@ class chart(chartTemplate):
               large=True,title='Choose parameters for automatic chart creation')
 
     if c=='ok' and chart_params.flow_panel_columns.tag.current_cols:
+        
       cols=chart_params.flow_panel_columns.tag.current_cols
       dataset_name=chart_params.drop_down_dataset.selected_value
       survey_row=get_open_form().tag.row
       chart_schemas=anvil.server.call('data_to_spec', survey_row, cols, dataset_name)
       self.build_auto_charts(chart_schemas)
-
+      
     
   def build_auto_charts(self, chart_schemas, **event_args):
     
     if chart_schemas:
-      self.tag.json_editor.on_editor_change(spec=chart_schemas[0])
+      self.tag.auto_charts=chart_schemas
+      self.button_right.visible=True
+      self.button_left.visible=True
+      spec=chart_schemas[0]
+      self.tag.json_editor.on_editor_change(spec=spec)
+      self.tag.json_editor.call_js('set_editor', self.tag.json_editor, spec)
+      self.tag.current_auto_chart_ind=0
       
     else:
+      self.button_right.visible=False
+      self.button_left.visible=False
       alert('Please see the docs on automatic chart generation', 
             title='No charts could be generated given the templates and chosen parameters')
   

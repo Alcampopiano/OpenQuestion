@@ -14,9 +14,11 @@ container:
       \ ['code', 'tree'],\n      onChange: function() {\n          spec=editor.get();\n\
       \          var my_comp=comp.v._anvil.element[0]\n          anvil.call(my_comp,\
       \ \"on_editor_change\", spec)\n      },\n    };\n\n    const container = parent.v._anvil.element[0]\n\
-      \    const editor = new JSONEditor(container, options, spec)\n\n};\n\n/*\nget_schema\
-      \ = function(spec, comp, parent) {\n  //console.log(schema)\n  //make_editor(spec,\
-      \ schema, comp, parent)\n  \n\nfetch('https://vega.github.io/schema/vega-lite/v4.json')\n\
+      \    const editor = new JSONEditor(container, options, spec)\n\n};\n  \nset_editor\
+      \ = function(comp, spec) {\n  \n  \tvar editor = $(this).find(\".jsoneditor\"\
+      );\n  \tconsole.log(editor)\n    editor.set(spec)\n}\n\n/*\nget_schema = function(spec,\
+      \ comp, parent) {\n  //console.log(schema)\n  //make_editor(spec, schema, comp,\
+      \ parent)\n  \n\nfetch('https://vega.github.io/schema/vega-lite/v4.json')\n\
       \  \t.then(function(resp){\n    \treturn resp.json();\n  \t})\n  \t.then(function(data)\
       \ {\n        schema=data\n  \t\tmake_editor(spec, schema, comp, parent);\n \
       \ });\n\n\n};\n*/\n</script>\n  \n</body>\n<head>\n<style type=\"text/css\"\
