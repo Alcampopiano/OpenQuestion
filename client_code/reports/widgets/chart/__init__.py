@@ -41,13 +41,13 @@ class chart(chartTemplate):
           
     if not ind==len(chart_schemas)-1 and event_args['sender'].icon=='fa:arrow-circle-right':
         spec=chart_schemas[ind+1]
-        self.tag.json_editor.call_js('set_editor', spec)
+        self.tag.json_editor.set_editor(spec)
         self.tag.json_editor.on_editor_change(spec=spec)        
         self.tag.current_auto_chart_ind+=1
       
     elif not ind==0 and event_args['sender'].icon=='fa:arrow-circle-left':
         spec=chart_schemas[ind-1]
-        self.tag.json_editor.call_js('set_editor', spec)
+        self.tag.json_editor.set_editor(spec)
         self.tag.json_editor.on_editor_change(spec=spec)
         self.tag.current_auto_chart_ind-=1
       
@@ -76,7 +76,7 @@ class chart(chartTemplate):
       self.button_left.visible=True
       spec=chart_schemas[0]
       self.tag.json_editor.on_editor_change(spec=spec)
-      self.tag.json_editor.call_js('set_editor', self.tag.json_editor, spec)
+      self.tag.json_editor.set_editor(spec)
       self.tag.current_auto_chart_ind=0
       
     else:
@@ -84,8 +84,7 @@ class chart(chartTemplate):
       self.button_left.visible=False
       alert('Please see the docs on automatic chart generation', 
             title='No charts could be generated given the templates and chosen parameters')
-  
-    
+      
     
   def button_save_template_click(self, **event_args):
     """This method is called when the button is clicked"""

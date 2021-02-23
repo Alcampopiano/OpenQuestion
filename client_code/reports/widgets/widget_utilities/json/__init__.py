@@ -17,10 +17,6 @@ class json(jsonTemplate):
 
     self.init_components(**properties)
     self.tag.form_shown=False
-
-  def on_editor_change(self, spec):
-    self.tag.chart.tag.vl_spec=spec
-    self.tag.chart.vega_embed()
     
   def set_editor(self, spec):
     self.editor.set(spec)
@@ -49,4 +45,9 @@ class json(jsonTemplate):
 
       container = anvil.js.get_dom_node(self)
       self.editor = JSONEditor(container, options, spec)
-      #self.call_js("make_editor", spec, self, self.tag.parent)            
+      #self.call_js("make_editor", spec, self, self.tag.parent)   
+      
+  def on_editor_change(self, spec):
+    print('asdf')
+    self.tag.chart.tag.vl_spec=spec
+    self.tag.chart.vega_embed()
