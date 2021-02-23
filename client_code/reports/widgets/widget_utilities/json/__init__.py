@@ -18,12 +18,23 @@ class json(jsonTemplate):
     self.init_components(**properties)
     self.tag.form_shown=False
     
+  def to_json(self, po):
+    proxy = type(anvil.js.window.Object())
+
+    if type(po) != proxy:
+      return po
+    d ={}
+    for key in po.keys():
+      d[key] = to_json(po[key])
+    return d
+    
   def set_editor(self, spec):
     self.editor.set(spec)
     
   def on_editor_change(self):
     
-    spec=dict(self.editor.get())
+    spec=self.editor.get()
+    #self.to_json(spec) figure this out
     self.tag.chart.tag.vl_spec=spec
     self.tag.chart.vega_embed()
     
