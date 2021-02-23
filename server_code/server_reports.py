@@ -15,12 +15,22 @@ import uuid
 import datetime
 import mistune
 import ast
+import numpy as np
+import anvil.http
 
 
 def validate_user(u):
   return u #u['admin']
 
-@anvil.server.callable
+@anvil.server.callable(require_user = validate_user)
+def get_json_schema():
+  
+    schema = anvil.http.request('https://vega.github.io/schema/vega-lite/v4.json', 
+                                           json=True)
+    
+    return schema
+
+@anvil.server.callable(require_user = validate_user)
 def data_to_spec(survey_row, cols, dataset_name):
   
   dataset=app_tables.forms.get(form_id=survey_row['form_id'])['reports']['datasets'][dataset_name]
@@ -115,6 +125,7 @@ def return_datasets(files, survey_dict=None):
   data_dicts={}
   for file in files:   
     df=pd.read_csv(io.BytesIO(file.get_bytes()))
+    df = df.replace({np.nan: None})
     
     try:
       df=df.drop(columns={'Unnamed: 0'})
