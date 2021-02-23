@@ -10,6 +10,7 @@ import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 from anvil.js.window import JSONEditor
+import anvil.http
 
 class json(jsonTemplate):
   def __init__(self, **properties):
@@ -21,6 +22,9 @@ class json(jsonTemplate):
     self.tag.chart.tag.vl_spec=spec
     self.tag.chart.vega_embed()
     
+  def set_editor(self, spec):
+    self.editor.set(spec)
+    
   def form_show(self, **event_args):
 
     if not self.tag.form_shown:
@@ -29,14 +33,20 @@ class json(jsonTemplate):
       
       spec=self.tag.chart.tag.vl_spec
       
-      #get schema from anvil.https call
+      schema = anvil.http.request('https://vega.github.io/schema/vega-lite/v4.json', 
+                                           json=True)
+      
+      # color-hex format not supported so changing it 
+      # and moving on with my life 
+      schema['definitions']["HexColor"]['format']="uri"
+      
       options = {
       'schema': schema,
       'mode': 'code',
       'modes': ['code', 'tree'],
       'onChange': self.on_editor_change 
-    }
+      }
 
-    container = anvil.js.get_dom_node(self)
-    self.editor = JSONEditor(container, options, self.spec)
+      container = anvil.js.get_dom_node(self)
+      self.editor = JSONEditor(container, options, spec)
       #self.call_js("make_editor", spec, self, self.tag.parent)            
