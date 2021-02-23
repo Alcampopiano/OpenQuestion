@@ -83,11 +83,23 @@ def build_schema(column_panel):
       
     schema['widgets'].append(section_schema)
     
+  
+  chart_dict=to_json(chart_dict)
   print(schema, chart_dict)
+
+  
   return schema, chart_dict
 
     
+def to_json(po):
+  proxy = type(anvil.js.window.Object())
 
+  if type(po) != proxy:
+    return po
+  d ={}
+  for key in po.keys():
+    d[key] = to_json(po[key])
+  return d
   
 
  
