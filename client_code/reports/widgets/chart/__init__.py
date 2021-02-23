@@ -42,13 +42,13 @@ class chart(chartTemplate):
     if not ind==len(chart_schemas)-1 and event_args['sender'].icon=='fa:arrow-circle-right':
         spec=chart_schemas[ind+1]
         self.tag.json_editor.set_editor(spec)
-        self.tag.json_editor.on_editor_change(spec=spec)        
+        self.tag.json_editor.on_editor_change()        
         self.tag.current_auto_chart_ind+=1
       
     elif not ind==0 and event_args['sender'].icon=='fa:arrow-circle-left':
         spec=chart_schemas[ind-1]
         self.tag.json_editor.set_editor(spec)
-        self.tag.json_editor.on_editor_change(spec=spec)
+        self.tag.json_editor.on_editor_change()
         self.tag.current_auto_chart_ind-=1
       
 
@@ -75,8 +75,8 @@ class chart(chartTemplate):
       self.button_right.visible=True
       self.button_left.visible=True
       spec=chart_schemas[0]
-      self.tag.json_editor.on_editor_change(spec=spec)
       self.tag.json_editor.set_editor(spec)
+      self.tag.json_editor.on_editor_change()
       self.tag.current_auto_chart_ind=0
       
     else:

@@ -83,6 +83,7 @@ def build_schema(column_panel):
       
     schema['widgets'].append(section_schema)
     
+  print(schema, chart_dict)
   return schema, chart_dict
 
     
