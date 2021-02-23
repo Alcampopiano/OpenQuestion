@@ -40,7 +40,7 @@ class json(jsonTemplate):
       'schema': schema,
       'mode': 'code',
       'modes': ['code', 'tree'],
-      'onChange': self.on_editor_change 
+      'onChange': self.on_editor_change
       }
 
       container = anvil.js.get_dom_node(self)
