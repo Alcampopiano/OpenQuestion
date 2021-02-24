@@ -24,6 +24,8 @@ class json(jsonTemplate):
     
   def on_editor_change(self):
     
+    #print('soon anvil will allow proxy object to be sent to server')
+    #print('no need then to use getText and deal with that as a string')
     spec=self.editor.getText()
     spec=spec.replace('\n', '')
     spec=json_lib.loads(spec)

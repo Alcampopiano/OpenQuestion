@@ -33,7 +33,6 @@ class main(mainTemplate):
     schema, chart_dict=reports.build_schema(self.column_panel)
     datasets=self.tag.data_dicts
     
-    print(type(chart_dict))
     row=anvil.server.call('save_report', 
                       self.tag.row,
                       schema, chart_dict, datasets)
