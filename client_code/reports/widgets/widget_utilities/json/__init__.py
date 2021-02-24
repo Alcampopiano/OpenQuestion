@@ -22,13 +22,19 @@ class json(jsonTemplate):
   def set_editor(self, spec):
     self.editor.set(spec)
     
+  def get_editor_text_to_json(self):
+    spec=self.editor.getText()
+    spec=spec.replace('\n', '')
+    spec=json_lib.loads(spec)
+    
+    return spec
+    
+    
   def on_editor_change(self):
     
     #print('soon anvil will allow proxy object to be sent to server')
     #print('no need then to use getText and deal with that as a string')
-    spec=self.editor.getText()
-    spec=spec.replace('\n', '')
-    spec=json_lib.loads(spec)
+    spec=self.get_editor_text_to_json()
     self.tag.chart.tag.vl_spec=spec
     self.tag.chart.vega_embed()
     

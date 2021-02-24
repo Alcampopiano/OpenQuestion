@@ -67,14 +67,16 @@ def data_to_spec(survey_row, cols, dataset_name):
 
 
 @anvil.server.callable
-def spec_to_template(df, spec):
+def spec_to_template(dataset_name, survey_row, spec):
+  
+  dataset=app_tables.forms.get(form_id=survey_row['form_id'])['reports']['datasets'][dataset_name]
+  df=pd.DataFrame(dataset)
 
   key='field'
   rules=[]
   def search_dict_and_create_template(tree):
 
     for node in tree:
-      print(node)
       if node == key and type(tree[node]) is str:
 
         if df[tree[key]].dtype=='O':
@@ -88,16 +90,16 @@ def spec_to_template(df, spec):
         search_dict_and_create_template(tree[node])
 
       elif type(tree[node]) is list:
-        print('in a list')
         for item in tree[node]:
           if type(item) is dict:
             search_dict_and_create_template(item)
 
     return tree
 
-  spec=search_dict_and_create_template(spec)
-  spec["data"]={"name": ''}
-  spec['rules']=rules
+  template_spec=search_dict_and_create_template(spec)
+  template_spec["data"]={"name": ''}
+  template_spec['rules']=rules
+  app_tables.chart_templates.add_row(templates=template_spec)
 
   return spec
 

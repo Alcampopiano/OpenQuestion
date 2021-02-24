@@ -87,50 +87,13 @@ class chart(chartTemplate):
       
     
   def button_save_template_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    pass
-    
-    #self.column_panel.add_component(json_chart, full_width_row=True)
-    #self.tag.chart_wigets.append(chart)
-    
-#   def spec_to_comps(self, spec, parent=None, **event_args):
-    
-#     for k in spec:
-      
-#       if type(spec[k]) is dict:
         
-#         dict_node=node(node_text=k)
-#         parent.column_panel.add_component(dict_node)
-        
-#         self.spec_to_comps(spec[k], parent=dict_node)
-        
-#       else:
-        
-#         prop=properties(prop_text=k, spec_comp=spec[k])
-#         parent.column_panel.add_component(prop)
-#         self.tag.comp_list.append(prop)
-        
-        
-#   def comps_to_spec(self, column_panel):
-
-#     spec={}
-#     for comp in column_panel.get_components():
-      
-#       if comp.__name__ is 'node':
-#         key=comp.link_label.text
-#         res=self.comps_to_spec(comp.column_panel)
-#         spec.update({key: res})
-
-#       else:
-        
-#         key=comp.label_prop.text
-#         prop_comp=comp.column_panel.get_components()[0]
-#         val=getattr(prop_comp, prop_comp.tag)
-#         spec.update({key: val})
-        
-#     return spec
-    
-    
+    spec=self.tag.json_editor.get_editor_text_to_json()
+    survey_row=get_open_form().tag.row
+    dataset_name=spec['data']['name']
+    anvil.server.call('spec_to_template',dataset_name, survey_row, spec)
+    Notification('The next time you generate automatic charts, this template will be considered in the matching process', 
+                 title="This spec has been saved as a template").show()
 
 
 

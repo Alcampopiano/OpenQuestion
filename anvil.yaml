@@ -174,10 +174,6 @@ db_schema:
       name: templates
       type: simpleObject
       admin_ui: {order: 1, width: 200}
-    27vlMQ8+zhw=:
-      name: description
-      type: string
-      admin_ui: {order: 0, width: 200}
   access: {python_name: chart_templates, app_id: RZCX3HWGWWPZJCOH, server: full, client: none,
     table_mapping_name: null, table_mapping_id: null, table_id: 107442}
 renamed: true
