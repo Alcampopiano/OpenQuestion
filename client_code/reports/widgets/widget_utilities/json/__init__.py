@@ -40,15 +40,15 @@ class json(jsonTemplate):
       
       spec=self.tag.chart.tag.vl_spec
       
-      schema=anvil.server.call('get_json_schema')
+      #schema=anvil.server.call('get_json_schema')
 
       
       # color-hex format not supported so changing it 
       # and moving on with my life 
-      schema['definitions']["HexColor"]['format']="uri"
+      #schema['definitions']["HexColor"]['format']="uri"
       
       options = {
-      'schema': schema,
+      'schema': get_open_form().tag.vl_schema,
       'mode': 'code',
       'modes': ['code', 'tree'],
       'onChange': self.on_editor_change

@@ -17,6 +17,7 @@ import mistune
 import ast
 import numpy as np
 import anvil.http
+import json
 
 
 def validate_user(u):
@@ -561,7 +562,7 @@ var opts={"renderer": "svg", "mode": "vega-lite", "actions": {"export": true, "s
         data_values=datasets.get(data_name, None)
         
         if data_name and data_values:
-          print("move datasets to global var?")
+          #print("move datasets to global var?")
           html+=gen_vega_vis_named_data(widget_schema['id'], spec, data_name, data_values)
           
         else: #not data_name and not data_values:
@@ -595,9 +596,9 @@ def gen_vega_vis_named_data(div_id, spec, data_name, data_values):
 							<div id=vis{div_id}></div>
 
 							<script type="text/javascript">
-							  var spec = {spec};
+							  var spec = {json.dumps(spec)};
 							  var data_name = "{data_name}";
-							  var data_values = {data_values};
+							  var data_values = {json.dumps(data_values)};
 							  vegaEmbed('#vis{div_id}', spec, opts).then(res => 
 														                 res.view
 														                 .insert(data_name, data_values)
@@ -629,7 +630,7 @@ def gen_vega_vis_no_named_data(div_id, spec):
 							<div id=vis{div_id}></div>
 
 							<script type="text/javascript">
-							  var spec = {spec};
+							  var spec = {json.dumps(spec)};
 							  vegaEmbed('#vis{div_id}', spec, opts)
 
 							</script>

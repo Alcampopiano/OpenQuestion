@@ -13,6 +13,7 @@ from ... import reports
 from .. import widgets
 from ...utilities import augment
 from ..widgets.widget_utilities.data_info_view import data_info_view
+import anvil.http
 
 class main(mainTemplate):
   def __init__(self, row, **properties):
@@ -25,6 +26,12 @@ class main(mainTemplate):
     self.tag.file_loader=file_loader
     
     self.tag.row=row
+    vl_schema=anvil.http.request('https://vega.github.io/schema/vega-lite/v4.json', 
+                                           json=True)
+    
+    vl_schema['definitions']["HexColor"]['format']="uri"
+    self.tag.vl_schema=vl_schema
+    
     save_button=Button(text='save', role='primary-color')
     save_button.set_event_handler('click', self.save_click)
     self.add_component(save_button)
