@@ -42,20 +42,28 @@ def data_to_spec(survey_row, cols, dataset_name):
   col_and_types = df.dtypes[cols]
 
   rules={}
+  n_inc=0
+  q_inc=0
+
   for col, dtype in col_and_types.iteritems():
+
     if dtype=='O':
-      rules[col]='n'
+      rules[col]='n' + str(n_inc)
+      n_inc+=1
     else:
-      rules[col]='q'
+      rules[col]='q' + str(q_inc)
+      q_inc+=1
 
 
   new_schemas=[]
   for s in templates:
+
     if sorted(rules.values()) == sorted(s['rules']):
 
       str_dict = str(s)
       for k, v in rules.items():
-        str_dict = str_dict.replace(f'{{{v}}}', k, 1)
+        #str_dict = str_dict.replace(f'{{{v}}}', k, 1)
+        str_dict = str_dict.replace(f'{{{v}}}', k)
 
       new_spec=ast.literal_eval(str_dict)
       new_spec["data"].update({"name": dataset_name})
@@ -74,17 +82,31 @@ def spec_to_template(dataset_name, survey_row, spec):
 
   key='field'
   rules=[]
+  quant_fields=[]
+  nominal_fields=[]
   def search_dict_and_create_template(tree):
 
     for node in tree:
+
       if node == key and type(tree[node]) is str:
 
         if df[tree[key]].dtype=='O':
-          tree[key]='{n}'
-          rules.append('n')
+
+          # add column name to a list so that you can control the template placeholders
+          nominal_fields.append(tree[key]) if tree[key] not in nominal_fields else nominal_fields
+          field_ind=nominal_fields.index(tree[key])
+          type_string='n'+str(field_ind)
+          placeholder_str=f'{{{type_string}}}'
+          tree[key]=placeholder_str
+          rules.append(type_string)
+          
         else:
-          tree[key]='{q}'
-          rules.append('q')
+          quant_fields.append(tree[key]) if tree[key] not in quant_fields else quant_fields
+          field_ind=quant_fields.index(tree[key])
+          type_string='q'+str(field_ind)
+          placeholder_str=f'{{{type_string}}}'
+          tree[key]=placeholder_str
+          rules.append(type_string)
 
       elif type(tree[node]) is dict:
         search_dict_and_create_template(tree[node])
@@ -98,7 +120,7 @@ def spec_to_template(dataset_name, survey_row, spec):
 
   template_spec=search_dict_and_create_template(spec)
   template_spec["data"]={"name": ''}
-  template_spec['rules']=rules
+  template_spec['rules']=list(set(rules))
   app_tables.chart_templates.add_row(templates=template_spec)
 
   return spec
