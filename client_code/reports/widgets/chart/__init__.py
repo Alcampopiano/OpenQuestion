@@ -95,6 +95,11 @@ class chart(chartTemplate):
     Notification('The next time you generate automatic charts, this template will be considered in the matching process', 
                  title="This spec has been saved as a template").show()
 
+  def button_1_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    self.tag.chart.call_js('get_vega_png')
+
+
 
 
 

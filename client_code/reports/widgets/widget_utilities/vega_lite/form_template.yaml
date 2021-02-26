@@ -6,9 +6,14 @@ container:
       \   \n    vegaEmbed(visElt, spec, opts).then(res =>\n  \t\tres.view\n    \t\
       .insert(data_name, data_values)           \n        .resize()\n    \t.run()\n\
       \t);\n  }\n  \n  function vega_embed_no_named_data(spec) {\n    var visElt =\
-      \ $(this).find(\".vis\")[0];\n    vegaEmbed(visElt, spec, opts)\n  }\n</script>\n\
-      \n<style>\n  /*\n  .vis {\n    resize: both;\n    overflow: auto;\n  }\n  */\n\
-      \n</style>"}
+      \ $(this).find(\".vis\")[0];\n    vegaEmbed(visElt, spec, opts)\n  }\n  \n//\
+      \ generate a static PNG image\nfunction get_vega_png(){\n  \n\t//var view =\
+      \ new vega.View(vega.parse(spec), {renderer: 'none'});\n\tvar view = $(this).find(\"\
+      .vis\")[0];\n  \n\tview.toCanvas()\n  \t\t.then(function(canvas) {\n    \t//\
+      \ process node-canvas instance\n    \t// for example, generate a PNG stream\
+      \ to write\n    \tvar stream = canvas.createPNGStream();\n  \t\t})\n  \t\t.catch(function(err)\
+      \ { console.error(err); });\n}\n</script>\n\n\n\n<style>\n  /*\n  .vis {\n \
+      \   resize: both;\n    overflow: auto;\n  }\n  */\n\n</style>"}
   event_bindings: {show: form_show}
 components: []
 is_package: true
