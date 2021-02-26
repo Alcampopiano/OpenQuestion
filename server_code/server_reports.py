@@ -174,14 +174,57 @@ def convert_markdown(text):
 
 @anvil.server.callable(require_user = validate_user)
 def data_dicts_to_html(data_dicts):
-  
-  html=''
-  for k,v in data_dicts.items():
-    html+='<h3>{0}</h3>'.format(k)
-    html+=pd.DataFrame.from_records(v).head().to_html(index=False)
-    html+='<br><hr><br>'
+
+  html_before="""
+    <html>
+    <head>
+    <style> 
+    h2 {
+        text-align: center;
+        font-family: Helvetica, Arial, sans-serif;
+    }
+    table { 
+        margin-left: auto;
+        margin-right: auto;
+    }
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 5px;
+        text-align: center;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 90%;
+    }
+    table tbody tr:hover {
+        background-color: #dddddd;
+    }
+    .wide {
+        width: 90%; 
+    }    
     
-  return convert_markdown(html)
+    </style>
+    </head>
+    <body>
+    """
+  
+  html_after="""
+  </body>
+  </html>
+  """
+  
+  #html=''
+  for k,v in data_dicts.items():
+    html_before+='<h3>{0}</h3>'.format(k)
+    html_before+=pd.DataFrame.from_records(v).head().to_html(index=False)
+    html_before+='<br><hr><br>'
+    
+  html=html_before+html_after
+  
+  #print(html)
+    
+  return html #convert_markdown(html)
   
 @anvil.server.callable(require_user = validate_user)
 def make_html_report(survey_row):
