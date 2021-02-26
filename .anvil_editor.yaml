@@ -23,7 +23,7 @@ unique_ids:
     form.widgets.html_display: 3EALUEBOGB4BT6UW6F42XV4PIXW5HAVA, form.thank_you_msg: 7M55BNOGOZ5EDYVBZKRITBGBPLY3V67K,
     form.widgets.text_box: MMAGKPRCUWMQKGAAR7MTFJPJPPVELXBN, form.widgets.check_box: ZSGR7DG7WZNYEJQ4SX4YUPBYWRITP4LS,
     landing.settings.survey_settings: M2CM7UCPT3GJAW33BAWYYTWVAM3M46D5, build.widgets.toolbar: ISOFURDP6Q5FZNXDTDFJ3F7H6EQLNH6C,
-    reports.widgets.widget_utilities.data_info_view: EFCV3ZNP5M6M67WZ2T2INZMZU7QL64LH,
+    reports.widgets.widget_utilities.data_info_view: JWRVMQJEKJRJUDJ3DM4OBWNX5MKG75GS,
     landing.settings.report_settings: ELRSUXEDSGSN44SFCPHWNEFBMOYSSMQ6, build.widgets.date: YWDYSQDW6KXU6EGVPUF2SDLV6SA55K3L}
   modules: {build.widgets.widget_utilities: XZ5TCIXTRF3HKTGJMJNUV4JVDHKOXK3Z, landing.settings: TEGSALPKJDY62VKFI5W3CIPI5FTO3HSG,
     reports.widgets: PWE7LGOMJLAZ6QV65SHWNKYVT7TIJSSS, utilities.augment: GDMKGB5ZY2HI7MGVTBCNMEWKQCD4EO7X,

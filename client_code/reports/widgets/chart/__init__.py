@@ -97,7 +97,8 @@ class chart(chartTemplate):
 
   def button_1_click(self, **event_args):
     """This method is called when the button is clicked"""
-    self.tag.chart.call_js('get_vega_png')
+    spec=self.tag.json_editor.get_editor_text_to_json()
+    self.tag.chart.call_js('get_vega_png', spec)
 
 
 
