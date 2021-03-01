@@ -79,9 +79,8 @@ components:
     layout_properties: {grid_position: 'ZQIIUP,GDZHZL'}
     components: []
   event_bindings: {}
-- type: Button
-  properties: {text: button_1}
-  name: button_1
-  layout_properties: {grid_position: 'KGVYYO,JYQNHD'}
-  event_bindings: {click: button_1_click}
+- type: Image
+  properties: {}
+  name: image_1
+  layout_properties: {grid_position: 'JGSGCT,EWTZRW'}
 is_package: true

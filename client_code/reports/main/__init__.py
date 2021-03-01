@@ -15,6 +15,7 @@ from ...utilities import augment
 from ..widgets.widget_utilities.data_info_view import data_info_view
 import anvil.http
 
+
 class main(mainTemplate):
   def __init__(self, row, **properties):
 
@@ -130,6 +131,12 @@ class main(mainTemplate):
     """This method is called when the link is clicked"""
     data_dicts=self.tag.data_dicts
     alert(data_info_view(data_dicts), large=True, buttons=[('ok', 'ok')])
+
+  def link_templates_click(self, **event_args):
+    open_form('reports.edit_templates')
+    
+    
+
 
 
 

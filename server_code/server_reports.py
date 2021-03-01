@@ -75,7 +75,7 @@ def data_to_spec(survey_row, cols, dataset_name):
 
 
 @anvil.server.callable
-def spec_to_template(dataset_name, survey_row, spec):
+def spec_to_template(dataset_name, survey_row, spec, url_media):
   
   dataset=app_tables.forms.get(form_id=survey_row['form_id'])['reports']['datasets'][dataset_name]
   df=pd.DataFrame(dataset)
@@ -121,9 +121,16 @@ def spec_to_template(dataset_name, survey_row, spec):
   template_spec=search_dict_and_create_template(spec)
   template_spec["data"]={"name": ''}
   template_spec['rules']=list(set(rules))
-  app_tables.chart_templates.add_row(templates=template_spec)
+  
+  app_tables.chart_templates.add_row(templates=template_spec, images=url_media)
 
   return spec
+
+@anvil.server.callable
+def get_templates(require_user = validate_user):
+  templs=app_tables.chart_templates.search()
+  
+  return templs
 
 @anvil.server.callable(require_user = validate_user)
 def save_report(survey_dict, schema, specs, data_dicts):
