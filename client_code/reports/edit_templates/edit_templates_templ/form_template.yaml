@@ -4,9 +4,8 @@ container:
 components:
 - type: Image
   properties: {role: null, vertical_align: center, height: '200', tooltip: '', border: '',
-    foreground: '', visible: true, display_mode: zoom_to_fill, spacing_above: small,
-    source: 'https://i.imgur.com/Hqbji7m.jpg', spacing_below: small, background: '',
-    horizontal_align: center}
+    foreground: '', visible: true, display_mode: original_size, spacing_above: small,
+    source: '', spacing_below: small, background: '', horizontal_align: center}
   name: image
   layout_properties: {column: TSLYYZ}
   event_bindings: {}

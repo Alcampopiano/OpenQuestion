@@ -133,8 +133,7 @@ class main(mainTemplate):
     alert(data_info_view(data_dicts), large=True, buttons=[('ok', 'ok')])
 
   def link_templates_click(self, **event_args):
-    vl_schema=self.tag.vl_schema
-    open_form('reports.edit_templates', vl_schema)
+    open_form('reports.edit_templates', survey_row=self.tag.row)
     
     
 

@@ -16,7 +16,7 @@ class edit_templates_templ(edit_templates_templTemplate):
     self.init_components(**properties)
 
     # Any code you write here will run when the form opens.
-    #self.image.source=self.item['images'].url
+    self.image.source=self.item['images'].url
     #self.json.tag.spec=self.item['templates']
 
   def button_delete_click(self, **event_args):
