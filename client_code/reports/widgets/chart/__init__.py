@@ -12,7 +12,7 @@ from anvil.tables import app_tables
 from ..widget_utilities.json import json
 from ..widget_utilities.vega_lite import vega_lite
 from ..widget_utilities.gen_chart_params import gen_chart_params
-from anvil.js.window import vega
+#from anvil.js.window import vega
 
 class chart(chartTemplate):
   def __init__(self, section, **properties):
@@ -91,29 +91,14 @@ class chart(chartTemplate):
         
     spec=self.tag.json_editor.get_editor_text_to_json()
     survey_row=get_open_form().tag.row
-    #dataset_name=spec['data']['name']
-        
-    #myjs={"$schema": "https://vega.github.io/schema/vega-lite/v5.json","description": "A simple bar chart with embedded data.","data": {"values": [{"a": "A", "b": 28}, {"a": "B", "b": 55}, {"a": "C", "b": 43},{"a": "D", "b": 91}, {"a": "E", "b": 81}, {"a": "F", "b": 53},{"a": "G", "b": 19}, {"a": "H", "b": 87}, {"a": "I", "b": 52}]},"mark": "bar","encoding": {"x": {"field": "a", "type": "nominal", "axis": {"labelAngle": 0}},"y": {"field": "b", "type": "quantitative"}}}
-
-    print(spec)
-    view = vega.View(vega.parse(spec), {'renderer': 'none'})
-    canvas = view.toCanvas()
-    url_media = anvil.URLMedia(canvas.toDataURL())
-    #download(url_media)
-    self.image_1.source=url_media
-
-    print(url_media.url)
+    dataset_name=spec['data']['name']
+    view=self.tag.chart.tag.view
+    url = view.toImageURL('png')
+    url_media=URLMedia(url)
     
-    bm=BlobMedia('image/png', url_media.get_bytes(), name='junk.png')
-    #download(bm)
-    #print(url_media.url)
-    #self.image_1.source=url_media
-    #print(url_media)
-    #stream = canvas.createPNGStream()
-    
-    #anvil.server.call('spec_to_template',dataset_name, survey_row, spec, url_media)
-    #Notification('The next time you generate automatic charts, this template will be considered in the matching process', 
-    #             title="This spec has been saved as a template").show()
+    anvil.server.call('spec_to_template',dataset_name, survey_row, spec, url_media)
+    Notification('The next time you generate automatic charts, this template will be considered in the matching process', 
+                title="This spec has been saved as a template").show()
 
   def button_1_click(self, **event_args):
     """This method is called when the button is clicked"""

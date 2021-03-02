@@ -71,6 +71,7 @@ components:
     name: column_panel_json_container
     layout_properties: {grid_position: 'ZQIIUP,RBZLBY'}
     components: []
+    event_bindings: {}
   - type: ColumnPanel
     properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
       wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
@@ -79,8 +80,4 @@ components:
     layout_properties: {grid_position: 'ZQIIUP,GDZHZL'}
     components: []
   event_bindings: {}
-- type: Image
-  properties: {}
-  name: image_1
-  layout_properties: {grid_position: 'JGSGCT,EWTZRW'}
 is_package: true

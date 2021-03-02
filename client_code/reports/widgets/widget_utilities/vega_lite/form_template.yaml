@@ -1,14 +1,16 @@
 container:
   type: HtmlTemplate
   properties: {tooltip: '', background: '', foreground: '', border: '', visible: true,
-    role: vega-lite, html: "<div class=\"vis\"></div>\n<script>\n  function vega_embed_named_data(spec,\
+    role: vega-lite, html: "\n<script>\n/*\n// a this JS is not needed since Stu did\
+      \ magic to bring it into Python\n<div class=\"vis\"></div> // this line would\
+      \ be out side script tag of course\n\n  function vega_embed_named_data(spec,\
       \ data_name, data_values) {\n    var visElt = $(this).find(\".vis\")[0];\n \
       \   \n    vegaEmbed(visElt, spec, opts).then(res =>\n  \t\tres.view\n    \t\
       .insert(data_name, data_values)           \n        .resize()\n    \t.run()\n\
       \t);\n  }\n  \n  function vega_embed_no_named_data(spec) {\n    var visElt =\
-      \ $(this).find(\".vis\")[0];\n    vegaEmbed(visElt, spec, opts)\n  }\n</script>\n\
-      \n\n\n<style>\n  /*\n  .vis {\n    resize: both;\n    overflow: auto;\n  }\n\
-      \  */\n\n</style>"}
+      \ $(this).find(\".vis\")[0];\n    vegaEmbed(visElt, spec, opts)\n  }\n*/\n</script>\n\
+      \n\n<style>\n  /*\n  .vis {\n    resize: both;\n    overflow: auto;\n  }\n \
+      \ */\n\n</style>"}
   event_bindings: {show: form_show}
 components: []
 is_package: true
