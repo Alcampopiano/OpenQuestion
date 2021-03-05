@@ -138,7 +138,6 @@ def save_report(survey_dict, schema, specs, data_dicts):
   report_row=survey_row['reports']
   
   if not report_row:
-    #report_id=str(uuid.uuid4())
     report_row=app_tables.reports.add_row(title=schema['title'], 
                                last_modified=datetime.datetime.now(),
                                schema=schema, charts=specs, datasets=data_dicts)
@@ -167,7 +166,6 @@ def return_datasets(files, survey_dict=None):
     data_dicts[file.name]=data_dict
     
     if survey_dict:
-      print('officially saving datasets here now')
       survey_row=app_tables.forms.get(form_id=survey_dict['form_id'])
       report_row=survey_row['reports']
       report_row.update(datasets=data_dicts)
