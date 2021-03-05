@@ -62,7 +62,6 @@ def data_to_spec(survey_row, cols, dataset_name):
 
       str_dict = str(s)
       for k, v in rules.items():
-        #str_dict = str_dict.replace(f'{{{v}}}', k, 1)
         str_dict = str_dict.replace(f'{{{v}}}', k)
 
       new_spec=ast.literal_eval(str_dict)
