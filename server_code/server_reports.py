@@ -36,7 +36,8 @@ def data_to_spec(survey_row, cols, dataset_name):
   
   dataset=app_tables.forms.get(form_id=survey_row['form_id'])['reports']['datasets'][dataset_name]
   df=pd.DataFrame(dataset)
-  
+  df=auto_date_convert(df)
+
   templates=[t['templates'] for t in app_tables.chart_templates.search()]
     
   col_and_types = df.dtypes[cols]
@@ -44,15 +45,20 @@ def data_to_spec(survey_row, cols, dataset_name):
   rules={}
   n_inc=0
   q_inc=0
-
+  t_inc=0
   for col, dtype in col_and_types.iteritems():
 
-    if dtype=='O':
+    if pd.api.types.is_string_dtype(dtype):
       rules[col]='n' + str(n_inc)
       n_inc+=1
-    else:
+      
+    elif pd.api.types.is_numeric_dtype(dtype):
       rules[col]='q' + str(q_inc)
       q_inc+=1
+
+    elif pd.api.types.is_datetime64_any_dtype(dtype):
+      rules[col]='t' + str(t_inc)
+      t_inc+=1
 
 
   new_schemas=[]
@@ -78,18 +84,20 @@ def spec_to_template(dataset_name, survey_row, spec, url_media):
   
   dataset=app_tables.forms.get(form_id=survey_row['form_id'])['reports']['datasets'][dataset_name]
   df=pd.DataFrame(dataset)
+  df=auto_date_convert(df)
 
   key='field'
   rules=[]
   quant_fields=[]
   nominal_fields=[]
+  temporal_fields=[]
   def search_dict_and_create_template(tree):
 
     for node in tree:
 
       if node == key and type(tree[node]) is str:
 
-        if df[tree[key]].dtype=='O':
+        if pd.api.types.is_string_dtype(df[tree[key]]):
 
           # add column name to a list so that you can control the template placeholders
           nominal_fields.append(tree[key]) if tree[key] not in nominal_fields else nominal_fields
@@ -99,10 +107,18 @@ def spec_to_template(dataset_name, survey_row, spec, url_media):
           tree[key]=placeholder_str
           rules.append(type_string)
           
-        else:
+        elif pd.api.types.is_numeric_dtype(df[tree[key]]):
           quant_fields.append(tree[key]) if tree[key] not in quant_fields else quant_fields
           field_ind=quant_fields.index(tree[key])
           type_string='q'+str(field_ind)
+          placeholder_str=f'{{{type_string}}}'
+          tree[key]=placeholder_str
+          rules.append(type_string)
+
+        elif pd.api.types.is_datetime64_any_dtype(df[tree[key]]):
+          temporal_fields.append(tree[key]) if tree[key] not in temporal_fields else temporal_fields
+          field_ind=temporal_fields.index(tree[key])
+          type_string='t'+str(field_ind)
           placeholder_str=f'{{{type_string}}}'
           tree[key]=placeholder_str
           rules.append(type_string)
@@ -124,6 +140,17 @@ def spec_to_template(dataset_name, survey_row, spec, url_media):
   app_tables.chart_templates.add_row(templates=template_spec, images=url_media)
 
   return spec
+
+def auto_date_convert(df):
+
+  for col in df.columns:
+      if df[col].dtype == 'object':
+          try:
+              df[col] = pd.to_datetime(df[col])
+          except ValueError:
+              pass
+
+  return df
 
 @anvil.server.callable
 def get_templates(require_user = validate_user):
