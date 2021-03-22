@@ -22,8 +22,8 @@ class read_only_json(read_only_jsonTemplate):
     
     options = {
     #'schema': get_open_form().tag.vl_schema,
-    'mode': 'view',
-    #'modes': ['view'],
+    'mode': 'code',
+    'modes': ['code','view'],
     }
 
     container = anvil.js.get_dom_node(self)
