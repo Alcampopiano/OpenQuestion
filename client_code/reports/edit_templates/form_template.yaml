@@ -1,0 +1,77 @@
+is_package: true
+container:
+  type: HtmlTemplate
+  properties: {html: '@theme:standard-page.html'}
+components:
+- type: ColumnPanel
+  properties: {}
+  name: content_panel
+  layout_properties: {slot: default}
+  components:
+  - type: DataGrid
+    properties:
+      role: null
+      columns:
+      - {id: TKMIQV, title: Column 1, data_key: column_1, expand: false, width: 549}
+      - {id: TSLYYZ, title: Column 2, data_key: column_2, expand: false, width: 333}
+      - {id: ZQSZHF, title: Column 3, data_key: column_3}
+      auto_header: false
+      tooltip: ''
+      border: ''
+      foreground: ''
+      rows_per_page: 100
+      visible: true
+      show_page_controls: true
+      spacing_above: small
+      spacing_below: small
+      background: ''
+    name: data_grid_1
+    layout_properties:
+      col_widths: {}
+      grid_position: HGQTHF,NYZSUP
+      full_width_row: false
+    components:
+    - type: DataRowPanel
+      properties: {}
+      name: data_row_panel_1
+      layout_properties: {}
+      components:
+      - type: Label
+        properties: {role: null, align: center, tooltip: '', border: '', foreground: '',
+          visible: true, text: vega-lite spec, font_size: null, font: '', spacing_above: small,
+          icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
+          underline: false, icon: ''}
+        name: label_1
+        layout_properties: {column: TKMIQV}
+        event_bindings: {}
+      - type: Label
+        properties: {role: null, align: center, tooltip: '', border: '', foreground: '',
+          visible: true, text: chart exemplar, font_size: null, font: '', spacing_above: small,
+          icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
+          underline: false, icon: ''}
+        name: label_2
+        layout_properties: {column: TSLYYZ}
+    - type: RepeatingPanel
+      properties: {spacing_above: none, spacing_below: none, item_template: reports.edit_templates.edit_templates_templ}
+      name: repeating_panel_1
+      layout_properties: {}
+- type: FlowPanel
+  properties: {}
+  name: navbar_links
+  layout_properties: {slot: nav-right}
+  components:
+  - type: Link
+    properties: {role: null, url: '', align: center, tooltip: '', border: '', foreground: '',
+      visible: true, text: '', font_size: null, wrap_on: mobile, font: '', col_spacing: medium,
+      spacing_above: small, icon_align: left, col_widths: '', spacing_below: small,
+      italic: false, background: '', bold: false, underline: false, icon: 'fa:arrow-circle-left'}
+    name: link_back
+    layout_properties: {}
+    event_bindings: {click: link_back_click}
+- type: Label
+  properties: {role: null, align: left, tooltip: '', border: '', foreground: '', visible: true,
+    text: Chart templates, font_size: null, font: '', spacing_above: small, icon_align: left,
+    spacing_below: small, italic: false, background: '', bold: false, underline: false,
+    icon: ''}
+  name: label_3
+  layout_properties: {slot: title}

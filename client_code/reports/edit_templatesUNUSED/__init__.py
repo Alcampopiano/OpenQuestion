@@ -1,4 +1,4 @@
-from ._anvil_designer import data_info_viewTemplate
+from ._anvil_designer import edit_templatesUNUSEDTemplate
 from anvil import *
 import anvil.server
 import anvil.facebook.auth
@@ -9,12 +9,17 @@ import anvil.users
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
+from anvil.js.window import vega
 
-class data_info_view(data_info_viewTemplate):
-  def __init__(self, data_dicts, **properties):
+
+class edit_templatesUNUSED(edit_templatesUNUSEDTemplate):
+  def __init__(self, vl_schema, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
+    #self.tag.vl_schema=vl_schema
 
     # Any code you write here will run when the form opens.
-    html=anvil.server.call('data_dicts_to_html',data_dicts)
-    self.html=html
+    rows=anvil.server.call('get_templates')
+    self.repeating_panel_1.items=rows
+    
+    

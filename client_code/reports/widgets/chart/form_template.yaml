@@ -9,6 +9,7 @@ components:
   layout_properties:
     col_widths: {}
     grid_position: SMMSJS,CVHYQM
+  event_bindings: {}
 - type: Label
   properties: {role: null, align: left, tooltip: '', border: '', foreground: '', visible: true,
     text: '', font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small,
@@ -19,11 +20,50 @@ components:
     grid_position: SMMSJS,GPUNUV
 - type: ColumnPanel
   properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
-    wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
+    wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{"ZIVSYL":30}',
     spacing_below: small, background: ''}
   name: column_panel_outer_container
   layout_properties: {grid_position: 'XVDYNZ,BTKJHC'}
   components:
+  - type: FlowPanel
+    properties: {role: null, spacing: none, align: left, tooltip: '', border: '',
+      foreground: '', visible: true, spacing_above: none, spacing_below: none, background: ''}
+    name: flow_panel_2
+    layout_properties: {grid_position: 'IABPFV,ZIVSYL'}
+    components:
+    - type: Button
+      properties: {role: primary-color, align: center, tooltip: '', border: '', enabled: true,
+        foreground: '', visible: true, text: generate charts, font_size: 12, font: '',
+        spacing_above: none, icon_align: left, spacing_below: none, italic: false,
+        background: '', bold: false, underline: false, icon: ''}
+      name: button_generate
+      layout_properties: {grid_position: 'FGKOMX,DUYFBO'}
+      event_bindings: {click: button_generate_click}
+    - type: Button
+      properties: {role: primary-color, align: center, tooltip: '', border: '', enabled: true,
+        foreground: '', visible: true, text: save as template, font_size: 12, font: '',
+        spacing_above: none, icon_align: left, spacing_below: none, italic: false,
+        background: '', bold: false, underline: false, icon: ''}
+      name: button_save_template
+      layout_properties: {grid_position: 'FGKOMX,AMEAWS'}
+      event_bindings: {click: button_save_template_click}
+    - type: Button
+      properties: {role: primary-color, align: center, tooltip: '', border: '', enabled: true,
+        foreground: '', visible: false, text: '', font_size: 12, font: '', spacing_above: none,
+        icon_align: left, spacing_below: none, italic: false, background: '', bold: false,
+        underline: false, icon: 'fa:arrow-circle-left'}
+      name: button_left
+      layout_properties: {}
+      event_bindings: {click: button_nav_click}
+    - type: Button
+      properties: {role: primary-color, align: center, tooltip: '', border: '', enabled: true,
+        foreground: '', visible: false, text: '', font_size: 12, font: '', spacing_above: none,
+        icon_align: left, spacing_below: none, italic: false, background: '', bold: false,
+        underline: false, icon: 'fa:arrow-circle-right'}
+      name: button_right
+      layout_properties: {grid_position: 'IABPFV,EZAVPG'}
+      event_bindings: {click: button_nav_click}
+    event_bindings: {}
   - type: ColumnPanel
     properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
       wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
@@ -31,6 +71,7 @@ components:
     name: column_panel_json_container
     layout_properties: {grid_position: 'ZQIIUP,RBZLBY'}
     components: []
+    event_bindings: {}
   - type: ColumnPanel
     properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
       wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',

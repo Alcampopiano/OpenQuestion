@@ -9,6 +9,7 @@ import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
+from anvil.js.window import vegaEmbed
 
 class vega_lite(vega_liteTemplate):
   def __init__(self, **properties):
@@ -54,12 +55,24 @@ class vega_lite(vega_liteTemplate):
     data_name=spec['data'].get('name', None)
     data_values=get_open_form().tag.data_dicts.get(data_name, None)
     
+    el = anvil.js.get_dom_node(self)
+    embedded = vegaEmbed(el, spec)
+    
     if data_name and data_values:
-      self.call_js('vega_embed_named_data', self.tag.vl_spec, 
-                data_name, data_values)
+
+      view = embedded.view
+      view.insert(data_name, data_values)           
+      view.resize()
+      view.run()
       
-    else: #not data_name and not data_values:
-        self.call_js('vega_embed_no_named_data', self.tag.vl_spec)
+      #self.call_js('vega_embed_named_data', self.tag.vl_spec, 
+      #               data_name, data_values)
+      
+    else:
+      view = embedded.view
+      #self.call_js('vega_embed_no_named_data', self.tag.vl_spec)
+      
+    self.tag.view=view
         
     
         

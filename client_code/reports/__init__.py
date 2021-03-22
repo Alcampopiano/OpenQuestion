@@ -83,11 +83,45 @@ def build_schema(column_panel):
       
     schema['widgets'].append(section_schema)
     
+  
+  #chart_dict=prox_to_dict(chart_dict)
+  #print(schema, chart_dict)
+
   return schema, chart_dict
 
     
+# def to_json(po):
+#   proxy = type(anvil.js.window.Object())
 
+#   if type(po) != proxy:
+#     return po
+#   d ={}
+#   for key in po.keys():
+#     d[key] = to_json(po[key])
+#   return d
   
+
+# proxy = type(anvil.js.window.Object())
+# def prox_to_dict(tree):
+
+#   print(tree)
+#   for node in tree.keys():
+    
+#     if type(tree[node]) is dict:
+#       prox_to_dict(tree[node])
+
+#     elif type(tree[node]) is list:
+#       for item in tree[node]:
+#         if type(item) is dict:
+#           prox_to_dict(item)
+          
+#     elif type(tree[node])==proxy:
+#       tree[node]=dict(tree[node])
+#       prox_to_dict(tree[node])
+      
+
+
+#   return tree
 
  
 

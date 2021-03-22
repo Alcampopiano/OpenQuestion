@@ -1,0 +1,28 @@
+container:
+  type: DataRowPanel
+  event_bindings: {show: form_show}
+components:
+- type: Image
+  properties: {role: null, vertical_align: center, height: '200', tooltip: '', border: '',
+    foreground: '', visible: true, display_mode: original_size, spacing_above: small,
+    source: '', spacing_below: small, background: '', horizontal_align: center}
+  name: image
+  layout_properties: {column: TSLYYZ}
+  event_bindings: {}
+- type: Button
+  properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+    foreground: '', visible: true, text: '', font_size: null, font: '', spacing_above: small,
+    icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+    underline: false, icon: 'fa:minus-circle'}
+  name: button_delete
+  layout_properties: {column: ZQSZHF}
+  event_bindings: {click: button_delete_click}
+- type: form:reports.widgets.widget_utilities.read_only_json
+  properties: {}
+  name: json
+  layout_properties: {column: TKMIQV}
+- type: Spacer
+  properties: {height: 32}
+  name: spacer_1
+  layout_properties: {column: null}
+is_package: true

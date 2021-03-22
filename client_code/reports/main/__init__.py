@@ -13,6 +13,8 @@ from ... import reports
 from .. import widgets
 from ...utilities import augment
 from ..widgets.widget_utilities.data_info_view import data_info_view
+import anvil.http
+
 
 class main(mainTemplate):
   def __init__(self, row, **properties):
@@ -25,6 +27,12 @@ class main(mainTemplate):
     self.tag.file_loader=file_loader
     
     self.tag.row=row
+    vl_schema=anvil.http.request('https://vega.github.io/schema/vega-lite/v4.json', 
+                                           json=True)
+    
+    vl_schema['definitions']["HexColor"]['format']="uri"
+    self.tag.vl_schema=vl_schema
+    
     save_button=Button(text='save', role='primary-color')
     save_button.set_event_handler('click', self.save_click)
     self.add_component(save_button)
@@ -112,9 +120,6 @@ class main(mainTemplate):
     self.tag.file_loader.trigger('click')
 
   def link_download_click(self, **event_args):
-    
-#     if not self.tag.row['reports']:
-#       self.save_click()
       
     m=anvil.server.call('make_html_report', self.tag.row)
     download(m)
@@ -126,6 +131,12 @@ class main(mainTemplate):
     """This method is called when the link is clicked"""
     data_dicts=self.tag.data_dicts
     alert(data_info_view(data_dicts), large=True, buttons=[('ok', 'ok')])
+
+  def link_templates_click(self, **event_args):
+    open_form('reports.edit_templates', survey_row=self.tag.row)
+    
+    
+
 
 
 

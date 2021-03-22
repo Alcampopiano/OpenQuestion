@@ -1,27 +1,19 @@
 container:
   type: HtmlTemplate
   properties: {tooltip: '', background: '', foreground: '', border: '', visible: true,
-    role: json_editor, html: "<body>\n\n<script>\n\nmake_editor = function(spec, comp,\
-      \ parent) {\n  \n  \t/*\n  \t\"color-hex\" is not a supported format in avj.\n\
-      \    v4 of VL's schema uses the \"color-hex\" format.\n    If I set HexColor\
-      \ format to \"uri\" (which is odd) \n    \tthe schema validation loads without\
-      \ error.\n    I tried deleting all references to HexColor, but still got errors,\
-      \ \n    \tso, I set the format to \"uri\" and moved on with my life.\n    */\n\
-      \  \n    var key = \"HexColor\"; \n    schema.definitions[key].format=\"uri\"\
-      \n    //delete schema.definitions[key];\n    //delete schema.definitions.Color.anyOf[1]\n\
-      \    //console.log(schema.definitions.Color)\n    //console.log(schema.definitions[key])\n\
-      \n    const options = {\n      schema: schema,\n      mode: 'code',\n      modes:\
-      \ ['code', 'tree'],\n      onChange: function() {\n          spec=editor.get();\n\
+    role: json_editor, html: "<body>\n\n<script>\n/*\nmake_editor = function(spec,\
+      \ comp, parent) {\n  \n    //changing format becase hex color not supported\
+      \ in json schema 4\n    var key = \"HexColor\"; \n    schema.definitions[key].format=\"\
+      uri\"\n\n    const options = {\n      schema: schema,\n      mode: 'code',\n\
+      \      modes: ['code', 'tree'],\n      onChange: function() {\n          spec=editor.get();\n\
       \          var my_comp=comp.v._anvil.element[0]\n          anvil.call(my_comp,\
       \ \"on_editor_change\", spec)\n      },\n    };\n\n    const container = parent.v._anvil.element[0]\n\
-      \    const editor = new JSONEditor(container, options, spec)\n\n};\n\n/*\nget_schema\
-      \ = function(spec, comp, parent) {\n  //console.log(schema)\n  //make_editor(spec,\
-      \ schema, comp, parent)\n  \n\nfetch('https://vega.github.io/schema/vega-lite/v4.json')\n\
-      \  \t.then(function(resp){\n    \treturn resp.json();\n  \t})\n  \t.then(function(data)\
-      \ {\n        schema=data\n  \t\tmake_editor(spec, schema, comp, parent);\n \
-      \ });\n\n\n};\n*/\n</script>\n  \n</body>\n<head>\n<style type=\"text/css\"\
-      >\n  \n  .jsoneditor {\n    height: 400px;\n    border: 0;\n  }\n  \n  .jsoneditor-menu\
-      \ {\n  background-color: lightgray;\n  border: 0;\n}\n  \n .ace-jsoneditor .ace_gutter-active-line\
+      \    const editor = new JSONEditor(container, options, spec)\n\n};\n  \nset_editor\
+      \ = function(comp, spec) {\n  \n  \tvar editor = $(this).find(\".jsoneditor\"\
+      );\n  \tconsole.log(editor)\n    editor.set(spec)\n}\n \n*/  \n  \n\n</script>\n\
+      \  \n</body>\n<head>\n<style type=\"text/css\">\n  \n  .jsoneditor {\n    height:\
+      \ 400px;\n    border: 0;\n  }\n  \n  .jsoneditor-menu {\n  background-color:\
+      \ lightgray;\n  border: 0;\n}\n  \n .ace-jsoneditor .ace_gutter-active-line\
       \ {\n\tbackground-color: white\n}\n  \n.ace-jsoneditor .ace_gutter {\n  background:\
       \ white\n  }\n  \n.jsoneditor-statusbar {\n  visibility: hidden;\n  }\n  \n\
       \  /*\n  \n  .jsoneditor-menu > button.jsoneditor-transform {\n  color: black;\n\

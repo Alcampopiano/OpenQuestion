@@ -140,6 +140,20 @@ db_schema:
       admin_ui: {order: 4, width: 200}
   access: {python_name: forms, app_id: RZCX3HWGWWPZJCOH, server: full, client: none,
     table_mapping_name: null, table_mapping_id: null, table_id: 63199}
+- name: chart_templates
+  id: 107442
+  python_name: chart_templates
+  columns:
+    20bgvDLwugE=:
+      name: templates
+      type: simpleObject
+      admin_ui: {order: 1, width: 907}
+    MF4kJFuGG6k=:
+      name: images
+      type: media
+      admin_ui: {order: 1, width: 200}
+  access: {python_name: chart_templates, app_id: RZCX3HWGWWPZJCOH, server: full, client: none,
+    table_mapping_name: null, table_mapping_id: null, table_id: 107442}
 - name: reports
   id: 69868
   python_name: reports

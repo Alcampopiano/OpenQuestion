@@ -14,16 +14,149 @@ import io
 import uuid
 import datetime
 import mistune
+import ast
+import numpy as np
+import anvil.http
+import json
 
 
 def validate_user(u):
   return u #u['admin']
 
-# @anvil.server.callable(require_user = validate_user)
-# def delete_report(form_id):
+@anvil.server.callable(require_user = validate_user)
+def get_json_schema():
   
-#   row=app_tables.reports.get(form_id=form_id)
-#   row.delete()
+    schema = anvil.http.request('https://vega.github.io/schema/vega-lite/v4.json', 
+                                           json=True)
+    
+    return schema
+
+@anvil.server.callable(require_user = validate_user)
+def data_to_spec(survey_row, cols, dataset_name):
+  
+  dataset=app_tables.forms.get(form_id=survey_row['form_id'])['reports']['datasets'][dataset_name]
+  df=pd.DataFrame(dataset)
+  df=auto_date_convert(df)
+
+  templates=[t['templates'] for t in app_tables.chart_templates.search()]
+    
+  col_and_types = df.dtypes[cols]
+
+  rules={}
+  n_inc=0
+  q_inc=0
+  t_inc=0
+  for col, dtype in col_and_types.iteritems():
+
+    if pd.api.types.is_string_dtype(dtype):
+      rules[col]='n' + str(n_inc)
+      n_inc+=1
+      
+    elif pd.api.types.is_numeric_dtype(dtype):
+      rules[col]='q' + str(q_inc)
+      q_inc+=1
+
+    elif pd.api.types.is_datetime64_any_dtype(dtype):
+      rules[col]='t' + str(t_inc)
+      t_inc+=1
+
+
+  new_schemas=[]
+  for s in templates:
+
+    if sorted(rules.values()) == sorted(s['rules']):
+
+      str_dict = str(s)
+      for k, v in rules.items():
+        str_dict = str_dict.replace(f'{{{v}}}', k)
+
+      new_spec=ast.literal_eval(str_dict)
+      new_spec["data"].update({"name": dataset_name})
+      del new_spec['rules']
+      new_schemas.append(new_spec)
+
+
+  return new_schemas
+
+
+@anvil.server.callable
+def spec_to_template(dataset_name, survey_row, spec, url_media):
+  
+  dataset=app_tables.forms.get(form_id=survey_row['form_id'])['reports']['datasets'][dataset_name]
+  df=pd.DataFrame(dataset)
+  df=auto_date_convert(df)
+
+  key='field'
+  rules=[]
+  quant_fields=[]
+  nominal_fields=[]
+  temporal_fields=[]
+  def search_dict_and_create_template(tree):
+
+    for node in tree:
+
+      if node == key and type(tree[node]) is str:
+
+        if pd.api.types.is_string_dtype(df[tree[key]]):
+
+          # add column name to a list so that you can control the template placeholders
+          nominal_fields.append(tree[key]) if tree[key] not in nominal_fields else nominal_fields
+          field_ind=nominal_fields.index(tree[key])
+          type_string='n'+str(field_ind)
+          placeholder_str=f'{{{type_string}}}'
+          tree[key]=placeholder_str
+          rules.append(type_string)
+          
+        elif pd.api.types.is_numeric_dtype(df[tree[key]]):
+          quant_fields.append(tree[key]) if tree[key] not in quant_fields else quant_fields
+          field_ind=quant_fields.index(tree[key])
+          type_string='q'+str(field_ind)
+          placeholder_str=f'{{{type_string}}}'
+          tree[key]=placeholder_str
+          rules.append(type_string)
+
+        elif pd.api.types.is_datetime64_any_dtype(df[tree[key]]):
+          temporal_fields.append(tree[key]) if tree[key] not in temporal_fields else temporal_fields
+          field_ind=temporal_fields.index(tree[key])
+          type_string='t'+str(field_ind)
+          placeholder_str=f'{{{type_string}}}'
+          tree[key]=placeholder_str
+          rules.append(type_string)
+
+      elif type(tree[node]) is dict:
+        search_dict_and_create_template(tree[node])
+
+      elif type(tree[node]) is list:
+        for item in tree[node]:
+          if type(item) is dict:
+            search_dict_and_create_template(item)
+
+    return tree
+
+  template_spec=search_dict_and_create_template(spec)
+  template_spec["data"]={"name": ''}
+  template_spec['rules']=list(set(rules))
+  
+  app_tables.chart_templates.add_row(templates=template_spec, images=url_media)
+
+  return spec
+
+def auto_date_convert(df):
+
+  for col in df.columns:
+      if df[col].dtype == 'object':
+          try:
+              df[col] = pd.to_datetime(df[col])
+          except ValueError:
+              pass
+
+  return df
+
+@anvil.server.callable
+def get_templates(require_user = validate_user):
+  templs=app_tables.chart_templates.search()
+  
+  return templs
 
 @anvil.server.callable(require_user = validate_user)
 def save_report(survey_dict, schema, specs, data_dicts):
@@ -32,7 +165,6 @@ def save_report(survey_dict, schema, specs, data_dicts):
   report_row=survey_row['reports']
   
   if not report_row:
-    #report_id=str(uuid.uuid4())
     report_row=app_tables.reports.add_row(title=schema['title'], 
                                last_modified=datetime.datetime.now(),
                                schema=schema, charts=specs, datasets=data_dicts)
@@ -45,11 +177,12 @@ def save_report(survey_dict, schema, specs, data_dicts):
   return dict(survey_row)
 
 @anvil.server.callable(require_user = validate_user)
-def return_datasets(files):
+def return_datasets(files, survey_dict=None):
   
   data_dicts={}
   for file in files:   
     df=pd.read_csv(io.BytesIO(file.get_bytes()))
+    df = df.replace({np.nan: None})
     
     try:
       df=df.drop(columns={'Unnamed: 0'})
@@ -59,6 +192,11 @@ def return_datasets(files):
     data_dict=df.to_dict(orient="records")
     data_dicts[file.name]=data_dict
     
+    if survey_dict:
+      survey_row=app_tables.forms.get(form_id=survey_dict['form_id'])
+      report_row=survey_row['reports']
+      report_row.update(datasets=data_dicts)
+    
   return data_dicts
 
 @anvil.server.callable(require_user = validate_user)
@@ -67,14 +205,57 @@ def convert_markdown(text):
 
 @anvil.server.callable(require_user = validate_user)
 def data_dicts_to_html(data_dicts):
-  
-  html=''
-  for k,v in data_dicts.items():
-    html+='<h3>{0}</h3>'.format(k)
-    html+=pd.DataFrame.from_records(v).head().to_html(index=False)
-    html+='<br><hr><br>'
+
+  html_before="""
+    <html>
+    <head>
+    <style> 
+    h2 {
+        text-align: center;
+        font-family: Helvetica, Arial, sans-serif;
+    }
+    table { 
+        margin-left: auto;
+        margin-right: auto;
+    }
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 5px;
+        text-align: center;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 90%;
+    }
+    table tbody tr:hover {
+        background-color: #dddddd;
+    }
+    .wide {
+        width: 90%; 
+    }    
     
-  return convert_markdown(html)
+    </style>
+    </head>
+    <body>
+    """
+  
+  html_after="""
+  </body>
+  </html>
+  """
+  
+  #html=''
+  for k,v in data_dicts.items():
+    html_before+='<h3>{0}</h3>'.format(k)
+    html_before+=pd.DataFrame.from_records(v).head().to_html(index=False)
+    html_before+='<br><hr><br>'
+    
+  html=html_before+html_after
+  
+  #print(html)
+    
+  return html #convert_markdown(html)
   
 @anvil.server.callable(require_user = validate_user)
 def make_html_report(survey_row):
@@ -479,7 +660,7 @@ var opts={"renderer": "svg", "mode": "vega-lite", "actions": {"export": true, "s
         data_values=datasets.get(data_name, None)
         
         if data_name and data_values:
-          print("move datasets to global var?")
+          #print("move datasets to global var?")
           html+=gen_vega_vis_named_data(widget_schema['id'], spec, data_name, data_values)
           
         else: #not data_name and not data_values:
@@ -513,9 +694,9 @@ def gen_vega_vis_named_data(div_id, spec, data_name, data_values):
 							<div id=vis{div_id}></div>
 
 							<script type="text/javascript">
-							  var spec = {spec};
+							  var spec = {json.dumps(spec)};
 							  var data_name = "{data_name}";
-							  var data_values = {data_values};
+							  var data_values = {json.dumps(data_values)};
 							  vegaEmbed('#vis{div_id}', spec, opts).then(res => 
 														                 res.view
 														                 .insert(data_name, data_values)
@@ -547,7 +728,7 @@ def gen_vega_vis_no_named_data(div_id, spec):
 							<div id=vis{div_id}></div>
 
 							<script type="text/javascript">
-							  var spec = {spec};
+							  var spec = {json.dumps(spec)};
 							  vegaEmbed('#vis{div_id}', spec, opts)
 
 							</script>
