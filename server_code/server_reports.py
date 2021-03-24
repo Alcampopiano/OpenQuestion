@@ -199,7 +199,8 @@ def return_datasets(files, survey_dict=None):
     
   return data_dicts
 
-@anvil.server.callable(require_user = validate_user)
+#@anvil.server.callable(require_user = validate_user)
+@anvil.server.callable
 def convert_markdown(text):
   return mistune.markdown(text, escape=False)
 
