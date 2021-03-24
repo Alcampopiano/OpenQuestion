@@ -11,7 +11,7 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 
 class radio_button(radio_buttonTemplate):
-  def __init__(self, options, **properties):
+  def __init__(self, options, group_name, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     
@@ -23,7 +23,7 @@ class radio_button(radio_buttonTemplate):
     # Any code you write here will run when the form opens.
     for op in options:
       b=RadioButton(text=op, foreground='black')
-      b.group_name='group'
+      b.group_name=group_name
       b.set_event_handler('clicked', self.radio_clicked)
       self.column_panel.add_component(b)
 
