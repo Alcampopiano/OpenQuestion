@@ -46,7 +46,8 @@ on the same page. This feature will be likely be implemented in a future release
 
 ## Can I perform data analysis and/or visualization in OpenQuestion?
 Yes! OpenQuestion's reporting module allows researchers to describe their data by building
-custom interactive visualizations, and writing rich text. In addition, 
+custom interactive visualizations, and writing rich text. Charts can even be generated 
+automatically! In addition, 
 reports can be exported as interactive HTML files for sharing.
 Please see the [reporting](reporting.md) page for more details.
 
