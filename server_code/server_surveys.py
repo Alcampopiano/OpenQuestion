@@ -81,7 +81,8 @@ def submit_data(cols, data, url_hash):
   return mistune.markdown(row['schema']['settings']['thank_you_msg'], escape=False)
     
     
-@anvil.server.callable(require_user = validate_user)
+#@anvil.server.callable(require_user = validate_user)
+@anvil.server.callable
 def convert_markdown(text):
   return mistune.markdown(text, escape=False)
   

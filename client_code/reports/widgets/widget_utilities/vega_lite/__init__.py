@@ -22,7 +22,7 @@ class vega_lite(vega_liteTemplate):
   "data": {
     "url": "https://vega.github.io/vega-lite/data/cars.json" 
   },
-  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "mark": "circle",
   "width": 310,
   "height": 300,

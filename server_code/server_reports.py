@@ -26,7 +26,7 @@ def validate_user(u):
 @anvil.server.callable(require_user = validate_user)
 def get_json_schema():
   
-    schema = anvil.http.request('https://vega.github.io/schema/vega-lite/v4.json', 
+    schema = anvil.http.request('https://vega.github.io/schema/vega-lite/v5.json', 
                                            json=True)
     
     return schema
@@ -199,7 +199,8 @@ def return_datasets(files, survey_dict=None):
     
   return data_dicts
 
-@anvil.server.callable(require_user = validate_user)
+#@anvil.server.callable(require_user = validate_user)
+@anvil.server.callable
 def convert_markdown(text):
   return mistune.markdown(text, escape=False)
 
@@ -608,9 +609,9 @@ div.section_header {
 </style>
 <head>
   <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
-<script src="https://cdn.jsdelivr.net/npm/vega@5.10.0"></script>
-<script src="https://cdn.jsdelivr.net/npm/vega-lite@4.7.0"></script>
-<script src="https://cdn.jsdelivr.net/npm/vega-embed@6.5.1"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 <script>
 var opts={"renderer": "svg", "mode": "vega-lite", "actions": {"export": true, "source": false, "editor": false, "compiled": false}}  
 </script>

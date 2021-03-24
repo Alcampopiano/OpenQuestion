@@ -62,15 +62,14 @@ native_deps: {head_html: "<script>\n/*\nfunction get_jQuery_obj(component) {\n  
     \        event = event == 'hover' ? 'mouseenter mouseleave' : event; // would\
     \ probably never do this!\n      \tconst component = self\n      \tcomponent.v\
     \ = self\n      \tconst element = get_jQuery_obj(component);\n        element.trigger(event);\n\
-    \    });\n}\n</script>\n\n<script src=\"https://cdn.jsdelivr.net/npm/vega@5.10.0\"\
-    ></script>\n<script src=\"https://cdn.jsdelivr.net/npm/vega-lite@4.7.0\"></script>\n\
-    <script src=\"https://cdn.jsdelivr.net/npm/vega-embed@6.5.1\"></script>\n<script\
-    \ src=\"https://cdn.jsdelivr.net/npm/tinycolor@1.4.2\"></script>\n\n\n<link href=\"\
-    https://cdnjs.cloudflare.com/ajax/libs/jsoneditor/9.0.3/jsoneditor.css\" rel=\"\
-    stylesheet\" type=\"text/css\">\n<script src=\"https://cdnjs.cloudflare.com/ajax/libs/jsoneditor/9.0.3/jsoneditor.min.js\"\
+    \    });\n}\n</script>\n\n<script src=\"https://cdn.jsdelivr.net/npm/vega@5\"\
+    ></script>\n<script src=\"https://cdn.jsdelivr.net/npm/vega-lite@5\"></script>\n\
+    <script src=\"https://cdn.jsdelivr.net/npm/vega-embed@6\"></script>\n<script src=\"\
+    https://cdn.jsdelivr.net/npm/tinycolor@1.4.2\"></script>\n\n\n<link href=\"https://cdnjs.cloudflare.com/ajax/libs/jsoneditor/9.2.0/jsoneditor.css\"\
+    \ rel=\"stylesheet\" type=\"text/css\">\n<script src=\"https://cdnjs.cloudflare.com/ajax/libs/jsoneditor/9.2.0/jsoneditor.min.js\"\
     ></script>\n\n<script>\nvar opts={\"renderer\": \"svg\", \"mode\": \"vega-lite\"\
     , \"actions\": {\"export\": true, \"source\": false, \"editor\": false, \"compiled\"\
-    : false}}  \n  \nfetch('https://vega.github.io/schema/vega-lite/v4.json')\n  \t\
+    : false}}  \n  \nfetch('https://vega.github.io/schema/vega-lite/v5.json')\n  \t\
     .then(function(resp){\n    \treturn resp.json();\n  \t})\n  \t.then(function(data)\
     \ {\n        schema=data\n  \t\t//make_editor(spec, schema, comp, parent);\n \
     \ });\n</script>\n\n<script>\n  function setThemeCss(css) {\n    // Put the specified\

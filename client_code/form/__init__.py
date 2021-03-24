@@ -20,6 +20,7 @@ def submit_data(column_panel):
     
     
     for widget in section.column_panel.get_components():
+      #print(widget.__name__)
                   
       if 'text_box' is widget.__name__:
         
@@ -54,10 +55,11 @@ def submit_data(column_panel):
         
         val=[]
         for c in widget.column_panel.get_components():
+          #print(c)
           if 'check_box_other' is c.__name__ and c.check_box.checked:
             val.append(c.text_box.text)
             
-          elif c.checked:
+          elif 'check_box' is c.__name__ and c.checked:
             val.append(c.text)
             
             
@@ -67,7 +69,9 @@ def submit_data(column_panel):
         
         col=widget.label_title.text
         
+        val=''
         for c in widget.column_panel.get_components():
+          #print(c, 'here')
           if c.selected:
             val=c.text
             break
@@ -141,7 +145,8 @@ def build_form(schema, column_panel):
       
       elif widget_schema['type']=='radio_button':
         options=widget_schema['options'].split('\n')
-        widget=widgets.radio_button(options=options)
+        group_name=widget_schema['id']
+        widget=widgets.radio_button(options=options, group_name=group_name)
         widget.label_title.text=widget_schema['title']
         
       elif widget_schema['type']=='markdown':
