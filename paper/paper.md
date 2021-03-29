@@ -1,5 +1,5 @@
 ---
-title: 'OpenQuestion: A survey building platform written in Python'
+title: 'OpenQuestion: A survey building and reporting platform written in Python'
 tags:
   - python
   - survey
@@ -46,7 +46,7 @@ commercial survey platforms. However, OpenQuestion is unique in comparison since
 survey and report development can be controlled by Python^[Those without Python 
 knowledge can simply use OpenQuestion's GUI as a
 free alternative to other commonly used survey platforms.] and JSON.
-The following section describes a few of the reasons why OpenQuestion can be useful for
+The following sections describes a few of the reasons why OpenQuestion can be useful for
 data acquisition, analysis, and reporting.
 
 ## Surveys and report designs are stored as a Python `dict`/JSON
@@ -87,7 +87,11 @@ In addition, once a user has a chart design that they would like to generally re
 automatic chart generation is used, this new template will be considered in the matching process.
 Automatic chart generation and templating is depicted in the figure below:
 
-![OpenQuestion's automatic chart creation and templating process](https://alcampopiano.github.io/OpenQuestion/img/auto_chart_fig.png)
+![OpenQuestion's automatic chart creation and templating process. Users indicate the columns they would like to visualize.
+The number of selected columns and their data types are compared to underlying JSON templates. 
+If a match is found, the compatible templates are populated with data and the resulting charts are displayed. 
+To go the other direction, OpenQuestion also allows any chart to be converted to a template to be used in future
+automatic chart creation.](https://alcampopiano.github.io/OpenQuestion/img/auto_chart_fig.png)
 
 ## Interactive "code-free" HTML reports
 OpenQuestion allows reports (which include interactive charts and rich text) to be exported
