@@ -80,7 +80,7 @@ And here is a spec that references a loaded dataset by its filename:
 ## Automatic chart generation
 Charts can be created automatically by clicking the "generate charts" button. The resulting dialogue
 will require a dataset and one or more columns to be selected. Under the hood, OpenQuestion
-will try to match those columns to one or more templates that are stored interenally. Templates are simply
+will try to match those columns to one or more templates that are stored internally. Templates are simply
 vega-lite JSON specifications that have placeholders for a certain number of fields with given data types 
 (e.g., two quantitaive fields and one nominal field). If one or more compatible templates are found,
 the resulting charts and populated specs are displayed one at a time in the chart widget
@@ -116,7 +116,7 @@ charateristics can be generated automatically. This is shown in picture form in 
 Saved tempates, along with their associated chart exemplars can be viewd by clicking the curly
 braces ({}) icon in the reporting toolbar (upper right corner). 
 
-**Report development**
+**Automatic charts and templating**
 ![brd](img/auto_chart_fig.png)
 
 ## Using the markdown widget in reports
