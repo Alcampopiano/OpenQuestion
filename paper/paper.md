@@ -45,7 +45,7 @@ OpenQuestion's GUI and general functionality will be familiar to researchers who
 commercial survey platforms. However, OpenQuestion is unique in comparison since 
 survey and report development can be controlled by Python^[Those without Python 
 knowledge can simply use OpenQuestion's GUI as a
-free alternative to other commonly used survey platforms.] and JSON, respectively.
+free alternative to other commonly used survey platforms.] and JSON.
 The following section describes a few of the reasons why OpenQuestion can be useful for
 data acquisition, analysis, and reporting.
 
@@ -64,30 +64,30 @@ Specifically, OpenQuestion uses markdown widgets for rich text and chart widgets
 [@vegalite], a high-level, interactive visualization library. While reports are natively "connected" to their
 associated survey's dataset, OpenQuestion also allows additional datasets to be loaded into any report. This
 means that, unlike many other survey platforms, charting can occur across different 
-data sets in the same report, potentially obviating the need to perform analysis in a separate environment.
+data sets in the same report/environment.
 
 ### Automatic chart generation and templating
-In OpenQuestion's reporting module is able to automatically generate interactive charts 
+OpenQuestion's reporting module is able to automatically generate interactive charts 
 (as well as their related vega-lite JSON representations). Automatic chart generation 
 works in the following way:
 
 - A user selects one or more columns in their dataset using a GUI
 
-- OpenQuestion tries to match those 
+- OpenQuestion attempts to match those 
 columns to one or more templates that are stored internally. 
 Templates are simply vega-lite JSON specifications that have 
 placeholders for a certain number of fields with given data 
 types
 
 - If one or more compatible templates are found, they are populated with the appropriate data,
-and displayed one at a time in the report
+and displayed in the report
 
 In addition, once a user has a chart design that they would like to generally reuse 
 (possibly with a different dataset), they can save the chart as a template. The next time
 automatic chart generation is used, this new template will be considered in the matching process.
 Automatic chart generation and templating is depicted in the figure below:
 
-![fig1](https://alcampopiano.github.io/OpenQuestion/img/auto_chart_fig.png)
+![OpenQuestion's automatic chart creation and templating process](https://alcampopiano.github.io/OpenQuestion/img/auto_chart_fig.png)
 
 ## Interactive "code-free" HTML reports
 OpenQuestion allows reports (which include interactive charts and rich text) to be exported
