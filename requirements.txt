@@ -1,6 +1,6 @@
-pandas
-numpy
-anvil-app-server
-mistune
-anvil-uplink
-bcrypt
+pandas==1.4.3
+numpy==1.23.1
+anvil-app-server==1.7.3
+mistune==2.0.4
+anvil-uplink==0.3.42
+bcrypt==3.2.2

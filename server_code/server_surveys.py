@@ -44,7 +44,9 @@ def submit_data(cols, data, url_hash):
   form_id=url_hash['form_id']
   
   df_new=pd.DataFrame([data], columns=cols)
-  df_new.columns=pd.io.parsers.ParserBase({'names':df_new.columns})._maybe_dedup_names(df_new.columns)
+  #df_new.columns=pd.io.parsers.ParserBase({'names':df_new.columns})._maybe_dedup_names(df_new.columns)
+  df_new.columns=pd.io.parsers.base_parser.ParserBase({'names':df_new.columns, 'usecols':None})._maybe_dedup_names(df_new.columns)
+
   row=app_tables.forms.get(form_id=form_id)
   
   if not row['submissions']:
