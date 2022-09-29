@@ -5,10 +5,8 @@ from ._anvil_designer import report_settingsTemplate
 
 class report_settings(report_settingsTemplate):
     def __init__(self, row, **properties):
-        # Set Form properties and Data Bindings.
         self.init_components(**properties)
 
-        # Any code you write here will run when the form opens.
         self.label_report.text = f"Report settings: {row['title']}"
         self.tag.row = row
 

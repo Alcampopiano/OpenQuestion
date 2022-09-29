@@ -7,7 +7,6 @@ from ._anvil_designer import mainTemplate
 
 class main(mainTemplate):
     def __init__(self, schema, **properties):
-        # Set Form properties and Data Bindings.
         self.init_components(**properties)
         self.survey_color_change(schema["settings"]["survey_color"])
 

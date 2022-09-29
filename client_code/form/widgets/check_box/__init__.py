@@ -6,13 +6,11 @@ from .check_box_other import check_box_other
 
 class check_box(check_boxTemplate):
     def __init__(self, options, **properties):
-        # Set Form properties and Data Bindings.
         self.init_components(**properties)
 
         self.tag.logic = None
         self.tag.options = options
 
-        # Any code you write here will run when the form opens.
         for op in options["regular_options"]:
             c = anvil.CheckBox(text=op, foreground="black")
             self.column_panel.add_component(c)

@@ -6,7 +6,6 @@ from ._anvil_designer import gen_chart_paramsTemplate
 
 class gen_chart_params(gen_chart_paramsTemplate):
     def __init__(self, **properties):
-        # Set Form properties and Data Bindings.
         self.init_components(**properties)
         self.flow_panel_columns.tag.current_cols = []
 

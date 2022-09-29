@@ -5,7 +5,6 @@ from ._anvil_designer import select_action_reportTemplate
 
 class select_action_report(select_action_reportTemplate):
     def __init__(self, **properties):
-        # Set Form properties and Data Bindings.
         self.init_components(**properties)
 
         rows = anvil.server.call("get_reports")

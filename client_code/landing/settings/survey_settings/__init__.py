@@ -5,10 +5,8 @@ import anvil.server
 
 class survey_settings(survey_settingsTemplate):
     def __init__(self, row, **properties):
-        # Set Form properties and Data Bindings.
         self.init_components(**properties)
 
-        # Any code you write here will run when the form opens.
         self.label_survey.text = f"Survey settings: {row['title']}"
         self.tag.row = row
         schema_settings = row["schema"]["settings"]

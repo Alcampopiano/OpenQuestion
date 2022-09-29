@@ -6,10 +6,8 @@ from ...copy_link import copy_link
 
 class survey_row(survey_rowTemplate):
     def __init__(self, **properties):
-        # Set Form properties and Data Bindings.
         self.init_components(**properties)
 
-        # Any code you write here will run when the form opens.
         self.label_title.text = self.item["title"]
         self.button_build.tag.row = self.item
 

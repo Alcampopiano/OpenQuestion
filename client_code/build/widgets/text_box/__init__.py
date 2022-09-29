@@ -3,7 +3,6 @@ from ._anvil_designer import text_boxTemplate
 
 class text_box(text_boxTemplate):
     def __init__(self, section, **properties):
-        # Set Form properties and Data Bindings.
         self.init_components(**properties)
 
         self.tag.logic = None

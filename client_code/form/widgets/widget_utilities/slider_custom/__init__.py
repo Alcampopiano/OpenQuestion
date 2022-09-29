@@ -3,7 +3,6 @@ from ._anvil_designer import slider_customTemplate
 
 class slider_custom(slider_customTemplate):
     def __init__(self, **properties):
-        # Set Form properties and Data Bindings.
         self._shown = False
         self.init_components(**properties)
 

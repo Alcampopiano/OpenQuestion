@@ -11,7 +11,6 @@ from ._anvil_designer import chartTemplate
 
 class chart(chartTemplate):
     def __init__(self, section, **properties):
-        # Set Form properties and Data Bindings.
         self.init_components(**properties)
 
         from ..toolbar import toolbar

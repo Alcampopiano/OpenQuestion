@@ -5,7 +5,6 @@ import anvil.server
 
 class select_action_survey(select_action_surveyTemplate):
     def __init__(self, **properties):
-        # Set Form properties and Data Bindings.
         self.init_components(**properties)
 
         rows = anvil.server.call("get_forms")
