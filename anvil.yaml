@@ -1,182 +1,165 @@
 services:
-- source: /runtime/services/tables.yml
-  client_config: {}
-  server_config: {auto_create_missing_columns: false}
-- source: /runtime/services/anvil/users.yml
-  client_config: {use_microsoft: true, require_secure_passwords: true, use_token: false,
-    use_saml: false, use_email: true, allow_signup: false, enable_automatically: false,
-    confirm_email: false, use_google: false, use_facebook: false}
-  server_config: {user_table: users}
-- source: /runtime/services/anvil/microsoft.yml
-  client_config: {}
-  server_config: {}
-- source: /runtime/services/google.yml
-  client_config: {}
-  server_config: {}
-- source: /runtime/services/facebook.yml
-  client_config: {}
-  server_config: {}
-startup: {type: module, module: start_up}
+  - source: /runtime/services/tables.yml
+    client_config: {}
+    server_config: { auto_create_missing_columns: false }
+  - source: /runtime/services/anvil/users.yml
+    client_config:
+      {
+        use_microsoft: false,
+        require_secure_passwords: true,
+        use_token: false,
+        use_saml: false,
+        use_email: true,
+        allow_signup: false,
+        enable_automatically: false,
+        confirm_email: false,
+        use_google: false,
+        use_facebook: false,
+      }
+    server_config: { user_table: users }
+startup: { type: module, module: start_up }
 package_name: OpenQuestion
 allow_embedding: false
 name: OpenQuestion
-runtime_options: {version: 2, client_version: '3', server_version: python3-full}
+runtime_options:
+  {
+    version: 2,
+    client_version: "3",
+    server_version: python3-full,
+    server_spec: null,
+  }
 metadata: {}
 startup_form: build.branch.confirm_content
-native_deps: {head_html: "<script>\n/*\nfunction get_jQuery_obj(component) {\n   \
-    \ // deal with buttons being the surrounding div rather than the button element\n\
-    \    if (component.v._anvil.element[0].classList.contains(\"anvil-button\")) {\n\
-    \        return $(component.v._anvil.element[0].firstElementChild)\n        //\
-    \ jQuery object\n    } else {\n        return component.v._anvil.element\n   \
-    \ };  // jQuery object\n};\n*/\n  \nfunction get_jQuery_obj(component) {\n   \
-    \ // deal with buttons being the surrounding div rather than the button element\n\
-    \    const classlist = component.v._anvil.element[0].classList;\n    if (classlist.contains(\"\
-    anvil-button\")) {\n        return $(component.v._anvil.element[0].firstElementChild)\n\
-    \        // jQuery object\n    } else if (classlist.contains(\"file-loader\"))\
-    \ {\n        return component.v._anvil.element.find('form');\n    } else {\n \
-    \       return component.v._anvil.element\n    };  // jQuery object\n};\n\nfunction\
-    \ augment(component, event) {\n    const element = get_jQuery_obj(component);\n\
-    \    component = component.v;\n\tcomponent._anvil.eventTypes[event] = {\n    \
-    \    'name': event,\n    };\n    // hover is different\n    const event_type =\
-    \ event == 'hover' ? 'mouseenter mouseleave' : event;\n\t\n  \t// set the event\
-    \ for the jquery element\n    element.on(event_type, function (e) {\n        let\
-    \ e_args = {};\n        if (event_type.includes('key')) {\n            e_args\
-    \ = {key:       e.key,       key_code: e.keyCode,\n                      shift_key:\
-    \ e.shiftKey,  alt_key:  e.altKey,\n                      meta_key:  e.metaKey,\
-    \   ctrl_key: e.ctrlKey,\n            };\n        }\n        e_args.event_type\
-    \ = e.type;\n      \n        // create event_params for PyDefUtils to handle.\n\
-    \      \tconst event_params = {}\n      \tfor (i in e_args) {\n          event_params[i]\
-    \ = {};\n          event_params[i].name = i;\n          event_params[i].pyVal\
-    \ = false;\n        }\n      \t\n        // update the event to include paramaters.\n\
-    \     \tcomponent._anvil.eventTypes[event] = {\n          'name': event,\n   \
-    \       'parameters': event_params\n        };\n\n      \t// call raise_event\
-    \ on the component\n        let handled = PyDefUtils.raiseEventOrSuspend(e_args,\
-    \ component, event);\n      \n        // check if it's a suspension or if the\
-    \ user returned a value to prevent default\n      \tif (handled){\n          if\
-    \ (handled.$isSuspension) {\n            // if it's a suspension convert to a\
-    \ promise\n            PyDefUtils.asyncToPromise(function() { return handled;\
-    \ });\n          } else if (handled.v) {\n            // check if there was a\
-    \ value returned\n            e.preventDefault();\n          }\n        }\n\n\
-    \    });\n\t\n  \t// add trigger method to component\n    component.constructor.prototype.trigger\
-    \ = new Sk.builtin.func(function (self, event) {\n        event = event.$jsstr();\n\
-    \        event = event == 'hover' ? 'mouseenter mouseleave' : event; // would\
-    \ probably never do this!\n      \tconst component = self\n      \tcomponent.v\
-    \ = self\n      \tconst element = get_jQuery_obj(component);\n        element.trigger(event);\n\
-    \    });\n}\n</script>\n\n<script src=\"https://cdn.jsdelivr.net/npm/vega@5\"\
-    ></script>\n<script src=\"https://cdn.jsdelivr.net/npm/vega-lite@5\"></script>\n\
-    <script src=\"https://cdn.jsdelivr.net/npm/vega-embed@6\"></script>\n<script src=\"\
-    https://cdn.jsdelivr.net/npm/tinycolor@1.4.2\"></script>\n\n\n<link href=\"https://cdnjs.cloudflare.com/ajax/libs/jsoneditor/9.2.0/jsoneditor.css\"\
-    \ rel=\"stylesheet\" type=\"text/css\">\n<script src=\"https://cdnjs.cloudflare.com/ajax/libs/jsoneditor/9.2.0/jsoneditor.min.js\"\
-    ></script>\n\n<script>\nvar opts={\"renderer\": \"svg\", \"mode\": \"vega-lite\"\
-    , \"actions\": {\"export\": true, \"source\": false, \"editor\": false, \"compiled\"\
-    : false}}  \n  \nfetch('https://vega.github.io/schema/vega-lite/v5.json')\n  \t\
-    .then(function(resp){\n    \treturn resp.json();\n  \t})\n  \t.then(function(data)\
-    \ {\n        schema=data\n  \t\t//make_editor(spec, schema, comp, parent);\n \
-    \ });\n</script>\n\n<script>\n  function setThemeCss(css) {\n    // Put the specified\
-    \ CSS into a <style> tag at the very end of <head>.\n    $(\"#custom-theme-css\"\
-    ).remove();\n    $(\"<style id='custom-theme-css'></style>\").text(css).appendTo($(\"\
-    head\"))\n  }\n</script>\n"}
+native_deps:
+  { head_html: "<script>\n/*\nfunction get_jQuery_obj(component) {\n   \
+      \ // deal with buttons being the surrounding div rather than the button element\n\
+      \    if (component.v._anvil.element[0].classList.contains(\"anvil-button\")) {\n\
+      \        return $(component.v._anvil.element[0].firstElementChild)\n        //\
+      \ jQuery object\n    } else {\n        return component.v._anvil.element\n   \
+      \ };  // jQuery object\n};\n*/\n  \nfunction get_jQuery_obj(component) {\n   \
+      \ // deal with buttons being the surrounding div rather than the button element\n\
+      \    const classlist = component.v._anvil.element[0].classList;\n    if (classlist.contains(\"\
+      anvil-button\")) {\n        return $(component.v._anvil.element[0].firstElementChild)\n\
+      \        // jQuery object\n    } else if (classlist.contains(\"file-loader\"))\
+      \ {\n        return component.v._anvil.element.find('form');\n    } else {\n \
+      \       return component.v._anvil.element\n    };  // jQuery object\n};\n\nfunction\
+      \ augment(component, event) {\n    const element = get_jQuery_obj(component);\n\
+      \    component = component.v;\n\tcomponent._anvil.eventTypes[event] = {\n    \
+      \    'name': event,\n    };\n    // hover is different\n    const event_type =\
+      \ event == 'hover' ? 'mouseenter mouseleave' : event;\n\t\n  \t// set the event\
+      \ for the jquery element\n    element.on(event_type, function (e) {\n        let\
+      \ e_args = {};\n        if (event_type.includes('key')) {\n            e_args\
+      \ = {key:       e.key,       key_code: e.keyCode,\n                      shift_key:\
+      \ e.shiftKey,  alt_key:  e.altKey,\n                      meta_key:  e.metaKey,\
+      \   ctrl_key: e.ctrlKey,\n            };\n        }\n        e_args.event_type\
+      \ = e.type;\n      \n        // create event_params for PyDefUtils to handle.\n\
+      \      \tconst event_params = {}\n      \tfor (i in e_args) {\n          event_params[i]\
+      \ = {};\n          event_params[i].name = i;\n          event_params[i].pyVal\
+      \ = false;\n        }\n      \t\n        // update the event to include paramaters.\n\
+      \     \tcomponent._anvil.eventTypes[event] = {\n          'name': event,\n   \
+      \       'parameters': event_params\n        };\n\n      \t// call raise_event\
+      \ on the component\n        let handled = PyDefUtils.raiseEventOrSuspend(e_args,\
+      \ component, event);\n      \n        // check if it's a suspension or if the\
+      \ user returned a value to prevent default\n      \tif (handled){\n          if\
+      \ (handled.$isSuspension) {\n            // if it's a suspension convert to a\
+      \ promise\n            PyDefUtils.asyncToPromise(function() { return handled;\
+      \ });\n          } else if (handled.v) {\n            // check if there was a\
+      \ value returned\n            e.preventDefault();\n          }\n        }\n\n\
+      \    });\n\t\n  \t// add trigger method to component\n    component.constructor.prototype.trigger\
+      \ = new Sk.builtin.func(function (self, event) {\n        event = event.$jsstr();\n\
+      \        event = event == 'hover' ? 'mouseenter mouseleave' : event; // would\
+      \ probably never do this!\n      \tconst component = self\n      \tcomponent.v\
+      \ = self\n      \tconst element = get_jQuery_obj(component);\n        element.trigger(event);\n\
+      \    });\n}\n</script>\n\n<script src=\"https://cdn.jsdelivr.net/npm/vega@5\"\
+      ></script>\n<script src=\"https://cdn.jsdelivr.net/npm/vega-lite@5\"></script>\n\
+      <script src=\"https://cdn.jsdelivr.net/npm/vega-embed@6\"></script>\n<script src=\"\
+      https://cdn.jsdelivr.net/npm/tinycolor@1.4.2\"></script>\n\n\n<link href=\"https://cdnjs.cloudflare.com/ajax/libs/jsoneditor/9.2.0/jsoneditor.css\"\
+      \ rel=\"stylesheet\" type=\"text/css\">\n<script src=\"https://cdnjs.cloudflare.com/ajax/libs/jsoneditor/9.2.0/jsoneditor.min.js\"\
+      ></script>\n\n<script>\nvar opts={\"renderer\": \"svg\", \"mode\": \"vega-lite\"\
+      , \"actions\": {\"export\": true, \"source\": false, \"editor\": false, \"compiled\"\
+      : false}}  \n  \nfetch('https://vega.github.io/schema/vega-lite/v5.json')\n  \t\
+      .then(function(resp){\n    \treturn resp.json();\n  \t})\n  \t.then(function(data)\
+      \ {\n        schema=data\n  \t\t//make_editor(spec, schema, comp, parent);\n \
+      \ });\n</script>\n\n<script>\n  function setThemeCss(css) {\n    // Put the specified\
+      \ CSS into a <style> tag at the very end of <head>.\n    $(\"#custom-theme-css\"\
+      ).remove();\n    $(\"<style id='custom-theme-css'></style>\").text(css).appendTo($(\"\
+      head\"))\n  }\n</script>\n" }
 db_schema:
-- name: Users
-  id: 71213
-  python_name: users
-  columns:
-    FP3uvLzms0s=:
-      name: enabled
-      type: bool
-      admin_ui: {order: 1, width: 100}
-    ZVyDTp+skK4=:
-      name: password_hash
-      type: string
-      admin_ui: {order: 4, width: 200}
-    p8RYLBAw1qQ=:
-      name: email
-      type: string
-      admin_ui: {order: 0, width: 200}
-    zaAkp+juu9E=:
-      name: last_login
-      type: datetime
-      admin_ui: {order: 3, width: 200}
-  access: {python_name: users, app_id: RZCX3HWGWWPZJCOH, server: full, client: none,
-    table_mapping_name: null, table_mapping_id: null, table_id: 71213}
-- name: forms
-  id: 63199
-  python_name: forms
-  columns:
-    0LurdekMZ08=:
-      name: schema
-      type: simpleObject
-      admin_ui: {order: 3, width: 200}
-    CvauOTiUFnE=:
-      name: form_id
-      type: string
-      admin_ui: {order: 0, width: 147}
-    ZjE_pWQ+bOI=:
-      name: last_modified
-      type: datetime
-      admin_ui: {order: 2, width: 200}
-    ZyPWM1iuKCU=:
-      name: reports
-      type: liveObject
-      backend: anvil.tables.Row
-      admin_ui: {order: 7, width: 200}
-      table_id: 69868
-    bmyjwXkZDpo=:
-      name: opening_date
-      type: datetime
-      admin_ui: {order: 5, width: 200}
-    cBHbMLZ4TK4=:
-      name: closing_date
-      type: datetime
-      admin_ui: {order: 6, width: 200}
-    lu7Wg5515RQ=:
-      name: title
-      type: string
-      admin_ui: {order: 1, width: 200}
-    tRLstr9GAuU=:
-      name: submissions
-      type: media
-      admin_ui: {order: 4, width: 200}
-  access: {python_name: forms, app_id: RZCX3HWGWWPZJCOH, server: full, client: none,
-    table_mapping_name: null, table_mapping_id: null, table_id: 63199}
-- name: chart_templates
-  id: 107442
-  python_name: chart_templates
-  columns:
-    20bgvDLwugE=:
-      name: templates
-      type: simpleObject
-      admin_ui: {order: 1, width: 907}
-    MF4kJFuGG6k=:
-      name: images
-      type: media
-      admin_ui: {order: 1, width: 200}
-  access: {python_name: chart_templates, app_id: RZCX3HWGWWPZJCOH, server: full, client: none,
-    table_mapping_name: null, table_mapping_id: null, table_id: 107442}
-- name: reports
-  id: 69868
-  python_name: reports
-  columns:
-    H4Ig033eN_4=:
-      name: schema
-      type: simpleObject
-      admin_ui: {order: 3, width: 200}
-    TapnSmBFcrU=:
-      name: last_modified
-      type: datetime
-      admin_ui: {order: 2, width: 200}
-    hobmNYbScBQ=:
-      name: title
-      type: string
-      admin_ui: {order: 0, width: 200}
-    i0yr7vB_5ZA=:
-      name: datasets
-      type: simpleObject
-      admin_ui: {order: 5, width: 200}
-    j6KT9QDxLj8=:
-      name: charts
-      type: simpleObject
-      admin_ui: {order: 4, width: 200}
-  access: {python_name: reports, app_id: RZCX3HWGWWPZJCOH, server: full, client: none,
-    table_mapping_name: null, table_mapping_id: null, table_id: 69868}
-renamed: true
+  users:
+    title: Users
+    client: None
+    server: full
+    columns:
+      - name: email
+        admin_ui: { width: 200 }
+        type: string
+      - name: enabled
+        admin_ui: { width: 200 }
+        type: bool
+      - name: last_login
+        admin_ui: { width: 200 }
+        type: datetime
+      - name: password_hash
+        admin_ui: { width: 200 }
+        type: string
+  forms:
+    title: Forms
+    client: None
+    server: full
+    columns:
+      - name: form_id
+        admin_ui: { width: 147 }
+        type: string
+      - name: title
+        admin_ui: { width: 200 }
+        type: string
+      - name: last_modified
+        admin_ui: { width: 200 }
+        type: datetime
+      - name: schema
+        admin_ui: { width: 200 }
+        type: simpleObject
+      - name: submissions
+        admin_ui: { width: 200 }
+        type: media
+      - name: opening_date
+        admin_ui: { width: 200 }
+        type: datetime
+      - name: closing_date
+        admin_ui: { width: 200 }
+        type: datetime
+      - name: reports
+        admin_ui: { width: 200 }
+        type: link_single
+        target: reports
+  chart_templates:
+    title: Chart Templates
+    client: None
+    server: full
+    columns:
+      - name: templates
+        admin_ui: { width: 907 }
+        type: simpleObject
+      - name: images
+        admin_ui: { width: 200 }
+        type: media
+  reports:
+    title: Reports
+    client: None
+    server: full
+    columns:
+      - name: title
+        admin_ui: { width: 200 }
+        type: string
+      - name: last_modified
+        admin_ui: { width: 200 }
+        type: datetime
+      - name: schema
+        admin_ui: { width: 200 }
+        type: simpleObject
+      - name: charts
+        admin_ui: { width: 200 }
+        type: simpleObject
+      - name: datasets
+        admin_ui: { width: 200 }
+        type: simpleObject
