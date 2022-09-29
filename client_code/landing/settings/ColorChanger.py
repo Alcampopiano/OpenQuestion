@@ -1,19 +1,17 @@
-import anvil.facebook.auth
-import anvil.google.auth, anvil.google.drive
-from anvil.google.drive import app_files
 import anvil.js
 
+
 def set_theme(theme_map):
-  css = themed_css
-  for name, value in theme_map.items():
-    css = css.replace(f"%color:{name}%", value)
-    
-  anvil.js.call_js("setThemeCss", css)
+    css = themed_css
+    for name, value in theme_map.items():
+        css = css.replace(f"%color:{name}%", value)
+
+    anvil.js.call_js("setThemeCss", css)
 
 
 # This is the subset of theme.css that is affected by theme colour choice.
-# (I just copy-pasted theme.css and searched for theme:) 
-  
+# (I just copy-pasted theme.css and searched for theme:)
+
 themed_css = """
 a, a:focus {
   color: %color:Primary 700%;

@@ -45,7 +45,7 @@ components:
       properties: {spacing_above: none, spacing_below: none, item_template: landing.select_action_survey.survey_row}
       name: repeating_panel_surveys
       layout_properties: {}
-      event_bindings: {hide: repeating_panel_1_hide}
+      event_bindings: {}
     event_bindings: {}
   - type: Button
     properties: {role: primary-color, align: left, tooltip: '', border: '', enabled: true,
@@ -69,7 +69,7 @@ components:
       italic: false, background: '', bold: false, underline: false, icon: 'fa:home'}
     name: link_1
     layout_properties: {}
-    event_bindings: {click: link_home_click}
+    event_bindings: {}
 - type: Label
   properties: {role: null, align: left, tooltip: '', border: '', foreground: '', visible: true,
     text: OpenQuestion, font_size: null, font: '', spacing_above: small, icon_align: left,

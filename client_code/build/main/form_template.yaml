@@ -30,7 +30,7 @@ components:
       italic: false, background: '', bold: false, underline: false, icon: 'fa:arrow-left'}
     name: link_landing_survey
     layout_properties: {}
-    event_bindings: {click: link_landing_click}
+    event_bindings: {}
   - type: Link
     properties: {role: null, url: '', align: left, tooltip: '', border: '', foreground: '',
       visible: true, text: '', font_size: null, wrap_on: mobile, font: '', col_spacing: medium,

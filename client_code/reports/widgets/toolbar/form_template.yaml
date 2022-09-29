@@ -1,6 +1,6 @@
 container:
   type: ColumnPanel
-  event_bindings: {show: form_show}
+  event_bindings: {}
 components:
 - type: Spacer
   properties: {height: 32}

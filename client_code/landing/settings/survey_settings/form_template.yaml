@@ -140,7 +140,7 @@ components:
       italic: false, background: '', bold: false, underline: false, icon: 'fa:arrow-left'}
     name: link_back
     layout_properties: {}
-    event_bindings: {click: link_back_click}
+    event_bindings: {}
   - type: Link
     properties: {role: null, url: '', align: center, tooltip: '', border: '', foreground: '',
       visible: true, text: '', font_size: null, wrap_on: mobile, font: '', col_spacing: medium,

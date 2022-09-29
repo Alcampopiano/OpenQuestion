@@ -29,7 +29,7 @@ components:
     background: '', bold: false, underline: false}
   name: text_area_text
   layout_properties: {grid_position: 'PFIWCY,MNLOYW'}
-  event_bindings: {focus: text_area_focus, lost_focus: text_area_lost_focus}
+  event_bindings: {lost_focus: text_area_lost_focus}
 - type: ColumnPanel
   properties: {role: null, tooltip: '', border: '', foreground: '', visible: false,
     wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
